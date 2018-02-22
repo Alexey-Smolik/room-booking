@@ -7,7 +7,7 @@
     <script src="js/index.js"></script>
 </head>
 <body>
-    <form method="post" action="/auth/local">
+    <form method="post" action="/auth/local" id="authForm">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-6" style="margin-left: 25%; margin-top: 15%">
@@ -31,7 +31,7 @@
                                             <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
                                             <input type="password" class="form-control" id="password" name="password" placeholder="Ваш пароль" required oninput="checkValue()" />
                                         </div>
-                                        <p id="registration"> У вас нет аккаунта? <a href="#" onclick="makeRegistrationForm()">Регистрация</a></p>
+                                        <p id="registration"> У вас нет аккаунта? <a href="#" onclick="makeRegistrationForm()">Регистрация </a></p>
                                     </form>
                                 </div>
                             </div>
@@ -39,9 +39,7 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <button type="submit" class="btn btn-success" id="login" style="float: right">
-                                        <span class="glyphicon glyphicon-ok"></span> Войти
-                                    </button>
+                                    <button type="submit" class="btn btn-success" id="login" style="float: right"> Войти </button>
                                 </div>
                             </div>
                         </div>

@@ -59,7 +59,7 @@ passport.deserializeUser((id, done) => {
 routes.post('/login', (req, res) => {
     users.create(req.body)
         .then(user => {
-            res.status(201).redirect('/auth');
+            res.status(201).redirect('/');
         })
         .catch(err => {
             res.status(501).send({ status: "error", message: err.message });
