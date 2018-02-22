@@ -2,6 +2,7 @@ const routes = require('express').Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const VKontakteStrategy = require('passport-vkontakte').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 const users = require('../models').users;
 const config = require('../config/main');
@@ -41,6 +42,28 @@ passport.use(new VKontakteStrategy({
     }
 ));
 
+passport.use(new FacebookStrategy({
+        clientID: config.FacebookStrategy.appId,
+        clientSecret: config.FacebookStrategy.secretKey,
+        callbackURL: `/auth/facebook/callback`
+    },
+    function(accessToken, refreshToken, profile, params, done) {
+        console.log(profile);
+        /*User.findOrCreate({
+            where: { provider: profile.provider, personal_id: profile.id.toString() },
+            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString() }
+        })
+            .then(user => {
+                //console.log(user[0].dataValues);
+                if (!user) return done(null, false);
+                return done(null, user[0].dataValues);
+            })
+            .catch(err => {
+                return done(err);
+            });*/
+    }
+));
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -68,6 +91,8 @@ routes.post('/login', (req, res) => {
 
 routes.post('/local', passport.authenticate('local', { successRedirect: '/main.html', failureRedirect: '/' }));
 routes.get('/vk', passport.authenticate('vkontakte'));
+routes.get('/fb', passport.authenticate('facebook'));
+routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main.html', failureRedirect: '/' }));
 routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/main.html', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
