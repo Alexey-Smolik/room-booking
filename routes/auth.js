@@ -70,13 +70,12 @@ passport.use(new TwitterStrategy({
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, params, done) {
-        console.log(profile);
         profile.token = accessToken;
         profile.secretToken = refreshToken;
 
         users.findOrCreate({
-            where: { provider: 'twitter', personal_id: profile.user_id },
-            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id }
+            where: { provider: params.provider, personal_id: params.id },
+            defaults: { username: params.username, provider: params.provider, personal_id: params.id }
         })
             .then(user => {
                 if (!user) return done(null, false);
@@ -89,14 +88,22 @@ passport.use(new TwitterStrategy({
 ));
 
 passport.use(new GoogleStrategy({
-        clientID: GOOGLE_CLIENT_ID,
-        clientSecret: GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://www.example.com/auth/google/callback"
+        clientID: config.GoogleStrategy.clientID,
+        clientSecret: config.GoogleStrategy.clientSecret,
+        callbackURL: '/auth/google/callback'
     },
-    function(accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
+    function(accessToken, refreshToken, profile, done) {
+        users.findOrCreate({
+            where: { provider: profile.provider, personal_id: profile.id },
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id }
+        })
+            .then(user => {
+                if (!user) return done(null, false);
+                return done(null, user[0].dataValues);
+            })
+            .catch(err => {
+                return done(err);
+            });
     }
 ));
 
@@ -107,11 +114,10 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
     users.find({where: { id: id }})
         .then(user => {
-            done(null, user);
+            done(null, user.dataValues);
         })
         .catch(err => {
             done(err, null);
-            console.log(err);
         })
 });
 
@@ -136,17 +142,13 @@ routes.get('/facebook/callback', passport.authenticate('facebook', { successRedi
 routes.get('/twitter', passport.authenticate('twitter'));
 routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/main.html', failureRedirect: '/' }));
 
+routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
+routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/main.html', failureRedirect: '/' }));
 
 
 routes.get('/logout', (req, res) => {
-    console.log(req.isAuthenticated());
-    req.logOut();
-    res.status(200).clearCookie('connect.sid', {
-        path: '/'
-    });
-    req.session.destroy((err) => {
-        res.redirect('/');
-    });
+    req.session.destroy();
+    res.redirect('/');
 });
 
 module.exports = routes;
