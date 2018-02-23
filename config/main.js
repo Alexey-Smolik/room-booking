@@ -19,6 +19,10 @@ const config = {
         appId: 2051422921809105,
         secretKey: 'ad9a1245d4513f701d5d62638ad21964'
     },
+    TwitterStrategy: {
+        consumerKey: 'yu46h6rip4JGFcoa1q2vNzRJe',
+        consumerSecret: 'YhNmDtve6XnCN0XE8mk5vW0eEmDwwZI4vb8v10uO7H5E8FftNa'
+    },
 };
 
 module.exports = config;

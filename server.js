@@ -12,9 +12,10 @@ app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
     secret: 'keyboard cat',
+    name: 'id',
     resave: true,
     saveUninitialized: false,
-    cookie: { secure: false }
+    cookie: { secure: true }
 }));
 
 app.use(passport.initialize());
