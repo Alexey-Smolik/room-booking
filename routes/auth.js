@@ -4,7 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const VKontakteStrategy = require('passport-vkontakte').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
-const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const users = require('../models').users;
 const config = require('../config/main');
 
@@ -33,7 +33,6 @@ passport.use(new VKontakteStrategy({
             defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString() }
         })
             .then(user => {
-                //console.log(user[0].dataValues);
                 if (!user) return done(null, false);
                 return done(null, user[0].dataValues);
             })
@@ -64,6 +63,7 @@ passport.use(new FacebookStrategy({
             });*/
     }
 ));
+
 passport.use(new TwitterStrategy({
         consumerKey: config.TwitterStrategy.consumerKey,
         consumerSecret: config.TwitterStrategy.consumerSecret,
@@ -85,6 +85,18 @@ passport.use(new TwitterStrategy({
             .catch(err => {
                 return done(err);
             });
+    }
+));
+
+passport.use(new GoogleStrategy({
+        clientID: GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        callbackURL: "http://www.example.com/auth/google/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return cb(err, user);
+        });
     }
 ));
 
