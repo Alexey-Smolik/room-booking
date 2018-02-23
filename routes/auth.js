@@ -67,16 +67,24 @@ passport.use(new FacebookStrategy({
 passport.use(new TwitterStrategy({
         consumerKey: config.TwitterStrategy.consumerKey,
         consumerSecret: config.TwitterStrategy.consumerSecret,
-        callbackURL: `http://172.16.1.45:3000/auth/twitter/callback`
+        callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, params, done) {
         console.log(profile);
         profile.token = accessToken;
         profile.secretToken = refreshToken;
-        done(null, profile);
-        /*User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });*/
+
+        users.findOrCreate({
+            where: { provider: 'twitter', personal_id: profile.user_id },
+            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id }
+        })
+            .then(user => {
+                if (!user) return done(null, false);
+                return done(null, user[0].dataValues);
+            })
+            .catch(err => {
+                return done(err);
+            });
     }
 ));
 
@@ -106,15 +114,17 @@ routes.post('/login', (req, res) => {
 });
 
 routes.post('/local', passport.authenticate('local', { successRedirect: '/main.html', failureRedirect: '/' }));
-routes.get('/vk', passport.authenticate('vkontakte'));
-routes.get('/fb', passport.authenticate('facebook'));
 
+routes.get('/vk', passport.authenticate('vkontakte'));
+routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/main.html', failureRedirect: '/' }));
+
+routes.get('/fb', passport.authenticate('facebook'));
 routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main.html', failureRedirect: '/' }));
 
 routes.get('/twitter', passport.authenticate('twitter'));
 routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/main.html', failureRedirect: '/' }));
 
-routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/main.html', failureRedirect: '/' }));
+
 
 routes.get('/logout', (req, res) => {
     console.log(req.isAuthenticated());
