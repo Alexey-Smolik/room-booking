@@ -49,6 +49,8 @@ passport.use(new FacebookStrategy({
     },
     function(accessToken, refreshToken, profile, params, done) {
         console.log(profile);
+
+
         /*User.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id.toString() },
             defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString() }
@@ -88,7 +90,7 @@ passport.use(new TwitterStrategy({
     }
 ));
 
-passport.use(new GoogleStrategy({
+/*passport.use(new GoogleStrategy({
         clientID: GOOGLE_CLIENT_ID,
         clientSecret: GOOGLE_CLIENT_SECRET,
         callbackURL: "http://www.example.com/auth/google/callback"
@@ -98,7 +100,7 @@ passport.use(new GoogleStrategy({
             return cb(err, user);
         });
     }
-));
+));*/
 
 passport.serializeUser((user, done) => {
     done(null, user.id);

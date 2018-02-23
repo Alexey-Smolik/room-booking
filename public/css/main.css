@@ -8,3 +8,10 @@
 .google { background-color:#DD4B39;color:#fff; }
 .twitter { background-color:#55ACEE;color:#fff; }
 .facebook:hover,.twitter:hover { color:#fff; }
+#wrapper {
+    max-width: 960px;
+    margin: auto;
+}
+header {
+    padding: 20px 0;
+}
