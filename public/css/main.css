@@ -12,19 +12,13 @@
 body {
     color: #8f8f8f;
     font: 12px Tahoma, sans-serif;
-    background: #f8f8f8 url(../images/bg.png);
-
     margin: 0;
 }
 
 #username{
     font-size: 15px	;
     text-align: left;
-
-
 }
-
-
 
 nav {
     background: #f3f3f3;
@@ -43,7 +37,6 @@ nav {
 
 header {
     padding: 20px 0;
-    height: 20% !important;
 }
 .text {
     text-align: center;
@@ -54,12 +47,10 @@ aside {
     width: 250px;
 }
 
-
 section {
     margin-left: 280px;
     padding-bottom: 50px;
 }
-
 
 nav a {
     text-decoration: none;
@@ -97,8 +88,6 @@ nav li {
     border-top: 1px solid #e7e7e7;
 }
 
-
-
 .aside-menu li.active {
     color: #383e41;
 }
@@ -120,8 +109,6 @@ blockquote p {
     font-size: 33px;
     margin: 0;
 }
-
-
 
 figure {
     display: inline-block;

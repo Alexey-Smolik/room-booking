@@ -1,231 +1,26 @@
 <!doctype html>
 <html>
 <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>Main page</title>
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
-    <link rel="stylesheet" href="css/main.css">
-    <script src="jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>jQuery Schedule v2 Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/jquery.schedule.css">
+    <link rel="stylesheet" href="css/jquery.schedule-demo.css">
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/jquery.schedule.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
-<div id="wrapper">
-    <header>
-        <label id="username">HELLO, fjbgokdfmbdfjodfbmfbmdfbmdfbdfbmfkldfmbkldmfbkmffdm</label>
-        <button type="submit" id="logout">Log out</button>
-    </header>
-    <nav>
-        <ul class="top-menu">
-            <li><a href="/home/">HOME</a></li>
-            <li><a href="/year/">YEAR</a></li>
-            <li><a href="/month/">MONTH</a></li>
-            <li class="active"><a href="/week/">WEEK</a></li>
-            <li><a href="/day/">DAY</a></li>
-
-        </ul>
-    </nav>
-    <div id="heading">
-        <blockquote>
-
-            <p class="text">Выберите для Вас подходящий офис или роскошную комнату!</p>
-
-
-        </blockquote>
-    </div>
-    <aside>
-        <nav>
-            <ul class="aside-menu">
-                <li class="active">LOREM IPSUM</li>
-                <li><a href="/donec/">DONEC TINCIDUNT LAOREET</a></li>
-                <li><a href="/vestibulum/">VESTIBULUM ELIT</a></li>
-                <li><a href="/etiam/">ETIAM PHARETRA</a></li>
-                <li><a href="/phasellus/">PHASELLUS PLACERAT</a></li>
-                <li><a href="/cras/">CRAS ET NISI VITAE ODIO</a></li>
-            </ul>
-        </nav>
-
-    </aside>
-    <section>
-
-
-        <table>
-            <tr>
-                <th>Time</th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-            </tr>
-            <tr>
-                <td>08.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>08.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>09.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>09.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>11.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>11.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>12.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>13.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>13.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>14.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>14.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>15.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>15.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>16.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>16.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>17.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>17.30</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>18.00</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </section>
-</div>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="schedule" class="jqs-demo mb-3"></div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
