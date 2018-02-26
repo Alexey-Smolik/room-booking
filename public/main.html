@@ -2,18 +2,34 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
-    <link rel="stylesheet" href="css/jquery.schedule.css">
-    <link rel="stylesheet" href="css/jquery.schedule-demo.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../jqwidgets/styles/jqx.base.css">
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/jquery.schedule.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="../scripts/demos.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdate.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxscheduler.api.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdatetimeinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcalendar.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxtooltip.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxwindow.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxnumberinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxradiobutton.js"></script>
+    <script type="text/javascript" src="../jqwidgets/jqxinput.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.js"></script>
+    <script type="text/javascript" src="../jqwidgets/globalization/globalize.culture.de-DE.js"></script>
 </head>
-<body>
+<body class="default">
 <div id="wrapper">
     <header>
         <form class="hello" name="search" action="#" method="get">
@@ -53,15 +69,7 @@
 
     </aside>
     <section>
-
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div id="schedule" class="jqs-demo mb-3"></div>
-                </div>
-            </div>
-        </div>
-
+        <div id="scheduler"></div>
     </section>
 </div>
 </body>
