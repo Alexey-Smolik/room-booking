@@ -68,7 +68,6 @@ passport.use(new TwitterStrategy({
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, params, done) {
-        console.log(profile);
         profile.token = accessToken;
         profile.secretToken = refreshToken;
 
