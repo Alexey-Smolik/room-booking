@@ -1,6 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Events = sequelize.define('events', {
-
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

@@ -21,10 +21,10 @@ Object.keys(db).forEach(function(modelName) {
     }
 });
 
-db.companies.hasOne(db.rooms);
+db.companies.hasMany(db.rooms, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.rooms.belongsTo(db.companies);
 
-db.rooms.hasOne(db.events);
+db.rooms.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.events.belongsTo(db.rooms);
 
 db.sequelize = sequelize;
