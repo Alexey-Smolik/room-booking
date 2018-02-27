@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>Main page</title>
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300" type="text/css">
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<form class="hello" name="search" action="#" method="get">
+				<label id="username">HELLO, fjbgokdfmbdfjodfbmfbmdfbmdfbdfbmfkldfmbkldmfbkmffdm</label>
+				<button type="submit">Log out</button>
+			</form>
+		</header>
+		<nav>
+			<ul class="top-menu">
+				<li><a href="/home/">HOME</a></li>
+				<li><a href="/year/">YEAR</a></li>
+				<li><a href="/month/">MONTH</a></li>
+				<li class="active"><a href="/week/">WEEK</a></li>
+				<li><a href="/day/">DAY</a></li>
+
+			</ul>
+		</nav>
+		<div id="heading">
+			<blockquote>
+
+				<p class="text">Выберите для Вас подходящий офис или роскошную комнату!</p>
+
+
+			</blockquote>
+		</div>
+		<aside>
+			<nav>
+				<ul class="aside-menu">
+					<li class="active">LOREM IPSUM</li>
+					<li><a href="/donec/">DONEC TINCIDUNT LAOREET</a></li>
+					<li><a href="/vestibulum/">VESTIBULUM ELIT</a></li>
+					<li><a href="/etiam/">ETIAM PHARETRA</a></li>
+					<li><a href="/phasellus/">PHASELLUS PLACERAT</a></li>
+					<li><a href="/cras/">CRAS ET NISI VITAE ODIO</a></li>
+				</ul>
+			</nav>
+
+		</aside>
+		<section>
+
+
+			
+		</section>
+	</div>
+</body>
+</html>
