@@ -15,7 +15,8 @@ class App extends Component {
               <div>
                   <Header />
                   <LeftNavBar />
-                  <Route exact path="/booktable" component={BookTable} />
+                  <BookTable />
+                  {/* <Route exact path="/booktable" component={BookTable} /> */}
                   <Route exact path="/secondpage" component={SecondPage} /> 
               </div>
           </BrowserRouter>
