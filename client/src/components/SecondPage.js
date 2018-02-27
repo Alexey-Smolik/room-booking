@@ -6,7 +6,7 @@ class SecondPage extends Component {
     render() {
         return(
             <div className="secondPage">
-                <h1>Second page</h1>
+                <h1>Second first page</h1>
             </div> 
         );
     }
