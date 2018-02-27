@@ -1,4 +1,11 @@
 $(document).ready(function () {
+    $.get(
+        "api/users/current",
+        {},
+        function (result) {
+            $('#username').append(`Hello, ${result.username}`);
+        });
+
     var appointments = new Array();
     var appointment1 = {
         id: "id1",
@@ -65,8 +72,8 @@ $(document).ready(function () {
             },
         views:
             [
-                'dayView',
-                { type: "weekView", showWeekends: false, timeRuler: { scaleStartHour: 8, scaleEndHour: 18 },  workTime:
+                { type: "dayView", timeRuler: { scaleStartHour: 8, scaleEndHour: 18, scale: 'hour', formatString: 'HH:mm' }, workTime: { fromHour: 8, toHour: 19,  fromDayOfWeek: 1, toDayOfWeek: 5, } },
+                { type: "weekView", showWeekends: false, timeRuler: { scaleStartHour: 8, scaleEndHour: 18, scale: 'hour', formatString: 'HH:mm' },  workTime:
                         {
                             fromDayOfWeek: 1,
                             toDayOfWeek: 5,
