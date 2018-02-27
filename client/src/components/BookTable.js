@@ -1,10 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
- 
+
 //import JqxBarGauge from './assesjqwidgets-react/react_jqxbargauge.js';
 import JqxScheduler  from './assets/jqwidgets-react/react_jqxscheduler.js';
 
 export default class BookTable extends React.Component {
+    
+    componentDidMount()
+    {
+       console.log("hello");
+       this.refs.myScheduler.on('cellClick', (event) =>
+        {
+            console.log("hello3232");
+        });
+    }
+
   render () {
     let appointments = new Array();
     let appointment1 = {
@@ -71,12 +81,14 @@ export default class BookTable extends React.Component {
         { type: 'monthView' }
     ];
     return (
-        <JqxScheduler ref='myScheduler'
-            width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
-            date={new $.jqx.date(2016, 11, 23)} showLegend={true}
-            view={'weekView'} resources={resources} views={views}
-            appointmentDataFields={appointmentDataFields}
-        />
+        <div className={'tableContainer'}>
+            <JqxScheduler ref='myScheduler'
+                width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
+                date={new $.jqx.date(2016, 11, 23)} showLegend={true}
+                view={'weekView'} resources={resources} views={views}
+                appointmentDataFields={appointmentDataFields}
+            />
+        </div>
     )
   }
 }
