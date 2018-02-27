@@ -5,61 +5,21 @@ $(document).ready(function () {
         description: "George brings projector for presentations.",
         location: "",
         subject: "Quarterly Project Review Meeting",
-        calendar: "Room 1",
-        start: new Date(2015, 10, 23, 9, 0, 0),
-        end: new Date(2015, 10, 23, 16, 0, 0)
+        calendar: "Alex",
+        start: new Date(2018, 2, 23, 9, 0, 0),
+        end: new Date(2018, 2, 23, 16, 0, 0)
     }
     var appointment2 = {
         id: "id2",
         description: "",
         location: "",
         subject: "IT Group Mtg.",
-        calendar: "Room 2",
-        start: new Date(2015, 10, 24, 10, 0, 0),
-        end: new Date(2015, 10, 24, 15, 0, 0)
-    }
-    var appointment3 = {
-        id: "id3",
-        description: "",
-        location: "",
-        subject: "Course Social Media",
-        calendar: "Room 3",
-        start: new Date(2015, 10, 27, 11, 0, 0),
-        end: new Date(2015, 10, 27, 13, 0, 0)
-    }
-    var appointment4 = {
-        id: "id4",
-        description: "",
-        location: "",
-        subject: "New Projects Planning",
-        calendar: "Room 2",
-        start: new Date(2015, 10, 23, 16, 0, 0),
-        end: new Date(2015, 10, 23, 18, 0, 0)
-    }
-    var appointment5 = {
-        id: "id5",
-        description: "",
-        location: "",
-        subject: "Interview with James",
-        calendar: "Room 1",
-        start: new Date(2015, 10, 25, 15, 0, 0),
-        end: new Date(2015, 10, 25, 17, 0, 0)
-    }
-    var appointment6 = {
-        id: "id6",
-        description: "",
-        location: "",
-        subject: "Interview with Nancy",
-        calendar: "Room 4",
-        start: new Date(2015, 10, 26, 14, 0, 0),
-        end: new Date(2015, 10, 26, 16, 0, 0)
+        calendar: "Alex",
+        start: new Date(2018, 2, 24, 10, 0, 0),
+        end: new Date(2018, 2, 24, 15, 0, 0)
     }
     appointments.push(appointment1);
     appointments.push(appointment2);
-    appointments.push(appointment3);
-    appointments.push(appointment4);
-    appointments.push(appointment5);
-    appointments.push(appointment6);
     // prepare the data
     var source =
         {
@@ -78,9 +38,9 @@ $(document).ready(function () {
         };
     var adapter = new $.jqx.dataAdapter(source);
     $("#scheduler").jqxScheduler({
-        date: new $.jqx.date(2015, 11, 23),
-        width: 700,
-        height: 500,
+        date: new $.jqx.date(2018, 0, 27),
+        width: '100%',
+        height: '67%',
         source: adapter,
         view: 'weekView',
         showLegend: true,
@@ -89,7 +49,7 @@ $(document).ready(function () {
         },
         resources:
             {
-                colorScheme: "scheme05",
+                colorScheme: "scheme06",
                 dataField: "calendar",
                 source: new $.jqx.dataAdapter(source)
             },
@@ -106,7 +66,13 @@ $(document).ready(function () {
         views:
             [
                 'dayView',
-                'weekView',
+                { type: "weekView", showWeekends: false, timeRuler: { scaleStartHour: 8, scaleEndHour: 18 },  workTime:
+                        {
+                            fromDayOfWeek: 1,
+                            toDayOfWeek: 5,
+                            fromHour: 8,
+                            toHour: 19
+                        } },
                 'monthView'
             ]
     });
