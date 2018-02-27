@@ -40,7 +40,7 @@ $(document).ready(function () {
     $("#scheduler").jqxScheduler({
         date: new $.jqx.date(2018, 0, 27),
         width: '100%',
-        height: '67%',
+        height: '75%',
         source: adapter,
         view: 'weekView',
         showLegend: true,
