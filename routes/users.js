@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const users = require('../models').users;
 
+
 routes.get('/', (req, res) => {
     users.findAll()
         .then(users => {
@@ -40,5 +41,7 @@ routes.delete('/:id', (req, res) => {
 routes.get('/current', (req, res) => {
     req.user ? res.send(req.user) : res.send(401).send({ status: 'error', message: 'Unauthorized' });
 });
+
+
 
 module.exports = routes;

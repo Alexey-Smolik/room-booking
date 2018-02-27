@@ -21,6 +21,9 @@ Object.keys(db).forEach(function(modelName) {
     }
 });
 
+db.companies.hasOne(db.rooms);
+db.rooms.belongsTo(db.companies);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
