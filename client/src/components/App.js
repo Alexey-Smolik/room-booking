@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import {connect} from 'react-redux';
+import * as actions from '../actions';
 
+
+// Import components
 import Header from './Header';
 import LeftNavBar from './LeftNavBar';
 import BookTable from './BookTable';
@@ -8,6 +12,11 @@ import SecondPage from './SecondPage';
  
 
 class App extends Component {
+
+  // componentDidMount() {
+  //   this.props.getRoom();
+  // }
+
   render() {
     return (
       <div className="App">
@@ -15,7 +24,6 @@ class App extends Component {
               <div>
                   <Header />
                   <LeftNavBar />
-                  
                   <Route exact path="/booktable" component={BookTable} />
                   <Route exact path="/secondpage" component={SecondPage} /> 
               </div>
@@ -25,4 +33,5 @@ class App extends Component {
   }
 }
 
+// export default connect(null, actions)(App);
 export default App;

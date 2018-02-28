@@ -1,5 +1,4 @@
 import React , { Component } from 'react';
-// import { connect } from 'react-redux';
 
 
 class Header extends Component {
@@ -8,7 +7,7 @@ class Header extends Component {
             <div className="reactHeader">
                 <header>
                     <form className="hello" name="search" action="#" method="get">
-                        <label id="username">HELLO, fjbgokdfmbdfjodfbmfbmdfbmdfbdfbmfkldfmbkldmfbkmffdm</label>
+                        <label id="username">HELLO,</label>
                         <button type="submit">Log out</button>
                     </form>
                 </header>
@@ -19,17 +18,23 @@ class Header extends Component {
                         <li><a href="/month/">MONTH</a></li>
                         <li className="active"><a href="/week/">WEEK</a></li>
                         <li><a href="/day/">DAY</a></li>
-
                     </ul>
                 </nav>
                 <div id="heading">
                     <blockquote>
                         <p className="text">Выберите для Вас подходящий офис или роскошную комнату!</p>
                     </blockquote>
-                </div>  
+                </div>
             </div> 
         );
     }
 }
 
-export default Header; 
+// function mapStateToProps({ user }){
+//     return { user: user };
+// }
+// // {this.props.user.name}
+//
+// export default connect(mapStateToProps )(Header);
+
+export default Header;

@@ -29,3 +29,5 @@ $( document ).ready(function() {
         });
     });
 });
+
+$('.jqx-scheduler-edit-dialog-field').hide();

@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab319126-01dd-4842-9f2c-102b1bcd82e3" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/client/public/images/bg.png" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" afterPath="$PROJECT_DIR$/client/package.json" />
+      <change beforePath="$PROJECT_DIR$/client/public/bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" afterPath="$PROJECT_DIR$/client/public/index.html" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqx.base.css" afterPath="$PROJECT_DIR$/client/public/jqx.base.css" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/main.js" afterPath="$PROJECT_DIR$/client/public/js/main.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" afterPath="$PROJECT_DIR$/client/src/actions/index.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" afterPath="$PROJECT_DIR$/client/src/actions/types.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/App.js" afterPath="$PROJECT_DIR$/client/src/components/App.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BookTable.js" afterPath="$PROJECT_DIR$/client/src/components/BookTable.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header.js" afterPath="$PROJECT_DIR$/client/src/components/Header.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscheduler.js" afterPath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscheduler.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.js" afterPath="$PROJECT_DIR$/client/src/main.js" />
+      <change beforePath="$PROJECT_DIR$/client/src/reducers/roomReducer.js" afterPath="$PROJECT_DIR$/client/src/reducers/roomReducer.js" />
+      <change beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="room_booking: database" type="6d9b600a:PostgresImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="room_booking: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="room_booking: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="room_booking@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="room_booking: database" type="6d9b600a:PostgresImplModel$Database" />
+        <item name="public: schema" type="a16502c0:PostgresImplModel$Schema" />
+        <item name="sequences" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/App.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+              <folding>
+                <element signature="e#198#228#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookTable.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="692">
+              <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Header.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/components/Header.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>time</find>
+      <find>zone</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/server.1.js" />
+        <option value="$PROJECT_DIR$/client/src/reducers/index.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/client/src/actions/types.js" />
+        <option value="$PROJECT_DIR$/client/src/reducers/roomReducer.js" />
+        <option value="$PROJECT_DIR$/client/src/actions/index.js" />
+        <option value="$PROJECT_DIR$/client/webpack.config.js" />
+        <option value="$PROJECT_DIR$/client/src/main.js" />
+        <option value="$PROJECT_DIR$/client/public/jqx.base.css" />
+        <option value="$PROJECT_DIR$/client/public/index.html" />
+        <option value="$PROJECT_DIR$/client/src/components/Header.js" />
+        <option value="$PROJECT_DIR$/client/src/components/App.js" />
+        <option value="$PROJECT_DIR$/client/package.json" />
+        <option value="$PROJECT_DIR$/client/src/components/BookTable.js" />
+        <option value="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscheduler.js" />
+        <option value="$PROJECT_DIR$/client/public/js/main.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/client/node_modules" />
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.JavaScript" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Projects\room-booking\client\public\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\room-booking\client\public\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.server.1.js">
+    <configuration name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="$PROJECT_DIR$" />
+    <configuration name="server.1.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="server.1.js" working-dir="$PROJECT_DIR$" />
+    <configuration name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$" />
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.Unnamed" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.server.1.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.server.js" />
+    </list>
+    <recent_temporary>
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.server.1.js" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.server.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab319126-01dd-4842-9f2c-102b1bcd82e3" name="Default" comment="" />
+      <created>1519799359402</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1519799359402</updated>
+      <workItem from="1519799361960" duration="132000" />
+      <workItem from="1519800020523" duration="614000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="15532000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21268657" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15298508" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/angular/scripts/initdashboard.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/angular/scripts/localization.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/sampledata/generatedata.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/draw/typescript-draw.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/draw/typescript-draw.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-filterrow.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-filterrow.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-nestedgrids.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-nestedgrids.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-grouping.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-grouping.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-filtering.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-filtering.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-editing.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-editing.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-paging.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/grid/typescript-grid-paging.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/knob/typescript-knob.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/knob/typescript-knob.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/menu/typescript-menu.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/menu/typescript-menu.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tabs/typescript-tabs.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tabs/typescript-tabs.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tree/typescript-tree.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tree/typescript-tree.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-columnlocaldata.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-columnlocaldata.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-polarseries.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-polarseries.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-donutseries.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart-donutseries.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/chart/typescript-chart.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/gauge/typescript-gauge.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/gauge/typescript-gauge.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/input/typescript-input.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/input/typescript-input.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/panel/typescript_panel.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/panel/typescript_panel.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/button/typescript-button.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/button/typescript-button.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/editor/typescript-editor.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/editor/typescript-editor.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/kanban/typescript-kanban.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/kanban/typescript-kanban.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/layout/typescript-layout.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/layout/typescript-layout.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/loader/typescript-loader.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/loader/typescript-loader.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/navbar/typescript-navbar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/navbar/typescript-navbar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/rating/typescript-rating.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/rating/typescript-rating.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/ribbon/typescript-ribbon.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/ribbon/typescript-ribbon.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/slider/typescript-slider.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/slider/typescript-slider.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/window/typescript-window.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/window/typescript-window.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/docking/typescript-docking.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/docking/typescript-docking.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/listbox/typescript-listbox.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/listbox/typescript-listbox.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/popover/typescript-popover.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/popover/typescript-popover.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/toolbar/typescript-toolbar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/toolbar/typescript-toolbar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tooltip/typescript-tooltip.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tooltip/typescript-tooltip.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treemap/typescript-treemap.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treemap/typescript-treemap.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/bargauge/typescript-bargauge.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/bargauge/typescript-bargauge.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/calendar/typescript-calendar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/calendar/typescript-calendar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/checkbox/typescript-checkbox.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/checkbox/typescript-checkbox.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/combobox/typescript-combobox.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/combobox/typescript-combobox.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dragdrop/typescript-dragdrop.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dragdrop/typescript-dragdrop.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/expander/typescript-expander.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/expander/typescript-expander.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/listmenu/typescript-listmenu.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/listmenu/typescript-listmenu.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/sortable/typescript-sortable.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/sortable/typescript-sortable.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/splitter/typescript-splitter.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/splitter/typescript-splitter.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tagcloud/typescript-tagcloud.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/tagcloud/typescript-tagcloud.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/textarea/typescript-textarea.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/textarea/typescript-textarea.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treegrid/typescript-treegrid-virtualmode.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treegrid/typescript-treegrid-virtualmode.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treegrid/typescript-treegrid.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/treegrid/typescript-treegrid.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-editing.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-editing.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-paging.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-paging.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-filtering.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-filtering.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-sorting.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable-sorting.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datatable/typescript-datatable.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dockpanel/typescript-dockpanel.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dockpanel/typescript-dockpanel.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scheduler/typescript-scheduler.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scheduler/typescript-scheduler.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scheduler/typescript-scheduler-resources.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scheduler/typescript-scheduler-resources.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scrollbar/typescript-scrollbar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scrollbar/typescript-scrollbar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/validator/typescript-validator.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/validator/typescript-validator.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/fileupload/typescript-fileupload.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/fileupload/typescript-fileupload.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scrollview/typescript-scrollview.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/scrollview/typescript-scrollview.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/bulletchart/typescript-bulletchart.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/bulletchart/typescript-bulletchart.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/buttongroup/typescript-buttongroup.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/buttongroup/typescript-buttongroup.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/colorpicker/typescript-colorpicker.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/colorpicker/typescript-colorpicker.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/lineargauge/typescript-lineargauge.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/lineargauge/typescript-lineargauge.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/maskedinput/typescript-maskedinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/maskedinput/typescript-maskedinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/numberinput/typescript-numberinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/numberinput/typescript-numberinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/progressbar/typescript-progressbar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/progressbar/typescript-progressbar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/radiobutton/typescript-radiobutton.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/radiobutton/typescript-radiobutton.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/complexinput/typescript-complexinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/complexinput/typescript-complexinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dropdownlist/typescript-dropdownlist.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dropdownlist/typescript-dropdownlist.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/notification/typescript-notification.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/notification/typescript-notification.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/switchbutton/typescript-switchbutton.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/switchbutton/typescript-switchbutton.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datetimeinput/typescript-datetimeinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/datetimeinput/typescript-datetimeinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dockinglayout/typescript-dockinglayout.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dockinglayout/typescript-dockinglayout.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/navigationbar/typescript-navigationbar.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/navigationbar/typescript-navigationbar.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/passwordinput/typescript-passwordinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/passwordinput/typescript-passwordinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/rangeselector/typescript-rangeselector.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/rangeselector/typescript-rangeselector.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dropdownbutton/typescript-dropdownbutton.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/dropdownbutton/typescript-dropdownbutton.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/formattedinput/typescript-formattedinput.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/formattedinput/typescript-formattedinput.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/responsivepanel/typescript-responsivepanel.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/demos/typescript/responsivepanel/typescript-responsivepanel.js.map" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/scripts/initdashboard.js" />
+        <option value="$PROJECT_DIR$/client/node_modules/jqwidgets-framework/scripts/localization.js" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/server.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="15" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d145a7ab-a280-4a76-81bd-f57bf1a93c71/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rooms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/roomReducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/types.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="17" lean-forward="true" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/bundle.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/jqx.base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding>
+            <marker date="1519812078883" expanded="true" signature="5433:5470" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="12228:12265" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="12513:12550" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="22537:22574" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="22856:22893" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="23183:23220" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="23481:23518" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="28156:28193" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="35281:35318" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="35423:35460" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="35562:35599" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="35702:35739" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="58819:58856" ph="{...}" />
+            <marker date="1519812078883" expanded="true" signature="92884:92921" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/SecondPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="3" lean-forward="false" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="669">
+          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/webpack.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscheduler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="511" column="6" lean-forward="true" selection-start-line="511" selection-start-column="6" selection-end-line="511" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/LeftNavBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="2" lean-forward="true" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="20" column="12" lean-forward="true" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+          <folding>
+            <element signature="e#198#228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="692">
+          <caret line="69" column="4" lean-forward="true" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

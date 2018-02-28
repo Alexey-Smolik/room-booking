@@ -16,7 +16,7 @@ export default class JqxScheduler extends React.Component {
         this.createComponent(options);
     };
     manageAttributes() {
-        let properties = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatstring','editDialogDateFormatstring','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','timeZone','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
+        let properties = ['appointmentOpacity','appointmentsMinHeight','appointmentDataFields','appointmentTooltips','columnsHeight','contextMenu','contextMenuOpen','contextMenuClose','contextMenuItemClick','contextMenuCreate','changedAppointments','disabled','date','dayNameFormat','enableHover','editDialog','editDialogDateTimeFormatstring','editDialogDateFormatstring','editDialogOpen','editDialogCreate','editDialogKeyDown','editDialogClose','exportSettings','height','legendPosition','legendHeight','localization','min','max','ready','renderAppointment','rendering','rendered','rtl','resources','rowsHeight','showToolbar','showLegend','scrollBarSize','source','statuses','touchRowsHeight','theme','touchAppointmentsMinHeight','touchScrollBarSize','touchDayNameFormat','toolBarRangeFormat','toolBarRangeFormatAbbr','toolbarHeight','views','view','width'];
         let options = {};
         for(let item in this.props) {
               if(item === 'settings') {
@@ -382,13 +382,7 @@ export default class JqxScheduler extends React.Component {
             return JQXLite(this.componentSelector).jqxScheduler('touchScrollBarSize');
         }
     };
-    timeZone(arg) {
-        if (arg !== undefined) {
-            JQXLite(this.componentSelector).jqxScheduler('timeZone', arg)
-        } else {
-            return JQXLite(this.componentSelector).jqxScheduler('timeZone');
-        }
-    };
+
     touchDayNameFormat(arg) {
         if (arg !== undefined) {
             JQXLite(this.componentSelector).jqxScheduler('touchDayNameFormat', arg)

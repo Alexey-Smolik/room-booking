@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="room_booking@localhost">
+  <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
+    <root id="1"/>
+    <database id="2" parent="1" name="room_booking">
+      <ObjectId>16393</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </database>
+    <database id="3" parent="1" name="postgres">
+      <ObjectId>12938</ObjectId>
+    </database>
+    <role id="4" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="5" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="6" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="7" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="8" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+      <Inherit>1</Inherit>
+      <ConnectionLimit>-1</ConnectionLimit>
+    </role>
+    <role id="9" parent="1" name="postgres">
+      <ObjectId>10</ObjectId>
+      <SuperRole>1</SuperRole>
+      <Inherit>1</Inherit>
+      <CreateRole>1</CreateRole>
+      <CreateDb>1</CreateDb>
+      <CanLogin>1</CanLogin>
+      <Replication>1</Replication>
+      <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
+    </role>
+    <schema id="10" parent="2" name="public">
+      <ObjectId>2200</ObjectId>
+      <IntrospectionTimestamp>2018-02-28.09:58:21.352</IntrospectionTimestamp>
+      <IntrospectionStateNumber>562</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="11" parent="2" name="pg_catalog">
+      <ObjectId>11</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="pg_toast">
+      <ObjectId>99</ObjectId>
+    </schema>
+    <schema id="13" parent="2" name="pg_temp_1">
+      <ObjectId>11736</ObjectId>
+    </schema>
+    <schema id="14" parent="2" name="pg_toast_temp_1">
+      <ObjectId>11737</ObjectId>
+    </schema>
+    <schema id="15" parent="2" name="information_schema">
+      <ObjectId>12648</ObjectId>
+    </schema>
+    <sequence id="16" parent="10" name="companies_id_seq">
+      <ObjectId>16394</ObjectId>
+      <StateNumber>559</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="17" parent="10" name="events_id_seq">
+      <ObjectId>16418</ObjectId>
+      <StateNumber>561</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="18" parent="10" name="rooms_id_seq">
+      <ObjectId>16402</ObjectId>
+      <StateNumber>560</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <sequence id="19" parent="10" name="users_id_seq">
+      <ObjectId>16434</ObjectId>
+      <StateNumber>562</StateNumber>
+      <SequenceIdentity>1..2147483647</SequenceIdentity>
+      <BelongsToColumn>1</BelongsToColumn>
+      <CacheSize>1</CacheSize>
+      <DataType>integer</DataType>
+    </sequence>
+    <table id="20" parent="10" name="companies">
+      <ObjectId>16396</ObjectId>
+      <StateNumber>560</StateNumber>
+    </table>
+    <table id="21" parent="10" name="events">
+      <ObjectId>16420</ObjectId>
+      <StateNumber>561</StateNumber>
+    </table>
+    <table id="22" parent="10" name="rooms">
+      <ObjectId>16404</ObjectId>
+      <StateNumber>561</StateNumber>
+    </table>
+    <table id="23" parent="10" name="users">
+      <ObjectId>16436</ObjectId>
+      <StateNumber>562</StateNumber>
+    </table>
+    <column id="24" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>559</StateNumber>
+      <DefaultExpression>nextval(&apos;companies_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>companies_id_seq</SequenceName>
+    </column>
+    <column id="25" parent="20" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>559</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="26" parent="20" name="address">
+      <Position>3</Position>
+      <DataType>char(60)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>559</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <index id="27" parent="20" name="companies_pkey">
+      <ObjectId>16400</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="28" parent="20" name="companies_pkey">
+      <ObjectId>16401</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>companies_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="21" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>561</StateNumber>
+      <DefaultExpression>nextval(&apos;events_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>events_id_seq</SequenceName>
+    </column>
+    <column id="30" parent="21" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>561</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="31" parent="21" name="description">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>561</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="32" parent="21" name="date_from">
+      <Position>4</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>561</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <column id="33" parent="21" name="date_to">
+      <Position>5</Position>
+      <DataType>timestamp with time zone|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>561</StateNumber>
+      <TypeId>1184</TypeId>
+    </column>
+    <column id="34" parent="21" name="roomId">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>561</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="35" parent="21" name="events_pkey">
+      <ObjectId>16427</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="36" parent="21" name="events_pkey">
+      <ObjectId>16428</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>events_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="37" parent="21" name="events_roomId_fkey">
+      <ObjectId>16429</ObjectId>
+      <ColNames>roomId</ColNames>
+      <RefTableId>16404</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>rooms</RefTableName>
+      <RefKeyName>rooms_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="38" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>560</StateNumber>
+      <DefaultExpression>nextval(&apos;rooms_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>rooms_id_seq</SequenceName>
+    </column>
+    <column id="39" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>560</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="40" parent="22" name="floor">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>560</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="41" parent="22" name="description">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>560</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="42" parent="22" name="companyId">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>560</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="43" parent="22" name="rooms_pkey">
+      <ObjectId>16411</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="22" name="rooms_pkey">
+      <ObjectId>16412</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>rooms_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="22" name="rooms_companyId_fkey">
+      <ObjectId>16413</ObjectId>
+      <ColNames>companyId</ColNames>
+      <RefTableId>16396</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>companies</RefTableName>
+      <RefKeyName>companies_pkey</RefKeyName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="46" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>562</StateNumber>
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+      <SequenceName>users_id_seq</SequenceName>
+    </column>
+    <column id="47" parent="23" name="username">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>562</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="48" parent="23" name="password">
+      <Position>3</Position>
+      <DataType>char(60)|0</DataType>
+      <StateNumber>562</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <column id="49" parent="23" name="provider">
+      <Position>4</Position>
+      <DataType>char(60)|0</DataType>
+      <StateNumber>562</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <column id="50" parent="23" name="personal_id">
+      <Position>5</Position>
+      <DataType>char(60)|0</DataType>
+      <StateNumber>562</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <index id="51" parent="23" name="users_pkey">
+      <ObjectId>16440</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="23" name="users_pkey">
+      <ObjectId>16441</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
