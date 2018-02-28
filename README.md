@@ -1,7 +1,10 @@
 # room-booking
 <h2>How to start client</h2>
 
-<h4>cd client</h4>
-<h4>npm start</h4>
-<h4>npm run webpack-devserver</h4>
-<h4>Server is running on http://localhost:8090/</h4>
+<ol>
+<li>cd client</li>
+<li>npm install</li>
+<li>npm start</li>
+<li>npm run webpack-devserver</li>
+<li>Server is running on http://localhost:8090/</li>
+<ol>
