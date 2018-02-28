@@ -39,10 +39,4 @@ routes.delete('/:id', (req, res) => {
         });
 });
 
-routes.get('/current', (req, res) => {
-    req.rooms ? res.send(req.rooms) : res.send(401).send({ status: 'error', message: 'Unauthorized' });
-});
-
-
-
 module.exports = routes;
