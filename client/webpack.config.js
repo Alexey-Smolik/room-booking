@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry : './client/main.js',
+    entry : './src/main.js',
     output : {
         filename : 'public/bundle.js'
     },
@@ -23,13 +23,8 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            mangle: true,
-            sourcemap: false,
-            compress: { warnings: false }
         })
-      ],
+    ],
     devServer: {
         host: 'localhost',
         port: 8088
