@@ -5,18 +5,11 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-
-
-
-
-
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             console.log(event.args.appointment);
         });
     }
-
-
 
     roomHandler() {
         return this.props.room.map( (index,key) => {
@@ -25,55 +18,52 @@ class BookTable extends React.Component {
     }
 
     render () {
-        let appointments = new Array();
-        let appointment1 = {
+        const appointments = [];
+        const appointment1 = {
             id: "id1",
             description: "George brings projector for presentations.",
             location: "",
             subject: "Quarterly Project Review Meeting",
-            calendar: "Room 1",
-            start: new Date(2016, 10, 23, 9, 0, 0),
-            end: new Date(2016, 10, 23, 16, 0, 0)
+            calendar: "Alex",
+            start: new Date(2018, 2, 23, 9, 0, 0),
+            end: new Date(2018, 2, 23, 16, 0, 0)
         };
-        let appointment2 = {
+        const appointment2 = {
             id: "id2",
             description: "",
             location: "",
             subject: "IT Group Mtg.",
-            calendar: "Room 2",
-            start: new Date(2016, 10, 24, 10, 0, 0),
-            end: new Date(2016, 10, 24, 15, 0, 0)
+            calendar: "Alex",
+            start: new Date(2018, 2, 22, 10, 0, 0),
+            end: new Date(2018, 2, 22, 15, 0, 0)
         };
         appointments.push(appointment1);
         appointments.push(appointment2);
 
-
         //this.props.room which return array of rooms
 
+        const source =
+            {
+                dataType: "array",
+                dataFields: [
+                    { name: 'id', type: 'string' },
+                    { name: 'description', type: 'string' },
+                    { name: 'location', type: 'string' },
+                    { name: 'subject', type: 'string' },
+                    { name: 'calendar', type: 'string' },
+                    { name: 'start', type: 'date' },
+                    { name: 'end', type: 'date' }
+                ],
+                id: 'id',
+                localData: appointments
+            };
 
-        let source =
+        const adapter = new $.jqx.dataAdapter(source);
+        const resources =
         {
-            dataType: "array",
-            dataFields: [
-                { name: 'id', type: 'string' },
-                { name: 'description', type: 'string' },
-                { name: 'location', type: 'string' },
-                { name: 'subject', type: 'string' },
-                { name: 'calendar', type: 'string' },
-                { name: 'start', type: 'date' },
-                { name: 'end', type: 'date' }
-            ],
-            id: 'id',
-            localData: appointments
-        };
-        let dataAdapter = new $.jqx.dataAdapter(source);
-    
-        let resources =
-        {
-            colorScheme: "scheme05",
+            colorScheme: "scheme01",
             dataField: "calendar",
-            orientation: "horizontal",
-            source:  new $.jqx.dataAdapter(source)
+            source: new $.jqx.dataAdapter(source)
         };
     
         let appointmentDataFields =
@@ -86,22 +76,28 @@ class BookTable extends React.Component {
             subject: "subject",
             resourceId: "calendar"
         };
-    
+
         let views =
-        [
-            { type: 'dayView', showWeekends: false },
-            { type: 'weekView', showWeekends: false },
-            { type: 'monthView' }
-        ];
+            [
+                { type: "dayView", timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' }, workTime: { fromHour: 8, toHour: 19,  fromDayOfWeek: 1, toDayOfWeek: 5, } },
+                { type: "weekView", showWeekends: false, timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' },  workTime:
+                        {
+                            fromDayOfWeek: 1,
+                            toDayOfWeek: 5,
+                            fromHour: 8,
+                            toHour: 19
+                        } },
+                'monthView'
+            ];
         return (
-            <div className={'tableContainer'}>
-                <JqxScheduler ref='myScheduler'
-                    width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
-                    date={new $.jqx.date(2016, 11, 23)} showLegend={true}
-                    view={'weekView'} resources={resources} views={views}
-                    appointmentDataFields={appointmentDataFields}
-                />
-            </div>
+                <div className={'tableContainer'}>
+                    <JqxScheduler ref='myScheduler'
+                                  width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
+                                  date={new $.jqx.date(2016, 11, 23)} showLegend={true}
+                                  view={'weekView'} resources={resources} views={views}
+                                  appointmentDataFields={appointmentDataFields}
+                    />
+                </div>
         )
     }
 }

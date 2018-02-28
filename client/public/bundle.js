@@ -4163,7 +4163,7 @@ var App = function (_Component) {
             null,
             _react2.default.createElement(_Header2.default, null),
             _react2.default.createElement(_LeftNavBar2.default, null),
-            _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/booktable', component: _BookTable2.default }),
+            _react2.default.createElement(_BookTable2.default, null),
             _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/secondpage', component: _SecondPage2.default })
           )
         )
@@ -9590,59 +9590,6 @@ var Header = function (_Component) {
                     )
                 ),
                 _react2.default.createElement(
-                    "nav",
-                    null,
-                    _react2.default.createElement(
-                        "ul",
-                        { className: "top-menu" },
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/home/" },
-                                "HOME"
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/year/" },
-                                "YEAR"
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/month/" },
-                                "MONTH"
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            { className: "active" },
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/week/" },
-                                "WEEK"
-                            )
-                        ),
-                        _react2.default.createElement(
-                            "li",
-                            null,
-                            _react2.default.createElement(
-                                "a",
-                                { href: "/day/" },
-                                "DAY"
-                            )
-                        )
-                    )
-                ),
-                _react2.default.createElement(
                     "div",
                     { id: "heading" },
                     _react2.default.createElement(
@@ -9842,30 +9789,29 @@ var BookTable = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var appointments = new Array();
+            var appointments = [];
             var appointment1 = {
                 id: "id1",
                 description: "George brings projector for presentations.",
                 location: "",
                 subject: "Quarterly Project Review Meeting",
-                calendar: "Room 1",
-                start: new Date(2016, 10, 23, 9, 0, 0),
-                end: new Date(2016, 10, 23, 16, 0, 0)
+                calendar: "Alex",
+                start: new Date(2018, 2, 23, 9, 0, 0),
+                end: new Date(2018, 2, 23, 16, 0, 0)
             };
             var appointment2 = {
                 id: "id2",
                 description: "",
                 location: "",
                 subject: "IT Group Mtg.",
-                calendar: "Room 2",
-                start: new Date(2016, 10, 24, 10, 0, 0),
-                end: new Date(2016, 10, 24, 15, 0, 0)
+                calendar: "Alex",
+                start: new Date(2018, 2, 22, 10, 0, 0),
+                end: new Date(2018, 2, 22, 15, 0, 0)
             };
             appointments.push(appointment1);
             appointments.push(appointment2);
 
             //this.props.room which return array of rooms
-
 
             var source = {
                 dataType: "array",
@@ -9873,12 +9819,11 @@ var BookTable = function (_React$Component) {
                 id: 'id',
                 localData: appointments
             };
-            var dataAdapter = new $.jqx.dataAdapter(source);
 
+            var adapter = new $.jqx.dataAdapter(source);
             var resources = {
-                colorScheme: "scheme05",
+                colorScheme: "scheme01",
                 dataField: "calendar",
-                orientation: "horizontal",
                 source: new $.jqx.dataAdapter(source)
             };
 
@@ -9892,7 +9837,12 @@ var BookTable = function (_React$Component) {
                 resourceId: "calendar"
             };
 
-            var views = [{ type: 'dayView', showWeekends: false }, { type: 'weekView', showWeekends: false }, { type: 'monthView' }];
+            var views = [{ type: "dayView", timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' }, workTime: { fromHour: 8, toHour: 19, fromDayOfWeek: 1, toDayOfWeek: 5 } }, { type: "weekView", showWeekends: false, timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' }, workTime: {
+                    fromDayOfWeek: 1,
+                    toDayOfWeek: 5,
+                    fromHour: 8,
+                    toHour: 19
+                } }, 'monthView'];
             return _react2.default.createElement(
                 'div',
                 { className: 'tableContainer' },
