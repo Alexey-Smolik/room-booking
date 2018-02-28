@@ -12,6 +12,7 @@
   },
   "author": "",
   "license": "ISC",
+
   "proxy": {
     "/auth/google": {
       "target": "http://localhost:3000"

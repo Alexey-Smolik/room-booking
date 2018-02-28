@@ -5,14 +5,23 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-    
-    componentDidMount()
-    {
-       console.log("hello");
-       this.refs.myScheduler.on('cellClick', (event) =>
-        {
-            console.log("hello3232");
+
+
+
+
+
+    componentDidMount() {
+        this.refs.myScheduler.on('appointmentAdd', (event) => {
+            console.log(event.args.appointment);
         });
+    }
+
+
+
+    roomHandler() {
+        return this.props.room.map( (index,key) => {
+
+        })
     }
 
     render () {
@@ -37,7 +46,11 @@ class BookTable extends React.Component {
         };
         appointments.push(appointment1);
         appointments.push(appointment2);
-    
+
+
+        //this.props.room which return array of rooms
+
+
         let source =
         {
             dataType: "array",
@@ -93,17 +106,18 @@ class BookTable extends React.Component {
     }
 }
 
-function mapDispatchToProps (dispatch, ownProps) {
-    return {
-       onClick: () => {
-          dispatch({ type: GET_ROOM })
-       }
-    }
- }
+export default  BookTable;
 
-
- function mapStateToProps({ getRoom }){
-    return { getRoom: getRoom };
-}
-
-export default connect(mapStateToProps,mapDispatchToProps)(BookTable);
+// function mapDispatchToProps (dispatch, ownProps) {
+//     return {
+//        onClick: () => {
+//           dispatch({ type: ADD_ROOM })
+//        }
+//     }
+//  }
+//
+//  function mapStateToProps({ getRoom }){
+//     return { getRoom: getRoom };
+// }
+//
+// export default connect(mapStateToProps,mapDispatchToProps)(BookTable);

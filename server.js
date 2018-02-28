@@ -19,8 +19,7 @@ app.use(passport.session());
 
 app.use('/', require('./routes'));
 
-models.sequelize
-    .sync()
+models.sequelize.sync()
     .then(() => {
         app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
     })

@@ -7,10 +7,10 @@ import {createStore, applyMiddleware} from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 
-var store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+// var store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 render( 
-    <Provider store={store}>
+    <Provider >
         <App /> 
     </Provider>,
      document.getElementById('app')
