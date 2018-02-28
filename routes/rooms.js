@@ -1,22 +1,18 @@
 const routes = require('express').Router();
 const rooms = require('../models').rooms;
 
-// routes.get('/', (req, res) => {
-//     rooms.findAll()
-//         .then(rooms => {
-//             res.status(200).send(rooms);
-//         })
-//         .catch(err => {
-//             res.status(500).send({ status: 'error', messsage: err.message });
-//         });
-
-
-// });
-
 routes.get('/', (req, res) => {
-    console.log(req);
-    console.log(res);
+    rooms.findAll()
+        .then(rooms => {
+            res.status(200).send(rooms);
+        })
+        .catch(err => {
+            res.status(500).send({ status: 'error', messsage: err.message });
+        });
+
+
 });
+
 
 routes.put('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id } })

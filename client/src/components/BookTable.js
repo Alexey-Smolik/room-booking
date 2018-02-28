@@ -1,6 +1,6 @@
 import React from 'react';
 import JqxScheduler  from './assets/jqwidgets-react/react_jqxscheduler.js';
-
+import * as actions from '../actions';
 import {connect} from 'react-redux';
 
 
@@ -12,7 +12,7 @@ class BookTable extends React.Component {
 
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
-            console.log(event.args.appointment);
+            this.props.getRooms();
         });
     }
 
@@ -106,7 +106,7 @@ class BookTable extends React.Component {
     }
 }
 
-export default  BookTable;
+// export default  BookTable;
 
 // function mapDispatchToProps (dispatch, ownProps) {
 //     return {
@@ -115,9 +115,9 @@ export default  BookTable;
 //        }
 //     }
 //  }
-//
-//  function mapStateToProps({ getRoom }){
-//     return { getRoom: getRoom };
-// }
-//
-// export default connect(mapStateToProps,mapDispatchToProps)(BookTable);
+
+ function mapStateToProps({ getRooms }){
+    return { getRooms: getRooms };
+}
+
+export default connect(mapStateToProps,actions)(BookTable);
