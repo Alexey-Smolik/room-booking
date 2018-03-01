@@ -58,22 +58,18 @@ $(document).ready(function () {
         height: '75%',
         source: adapter,
         view: 'weekView',
-        showLegend: true,
+        /*showLegend: true,
         editDialogCreate: function (dialog, fields, editAppointment) {
-            // hide repeat option
             fields.repeatContainer.hide();
-            // hide status option
             fields.statusContainer.hide();
-            // hide timeZone option
             fields.timeZoneContainer.hide();
-            // hide color option
             fields.colorContainer.hide();
             fields.subjectLabel.html("Title");
             fields.locationLabel.html("Where");
             fields.fromLabel.html("Start");
             fields.toLabel.html("End");
             fields.resourceLabel.html("Calendar");
-        },
+        },*/
         ready: function () {
             $("#scheduler").jqxScheduler('ensureAppointmentVisible', 'id2');
             },

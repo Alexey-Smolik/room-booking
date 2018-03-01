@@ -19,9 +19,16 @@ class BookTable extends React.Component {
 
 
     roomHandler() {
-        return this.props.room.map( (index,key) => {
-
-        })
+        return this.props.room.events.map((event) => {
+            return {
+                id: event.id,
+                description: event.description,
+                subject: event.user.username,
+                calendar: event.user.username,
+                from: new Date(2016, 10, 23, 9, 0, 0),
+                to: new Date(2016, 10, 23, 16, 0, 0)
+            }
+        });
     }
 
     render () {
@@ -46,7 +53,6 @@ class BookTable extends React.Component {
         };
         appointments.push(appointment1);
         appointments.push(appointment2);
-
 
         //this.props.room which return array of rooms
 
