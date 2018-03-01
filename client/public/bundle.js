@@ -9727,7 +9727,29 @@ var LeftNavBar = function (_Component) {
     _createClass(LeftNavBar, [{
         key: 'renderMenu',
         value: function renderMenu() {
-            console.log("LEFT", this.props.rooms);
+            console.log("LEFT");
+            if (this.props.rooms != null) {
+                return this.props.rooms.map(function (index) {
+                    return _react2.default.createElement(
+                        'li',
+                        null,
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/' + index },
+                            index.name
+                        )
+                    );
+                });
+            }
+            return _react2.default.createElement(
+                'li',
+                null,
+                _react2.default.createElement(
+                    _reactRouterDom.Link,
+                    { to: '/booktable' },
+                    'LOREM IPSUM'
+                )
+            );
         }
     }, {
         key: 'render',
@@ -9741,60 +9763,6 @@ var LeftNavBar = function (_Component) {
                     _react2.default.createElement(
                         'ul',
                         { className: 'aside-menu' },
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/booktable' },
-                                'LOREM IPSUM'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                _reactRouterDom.Link,
-                                { to: '/secondpage' },
-                                'DONEC TINCIDUNT LAOREET'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                'a',
-                                { href: '/vestibulum/' },
-                                'VESTIBULUM ELIT'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                'a',
-                                { href: '/etiam/' },
-                                'ETIAM PHARETRA'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            null,
-                            _react2.default.createElement(
-                                'a',
-                                { href: '/phasellus/' },
-                                'PHASELLUS PLACERAT'
-                            )
-                        ),
-                        _react2.default.createElement(
-                            'li',
-                            { onClick: this.renderMenu.bind(this) },
-                            _react2.default.createElement(
-                                'a',
-                                null,
-                                'GET ROOMS'
-                            )
-                        ),
                         this.renderMenu()
                     )
                 )
@@ -9871,7 +9839,16 @@ var BookTable = function (_React$Component) {
     }, {
         key: 'roomHandler',
         value: function roomHandler() {
-            return this.props.room.map(function (index, key) {});
+            return this.props.room.events.map(function (event) {
+                return {
+                    id: event.id,
+                    description: event.description,
+                    subject: event.user.username,
+                    calendar: event.user.username,
+                    from: new Date(2016, 10, 23, 9, 0, 0),
+                    to: new Date(2016, 10, 23, 16, 0, 0)
+                };
+            });
         }
     }, {
         key: 'render',
