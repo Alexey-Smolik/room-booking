@@ -27,6 +27,9 @@ db.rooms.belongsTo(db.companies);
 db.rooms.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.events.belongsTo(db.rooms);
 
+db.users.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
+db.events.belongsTo(db.users);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
