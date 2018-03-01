@@ -3100,7 +3100,7 @@ function verifyPlainObject(value, displayName, methodName) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.createRoom = exports.editRoom = exports.deleteRoom = exports.getRooms = exports.getRoom = undefined;
+exports.deleteRoom = exports.editRoom = exports.createRoom = exports.getRooms = exports.getRoom = undefined;
 
 var _axios = __webpack_require__(111);
 
@@ -3112,7 +3112,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var getRoom = exports.getRoom = function getRoom() {
     return async function (dispatch) {
-        var res = await _axios2.default.get('/api/room');
+        var res = await _axios2.default.get('/api/rooms/:id');
         dispatch({ type: _types.GET_ROOM, payload: res.data });
     };
 };
@@ -3124,24 +3124,24 @@ var getRooms = exports.getRooms = function getRooms() {
     };
 };
 
-var deleteRoom = exports.deleteRoom = function deleteRoom() {
+var createRoom = exports.createRoom = function createRoom() {
     return async function (dispatch) {
-        var res = await _axios2.default.delete('/api/rooms');
-        dispatch({ type: _types.DELETE_ROOM, payload: res.data });
+        var res = await _axios2.default.post('/api/rooms');
+        dispatch({ type: _types.CREATE_ROOM, payload: res.data });
     };
 };
 
 var editRoom = exports.editRoom = function editRoom() {
     return async function (dispatch) {
-        var res = await _axios2.default.put('/api/rooms');
+        var res = await _axios2.default.put('/api/rooms/:id');
         dispatch({ type: _types.EDIT_ROOM, payload: res.data });
     };
 };
 
-var createRoom = exports.createRoom = function createRoom() {
+var deleteRoom = exports.deleteRoom = function deleteRoom() {
     return async function (dispatch) {
-        var res = await _axios2.default.put('/api/add_room');
-        dispatch({ type: _types.CREATE_ROOM, payload: res.data });
+        var res = await _axios2.default.delete('/api/rooms/:id');
+        dispatch({ type: _types.DELETE_ROOM, payload: res.data });
     };
 };
 
