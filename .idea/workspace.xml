@@ -2,10 +2,1216 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1995437d-81fb-47c4-8995-ffb9440aef76" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d145a7ab-a280-4a76-81bd-f57bf1a93c71.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/d145a7ab-a280-4a76-81bd-f57bf1a93c71.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d145a7ab-a280-4a76-81bd-f57bf1a93c71/storage_v2/_src_/database/room_booking.9SSrmQ/schema/public.abK9xQ.meta" afterPath="$PROJECT_DIR$/.idea/dataSources/d145a7ab-a280-4a76-81bd-f57bf1a93c71/storage_v2/_src_/database/room_booking.9SSrmQ/schema/public.abK9xQ.meta" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/models/index.js" afterPath="$PROJECT_DIR$/models/index.js" />
+      <change beforePath="$PROJECT_DIR$/client/.gitignore" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/bundle.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/css/jquery.schedule-demo.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/css/jquery.schedule.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/css/main.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/backImage.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/backgroundTop.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_black_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_blackhover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_blackhover_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_blackpressed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_blackpressed_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_blueenergy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_darkbluehover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/bg_darkbluepressed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/black_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/blackbackground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_blue_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_indeterminate_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_indeterminate_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_indeterminate_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_lightblue_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/close.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/close_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/close_blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/close_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/bar-hue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/bar-saturation.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/map-hue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/map-saturation-overlay.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/colorpicker/map-saturation.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/common.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/crosshair-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/crosshair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_flat_30_cccccc_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_flat_50_5c5c5c_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_glass_20_555555_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_glass_40_0078a3_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_glass_40_ffc73d_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_gloss-wave_25_333333_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_highlight-soft_80_eeeeee_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_inset-soft_25_000000_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-bg_inset-soft_30_f58400_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-icons_4b8e0b_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-icons_a83300_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-icons_cccccc_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkness/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/darkred_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/drag.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/dragcancel.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/error.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/filter.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/html_editor.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/html_editor_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-calendar-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-calendar-metro-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-calendar-metro-yellow-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-calendar-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-calendar.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-cancel-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-cancel.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-delete-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-delete.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-down-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-down-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-down-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-edit-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-edit.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-first-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-first-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-first-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-last-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-last-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-last-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-left-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-left-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-left-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-menu-minimized-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-menu-minimized.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-menu-small-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-menu-small.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-plus-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-recurrence-exception-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-recurrence-exception.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-recurrence-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-recurrence.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-right-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-right-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-right-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-save-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-save.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-showpassword-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-showpassword.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-asc-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-asc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-desc-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-desc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-remove-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-sort-remove.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-time-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-time.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-up-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-up-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-up-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon_collapse.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/icon_expand.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/info.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_diagonals-small_0_aaaaaa_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_diagonals-thick_15_444444_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_diagonals-thick_95_ffdc2e_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_glass_55_fbf5d0_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_highlight-hard_30_285c00_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_highlight-soft_33_3a8104_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_highlight-soft_50_4eb305_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_highlight-soft_60_4ca20b_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-bg_inset-soft_10_285c00_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-icons_4eb305_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-icons_72b42d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/le-frog/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_flat_10_000000_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-icons_228ef1_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-icons_ef8c08_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-icons_ffd27a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/lightness/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/loader-small.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/loader.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/mail.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/menubutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-down-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-first-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-last-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-left-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-right - Copy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-right-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-up-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/metro-icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/multi-arrow.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/office-icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_flat_0_eeeeee_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_flat_55_c0402a_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_flat_55_eeeeee_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_glass_100_f8f8f8_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_glass_35_dddddd_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_glass_60_eeeeee_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_inset-hard_75_999999_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-bg_inset-soft_50_c9c9c9_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-icons_3383bb_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-icons_454545_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-icons_70b2e1_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-icons_999999_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/overcast/ui-icons_fbc856_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin-black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin-lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin-yellow.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pin.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned-black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned-lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned-yellow.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pinned.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/plus_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/pointer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/rangebar_classic.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/rangebar_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/rangebar_shinyblack.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/rangebar_summer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/red_arrow_down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/red_arrow_up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/red_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_flat_55_fbec88_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_glass_75_d0e5f5_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_glass_85_dfeffc_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_217bc0_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_469bdd_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_6da8d5_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_d8e7f3_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/redmond/ui-icons_f9bd01_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_check_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_check_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_check_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_classic_hover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_classic_normal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/roundbg_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/search.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/search_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_flat_75_ffffff_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_glass_55_fbf9ee_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_glass_75_dadada_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_glass_75_e6e6e6_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-bg_highlight-soft_75_cccccc_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-icons_454545_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-icons_888888_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/smoothness/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sortasc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sortascbutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sortdesc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sortdescbutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sortremove.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/star.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/star_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/star_hover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_flat_55_999999_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_flat_75_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_glass_45_0078ae_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_glass_55_f8da4e_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_glass_75_79c9ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_gloss-wave_45_e14f1c_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_gloss-wave_50_6eac2c_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_gloss-wave_75_2191c0_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_0078ae_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_056b93_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_d8e7f3_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_e0fdff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_f5e175_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_f7a50d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/start/ui-icons_fcd113_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/stripes.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/success.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_diagonals-medium_20_d34d17_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_flat_30_cccccc_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_flat_50_5c5c5c_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_gloss-wave_45_817865_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_gloss-wave_60_fece2f_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_gloss-wave_70_ffdd57_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_gloss-wave_90_fff9e5_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_highlight-soft_100_feeebd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-bg_inset-soft_30_ffffff_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_3d3d3d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_bd7b00_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_d19405_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_eb990f_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_ed9f26_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_fadc7a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/sunny/ui-icons_ffe180_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/tick.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/time.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/track_classic.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/track_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/track_shinyblack.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/track_summer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/warning.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/wp_check_indeterminate_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/images/wp_check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/index.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.af-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.af.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.am-ET.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.am.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-AE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-BH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-DZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-EG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-IQ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-JO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-KW.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-LB.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-LY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-MA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-OM.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-QA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-SA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-SY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-TN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar-YE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.arn-CL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.arn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.as-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.as.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.az-Cyrl-AZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.az-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.az-Latn-AZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.az-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.az.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ba-RU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ba.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.be-BY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.be.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bg-BG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bn-BD.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bn-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bo-CN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.br-FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.br.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bs-Cyrl-BA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bs-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bs-Latn-BA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bs-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.bs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ca-ES.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ca.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.co-FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.co.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.cs-CZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.cs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.cy-GB.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.cy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.da-DK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.da.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de-AT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de-CH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de-DE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de-LI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de-LU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.de.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.dsb-DE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.dsb.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.dv-MV.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.dv.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.el-GR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.el.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-029.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-AU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-BZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-GB.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-IE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-JM.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-MY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-NZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-PH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-SG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-TT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-US.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.en-ZW.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-AR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-BO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-CL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-CO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-CR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-DO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-EC.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-ES.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-GT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-HN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-MX.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-NI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-PA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-PE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-PR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-PY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-SV.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-US.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-UY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es-VE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.es.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.et-EE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.et.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.eu-ES.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.eu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fa-IR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fa.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fi-FI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fi.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fil-PH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fil.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fo-FO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-BE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-CH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-LU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr-MC.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fy-NL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.fy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ga-IE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ga.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gd-GB.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gd.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gl-ES.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gsw-FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gsw.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gu-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.gu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ha-Latn-NG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ha-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ha.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.he-IL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.he.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hi-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hi.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hr-BA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hr-HR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hsb-DE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hsb.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hu-HU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hy-AM.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.hy.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.id-ID.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.id.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ig-NG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ig.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ii-CN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ii.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.is-IS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.is.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.it-CH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.it-IT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.it.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.iu-Cans-CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.iu-Cans.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.iu-Latn-CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.iu-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.iu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ja-JP.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ja.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ka-GE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ka.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kk-KZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kl-GL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.km-KH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.km.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kn-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ko-KR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ko.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kok-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.kok.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ky-KG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ky.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lb-LU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lb.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lo-LA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lt-LT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lt.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lv-LV.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.lv.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mi-NZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mi.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mk-MK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ml-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ml.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mn-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mn-MN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mn-Mong-CN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mn-Mong.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.moh-CA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.moh.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mr-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ms-BN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ms-MY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ms.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mt-MT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.mt.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nb-NO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nb.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ne-NP.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ne.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nl-BE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nl-NL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nn-NO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.no.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nso-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.nso.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.oc-FR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.oc.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.or-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.or.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pa-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pa.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pl-PL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.prs-AF.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.prs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ps-AF.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ps.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pt-BR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pt-PT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.pt.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.qut-GT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.qut.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.quz-BO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.quz-EC.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.quz-PE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.quz.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.rm-CH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.rm.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ro-RO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ro.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ru-RU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ru.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.rw-RW.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.rw.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sa-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sa.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sah-RU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sah.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.se-FI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.se-NO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.se-SE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.se.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.si-LK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.si.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sk-SK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sl-SI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sma-NO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sma-SE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sma.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.smj-NO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.smj-SE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.smj.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.smn-FI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.smn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sms-FI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sms.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sq-AL.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sq.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Cyrl-BA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Cyrl-CS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Cyrl-ME.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Cyrl-RS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Latn-BA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Latn-CS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Latn-ME.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Latn-RS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sv-FI.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sv-SE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sv.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sw-KE.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.sw.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.syr-SY.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.syr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ta-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ta.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.te-IN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.te.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tg-Cyrl-TJ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tg-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tg.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.th-TH.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.th.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tk-TM.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tn-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tr-TR.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tr.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tt-RU.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tt.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tzm-Latn-DZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tzm-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.tzm.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ug-CN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ug.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uk-UA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uk.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ur-PK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.ur.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uz-Cyrl-UZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uz-Cyrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uz-Latn-UZ.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uz-Latn.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.uz.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.vi-VN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.vi.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.wo-SN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.wo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.xh-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.xh.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.yo-NG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.yo.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-CHS.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-CHT.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-CN.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-HK.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-Hans.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-Hant.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-MO.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-SG.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh-TW.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zh.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zu-ZA.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.culture.zu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.cultures.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/globalization/globalize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqx-all.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxangular.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxbargauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxbulletchart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxbuttongroup.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxbuttons.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcalendar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.annotations.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.api.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.core.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.rangeselector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxchart.waterfall.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcheckbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcolorpicker.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcombobox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcomplexinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcore.elements.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxcore.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdata.export.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdata.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdatatable.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdate.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdatetimeinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdocking.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdockinglayout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdockpanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdragdrop.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdraw.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdropdownbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxdropdownlist.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxeditor.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxexpander.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxfileupload.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxformattedinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.aggregates.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.columnsreorder.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.columnsresize.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.edit.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.export.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.filter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.grouping.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.pager.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.selection.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.sort.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxgrid.storage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxkanban.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxknob.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxknockout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxlayout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxlistbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxlistmenu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxloader.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxmaskedinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxmenu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxnavbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxnavigationbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxnotification.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxnumberinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpasswordinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpivot.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpivotdesigner.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpivotgrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxpopover.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxprogressbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxradiobutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxrangeselector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxrating.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxresponse.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxresponsivepanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxribbon.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxscheduler.api.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxscheduler.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxscrollbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxscrollview.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxslider.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxsortable.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxsplitter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxswitchbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtabs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtagcloud.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtextarea.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtoolbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtooltip.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtouch.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtree.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtreegrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxtreemap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxvalidator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/jqxwindow.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/backImage.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/backgroundTop.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_black_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_blackhover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_blackhover_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_blackpressed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_blackpressed_horizontal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_blueenergy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_darkbluehover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/bg_darkbluepressed.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/black_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/blackbackground.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_blue_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_indeterminate_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_indeterminate_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_indeterminate_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_lightblue_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/close.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/close_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/close_blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/close_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/bar-hue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/bar-saturation.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/map-hue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/map-saturation-overlay.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/colorpicker/map-saturation.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/common.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/crosshair-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/crosshair.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_flat_30_cccccc_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_flat_50_5c5c5c_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_glass_20_555555_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_glass_40_0078a3_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_glass_40_ffc73d_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_gloss-wave_25_333333_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_highlight-soft_80_eeeeee_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_inset-soft_25_000000_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-bg_inset-soft_30_f58400_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-icons_4b8e0b_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-icons_a83300_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-icons_cccccc_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkness/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/darkred_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/drag.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/dragcancel.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/error.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/filter.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/html_editor.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/html_editor_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-calendar-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-calendar-metro-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-calendar-metro-yellow-light.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-calendar-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-calendar.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-cancel-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-cancel.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-delete-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-delete.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-down-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-down-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-down-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-edit-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-edit.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-first-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-first-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-first-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-last-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-last-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-last-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-left-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-left-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-left-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-menu-minimized-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-menu-minimized.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-menu-small-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-menu-small.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-plus-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-recurrence-exception-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-recurrence-exception.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-recurrence-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-recurrence.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-right-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-right-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-right-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-save-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-save.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-showpassword-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-showpassword.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-asc-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-asc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-desc-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-desc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-remove-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-sort-remove.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-time-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-time.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-up-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-up-transparent.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-up-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon_collapse.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/icon_expand.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/info.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_diagonals-small_0_aaaaaa_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_diagonals-thick_15_444444_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_diagonals-thick_95_ffdc2e_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_glass_55_fbf5d0_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_highlight-hard_30_285c00_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_highlight-soft_33_3a8104_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_highlight-soft_50_4eb305_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_highlight-soft_60_4ca20b_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-bg_inset-soft_10_285c00_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-icons_4eb305_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-icons_72b42d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/le-frog/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_diagonals-thick_18_b81900_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_diagonals-thick_20_666666_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_flat_10_000000_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_glass_100_f6f6f6_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_glass_100_fdf5ce_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_gloss-wave_35_f6a828_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_highlight-soft_100_eeeeee_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-bg_highlight-soft_75_ffe45c_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-icons_228ef1_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-icons_ef8c08_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-icons_ffd27a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/lightness/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/loader-small.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/loader.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/mail.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/menubutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-down-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-first-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-last-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-left-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-right - Copy.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-right-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-up-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/metro-icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/multi-arrow.gif" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-left.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-right.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/office-icon-up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_flat_0_eeeeee_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_flat_55_c0402a_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_flat_55_eeeeee_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_glass_100_f8f8f8_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_glass_35_dddddd_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_glass_60_eeeeee_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_inset-hard_75_999999_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-bg_inset-soft_50_c9c9c9_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-icons_3383bb_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-icons_454545_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-icons_70b2e1_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-icons_999999_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/overcast/ui-icons_fbc856_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin-black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin-lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin-yellow.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pin.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned-black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned-blue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned-lightblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned-white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned-yellow.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pinned.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/plus.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/plus_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/pointer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/rangebar_classic.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/rangebar_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/rangebar_shinyblack.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/rangebar_summer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/red_arrow_down.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/red_arrow_up.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/red_gradient.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/icon-first.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/icon-last.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_flat_55_fbec88_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_glass_75_d0e5f5_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_glass_85_dfeffc_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_gloss-wave_55_5c9ccc_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_inset-hard_100_f5f8f9_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_217bc0_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_469bdd_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_6da8d5_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_d8e7f3_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/redmond/ui-icons_f9bd01_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_check_black.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_check_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_check_indeterminate.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_classic_hover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_classic_normal.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/roundbg_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/search.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/search_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_flat_0_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_flat_75_ffffff_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_glass_55_fbf9ee_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_glass_65_ffffff_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_glass_75_dadada_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_glass_75_e6e6e6_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_glass_95_fef1ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-bg_highlight-soft_75_cccccc_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-icons_222222_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-icons_454545_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-icons_888888_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/smoothness/ui-icons_cd0a0a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sortasc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sortascbutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sortdesc.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sortdescbutton.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sortremove.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/star.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/star_disabled.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/star_hover.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_flat_55_999999_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_flat_75_aaaaaa_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_glass_45_0078ae_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_glass_55_f8da4e_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_glass_75_79c9ec_1x400.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_gloss-wave_45_e14f1c_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_gloss-wave_50_6eac2c_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_gloss-wave_75_2191c0_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-bg_inset-hard_100_fcfdfd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_0078ae_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_056b93_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_d8e7f3_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_e0fdff_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_f5e175_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_f7a50d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/start/ui-icons_fcd113_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/stripes.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/success.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ReadMe.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/Thumbs.db" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_diagonals-medium_20_d34d17_40x40.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_flat_30_cccccc_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_flat_50_5c5c5c_40x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_gloss-wave_45_817865_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_gloss-wave_60_fece2f_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_gloss-wave_70_ffdd57_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_gloss-wave_90_fff9e5_500x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_highlight-soft_100_feeebd_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-bg_inset-soft_30_ffffff_1x100.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_3d3d3d_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_bd7b00_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_d19405_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_eb990f_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_ed9f26_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_fadc7a_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/sunny/ui-icons_ffe180_256x240.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/tick.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/time.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/track_classic.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/track_darkblue.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/track_shinyblack.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/track_summer.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/warning.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/wp_check_indeterminate_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/images/wp_check_white.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.android.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.arctic.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.base.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.black.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.blackberry.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.bootstrap.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.classic.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.dark.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.darkblue.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.energyblue.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.flat.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.fresh.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.glacier.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.highcontrast.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.light.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.metro.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.metrodark.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.mobile.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.office.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.orange.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.shinyblack.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.summer.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-darkness.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-le-frog.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-lightness.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-overcast.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-redmond.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-smoothness.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-start.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.ui-sunny.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.web.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqwidgets/styles/jqx.windowsphone.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/jqx.base.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/bootstrap.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/controllers/mainCtrl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/jquery-3.3.1.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/jquery.schedule.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/public/js/main.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/actions/types.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/App.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/BookTable.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Header.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LeftNavBar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/SecondPage.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxbargauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxbulletchart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxbuttongroup.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxbuttons.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxcalendar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxchart.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxcheckbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxcolorpicker.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxcombobox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxcomplexinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdatatable.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdatetimeinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdocking.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdockinglayout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdockpanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdragdrop.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdraw.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdropdownbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxdropdownlist.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxeditor.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxexpander.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxfileupload.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxformattedinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxgauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxgrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxkanban.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxknob.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxlayout.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxlineargauge.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxlinkbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxlistbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxlistmenu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxloader.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxmaskedinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxmenu.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxnavbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxnavigationbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxnotification.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxnumberinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxpanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxpasswordinput.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxpivotdesigner.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxpivotgrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxpopover.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxprogressbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxradiobutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxrangeselector.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxrating.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxrepeatbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxresponsivepanel.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxribbon.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscheduler.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscrollbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxscrollview.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxslider.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxsortable.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxsplitter.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxswitchbutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtabs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtagcloud.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtextarea.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtogglebutton.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtoolbar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtooltip.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtree.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtreegrid.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxtreemap.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxvalidator.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/assets/jqwidgets-react/react_jqxwindow.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/reducers/index.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/src/reducers/roomReducer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/client/webpack.config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/routes/rooms.js" afterPath="$PROJECT_DIR$/routes/rooms.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,21 +1265,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BookTable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rooms.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rooms.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/rooms.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="39" lean-forward="true" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
+            <state relative-caret-position="459">
+              <caret line="32" column="65" lean-forward="false" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -83,7 +1279,7 @@
         <entry file="file://$PROJECT_DIR$/routes/events.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="561">
-              <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+              <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -93,7 +1289,7 @@
         <entry file="file://$PROJECT_DIR$/models/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="340">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -108,7 +1304,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="users" pinned="false" current-in-tab="true">
+      <file leaf-file-name="companies" pinned="false" current-in-tab="false">
+        <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.companies">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rooms" pinned="false" current-in-tab="false">
+        <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.rooms">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users" pinned="false" current-in-tab="false">
         <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.users">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
             <state>
@@ -139,8 +1353,8 @@
         <option value="$PROJECT_DIR$/client/src/components/App.js" />
         <option value="$PROJECT_DIR$/routes/companies.js" />
         <option value="$PROJECT_DIR$/routes/events.js" />
-        <option value="$PROJECT_DIR$/routes/rooms.js" />
         <option value="$PROJECT_DIR$/models/index.js" />
+        <option value="$PROJECT_DIR$/routes/rooms.js" />
       </list>
     </option>
   </component>
@@ -151,7 +1365,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
-    <handled-path value="$PROJECT_DIR$/client/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
     <handled-path value="$PROJECT_DIR$/table/node_modules" />
   </component>
@@ -176,45 +1389,15 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
               <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
-              <item name="room-booking" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="room-booking" type="b2602c69:ProjectViewProjectNode" />
@@ -241,8 +1424,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,7 +1553,8 @@
       <updated>1519820369066</updated>
       <workItem from="1519820370372" duration="4198000" />
       <workItem from="1519826933475" duration="3241000" />
-      <workItem from="1519885002413" duration="8170000" />
+      <workItem from="1519885002413" duration="10726000" />
+      <workItem from="1519896488250" duration="29000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1519827728661</created>
@@ -394,11 +1577,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519889725039</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Merge branch 'master' of https://github.com/Leshutic/room-booking&#10;&#10;# Conflicts:&#10;#&#9;client/src/components/App.js">
+      <created>1519893197252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1519893197252</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15609000" />
+    <option name="totallyTimeSpent" value="18194000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -411,11 +1601,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5042644" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26190478" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.49573562" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.4978678" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20895523" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21108742" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16311301" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -447,42 +1637,31 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.companies">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.rooms">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.users">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js" />
+    <entry file="file://$PROJECT_DIR$/client/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/main.js" />
+    <entry file="file://$PROJECT_DIR$/client/public/index.html" />
     <entry file="file://$PROJECT_DIR$/routes/rooms.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -491,85 +1670,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-            <marker date="1519828018040" expanded="true" signature="375:380" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/App.js" />
     <entry file="file://$PROJECT_DIR$/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="86" column="17" lean-forward="false" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="94" column="39" lean-forward="false" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="27" lean-forward="true" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-            <marker date="1519828018040" expanded="true" signature="375:380" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js" />
+    <entry file="file://$PROJECT_DIR$/client/webpack.config.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/main.js" />
+    <entry file="file://$PROJECT_DIR$/client/public/index.html" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/App.js" />
     <entry file="file://$PROJECT_DIR$/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="86" column="17" lean-forward="true" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -581,120 +1699,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/js/controllers/mainCtrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/js/controllers/mainCtrl.js" />
+    <entry file="file://$PROJECT_DIR$/client/public/js/main.js" />
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server.1.js" />
-    <entry file="file://$PROJECT_DIR$/client/src/components/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/LeftNavBar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/LeftNavBar.js" />
+    <entry file="file://$PROJECT_DIR$/client/webpack.config.js" />
     <entry file="file://$PROJECT_DIR$/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1462">
           <caret line="86" column="17" lean-forward="false" selection-start-line="86" selection-start-column="17" selection-end-line="86" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/public/index.html" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#41#0" expanded="false" />
-            <marker date="1519828018040" expanded="true" signature="375:380" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/actions/index.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/components/App.js" />
+    <entry file="file://$PROJECT_DIR$/client/src/main.js" />
     <entry file="file://$PROJECT_DIR$/routes/auth.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="128" column="11" lean-forward="true" selection-start-line="122" selection-start-column="4" selection-end-line="128" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.companies">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -702,7 +1741,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="58" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -710,31 +1748,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/rooms.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="39" lean-forward="true" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -748,22 +1761,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.rooms">
+    <entry file="file://$PROJECT_DIR$/models/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/BookTable.js" />
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.companies">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.rooms">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
@@ -788,6 +1837,36 @@
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/83690e6c/d145a7ab-a280-4a76-81bd-f57bf1a93c71/room_booking.public.events">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="3" lean-forward="false" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/rooms.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="32" column="65" lean-forward="false" selection-start-line="32" selection-start-column="65" selection-end-line="32" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>

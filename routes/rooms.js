@@ -1,6 +1,7 @@
 const routes = require('express').Router();
 const rooms = require('../models').rooms;
 const events = require('../models').events;
+const users = require('../models').users;
 
 routes.get('/', (req, res) => {
     rooms.findAll()
@@ -13,7 +14,7 @@ routes.get('/', (req, res) => {
 });
 
 routes.get('/:id', (req, res) => {
-    rooms.findOne({ where: { id: req.params.id }, include: [events] })
+    rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username'] }] }] })
         .then(room => {
             if(room) res.send(room);
             else res.status(500).send({ status: 'error', messsage: 'Wrong id' });
