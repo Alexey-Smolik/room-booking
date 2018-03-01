@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 const rooms = require('../models').rooms;
+const events = require('../models').events;
 
 routes.get('/', (req, res) => {
     rooms.findAll()
@@ -9,10 +10,28 @@ routes.get('/', (req, res) => {
         .catch(err => {
             res.status(500).send({ status: 'error', messsage: err.message });
         });
-
-
 });
 
+routes.get('/:id', (req, res) => {
+    rooms.findOne({ where: { id: req.params.id }, include: [events] })
+        .then(room => {
+            if(room) res.send(room);
+            else res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+        })
+        .catch(err => {
+            res.status(500).send({ status: 'error', messsage: err.message });
+        });
+});
+
+routes.post('/', (req, res) => {
+    rooms.create(req.body)
+        .then(room => {
+            res.status(201).send(room);
+        })
+        .catch(err => {
+            res.status(501).send({ status: "error", message: err.message });
+        });
+});
 
 routes.put('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id } })
