@@ -13,6 +13,7 @@ routes.get('/', (req, res) => {
 
 });
 
+
 routes.put('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id } })
         .then(rooms => {

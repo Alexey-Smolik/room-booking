@@ -1,6 +1,5 @@
 import React , { Component } from 'react';
 
-
 class Header extends Component {
     render() {
         return(
@@ -20,12 +19,5 @@ class Header extends Component {
         );
     }
 }
-
-// function mapStateToProps({ user }){
-//     return { user: user };
-// }
-// // {this.props.user.name}
-//
-// export default connect(mapStateToProps )(Header);
 
 export default Header;

@@ -13,9 +13,9 @@ import SecondPage from './SecondPage';
 
 class App extends Component {
 
-  // componentDidMount() {
-  //   this.props.getRoom();
-  // }
+  componentDidMount() {
+    this.props.getRooms();
+  }
 
   render() {
     return (
@@ -24,8 +24,8 @@ class App extends Component {
               <div>
                   <Header />
                   <LeftNavBar />
-                  {/*<Route exact path="/booktable" component={BookTable} />*/}
                   <BookTable />
+                  {/*<Route exact path="/booktable" component={BookTable} />*/}
                   <Route exact path="/secondpage" component={SecondPage} />
               </div>
           </BrowserRouter>
@@ -34,5 +34,4 @@ class App extends Component {
   }
 }
 
-// export default connect(null, actions)(App);
-export default App;
+export default connect(null, actions)(App);
