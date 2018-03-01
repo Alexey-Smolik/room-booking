@@ -1,28 +1,29 @@
 import axios from 'axios';
-import {GET_ROOM, ADD_ROOM, DELETE_ROOM, EDIT_ROOM, CREATE_ROOM, GET_ROOMS} from './types';
+import {GET_ROOM, GET_ROOMS, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT } from './types';
 
-export const getRoom = () => async dispatch => {
-    const res = await axios.get('/api/room');
+export const getRoom = (roomID) => async dispatch => {
+    const res = await axios.get('/api/rooms', roomID);
     dispatch({ type: GET_ROOM, payload: res.data });
 };
 
 export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
+    console.log(res.data);
     dispatch({ type: GET_ROOMS, payload: res.data });
 };
 
-export const deleteRoom = () => async dispatch => {
-    const res = await axios.delete('/api/rooms');
-    dispatch({ type: DELETE_ROOM, payload: res.data });
+export const deleteEvent = (eventID) => async dispatch => {
+    const res = await axios.delete('/api/events', eventID);
+    dispatch({ type: DELETE_EVENT, payload: res.data });
 };
 
-export const editRoom = () => async dispatch => {
-    const res = await axios.put('/api/rooms');
-    dispatch({ type: EDIT_ROOM, payload: res.data });
+export const editEvent = (eventID, editedEvent) => async dispatch => {
+    const res = await axios.put('/api/events', eventID,editedEvent );
+    dispatch({ type: EDIT_EVENT, payload: res.data });
 };
 
 
-export const createRoom = () => async dispatch => {
-    const res = await axios.put('/api/add_room');
-    dispatch({ type: CREATE_ROOM, payload: res.data });
+export const createEvent = (eventID) => async dispatch => {
+    const res = await axios.post('/api/events', eventID);
+    dispatch({ type: CREATE_EVENT, payload: res.data });
 };
