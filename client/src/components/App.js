@@ -12,10 +12,7 @@ import BookTable from './BookTable';
 class App extends Component {
 
   componentDidMount() {
-    this.props.getRoom(1);
-    console.log(this.props);
-    console.log("componentDidMount APP");
-
+    this.props.getRooms();
   }
 
   render() {
@@ -24,13 +21,15 @@ class App extends Component {
          <BrowserRouter>
               <div>
                   <Header />
-                  <LeftNavBar getRooms={this.props.getRooms} />
-                  <Route exact path="/:roomID" component={BookTable} />
+                  <LeftNavBar  />
+                  <Route exact path="/" component={BookTable} />
               </div>
           </BrowserRouter>
       </div>
     );
   }
 }
+
+
 
 export default connect(null, actions)(App);

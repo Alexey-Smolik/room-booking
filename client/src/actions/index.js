@@ -8,7 +8,6 @@ export const getRoom = (roomID) => async dispatch => {
 
 export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
-    console.log(res.data);
     dispatch({ type: GET_ROOMS, payload: res.data });
 };
 

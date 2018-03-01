@@ -1,23 +1,14 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as actions from "../actions";
 
 
 class LeftNavBar extends Component {
 
-    chAxios(){
-        console.log(axios.get('/api/rooms'));
-    }
 
     renderMenu(){
-        if(this.state != null) {
-            console.log("true");
-            return this.props.rooms.map((index, key) => {
-                <li key={key}>{index}</li>
-            });
-        }
-        console.log(this.state);
-        return null;
+        console.log("LEFT",this.props.rooms);
     }
 
 
@@ -31,7 +22,7 @@ class LeftNavBar extends Component {
                         <li><a href="/vestibulum/">VESTIBULUM ELIT</a></li>
                         <li><a href="/etiam/">ETIAM PHARETRA</a></li>
                         <li><a href="/phasellus/">PHASELLUS PLACERAT</a></li>
-                        <li onClick={this.props.getRooms}><a >GET ROOMS</a></li>
+                        <li onClick={this.renderMenu.bind(this)}><a >GET ROOMS</a></li>
                         {this.renderMenu()}
                     </ul>
                 </nav>
@@ -41,9 +32,10 @@ class LeftNavBar extends Component {
 }
 
 
-function mapStateToProps({rooms}) {
-    return { rooms: rooms }
+function mapStateToProps({room}) {
+    return { rooms: room }
 }
 
 
-export default connect(mapStateToProps)(LeftNavBar);
+export default connect(mapStateToProps, actions)(LeftNavBar);
+

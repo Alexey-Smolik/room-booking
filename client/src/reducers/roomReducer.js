@@ -7,7 +7,7 @@ export default function ( state = null, action) {
             return action.payload || false;
 
         case GET_ROOMS:
-            return action.payload || false;
+            return  action.payload || false;
 
         case DELETE_ROOM:
             return action.payload || false;
