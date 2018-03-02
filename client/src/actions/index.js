@@ -1,0 +1,28 @@
+import axios from 'axios';
+import { GET_ROOM, GET_ROOMS, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT } from './types';
+
+export const getRoom = (roomID) => async dispatch => {
+    const res = await axios.get('/api/rooms', roomID);
+    dispatch({ type: GET_ROOM, payload: res.data });
+};
+
+export const getRooms = () => async dispatch => {
+    const res = await axios.get('/api/rooms');
+    dispatch({ type: GET_ROOMS, payload: res.data });
+};
+
+export const deleteEvent = (eventID) => async dispatch => {
+    const res = await axios.delete('/api/events', eventID);
+    dispatch({ type: DELETE_EVENT, payload: res.data });
+};
+
+export const editEvent = (eventID, editedEvent) => async dispatch => {
+    const res = await axios.put('/api/events', eventID,editedEvent );
+    dispatch({ type: EDIT_EVENT, payload: res.data });
+};
+
+
+export const createEvent = (eventID) => async dispatch => {
+    const res = await axios.post('/api/events', eventID);
+    dispatch({ type: CREATE_EVENT, payload: res.data });
+};
