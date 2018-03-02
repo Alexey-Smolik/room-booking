@@ -10,6 +10,8 @@ class BookTable extends React.Component {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             this.props.getRooms();
         });
+        this.props.getEvents(1);
+        console.log("EVENTS - ", this.props.events);
     }
 
 
@@ -27,6 +29,7 @@ class BookTable extends React.Component {
     }
 
     render () {
+        console.log("Book table -> render", this.props);
         let appointments = new Array();
         let appointment1 = {
             id: "id1",
@@ -121,6 +124,5 @@ class BookTable extends React.Component {
 //     return { getRooms: getRooms };
 // }
 
-// export default connect(mapStateToProps,actions)(BookTable);
+export default connect(null,actions)(BookTable);
 
-export default BookTable;

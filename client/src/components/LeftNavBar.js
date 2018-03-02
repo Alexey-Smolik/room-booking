@@ -6,22 +6,30 @@ import * as actions from "../actions";
 
 class LeftNavBar extends Component {
 
-    getDataTable(id){
-        this.props.action.getRoom(id);
+
+    componentDidMount() {
+        this.props.getRooms();
+
     }
 
+    getDataTable(id){
+        this.props.getEvents(id);
+        console.log("LeftNavBar - getevetns",id);
+        this.props.rooms;
+    }
+
+
     renderMenu(){
-        console.log("LEFT");
         if(this.props.rooms != null) {
             return this.props.rooms.map( index => {
                 return (
-                    <li onClick={this.getDataTable(index.id)}>
+                    <li onClick={() => this.getDataTable(index.id)}>
                         {index.name}
                     </li>);
             });
         }
         return (
-            <li><Link to={'/'}>There are no available rooms</Link></li>
+            <li>Click me</li>
         )
     }
 
@@ -31,12 +39,6 @@ class LeftNavBar extends Component {
             <aside>
                 <nav>                
                     <ul className="aside-menu">
-                        {/*<li><Link to={'/booktable'}>LOREM IPSUM</Link></li>*/}
-                        {/*<li><Link to={'/secondpage'}>DONEC TINCIDUNT LAOREET</Link></li>*/}
-                        {/*<li><a href="/vestibulum/">VESTIBULUM ELIT</a></li>*/}
-                        {/*<li><a href="/etiam/">ETIAM PHARETRA</a></li>*/}
-                        {/*<li><a href="/phasellus/">PHASELLUS PLACERAT</a></li>*/}
-                        {/*<li onClick={this.renderMenu.bind(this)}><a >GET ROOMS</a></li>*/}
                         {this.renderMenu()}
                     </ul>
                 </nav>
@@ -45,4 +47,6 @@ class LeftNavBar extends Component {
     }
 }
 
-export default LeftNavBar;
+export default connect(null , actions)(LeftNavBar);
+
+

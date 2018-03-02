@@ -12,7 +12,9 @@ import BookTable from './BookTable';
 class App extends Component {
 
   componentDidMount() {
-    this.props.getRooms();
+
+    console.log("APP",this.props);
+      actions.getRooms();
   }
 
   render() {
@@ -21,8 +23,8 @@ class App extends Component {
          <BrowserRouter>
               <div>
                   <Header />
-                  <LeftNavBar rooms={this.props.rooms} actions={actions}  />
-                  <BookTable events={this.props.events} actions={actions}/>
+                  <LeftNavBar rooms={this.props.rooms}   />
+                  <BookTable events={this.props.events} />
               </div>
           </BrowserRouter>
       </div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ROOM, GET_ROOMS, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT } from './types';
+import { GET_ROOM, GET_ROOMS, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT , GET_EVENTS} from './types';
 
 export const getRoom = (roomID) => async dispatch => {
     const res = await axios.get('/api/rooms', roomID);
@@ -8,7 +8,14 @@ export const getRoom = (roomID) => async dispatch => {
 
 export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
+    console.log("Action -> getrooms");
     dispatch({ type: GET_ROOMS, payload: res.data });
+};
+
+export const getEvents = (roomID) => async dispatch => {
+    const res = await axios.get('/api/rooms/'+roomID);
+    console.log("Action -> getEvents");
+    dispatch({ type: GET_EVENTS, payload: res.data });
 };
 
 export const deleteEvent = (eventID) => async dispatch => {

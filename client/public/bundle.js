@@ -1432,7 +1432,7 @@ function isPlainObject(value) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.createEvent = exports.editEvent = exports.deleteEvent = exports.getRooms = exports.getRoom = undefined;
+exports.createEvent = exports.editEvent = exports.deleteEvent = exports.getEvents = exports.getRooms = exports.getRoom = undefined;
 
 var _axios = __webpack_require__(111);
 
@@ -1452,7 +1452,16 @@ var getRoom = exports.getRoom = function getRoom(roomID) {
 var getRooms = exports.getRooms = function getRooms() {
     return async function (dispatch) {
         var res = await _axios2.default.get('/api/rooms');
+        console.log("Action -> getrooms");
         dispatch({ type: _types.GET_ROOMS, payload: res.data });
+    };
+};
+
+var getEvents = exports.getEvents = function getEvents(roomID) {
+    return async function (dispatch) {
+        var res = await _axios2.default.get('/api/rooms/' + roomID);
+        console.log("Action -> getEvents");
+        dispatch({ type: _types.GET_EVENTS, payload: res.data });
     };
 };
 
@@ -1597,6 +1606,7 @@ var GET_ROOMS = exports.GET_ROOMS = 'get-rooms';
 var CREATE_EVENT = exports.CREATE_EVENT = 'create-event';
 var DELETE_EVENT = exports.DELETE_EVENT = 'delete-event';
 var EDIT_EVENT = exports.EDIT_EVENT = 'edit-event';
+var GET_EVENTS = exports.GET_EVENTS = 'edit-event';
 
 /***/ }),
 /* 22 */
@@ -4147,7 +4157,7 @@ module.exports = focusNode;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4190,51 +4200,53 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 var App = function (_Component) {
-  _inherits(App, _Component);
+    _inherits(App, _Component);
 
-  function App() {
-    _classCallCheck(this, App);
+    function App() {
+        _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.getRooms();
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
     }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'App' },
-        _react2.default.createElement(
-          _reactRouterDom.BrowserRouter,
-          null,
-          _react2.default.createElement(
-            'div',
-            null,
-            _react2.default.createElement(_Header2.default, null),
-            _react2.default.createElement(_LeftNavBar2.default, { rooms: this.props.rooms }),
-            _react2.default.createElement(_BookTable2.default, { events: this.props.events })
-          )
-        )
-      );
-    }
-  }]);
 
-  return App;
+    _createClass(App, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+
+            console.log("APP", this.props);
+            actions.getRooms();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'App' },
+                _react2.default.createElement(
+                    _reactRouterDom.BrowserRouter,
+                    null,
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        _react2.default.createElement(_Header2.default, null),
+                        _react2.default.createElement(_LeftNavBar2.default, { rooms: this.props.rooms }),
+                        _react2.default.createElement(_BookTable2.default, { events: this.props.events })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return App;
 }(_react.Component);
 
 function mapStateToProps(_ref) {
-  var rooms = _ref.rooms,
-      events = _ref.events;
+    var rooms = _ref.rooms,
+        events = _ref.events;
 
-  return {
-    rooms: rooms,
-    events: events
-  };
+    return {
+        rooms: rooms,
+        events: events
+    };
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(App);
@@ -9735,19 +9747,29 @@ var LeftNavBar = function (_Component) {
     }
 
     _createClass(LeftNavBar, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.props.getRooms();
+        }
+    }, {
         key: 'getDataTable',
-        value: function getDataTable() {}
+        value: function getDataTable(id) {
+            this.props.getEvents(id);
+            console.log("LeftNavBar - getevetns", id);
+            this.props.rooms;
+        }
     }, {
         key: 'renderMenu',
         value: function renderMenu() {
             var _this2 = this;
 
-            console.log("LEFT");
             if (this.props.rooms != null) {
                 return this.props.rooms.map(function (index) {
                     return _react2.default.createElement(
                         'li',
-                        { onClick: _this2.getDataTable(index.id) },
+                        { onClick: function onClick() {
+                                return _this2.getDataTable(index.id);
+                            } },
                         index.name
                     );
                 });
@@ -9755,11 +9777,7 @@ var LeftNavBar = function (_Component) {
             return _react2.default.createElement(
                 'li',
                 null,
-                _react2.default.createElement(
-                    _reactRouterDom.Link,
-                    { to: '/' },
-                    'Theare er no avaliables rooms'
-                )
+                'Click me'
             );
         }
     }, {
@@ -9784,7 +9802,7 @@ var LeftNavBar = function (_Component) {
     return LeftNavBar;
 }(_react.Component);
 
-exports.default = LeftNavBar;
+exports.default = (0, _reactRedux.connect)(null, actions)(LeftNavBar);
 
 /***/ }),
 /* 133 */
@@ -9840,6 +9858,8 @@ var BookTable = function (_React$Component) {
             this.refs.myScheduler.on('appointmentAdd', function (event) {
                 _this2.props.getRooms();
             });
+            this.props.getEvents(1);
+            console.log("EVENTS - ", this.props.events);
         }
     }, {
         key: 'roomHandler',
@@ -9858,6 +9878,7 @@ var BookTable = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            console.log("Book table -> render", this.props);
             var appointments = new Array();
             var appointment1 = {
                 id: "id1",
@@ -9935,13 +9956,11 @@ var BookTable = function (_React$Component) {
 //     }
 //  }
 
-function mapStateToProps(_ref) {
-    var getRooms = _ref.getRooms;
+//  function mapStateToProps({ getRooms }){
+//     return { getRooms: getRooms };
+// }
 
-    return { getRooms: getRooms };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(BookTable);
+exports.default = (0, _reactRedux.connect)(null, actions)(BookTable);
 
 /***/ }),
 /* 134 */
@@ -10730,6 +10749,7 @@ exports.default = function () {
 
     switch (action.type) {
         case _types.GET_ROOMS:
+            console.log("Reducer -> getrooms");
             return action.payload || false;
 
         default:
@@ -10766,6 +10786,9 @@ exports.default = function () {
             return action.payload || false;
 
         case _types.EDIT_EVENT:
+            return action.payload || false;
+
+        case _types.GET_EVENTS:
             return action.payload || false;
 
         default:

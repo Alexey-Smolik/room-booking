@@ -4,5 +4,5 @@ import roomEvents  from './roomEvents';
 
 export default combineReducers({
     rooms: roomsList,
-    events:roomEvents
+    events: roomEvents
 });

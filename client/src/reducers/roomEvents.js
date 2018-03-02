@@ -1,4 +1,4 @@
-import { GET_ROOM, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT } from '../actions/types';
+import { GET_ROOM, DELETE_EVENT, EDIT_EVENT, CREATE_EVENT, GET_EVENTS } from '../actions/types';
 
 export default function ( state = null, action) {
 
@@ -13,6 +13,9 @@ export default function ( state = null, action) {
             return action.payload || false;
 
         case EDIT_EVENT:
+            return action.payload || false;
+
+        case GET_EVENTS:
             return action.payload || false;
 
         default:
