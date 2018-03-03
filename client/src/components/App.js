@@ -11,25 +11,31 @@ import BookTable from './BookTable';
 
 class App extends Component {
 
-  componentDidMount() {
+    componentDidMount() {
 
-    console.log("APP",this.props);
-      actions.getRooms();
-  }
+        console.log("APP",this.props);
+        actions.getRooms();
+    }
 
-  render() {
-    return (
-      <div className="App">
-         <BrowserRouter>
-              <div>
-                  <Header />
-                  <LeftNavBar rooms={this.props.rooms}   />
-                  <BookTable events={this.props.events} />
-              </div>
-          </BrowserRouter>
-      </div>
-    );
-  }
+    BookTable(){
+        return ( <BookTable room={this.props}/>);
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <div>
+                        <Header />
+                        <LeftNavBar rooms={this.props.rooms}   />
+                        {/*<BookTable room={this.props.events} />*/}
+                        {/*<Route path="/room/:roomID" component={bookFrame} />*/}
+                        <Route path="/room/:roomID"  component={BookTable} />
+                    </div>
+                </BrowserRouter>
+            </div>
+        );
+    }
 }
 
 function mapStateToProps({rooms, events}) {

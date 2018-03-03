@@ -1479,9 +1479,11 @@ var editEvent = exports.editEvent = function editEvent(eventID, editedEvent) {
     };
 };
 
-var createEvent = exports.createEvent = function createEvent(eventID) {
+var createEvent = exports.createEvent = function createEvent(newEvent) {
     return async function (dispatch) {
-        var res = await _axios2.default.post('/api/events', eventID);
+        var res = await _axios2.default.post('/api/events', newEvent, {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
         dispatch({ type: _types.CREATE_EVENT, payload: res.data });
     };
 };
@@ -4182,9 +4184,9 @@ var _LeftNavBar = __webpack_require__(132);
 
 var _LeftNavBar2 = _interopRequireDefault(_LeftNavBar);
 
-var _BookTable = __webpack_require__(133);
+var _BookTable2 = __webpack_require__(133);
 
-var _BookTable2 = _interopRequireDefault(_BookTable);
+var _BookTable3 = _interopRequireDefault(_BookTable2);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -4216,6 +4218,11 @@ var App = function (_Component) {
             actions.getRooms();
         }
     }, {
+        key: 'BookTable',
+        value: function BookTable() {
+            return _react2.default.createElement(_BookTable3.default, { room: this.props });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -4229,7 +4236,7 @@ var App = function (_Component) {
                         null,
                         _react2.default.createElement(_Header2.default, null),
                         _react2.default.createElement(_LeftNavBar2.default, { rooms: this.props.rooms }),
-                        _react2.default.createElement(_BookTable2.default, { events: this.props.events })
+                        _react2.default.createElement(_reactRouterDom.Route, { path: '/room/:roomID', component: _BookTable3.default })
                     )
                 )
             );
@@ -9755,7 +9762,6 @@ var LeftNavBar = function (_Component) {
         key: 'getDataTable',
         value: function getDataTable(id) {
             this.props.getEvents(id);
-            console.log("LeftNavBar - getevetns", id);
             this.props.rooms;
         }
     }, {
@@ -9767,10 +9773,14 @@ var LeftNavBar = function (_Component) {
                 return this.props.rooms.map(function (index) {
                     return _react2.default.createElement(
                         'li',
-                        { onClick: function onClick() {
-                                return _this2.getDataTable(index.id);
-                            } },
-                        index.name
+                        null,
+                        _react2.default.createElement(
+                            _reactRouterDom.Link,
+                            { to: '/room/' + index.id, onClick: function onClick() {
+                                    return _this2.getDataTable(index.id);
+                                } },
+                            index.name
+                        )
                     );
                 });
             }
@@ -9855,54 +9865,45 @@ var BookTable = function (_React$Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            this.refs.myScheduler.on('appointmentAdd', function (event) {
-                _this2.props.getRooms();
-            });
             this.props.getEvents(1);
-            console.log("EVENTS - ", this.props.events);
+
+            this.refs.myScheduler.on('appointmentAdd', function (event) {
+                console.log(event);
+                event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
+                event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
+                event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
+                event.args.appointment.originalData.roomId = _this2.props.room.id;
+                event.args.appointment.originalData.userId = 1;
+
+                _this2.props.createEvent(event.args.appointment.originalData);
+            });
         }
     }, {
         key: 'roomHandler',
         value: function roomHandler() {
-            return this.props.room.events.map(function (event) {
-                return {
-                    id: event.id,
-                    description: event.description,
-                    subject: event.user.username,
-                    calendar: event.user.username,
-                    from: new Date(2016, 10, 23, 9, 0, 0),
-                    to: new Date(2016, 10, 23, 16, 0, 0)
-                };
-            });
+            if (this.props.room) {
+                return this.props.room.events.map(function (event) {
+                    return {
+                        id: 'id1',
+                        description: event.description,
+                        location: event.user.username,
+                        subject: event.name,
+                        calendar: event.user.username,
+                        start: new Date(event.date_from).toISOString(),
+                        end: new Date(event.date_to).toISOString()
+                    };
+                });
+            }
         }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {}
     }, {
         key: 'render',
         value: function render() {
-            console.log("Book table -> render", this.props);
-            var appointments = new Array();
-            var appointment1 = {
-                id: "id1",
-                description: "George brings projector for presentations.",
-                location: "",
-                subject: "Quarterly Project Review Meeting",
-                calendar: "Room 1",
-                start: new Date(2016, 10, 23, 9, 0, 0),
-                end: new Date(2016, 10, 23, 16, 0, 0)
-            };
-            var appointment2 = {
-                id: "id2",
-                description: "",
-                location: "",
-                subject: "IT Group Mtg.",
-                calendar: "Room 2",
-                start: new Date(2016, 10, 24, 10, 0, 0),
-                end: new Date(2016, 10, 24, 15, 0, 0)
-            };
-            appointments.push(appointment1);
-            appointments.push(appointment2);
+            var _this3 = this;
 
-            //this.props.room which return array of rooms
-
+            var appointments = this.roomHandler();
 
             var source = {
                 dataType: "array",
@@ -9910,12 +9911,12 @@ var BookTable = function (_React$Component) {
                 id: 'id',
                 localData: appointments
             };
+
             var dataAdapter = new $.jqx.dataAdapter(source);
 
             var resources = {
-                colorScheme: "scheme05",
+                colorScheme: "scheme01",
                 dataField: "calendar",
-                orientation: "horizontal",
                 source: new $.jqx.dataAdapter(source)
             };
 
@@ -9924,21 +9925,41 @@ var BookTable = function (_React$Component) {
                 to: "end",
                 id: "id",
                 description: "description",
-                location: "place",
+                location: "location",
                 subject: "subject",
                 resourceId: "calendar"
             };
 
-            var views = [{ type: 'dayView', showWeekends: false }, { type: 'weekView', showWeekends: false }, { type: 'monthView' }];
+            var views = [{
+                type: "dayView",
+                timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' },
+                workTime: { fromHour: 8, toHour: 19, fromDayOfWeek: 1, toDayOfWeek: 5 }
+            }, {
+                type: "weekView",
+                showWeekends: false,
+                timeRuler: { scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm' },
+                workTime: {
+                    fromDayOfWeek: 1,
+                    toDayOfWeek: 5,
+                    fromHour: 8,
+                    toHour: 19
+                }
+            }, 'monthView'];
+
+            if (appointments) {
+                appointments.forEach(function (appointment) {
+                    _this3.refs.myScheduler.addAppointment(appointment);
+                });
+            }
+            console.log("Data", this.props);
             return _react2.default.createElement(
                 'div',
                 { className: 'tableContainer' },
                 _react2.default.createElement(_react_jqxscheduler2.default, { ref: 'myScheduler',
                     width: 850, height: 600, source: dataAdapter, dayNameFormat: 'abbr',
-                    date: new $.jqx.date(2016, 11, 23), showLegend: true,
+                    date: new $.jqx.date(2018, 3, 1), showLegend: true,
                     view: 'weekView', resources: resources, views: views,
-                    appointmentDataFields: appointmentDataFields
-                })
+                    appointmentDataFields: appointmentDataFields, renderAppointment: appointments })
             );
         }
     }]);
@@ -9946,21 +9967,13 @@ var BookTable = function (_React$Component) {
     return BookTable;
 }(_react2.default.Component);
 
-// export default  BookTable;
+function mapStateToProps(_ref) {
+    var events = _ref.events;
 
-// function mapDispatchToProps (dispatch, ownProps) {
-//     return {
-//        onClick: () => {
-//           dispatch({ type: ADD_ROOM })
-//        }
-//     }
-//  }
+    return { room: events };
+}
 
-//  function mapStateToProps({ getRooms }){
-//     return { getRooms: getRooms };
-// }
-
-exports.default = (0, _reactRedux.connect)(null, actions)(BookTable);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, actions)(BookTable);
 
 /***/ }),
 /* 134 */

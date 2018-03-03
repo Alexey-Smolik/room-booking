@@ -5,124 +5,124 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-
     componentDidMount() {
-        this.refs.myScheduler.on('appointmentAdd', (event) => {
-            this.props.getRooms();
-        });
         this.props.getEvents(1);
-        console.log("EVENTS - ", this.props.events);
+
+        this.refs.myScheduler.on('appointmentAdd', (event) => {
+            console.log(event);
+            event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
+            event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
+            event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
+            event.args.appointment.originalData.roomId = this.props.room.id;
+            event.args.appointment.originalData.userId = 1;
+
+            this.props.createEvent(event.args.appointment.originalData);
+        });
     }
 
-
     roomHandler() {
-        return this.props.room.events.map((event) => {
-            return {
-                id: event.id,
-                description: event.description,
-                subject: event.user.username,
-                calendar: event.user.username,
-                from: new Date(2016, 10, 23, 9, 0, 0),
-                to: new Date(2016, 10, 23, 16, 0, 0)
-            }
-        });
+        if(this.props.room){
+            return this.props.room.events.map((event) => {
+                return {
+                    id: 'id1',
+                    description: event.description,
+                    location: event.user.username,
+                    subject: event.name,
+                    calendar: event.user.username,
+                    start: new Date(event.date_from).toISOString(),
+                    end: new Date(event.date_to).toISOString()
+                }
+            });
+        }
+    }
+
+    componentWillMount(){
+
     }
 
     render () {
-        console.log("Book table -> render", this.props);
-        let appointments = new Array();
-        let appointment1 = {
-            id: "id1",
-            description: "George brings projector for presentations.",
-            location: "",
-            subject: "Quarterly Project Review Meeting",
-            calendar: "Room 1",
-            start: new Date(2016, 10, 23, 9, 0, 0),
-            end: new Date(2016, 10, 23, 16, 0, 0)
-        };
-        let appointment2 = {
-            id: "id2",
-            description: "",
-            location: "",
-            subject: "IT Group Mtg.",
-            calendar: "Room 2",
-            start: new Date(2016, 10, 24, 10, 0, 0),
-            end: new Date(2016, 10, 24, 15, 0, 0)
-        };
-        appointments.push(appointment1);
-        appointments.push(appointment2);
+        let appointments = this.roomHandler();
 
-        //this.props.room which return array of rooms
+        const source =
+            {
+                dataType: "array",
+                dataFields: [
+                    {name: 'id', type: 'string'},
+                    {name: 'description', type: 'string'},
+                    {name: 'location', type: 'string'},
+                    {name: 'subject', type: 'string'},
+                    {name: 'calendar', type: 'string'},
+                    {name: 'start', type: 'date'},
+                    {name: 'end', type: 'date'}
+                ],
+                id: 'id',
+                localData: appointments
+            };
 
+        const dataAdapter = new $.jqx.dataAdapter(source);
 
-        let source =
-        {
-            dataType: "array",
-            dataFields: [
-                { name: 'id', type: 'string' },
-                { name: 'description', type: 'string' },
-                { name: 'location', type: 'string' },
-                { name: 'subject', type: 'string' },
-                { name: 'calendar', type: 'string' },
-                { name: 'start', type: 'date' },
-                { name: 'end', type: 'date' }
-            ],
-            id: 'id',
-            localData: appointments
-        };
-        let dataAdapter = new $.jqx.dataAdapter(source);
-    
-        let resources =
-        {
-            colorScheme: "scheme05",
-            dataField: "calendar",
-            orientation: "horizontal",
-            source:  new $.jqx.dataAdapter(source)
-        };
-    
-        let appointmentDataFields =
-        {
-            from: "start",
-            to: "end",
-            id: "id",
-            description: "description",
-            location: "place",
-            subject: "subject",
-            resourceId: "calendar"
-        };
-    
-        let views =
-        [
-            { type: 'dayView', showWeekends: false },
-            { type: 'weekView', showWeekends: false },
-            { type: 'monthView' }
-        ];
+        const resources =
+            {
+                colorScheme: "scheme01",
+                dataField: "calendar",
+                source: new $.jqx.dataAdapter(source)
+            };
+
+        const appointmentDataFields =
+            {
+                from: "start",
+                to: "end",
+                id: "id",
+                description: "description",
+                location: "location",
+                subject: "subject",
+                resourceId: "calendar"
+            };
+
+        const views =
+            [
+                {
+                    type: "dayView",
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    workTime: {fromHour: 8, toHour: 19, fromDayOfWeek: 1, toDayOfWeek: 5,}
+                },
+                {
+                    type: "weekView",
+                    showWeekends: false,
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    workTime:
+                        {
+                            fromDayOfWeek: 1,
+                            toDayOfWeek: 5,
+                            fromHour: 8,
+                            toHour: 19
+                        }
+                },
+                'monthView'
+            ];
+
+        if (appointments) {
+            appointments.forEach(appointment => {
+                this.refs.myScheduler.addAppointment(appointment);
+            });
+
+        }
+        console.log("Data", this.props);
         return (
             <div className={'tableContainer'}>
                 <JqxScheduler ref='myScheduler'
-                    width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
-                    date={new $.jqx.date(2016, 11, 23)} showLegend={true}
-                    view={'weekView'} resources={resources} views={views}
-                    appointmentDataFields={appointmentDataFields}
-                />
+                              width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
+                              date={new $.jqx.date(2018, 3, 1)} showLegend={true}
+                              view={'weekView'} resources={resources} views={views}
+                              appointmentDataFields={appointmentDataFields} renderAppointment={appointments} />
             </div>
         )
     }
 }
 
-// export default  BookTable;
 
-// function mapDispatchToProps (dispatch, ownProps) {
-//     return {
-//        onClick: () => {
-//           dispatch({ type: ADD_ROOM })
-//        }
-//     }
-//  }
+function mapStateToProps({ events }){
+    return { room: events };
+}
 
-//  function mapStateToProps({ getRooms }){
-//     return { getRooms: getRooms };
-// }
-
-export default connect(null,actions)(BookTable);
-
+export default connect(mapStateToProps,actions)(BookTable);
