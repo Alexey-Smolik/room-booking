@@ -1,6 +1,7 @@
 import React from 'react';
-import JqxScheduler  from './assets/jqwidgets-react/react_jqxscheduler.js';
+import JqxScheduler  from './jqwidgets-react/react_jqxscheduler.js';
 import * as actions from '../actions';
+import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
 
@@ -18,16 +19,25 @@ class BookTable extends React.Component {
             //this.props.createEvent(event.args.appointment.originalData);
         });
 
+        this.refs.myScheduler.deleteAppointment("id1");
+
         this.refs.myScheduler.on('appointmentDelete', (event) => {
-            console.log(event);
+            console.log('aaa');
         });
+    }
+
+    buttonHandler(){
+        console.log(this.refs.myScheduler);
+        this.refs.myScheduler.ensureAppointmentVisible('id1');
+        this.refs.myScheduler.deleteAppointment("id1");
+        //this.refs.myScheduler.deleteAppointment("id2");
     }
 
     roomHandler() {
         if(this.props.room){
             return this.props.room.events.map((event) => {
                 return {
-                    id: 'id1',
+                    id: "id" + event.id,
                     description: event.description,
                     location: event.user.username,
                     subject: event.name,
@@ -42,7 +52,7 @@ class BookTable extends React.Component {
     render () {
         let appointments = this.roomHandler();
 
-        const source =
+        let source =
             {
                 dataType: "array",
                 dataFields: [
@@ -58,16 +68,16 @@ class BookTable extends React.Component {
                 localData: appointments
             };
 
-        const dataAdapter = new $.jqx.dataAdapter(source);
+        let dataAdapter = new $.jqx.dataAdapter(source);
 
-        const resources =
+        let resources =
             {
                 colorScheme: "scheme01",
                 dataField: "calendar",
                 source: new $.jqx.dataAdapter(source)
             };
 
-        const appointmentDataFields =
+        let appointmentDataFields =
             {
                 from: "start",
                 to: "end",
@@ -78,7 +88,7 @@ class BookTable extends React.Component {
                 resourceId: "calendar"
             };
 
-        const views =
+        let views =
             [
                 {
                     type: "dayView",
@@ -100,19 +110,15 @@ class BookTable extends React.Component {
                 'monthView'
             ];
 
-
-        //console.log(appointments);
         if (appointments) {
             appointments.forEach(appointment => {
-                this.refs.myScheduler.deleteAppointment(appointment);
                 this.refs.myScheduler.addAppointment(appointment);
             });
-
         }
 
-        //console.log("Data", this.props);
         return (
             <div className={'tableContainer'}>
+                <button onClick={this.buttonHandler.bind(this)} >Return</button>
                 <JqxScheduler ref='myScheduler'
                               width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
                               date={new $.jqx.date(2018, 3, 1)} showLegend={true}
@@ -129,3 +135,4 @@ function mapStateToProps({ events }){
 }
 
 export default connect(mapStateToProps,actions)(BookTable);
+//ReactDOM.render(<App />, document.getElementById('app'));

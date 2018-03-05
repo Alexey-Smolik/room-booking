@@ -450,8 +450,8 @@ export default class JqxScheduler extends React.Component {
     closeDialog() {
         JQXLite(this.componentSelector).jqxScheduler('closeDialog');  
     };
-    deleteAppointment(appointmenId) {
-        JQXLite(this.componentSelector).jqxScheduler('deleteAppointment', appointmenId);  
+    deleteAppointment(appointmentId) {
+        JQXLite(this.componentSelector).jqxScheduler('deleteAppointment', appointmentId);
     };
     destroy() {
         JQXLite(this.componentSelector).jqxScheduler('destroy');  
