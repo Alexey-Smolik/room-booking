@@ -52,6 +52,7 @@ $(document).ready(function () {
         };
 
     const adapter = new $.jqx.dataAdapter(source);
+
     $("#scheduler").jqxScheduler({
         date: new $.jqx.date(2018, 0, 27),
         width: '100%',
