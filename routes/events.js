@@ -27,6 +27,7 @@ routes.post('/', (req, res) => {
     req.body = JSON.parse(Object.keys(req.body));
 
     console.log(req.body);
+    res.send('test');
     /*events.findOrCreate({
         where: { id: req.body.id },
         defaults: { name: req.body.name, description: req.body.description, date_from: req.body.date_from, date_to: req.body.date_to, roomId: req.body.roomId, userId: req.body.userId }

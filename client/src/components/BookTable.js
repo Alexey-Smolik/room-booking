@@ -9,14 +9,17 @@ class BookTable extends React.Component {
         this.props.getEvents(1);
 
         this.refs.myScheduler.on('appointmentAdd', (event) => {
-            console.log(event);
             event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
             event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
             event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
             event.args.appointment.originalData.roomId = this.props.room.id;
             event.args.appointment.originalData.userId = 1;
 
-            this.props.createEvent(event.args.appointment.originalData);
+            //this.props.createEvent(event.args.appointment.originalData);
+        });
+
+        this.refs.myScheduler.on('appointmentDelete', (event) => {
+            console.log(event);
         });
     }
 
@@ -34,10 +37,6 @@ class BookTable extends React.Component {
                 }
             });
         }
-    }
-
-    componentWillMount(){
-
     }
 
     render () {
@@ -101,13 +100,17 @@ class BookTable extends React.Component {
                 'monthView'
             ];
 
+
+        //console.log(appointments);
         if (appointments) {
             appointments.forEach(appointment => {
+                this.refs.myScheduler.deleteAppointment(appointment);
                 this.refs.myScheduler.addAppointment(appointment);
             });
 
         }
-        console.log("Data", this.props);
+
+        //console.log("Data", this.props);
         return (
             <div className={'tableContainer'}>
                 <JqxScheduler ref='myScheduler'

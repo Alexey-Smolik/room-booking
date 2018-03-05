@@ -9868,14 +9868,17 @@ var BookTable = function (_React$Component) {
             this.props.getEvents(1);
 
             this.refs.myScheduler.on('appointmentAdd', function (event) {
-                console.log(event);
                 event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
                 event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
                 event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
                 event.args.appointment.originalData.roomId = _this2.props.room.id;
                 event.args.appointment.originalData.userId = 1;
 
-                _this2.props.createEvent(event.args.appointment.originalData);
+                //this.props.createEvent(event.args.appointment.originalData);
+            });
+
+            this.refs.myScheduler.on('appointmentDelete', function (event) {
+                console.log(event);
             });
         }
     }, {
@@ -9895,9 +9898,6 @@ var BookTable = function (_React$Component) {
                 });
             }
         }
-    }, {
-        key: 'componentWillMount',
-        value: function componentWillMount() {}
     }, {
         key: 'render',
         value: function render() {
@@ -9946,12 +9946,15 @@ var BookTable = function (_React$Component) {
                 }
             }, 'monthView'];
 
+            //console.log(appointments);
             if (appointments) {
                 appointments.forEach(function (appointment) {
+                    _this3.refs.myScheduler.deleteAppointment(appointment);
                     _this3.refs.myScheduler.addAppointment(appointment);
                 });
             }
-            console.log("Data", this.props);
+
+            //console.log("Data", this.props);
             return _react2.default.createElement(
                 'div',
                 { className: 'tableContainer' },
