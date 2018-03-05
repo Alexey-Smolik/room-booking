@@ -1,5 +1,5 @@
 import React from 'react';
-import JqxScheduler  from './assets/jqwidgets-react/react_jqxscheduler.js';
+import JqxScheduler  from './jqwidgets-react/react_jqxscheduler.js';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
 
@@ -14,13 +14,15 @@ class BookTable extends React.Component {
             event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
             event.args.appointment.originalData.roomId = this.props.room.id;
             event.args.appointment.originalData.userId = 1;
-
             //this.props.createEvent(event.args.appointment.originalData);
         });
 
         this.refs.myScheduler.on('appointmentDelete', (event) => {
             console.log(event);
         });
+
+        this.refs.myScheduler.ensureAppointmentVisible('id1');
+
     }
 
     roomHandler() {
@@ -109,6 +111,7 @@ class BookTable extends React.Component {
             });
 
         }
+        console.log("Table props", this.props);
 
         //console.log("Data", this.props);
         return (
