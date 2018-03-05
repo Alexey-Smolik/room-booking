@@ -24,12 +24,14 @@ export const deleteEvent = (eventID) => async dispatch => {
 };
 
 export const editEvent = (eventID, editedEvent) => async dispatch => {
-    const res = await axios.put('/api/events', eventID,editedEvent );
+    const res = await axios.put('/api/events', eventID, editedEvent );
     dispatch({ type: EDIT_EVENT, payload: res.data });
 };
 
 
-export const createEvent = (eventID) => async dispatch => {
-    const res = await axios.post('/api/events', eventID);
+export const createEvent = (newEvent) => async dispatch => {
+    const res = await axios.post('/api/events', newEvent, {
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+    });
     dispatch({ type: CREATE_EVENT, payload: res.data });
 };

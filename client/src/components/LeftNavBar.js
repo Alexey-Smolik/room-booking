@@ -9,12 +9,10 @@ class LeftNavBar extends Component {
 
     componentDidMount() {
         this.props.getRooms();
-
     }
 
     getDataTable(id){
         this.props.getEvents(id);
-        console.log("LeftNavBar - getevetns",id);
         this.props.rooms;
     }
 
@@ -23,9 +21,9 @@ class LeftNavBar extends Component {
         if(this.props.rooms != null) {
             return this.props.rooms.map( index => {
                 return (
-                    <li onClick={() => this.getDataTable(index.id)}>
+                    <li><Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
                         {index.name}
-                    </li>);
+                    </Link></li>);
             });
         }
         return (
@@ -37,12 +35,12 @@ class LeftNavBar extends Component {
     render() {
         return(
             <aside>
-                <nav>                
+                <nav>
                     <ul className="aside-menu">
                         {this.renderMenu()}
                     </ul>
                 </nav>
-            </aside>   
+            </aside>
         );
     }
 }
