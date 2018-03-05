@@ -1,10 +1,10 @@
 # room-booking
-<h2>How to start client</h2>
+<h2>How to server +  client</h2>
 
 <dl>
+<dt>cd room-booking</dt>
+<dd>npm install</dd>
 <dt>cd client</dt>
-<dt>npm install</dt>
-<dd>Open 1 console -> npm run watch</dd>
-<dd>Open 2 console -> npm run webpack-devserver</dd>
-<dt>Server is running on http://localhost:8090/</dt>
+<dd>npm install</dd>
+<dt>cd room-booking -> npm run dev -> server is running on 3000</dt>
 </dl>
