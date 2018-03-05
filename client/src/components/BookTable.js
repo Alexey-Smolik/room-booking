@@ -15,7 +15,6 @@ class BookTable extends React.Component {
             event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
             event.args.appointment.originalData.roomId = this.props.room.id;
             event.args.appointment.originalData.userId = 1;
-
             //this.props.createEvent(event.args.appointment.originalData);
         });
 
@@ -24,6 +23,9 @@ class BookTable extends React.Component {
         this.refs.myScheduler.on('appointmentDelete', (event) => {
             console.log('aaa');
         });
+
+        this.refs.myScheduler.ensureAppointmentVisible('id1');
+
     }
 
     buttonHandler(){
@@ -115,6 +117,7 @@ class BookTable extends React.Component {
                 this.refs.myScheduler.addAppointment(appointment);
             });
         }
+        console.log("Table props", this.props);
 
         return (
             <div className={'tableContainer'}>
