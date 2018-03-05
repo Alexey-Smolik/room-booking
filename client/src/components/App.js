@@ -7,6 +7,7 @@ import * as actions from '../actions'
 import Header from './Header';
 import LeftNavBar from './LeftNavBar';
 import BookTable from './BookTable';
+import bookFrame from './bookFrame';
 
 
 class App extends Component {
