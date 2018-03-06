@@ -8,13 +8,18 @@ class BookTable extends React.Component {
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
-                /*event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
+
+                let start = new Date(event.args.appointment.originalData.start);
+                let end = new Date(event.args.appointment.originalData.end);
+
+                delete event.args.appointment.originalData['id'];
+                event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
                 event.args.appointment.originalData.description = event.args.appointment.originalData.description;
-                event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
-                event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
+                event.args.appointment.originalData.date_from = new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes()));
+                event.args.appointment.originalData.date_to = new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()));
                 event.args.appointment.originalData.roomId = this.props.room.id;
-                event.args.appointment.originalData.userId = this.props.room.events.user.id;
-                this.props.createEvent(event.args.appointment.originalData);*/
+                event.args.appointment.originalData.userId = this.props.user.id;
+                this.props.createEvent(event.args.appointment.originalData);
             }
         });
     }
@@ -44,8 +49,8 @@ class BookTable extends React.Component {
                     location: event.user.username,
                     subject: event.name,
                     calendar: event.user.username,
-                    start: new Date(event.date_from).toISOString(),
-                    end: new Date(event.date_to).toISOString()
+                    start: event.date_from,
+                    end: event.date_to
                 }
             });
         }
@@ -99,13 +104,13 @@ class BookTable extends React.Component {
             [
                 {
                     type: "dayView",
-                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm', timeZones: [{ id: 'UTC', text: 'UTC' }]},
                     workTime: {fromHour: 8, toHour: 19, fromDayOfWeek: 1, toDayOfWeek: 5,}
                 },
                 {
                     type: "weekView",
                     showWeekends: false,
-                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'}, timeZones: [{ id: 'UTC', text: 'UTC' }],
                     workTime:
                         {
                             fromDayOfWeek: 1,
