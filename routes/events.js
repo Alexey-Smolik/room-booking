@@ -24,9 +24,10 @@ routes.get('/:id', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
-    req.body = JSON.parse(Object.keys(req.body));
-
     console.log(req.body);
+    //req.body = JSON.parse(Object.keys(req.body));
+
+    //console.log(req.body);
     res.send('test');
     /*events.findOrCreate({
         where: { id: req.body.id },

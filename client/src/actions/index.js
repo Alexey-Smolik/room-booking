@@ -30,8 +30,6 @@ export const editEvent = (eventID, editedEvent) => async dispatch => {
 
 
 export const createEvent = (newEvent) => async dispatch => {
-    const res = await axios.post('/api/events', newEvent, {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    });
+    const res = await axios.post('/api/events', newEvent);
     dispatch({ type: CREATE_EVENT, payload: res.data });
 };

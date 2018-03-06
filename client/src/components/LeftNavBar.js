@@ -18,9 +18,9 @@ class LeftNavBar extends Component {
 
     renderMenu(){
         if(this.props.rooms != null) {
-            return this.props.rooms.map( index => {
+            return this.props.rooms.map( (index, key) => {
                 return (
-                    <li><Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
+                    <li key={key}><Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
                         {index.name}
                     </Link></li>);
             });

@@ -1,136 +1,141 @@
 import React from 'react';
 import JqxScheduler from './jqwidgets-react/react_jqxscheduler.js';
+import * as actions from '../actions';
+import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-    componentDidMount () {
-        this.refs.myScheduler.ensureAppointmentVisible('id1');
-        
+    componentDidMount() {
+        this.refs.myScheduler.on('appointmentAdd', (event) => {
+            event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
+            event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
+            event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
+            event.args.appointment.originalData.roomId = this.props.room.id;
+            event.args.appointment.originalData.userId = 1;
+            this.props.createEvent(event.args.appointment.originalData);
+        });
+
+        this.refs.myScheduler.on('appointmentDelete', (event) => {
+            console.log('aaa');
+        });
     }
-    
-    buttonHandler() {
-        this.refs.myScheduler.deleteAppointment('id2');
-        this.refs.myScheduler.deleteAppointment('id3');
-        this.refs.myScheduler.deleteAppointment('id4');
-        this.refs.myScheduler.deleteAppointment('id5');
-        this.refs.myScheduler.deleteAppointment('id6');
+
+    componentWillMount(){
+        if(this.props.room)
+            this.props.getEvents(this.props.room.id);
+    }
+
+    componentWillUpdate(){
+        if(this.refs.myScheduler){
+            this.refs.myScheduler.getDataAppointments().forEach(appointment => {
+                this.refs.myScheduler.deleteAppointment(appointment.id);
+            });
+        }
+    }
+
+
+    roomHandler() {
+        if(this.props.room){
+            return this.props.room.events.map((event) => {
+                return {
+                    description: event.description,
+                    location: event.user.username,
+                    subject: event.name,
+                    calendar: event.user.username,
+                    start: new Date(event.date_from).toISOString(),
+                    end: new Date(event.date_to).toISOString()
+                }
+            });
+        }
     }
 
     render () {
+        const $ = window.$;
 
-      const $ = window.$; 
 
-      let appointments = [];
-      let appointment1 = {
-          id: 'id1',
-          description: 'George brings projector for presentations.',
-          location: '',
-          subject: 'Quarterly Project Review Meeting',
-          calendar: 'Room 1',
-          start: new Date(2016, 10, 23, 9, 0, 0),
-          end: new Date(2016, 10, 23, 16, 0, 0)
-      }
-      let appointment2 = {
-          id: 'id2',
-          description: '',
-          location: '',
-          subject: 'IT Group Mtg.',
-          calendar: 'Room 2',
-          start: new Date(2016, 10, 24, 10, 0, 0),
-          end: new Date(2016, 10, 24, 15, 0, 0)
-      }
-      let appointment3 = {
-          id: 'id3',
-          description: '',
-          location: '',
-          subject: 'Course Social Media',
-          calendar: 'Room 3',
-          start: new Date(2016, 10, 27, 11, 0, 0),
-          end: new Date(2016, 10, 27, 13, 0, 0)
-      }
-      let appointment4 = {
-          id: 'id4',
-          description: '',
-          location: '',
-          subject: 'New Projects Planning',
-          calendar: 'Room 2',
-          start: new Date(2016, 10, 23, 16, 0, 0),
-          end: new Date(2016, 10, 23, 18, 0, 0)
-      }
-      let appointment5 = {
-          id: 'id5',
-          description: '',
-          location: '',
-          subject: 'Interview with James',
-          calendar: 'Room 1',
-          start: new Date(2016, 10, 25, 15, 0, 0),
-          end: new Date(2016, 10, 25, 17, 0, 0)
-      }
-      let appointment6 = {
-          id: 'id6',
-          description: '',
-          location: '',
-          subject: 'Interview with Nancy',
-          calendar: 'Room 4',
-          start: new Date(2016, 10, 26, 14, 0, 0),
-          end: new Date(2016, 10, 26, 16, 0, 0)
-      }
-      appointments.push(appointment1);
-      appointments.push(appointment2);
-      appointments.push(appointment3);
-      appointments.push(appointment4);
-      appointments.push(appointment5);
-      appointments.push(appointment6);
-      let source =
-      {
-          dataType: 'array',
-          dataFields: [
-              { name: 'id', type: 'string' },
-              { name: 'description', type: 'string' },
-              { name: 'location', type: 'string' },
-              { name: 'subject', type: 'string' },
-              { name: 'calendar', type: 'string' },
-              { name: 'start', type: 'date' },
-              { name: 'end', type: 'date' }
-          ],
-          id: 'id',
-          localData: appointments
-      };
-      let dataAdapter = new $.jqx.dataAdapter(source);
-      let resources =
-      {
-          colorScheme: 'scheme05',
-          dataField: 'calendar',
-          source:  new $.jqx.dataAdapter(source)
-      };
-      let appointmentDataFields =
-      {
-          from: 'start',
-          to: 'end',
-          id: 'id',
-          description: 'description',
-          location: 'location',
-          subject: 'subject',
-          resourceId: 'calendar'
-      };
-      let views =
-      [
-          'dayView',
-          'weekView',
-          'monthView'
-      ];
+        let appointments = this.roomHandler();
+
+        let source =
+            {
+                dataType: "array",
+                dataFields: [
+                    {name: 'id', type: 'string'},
+                    {name: 'description', type: 'string'},
+                    {name: 'location', type: 'string'},
+                    {name: 'subject', type: 'string'},
+                    {name: 'calendar', type: 'string'},
+                    {name: 'start', type: 'date'},
+                    {name: 'end', type: 'date'}
+                ],
+                id: 'id',
+                localData: appointments
+            };
+
+        let dataAdapter = new $.jqx.dataAdapter(source);
+
+        let resources =
+            {
+                colorScheme: "scheme01",
+                dataField: "calendar",
+                source: new $.jqx.dataAdapter(source)
+            };
+
+        let appointmentDataFields =
+            {
+                from: "start",
+                to: "end",
+                id: "id",
+                description: "description",
+                location: "location",
+                subject: "subject",
+                resourceId: "calendar"
+            };
+
+        let views =
+            [
+                {
+                    type: "dayView",
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    workTime: {fromHour: 8, toHour: 19, fromDayOfWeek: 1, toDayOfWeek: 5,}
+                },
+                {
+                    type: "weekView",
+                    showWeekends: false,
+                    timeRuler: {scaleStartHour: 8, scaleEndHour: 18, formatString: 'HH:mm'},
+                    workTime:
+                        {
+                            fromDayOfWeek: 1,
+                            toDayOfWeek: 5,
+                            fromHour: 8,
+                            toHour: 19
+                        }
+                },
+                'monthView'
+            ];
+
+        if (appointments) {
+            appointments.forEach(appointment => {
+                this.refs.myScheduler.addAppointment(appointment);
+            });
+        }
+
         return (
-            <div>
-            <JqxScheduler ref='myScheduler'
-              width={850} height={600} source={dataAdapter}
-              date={new $.jqx.date(2016, 11, 23)} showLegend={true}
-              view={'weekView'} resources={resources} views={views}
-              appointmentDataFields={appointmentDataFields}
-            />
-            <button onClick={this.buttonHandler.bind(this)}> Press </button>
+            <div className={'tableContainer'}>
+                <JqxScheduler ref='myScheduler'
+                              width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
+                              date={new $.jqx.date(2018, 3, 1)} showLegend={true}
+                              view={'weekView'} resources={resources} views={views}
+                              appointmentDataFields={appointmentDataFields} renderAppointment={appointments} />
             </div>
         )
     }
+
 }
 
-export default BookTable;
+function mapStateToProps({ events }) {
+    return {room: events};
+}
+
+export default connect(mapStateToProps,actions)(BookTable);
+
