@@ -8,16 +8,13 @@ import {connect} from 'react-redux';
 class BookTable extends React.Component {
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
+            console.log(event.args.appointment.originalData);
             event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
             event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
             event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
             event.args.appointment.originalData.roomId = this.props.room.id;
             event.args.appointment.originalData.userId = 1;
-            this.props.createEvent(event.args.appointment.originalData);
-        });
-
-        this.refs.myScheduler.on('appointmentDelete', (event) => {
-            console.log('aaa');
+            //this.props.createEvent(event.args.appointment.originalData);
         });
     }
 
@@ -34,12 +31,15 @@ class BookTable extends React.Component {
         }
     }
 
-
     roomHandler() {
         if(this.props.room){
             return this.props.room.events.map((event) => {
                 return {
-                    description: event.description,
+                    description: JSON.stringify({
+                        text: event.description,
+                        eventId: event.id.toString(),
+                        userId: event.user.id.toString()
+                    }),
                     location: event.user.username,
                     subject: event.name,
                     calendar: event.user.username,
@@ -52,7 +52,6 @@ class BookTable extends React.Component {
 
     render () {
         const $ = window.$;
-
 
         let appointments = this.roomHandler();
 
@@ -83,13 +82,13 @@ class BookTable extends React.Component {
 
         let appointmentDataFields =
             {
-                from: "start",
-                to: "end",
                 id: "id",
                 description: "description",
                 location: "location",
                 subject: "subject",
-                resourceId: "calendar"
+                resourceId: "calendar",
+                from: "start",
+                to: "end"
             };
 
         let views =
