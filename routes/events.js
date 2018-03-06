@@ -24,17 +24,16 @@ routes.get('/:id', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
-    // events.findOrCreate({
-    //     where: { id: req.body.id },
-    //     defaults: { name: req.body.name, description: req.body.description, date_from: req.body.date_from, date_to: req.body.date_to, roomId: req.body.roomId, userId: req.body.userId }
-    // })
-    // .then(event => {
-    //     res.status(201).send(event);
-    // })
-    // .catch(err => {
-    //     res.status(501).send({ status: "error", message: err.message });
-    // });
-    res.send(req);
+    events.findOrCreate({
+        where: { id: req.body.id },
+        defaults: { name: req.body.name, description: req.body.description, date_from: req.body.date_from, date_to: req.body.date_to, roomId: req.body.roomId, userId: req.body.userId }
+    })
+    .then(event => {
+        res.status(201).send(event);
+    })
+    .catch(err => {
+        res.status(501).send({ status: "error", message: err.message });
+    });
 });
 
 routes.put('/:id', (req, res) => {
