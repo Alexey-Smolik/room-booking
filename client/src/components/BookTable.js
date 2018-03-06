@@ -1,7 +1,6 @@
 import React from 'react';
 import JqxScheduler from './jqwidgets-react/react_jqxscheduler.js';
 import * as actions from '../actions';
-import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
 
@@ -9,7 +8,6 @@ class BookTable extends React.Component {
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
-                console.log(this.props.room);
                 /*event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
                 event.args.appointment.originalData.description = event.args.appointment.originalData.description;
                 event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
@@ -22,9 +20,9 @@ class BookTable extends React.Component {
     }
 
     componentWillMount(){
+        this.props.getCurrentUser();
         if(this.props.room){
             this.props.getEvents(this.props.room.id);
-            //this.props.getCurrentUser();
         }
     }
 
@@ -54,7 +52,9 @@ class BookTable extends React.Component {
     }
 
     render () {
-        console.log(this.props.getCurrentUser());
+
+        console.log("PRops table", this.props);
+
         const $ = window.$;
 
         let appointments = this.roomHandler();
@@ -123,6 +123,7 @@ class BookTable extends React.Component {
             });
         }
 
+
         return (
             <div className={'tableContainer'}>
                 <JqxScheduler ref='myScheduler'
@@ -136,8 +137,11 @@ class BookTable extends React.Component {
 
 }
 
-function mapStateToProps({ events }) {
-    return {room: events};
+function mapStateToProps({ events , user }) {
+    return {
+        room: events,
+        user: user
+    };
 }
 
 export default connect(mapStateToProps,actions)(BookTable);

@@ -12,15 +12,12 @@ import BookTable from './BookTable';
 
 class App extends Component {
 
-    componentDidMount() {
-
-        console.log("APP",this.props);
+    componentWillMount() {
         actions.getRooms();
+        console.log("APP",this.props);
     }
 
-    BookTable(){
-        return ( <BookTable room={this.props}/>);
-    }
+
 
     render() {
         return (
@@ -40,10 +37,9 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({rooms, events}) {
+function mapStateToProps({rooms}) {
     return {
-        rooms: rooms,
-        events: events
+        rooms: rooms
     }
 }
 
