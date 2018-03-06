@@ -28,6 +28,11 @@ export const editEvent = (eventID, editedEvent) => async dispatch => {
     dispatch({ type: EDIT_EVENT, payload: res.data });
 };
 
+export const getCurrentUser = () => async dispatch => {
+    const res = await axios.get('/api/users/current');
+    dispatch({ type: EDIT_EVENT, payload: res.data });
+};
+
 
 export const createEvent = (newEvent) => async dispatch => {
     const res = await axios.post('/api/events', newEvent);

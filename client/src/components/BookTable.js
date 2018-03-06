@@ -8,22 +8,24 @@ import {connect} from 'react-redux';
 class BookTable extends React.Component {
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
-            console.log(event.args.appointment);
-            event.args.appointment.originalData.id = event.args.appointment.originalData.description.eventId;
-            event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
-            event.args.appointment.originalData.description = event.args.appointment.originalData.description.text;
-            event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
-            event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
-            event.args.appointment.originalData.roomId = this.props.room.id;
-            event.args.appointment.originalData.userId = event.args.appointment.originalData.description.userId;
-
-            this.props.createEvent(event.args.appointment.originalData);
+            if(!event.args.appointment.originalData.description.userId){
+                console.log(this.props.room);
+                /*event.args.appointment.originalData.name = event.args.appointment.originalData.subject;
+                event.args.appointment.originalData.description = event.args.appointment.originalData.description;
+                event.args.appointment.originalData.date_from = event.args.appointment.originalData.start;
+                event.args.appointment.originalData.date_to = event.args.appointment.originalData.end;
+                event.args.appointment.originalData.roomId = this.props.room.id;
+                event.args.appointment.originalData.userId = this.props.room.events.user.id;
+                this.props.createEvent(event.args.appointment.originalData);*/
+            }
         });
     }
 
     componentWillMount(){
-        if(this.props.room)
+        if(this.props.room){
             this.props.getEvents(this.props.room.id);
+            //this.props.getCurrentUser();
+        }
     }
 
     componentWillUpdate(){
@@ -39,8 +41,6 @@ class BookTable extends React.Component {
             return this.props.room.events.map((event) => {
                 return {
                     description: {
-                        text: event.description,
-                        eventId: event.id.toString(),
                         userId: event.user.id.toString()
                     },
                     location: event.user.username,
@@ -54,6 +54,7 @@ class BookTable extends React.Component {
     }
 
     render () {
+        console.log(this.props.getCurrentUser());
         const $ = window.$;
 
         let appointments = this.roomHandler();

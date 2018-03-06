@@ -24,10 +24,7 @@ routes.get('/:id', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
-    events.findOrCreate({
-        where: { id: req.body.id },
-        defaults: { name: req.body.name, description: req.body.description, date_from: req.body.date_from, date_to: req.body.date_to, roomId: req.body.roomId, userId: req.body.userId }
-    })
+    events.create(req.body)
     .then(event => {
         res.status(201).send(event);
     })
