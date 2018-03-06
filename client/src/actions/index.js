@@ -31,5 +31,8 @@ export const editEvent = (eventID, editedEvent) => async dispatch => {
 
 export const createEvent = (newEvent) => async dispatch => {
     const res = await axios.post('/api/events', newEvent);
-    dispatch({ type: CREATE_EVENT, payload: res.data });
+    if(res.status === 200)
+        dispatch({ type: CREATE_EVENT, payload: res.data });
+    else
+        console.log("createEvent -> Error message:" , res.body);
 };
