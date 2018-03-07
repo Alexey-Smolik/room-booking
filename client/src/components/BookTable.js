@@ -5,6 +5,13 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
+    constructor(props){
+        super(props);
+        this.state ={
+            isDialogOpen : false
+        }
+    }
+
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
@@ -22,6 +29,18 @@ class BookTable extends React.Component {
                 this.props.createEvent(event.args.appointment.originalData);
             }
         });
+
+        this.refs.myScheduler.on('appointmentDelete', (event) => {
+            console.log(1);
+        });
+
+        this.refs.myScheduler.on('editDialogOpen', (event) => {
+            this.setState({isDialogOpen: true});
+        });
+
+        this.refs.myScheduler.on('editDialogClose', (event) => {
+            this.setState({isDialogOpen: false});
+        });
     }
 
     componentWillMount(){
@@ -37,6 +56,11 @@ class BookTable extends React.Component {
                 this.refs.myScheduler.deleteAppointment(appointment.id);
             });
         }
+    }
+
+    shouldComponentUpdate(){
+
+        return !this.state.isDialogOpen;
     }
 
     roomHandler() {
@@ -57,9 +81,6 @@ class BookTable extends React.Component {
     }
 
     render () {
-
-        console.log("PRops table", this.props);
-
         const $ = window.$;
 
         let appointments = this.roomHandler();
@@ -127,6 +148,7 @@ class BookTable extends React.Component {
                 this.refs.myScheduler.addAppointment(appointment);
             });
         }
+
 
 
         return (

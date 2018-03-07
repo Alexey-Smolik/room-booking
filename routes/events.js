@@ -25,12 +25,12 @@ routes.get('/:id', (req, res) => {
 
 routes.post('/', (req, res) => {
     events.create(req.body)
-    .then(event => {
-        res.status(201).send(event);
-    })
-    .catch(err => {
-        res.status(501).send({ status: "error", message: err.message });
-    });
+        .then(event => {
+            res.status(201).send(event);
+        })
+        .catch(err => {
+            res.status(501).send({ status: "error", message: err.message });
+        });
 });
 
 routes.put('/:id', (req, res) => {
