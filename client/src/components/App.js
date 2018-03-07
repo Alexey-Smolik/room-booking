@@ -20,12 +20,14 @@ class App extends Component {
 
 
     render() {
+
         return (
             <div className="App">
                 <BrowserRouter>
                     <div>
-                        <Header />
+                        <Header name={this.props} />
                         <LeftNavBar rooms={this.props.rooms}   />
+                        <br/>
                         {/*<BookTable room={this.props.events} />*/}
                         {/*<Route path="/room/:roomID" component={bookFrame} />*/}
                         {/*<Route path="/room/:roomID"  component={BookTable} />*/}
@@ -37,9 +39,10 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({rooms}) {
+function mapStateToProps({rooms, user}) {
     return {
-        rooms: rooms
+        rooms: rooms,
+        user: user
     }
 }
 

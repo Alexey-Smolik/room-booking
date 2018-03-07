@@ -33,6 +33,7 @@ class LeftNavBar extends Component {
 
     render() {
         return(
+            <div>
             <aside>
                 <nav>
                     <ul className="aside-menu">
@@ -40,6 +41,7 @@ class LeftNavBar extends Component {
                     </ul>
                 </nav>
             </aside>
+            </div>
         );
     }
 }

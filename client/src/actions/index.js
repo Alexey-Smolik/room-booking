@@ -8,13 +8,11 @@ export const getRoom = (roomID) => async dispatch => {
 
 export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
-    console.log("Action -> getrooms");
     dispatch({ type: GET_ROOMS, payload: res.data });
 };
 
 export const getEvents = (roomID) => async dispatch => {
     const res = await axios.get('/api/rooms/'+roomID);
-    console.log("Action -> getEvents");
     dispatch({ type: GET_EVENTS, payload: res.data });
 };
 
@@ -30,7 +28,6 @@ export const editEvent = (eventID, editedEvent) => async dispatch => {
 
 export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
-    console.log("Action -> get Current user");
     dispatch({ type: GET_CURRENT_USER, payload: res.data });
 };
 

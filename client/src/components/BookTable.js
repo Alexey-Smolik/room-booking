@@ -5,7 +5,26 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            deleteFromDB: false
+        }
+    }
+
+
+    componentWillMount(){
+        console.log("componentWillMount");
+        this.props.getCurrentUser();
+        if(this.props.room){
+            this.props.getEvents(this.props.room.id);
+        }
+    }
+
     componentDidMount() {
+        console.log("componentDidMount");
+
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
 
@@ -22,22 +41,47 @@ class BookTable extends React.Component {
                 this.props.createEvent(event.args.appointment.originalData);
             }
         });
+
+        this.refs.myScheduler.on('appointmentDelete', (event) => {
+            (this.state.deleteFromDB) ? console.log("Deleting from DB") : console.log("Simple deleting...");
+        });
+
     }
 
-    componentWillMount(){
-        this.props.getCurrentUser();
-        if(this.props.room){
-            this.props.getEvents(this.props.room.id);
-        }
+
+
+    componentWillReceiveProps(){
+        console.log("componentWillReceiveProps");
+        this.setState({deleteFromDB:false});
+        console.log("DELETE FROM ", this.state.deleteFromDB);
+
+        //this.setState({deleteFromDB:false});
     }
 
     componentWillUpdate(){
+        //this.setState({deleteFromDB:false});
         if(this.refs.myScheduler){
             this.refs.myScheduler.getDataAppointments().forEach(appointment => {
                 this.refs.myScheduler.deleteAppointment(appointment.id);
             });
         }
+
+        console.log("componentWillUpdate");
     }
+
+    componentDidUpdate(){
+        //this.setState({deleteFromDB:true});
+        console.log("componentDidUpdate");
+    }
+
+    shouldComponentUpdate(){
+        console.log("shouldComponentUpdate");
+        console.log(this.props);
+        //return this.state.deleteFromDB;
+    }
+
+
+
 
     roomHandler() {
         if(this.props.room){
@@ -57,8 +101,6 @@ class BookTable extends React.Component {
     }
 
     render () {
-
-        console.log("PRops table", this.props);
 
         const $ = window.$;
 
@@ -127,6 +169,9 @@ class BookTable extends React.Component {
                 this.refs.myScheduler.addAppointment(appointment);
             });
         }
+
+        this.setState({deleteFromDB:true});
+        console.log("DELETE FROM ", this.state.deleteFromDB);
 
 
         return (
