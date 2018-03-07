@@ -6,7 +6,7 @@ class Header extends Component {
             <div className="reactHeader">
                 <header>
                     <form className="hello" name="search" action="#" method="get">
-                        {/*<label id="username">HELLO, {this.props.name}</label>*/}
+                        <label id="username">HELLO,</label>
                         <button type="submit">Log out</button>
                     </form>
                 </header>

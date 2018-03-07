@@ -5,26 +5,14 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-
     constructor(props){
         super(props);
-        this.state = {
-            deleteFromDB: false
-        }
-    }
-
-
-    componentWillMount(){
-        console.log("componentWillMount");
-        this.props.getCurrentUser();
-        if(this.props.room){
-            this.props.getEvents(this.props.room.id);
+        this.state ={
+            isDialogOpen : false
         }
     }
 
     componentDidMount() {
-        console.log("componentDidMount");
-
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
 
@@ -43,45 +31,37 @@ class BookTable extends React.Component {
         });
 
         this.refs.myScheduler.on('appointmentDelete', (event) => {
-            (this.state.deleteFromDB) ? console.log("Deleting from DB") : console.log("Simple deleting...");
+            console.log(1);
         });
 
+        this.refs.myScheduler.on('editDialogOpen', (event) => {
+            this.setState({isDialogOpen: true});
+        });
+
+        this.refs.myScheduler.on('editDialogClose', (event) => {
+            this.setState({isDialogOpen: false});
+        });
     }
 
-
-
-    componentWillReceiveProps(){
-        console.log("componentWillReceiveProps");
-        this.setState({deleteFromDB:false});
-        console.log("DELETE FROM ", this.state.deleteFromDB);
-
-        //this.setState({deleteFromDB:false});
+    componentWillMount(){
+        this.props.getCurrentUser();
+        if(this.props.room){
+            this.props.getEvents(this.props.room.id);
+        }
     }
 
     componentWillUpdate(){
-        //this.setState({deleteFromDB:false});
         if(this.refs.myScheduler){
             this.refs.myScheduler.getDataAppointments().forEach(appointment => {
                 this.refs.myScheduler.deleteAppointment(appointment.id);
             });
         }
-
-        console.log("componentWillUpdate");
-    }
-
-    componentDidUpdate(){
-        //this.setState({deleteFromDB:true});
-        console.log("componentDidUpdate");
     }
 
     shouldComponentUpdate(){
-        console.log("shouldComponentUpdate");
-        console.log(this.props);
-        //return this.state.deleteFromDB;
+
+        return !this.state.isDialogOpen;
     }
-
-
-
 
     roomHandler() {
         if(this.props.room){
@@ -101,7 +81,6 @@ class BookTable extends React.Component {
     }
 
     render () {
-
         const $ = window.$;
 
         let appointments = this.roomHandler();
@@ -170,8 +149,6 @@ class BookTable extends React.Component {
             });
         }
 
-        this.setState({deleteFromDB:true});
-        console.log("DELETE FROM ", this.state.deleteFromDB);
 
 
         return (
