@@ -78,7 +78,7 @@ nav ul {
     padding: 0;
 }
 nav {
-    margin-top: 25px;
+
     width: 100%;
 }
 
@@ -144,9 +144,22 @@ figure {
     font-weight: 300;
 }
 
-
 #logout {
     float: right;
 }
+
+.jqx-grid.jqx-scheduler.jqx-reset.jqx-rc-all.jqx-widget.jqx-widget-content.jqx-disableselect {
+    width: 100% !important;
+    height: 75vh !important;
+}
+
+.jqx-scheduler-toolbar.jqx-widget-header {
+    width: 100% !important;
+}
+
+[type=button] {
+    -webkit-appearance: none !important;
+}
+
 
 
