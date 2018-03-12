@@ -150,13 +150,13 @@ class BookTable extends React.Component {
         }
 
         return (
-            <div className={'tableContainer'}>
+            <section>
                 <JqxScheduler ref='myScheduler'
-                              width={850} height={600} source={dataAdapter} dayNameFormat={'abbr'}
+                              source={dataAdapter} dayNameFormat={'abbr'}
                               date={new $.jqx.date(2018, 3, 1)} showLegend={true}
                               view={'weekView'} resources={resources} views={views}
                               appointmentDataFields={appointmentDataFields} renderAppointment={appointments} />
-            </div>
+            </section>
         )
     }
 
