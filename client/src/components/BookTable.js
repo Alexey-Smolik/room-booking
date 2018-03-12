@@ -149,8 +149,6 @@ class BookTable extends React.Component {
             });
         }
 
-
-
         return (
             <div className={'tableContainer'}>
                 <JqxScheduler ref='myScheduler'
