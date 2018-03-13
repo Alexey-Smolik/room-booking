@@ -88,6 +88,22 @@ export default [
 
   },
   {
+    id: 11,
+    title: 'Birthday Party',
+    start: new Date(2015, 3, 13, 7, 0, 0),
+    end: new Date(2015, 3, 13, 10, 30, 0),
+      desc: 'Power lunch'
+
+  },
+  {
+    id: 11,
+    title: 'Birthday Party',
+    start: new Date(2015, 3, 13, 7, 0, 0),
+    end: new Date(2015, 3, 13, 10, 30, 0),
+      desc: 'Power lunch'
+
+  },
+  {
     id: 12,
     title: 'Late Night Event',
     start: new Date(2015, 3, 17, 19, 30, 0),

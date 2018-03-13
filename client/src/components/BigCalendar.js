@@ -2,64 +2,43 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import events from './events';
 import moment from 'moment';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import * as actions from '../actions';
+import {connect} from 'react-redux';
 
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 
-function Event({ event }) {
-  return (
-    <span>
-      <strong>{event.title}</strong>
-      {event.desc && ':  ' + event.desc}
-    </span>
+let BigCalendar = () => (
+    <React.Fragment>
+        <BigCalendar
+            selectable
+            events={events}
+            defaultView="week"
+            scrollToTime={new Date(1970, 1, 1, 6)}
+            defaultDate={new Date(2015, 3, 12)}
+            onSelectEvent={event => alert(event.title)}
+            onSelectSlot={slotInfo =>
+            alert(
+                `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+                `\nend: ${slotInfo.end.toLocaleString()}` +
+                `\naction: ${slotInfo.action}`
+            )
+            }
+        />
+    </React.Fragment>
   )
-}
-
-function EventAgenda({ event }) {
-  return (
-    <span>
-      <em style={{ color: 'magenta' }}>{event.title}</em>
-      <p>{event.desc}</p>
-    </span>
-  )
-}
-
-const customDayPropGetter = date => {
-  if (date.getDate() === 7 || date.getDate() === 15)
+  
+  function mapStateToProps({ events , user }) {
     return {
-      className: 'special-day',
-      style: {
-        border: 'solid 3px ' + (date.getDate() === 7 ? '#faa' : '#afa'),
-      },
-    }
-  else return {}
+        room: events,
+        user: user
+    };
 }
 
-const customSlotPropGetter = date => {
-  if (date.getDate() === 7 || date.getDate() === 15)
-    return {
-      className: 'special-day',
-    }
-  else return {}
-}
+export default connect(mapStateToProps,actions)(BigCalendar);
 
-let Rendering = () => (
-  <BigCalendar
-    events={events}
-    defaultDate={new Date(2015, 3, 1)}
-    defaultView="agenda"
-    dayPropGetter={customDayPropGetter}
-    slotPropGetter={customSlotPropGetter}
-          onSelectEvent={event => alert(event.title)}
 
-    components={{
-      event: Event,
-      agenda: {
-        event: EventAgenda,
-      },
-    }}
-  />
-)
 
-export default Rendering;
+  
