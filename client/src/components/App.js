@@ -8,6 +8,8 @@ import * as actions from '../actions';
 import Header from './Header';
 import LeftNavBar from './LeftNavBar';
 import BookTable from './BookTable';
+import BigCalendar from './BigCalendar';
+
 
 
 class App extends Component {
@@ -29,7 +31,7 @@ class App extends Component {
                         {/*<BookTable room={this.props.events} />*/}
                         {/*<Route path="/room/:roomID" component={bookFrame} />*/}
                         {/*<Route path="/room/:roomID"  component={BookTable} />*/}
-                        <BookTable/>
+                        <BigCalendar/>
                     </div>
                 </BrowserRouter>
             </div>
