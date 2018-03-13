@@ -12,7 +12,12 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bootstrap": "^4.0.0",
+    "moment": "^2.21.0",
     "react": "^16.2.0",
+    "react-big-calendar": "^0.18.0",
+    "react-dnd": "^2.5.4",
+    "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
