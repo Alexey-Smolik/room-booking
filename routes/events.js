@@ -3,6 +3,7 @@ const events = require('../models').events;
 const rooms = require('../models').rooms;
 const companies = require('../models').companies;
 
+//select * from events
 routes.get('/', (req, res) => {
     events.findAll({ include: [ { model: rooms, include: companies } ] })
         .then(events => {

@@ -10,6 +10,19 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
 
 let Calendar = (props) => {
+    let events = [];
+    if(props.room){
+        events = props.room.events.map((event => {
+            return {
+                id: event.id,
+                desc: event.description,
+                title: event.name,
+                start: new Date(event.date_from),
+                end: new Date(event.date_to)
+            }
+        }));
+    }
+
     return (
         <React.Fragment>
             <BigCalendar
@@ -17,7 +30,7 @@ let Calendar = (props) => {
                 events={events}
                 defaultView="week"
                 scrollToTime={new Date(1970, 1, 1, 6)}
-                defaultDate={new Date(2015, 3, 12)}
+                defaultDate={new Date(2018, 2, 1)}
                 onSelectEvent={event => alert(event.title)}
                 onSelectSlot={slotInfo =>
                     alert(
@@ -33,7 +46,7 @@ let Calendar = (props) => {
   
 function mapStateToProps({ events }) {
     return {
-        events: events
+        room: events
     };
 }
 
