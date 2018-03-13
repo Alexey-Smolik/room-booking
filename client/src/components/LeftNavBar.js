@@ -13,9 +13,8 @@ class LeftNavBar extends Component {
         this.props.getEvents(id);
     }
 
-
     renderMenu(){
-        if(this.props.rooms != null) {
+        if(this.props.rooms) {
             return this.props.rooms.map( (index, key) => {
                 return (
                     <li key={key}><Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
@@ -27,7 +26,6 @@ class LeftNavBar extends Component {
             <li>Click me</li>
         )
     }
-
 
     render() {
         return(
@@ -42,10 +40,10 @@ class LeftNavBar extends Component {
     }
 }
 
-function mapStateToProps({rooms}) {
+function mapStateToProps({ rooms }) {
     return {
         rooms: rooms
-    }
+    };
 }
 
-export default connect(mapStateToProps , actions)(LeftNavBar);
+export default connect(mapStateToProps,actions)(LeftNavBar);

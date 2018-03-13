@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as actions from '../actions';
-
-
-// Import components
+import { Route } from 'react-router-dom';
 import Header from './Header';
 import LeftNavBar from './LeftNavBar';
-import BookTable from './BookTable';
 import BigCalendar from './BigCalendar';
-
+import HelloWindow from './HelloWindow';
 
 
 class App extends Component {
-
-    componentWillMount() {
-        actions.getRooms();
-        console.log("APP",this.props);
-    }
-
-
-
     render() {
         return (
             <div className="App">
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <LeftNavBar rooms={this.props.rooms}   />
-                        {/*<BookTable room={this.props.events} />*/}
-                        {/*<Route path="/room/:roomID" component={bookFrame} />*/}
-                        {/*<Route path="/room/:roomID"  component={BookTable} />*/}
-                        <BigCalendar/>
+                        <LeftNavBar />
+                        <Route path="/" exact component={HelloWindow} />
+                        <Route path="/room/:roomID" component={BigCalendar} />
                     </div>
                 </BrowserRouter>
             </div>
@@ -39,11 +24,4 @@ class App extends Component {
     }
 }
 
-function mapStateToProps({rooms}) {
-    return {
-        rooms: rooms
-    }
-}
-
-
-export default connect(mapStateToProps, actions)(App);
+export default App;
