@@ -5,8 +5,6 @@ import * as actions from "../actions";
 
 
 class LeftNavBar extends Component {
-
-
     componentDidMount() {
         this.props.getRooms();
     }
@@ -44,4 +42,10 @@ class LeftNavBar extends Component {
     }
 }
 
-export default connect(null , actions)(LeftNavBar);
+function mapStateToProps({rooms}) {
+    return {
+        rooms: rooms
+    }
+}
+
+export default connect(mapStateToProps , actions)(LeftNavBar);

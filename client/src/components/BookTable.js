@@ -5,13 +5,6 @@ import {connect} from 'react-redux';
 
 
 class BookTable extends React.Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            isDialogOpen : false
-        }
-    }
-
     componentDidMount() {
         this.refs.myScheduler.on('appointmentAdd', (event) => {
             if(!event.args.appointment.originalData.description.userId){
@@ -33,14 +26,6 @@ class BookTable extends React.Component {
         this.refs.myScheduler.on('appointmentDelete', (event) => {
             console.log(1);
         });
-
-        this.refs.myScheduler.on('editDialogOpen', (event) => {
-            this.setState({isDialogOpen: true});
-        });
-
-        this.refs.myScheduler.on('editDialogClose', (event) => {
-            this.setState({isDialogOpen: false});
-        });
     }
 
     componentWillMount(){
@@ -52,15 +37,11 @@ class BookTable extends React.Component {
 
     componentWillUpdate(){
         if(this.refs.myScheduler){
-            this.refs.myScheduler.getDataAppointments().forEach(appointment => {
-                this.refs.myScheduler.deleteAppointment(appointment.id);
-            });
+            //this.refs.myScheduler.destroy();
+            //this.refs.myScheduler.getDataAppointments().forEach(appointment => {
+                //this.refs.myScheduler.deleteAppointment(appointment.id);
+            //});
         }
-    }
-
-    shouldComponentUpdate(){
-
-        return !this.state.isDialogOpen;
     }
 
     roomHandler() {
@@ -81,9 +62,17 @@ class BookTable extends React.Component {
     }
 
     render () {
+        console.log(1);
         const $ = window.$;
 
         let appointments = this.roomHandler();
+
+        if (appointments) {
+            //this.refs.myScheduler.destroy();
+            appointments.forEach(appointment => {
+                this.refs.myScheduler.addAppointment(appointment);
+            });
+        }
 
         let source =
             {
@@ -142,12 +131,6 @@ class BookTable extends React.Component {
                 },
                 'monthView'
             ];
-
-        if (appointments) {
-            appointments.forEach(appointment => {
-                this.refs.myScheduler.addAppointment(appointment);
-            });
-        }
 
         return (
             <section>

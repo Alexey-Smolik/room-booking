@@ -1,24 +1,22 @@
-import React , { Component } from 'react';
+import React from 'react';
 
-class Header extends Component {
-    render() {
-        return(
-            <div className="reactHeader">
-                <header>
-                    <form className="hello" name="search" action="#" method="get">
-                        <label id="username">Hello, </label>
-                        <button type="submit">Log out</button>
-                    </form>
-                </header>
+const Header = () => {
+    return(
+        <div className="reactHeader">
+            <header>
+                <form className="hello" name="search" action="#" method="get">
+                    <label id="username">Hello, </label>
+                    <button type="submit">Log out</button>
+                </form>
+            </header>
 
-                <div id="heading">
-                    <blockquote>
-                        <p className="text">Выберите для Вас подходящий офис! Ваше удобство - наша забота!</p>
-                    </blockquote>
-                </div>
-            </div> 
-        );
-    }
-}
+            <div id="heading">
+                <blockquote>
+                    <p className="text">Выберите для Вас подходящий офис! Ваше удобство - наша забота!</p>
+                </blockquote>
+            </div>
+        </div>
+    );
+};
 
 export default Header;
