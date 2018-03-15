@@ -20,7 +20,23 @@ class Calendar extends  React.Component  {
         this.togglePopup = this.togglePopup.bind(this);
     }
 
-    submitHandler(event){
+    submitHandler(event) {
+
+        var eventsArray = this.props.room.events;
+        for(var i=0; i< eventsArray.length ; i++){
+            if( (((event.start < new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))
+                &&  (event.end > new Date(eventsArray[i].date_from)))
+                ||
+                ((event.start > new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))))
+                ||
+                ((event.start < new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to)))
+                ||
+                ((event.start > new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to))  &&
+                (event.start < new Date(eventsArray[i].date_to)))    ) {
+                alert("There is event on your date");
+                return;
+            }
+        }
         this.setState({
             showPopup: !this.state.showPopup,
             event: event
@@ -37,7 +53,7 @@ class Calendar extends  React.Component  {
     render() {
         let events = [];
         if(this.props.room){
-            events = this.props.room.events.map((event => {
+            events = this.props.room.events.map( event => {
                 return {
                     id: event.id,
                     desc: event.description,
@@ -45,7 +61,7 @@ class Calendar extends  React.Component  {
                     start: new Date(event.date_from),
                     end: new Date(event.date_to)
                 }
-            }))
+            })
         }
 
         return(
