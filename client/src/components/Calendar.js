@@ -54,12 +54,19 @@ class Calendar extends  React.Component  {
         let events = [];
         if(this.props.room){
             events = this.props.room.events.map( event => {
+                //console.log(moment(event.date_from).toDate());
+
+                let start = new Date(event.date_from);
+                let end = new Date(event.date_to);
+                start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
+                end.setTime(end.getTime() + end.getTimezoneOffset()*60*1000 );
+
                 return {
                     id: event.id,
                     desc: event.description,
                     title: event.name,
-                    start: new Date(event.date_from),
-                    end: new Date(event.date_to)
+                    start: start,
+                    end: end
                 }
             })
         }
@@ -86,6 +93,7 @@ class Calendar extends  React.Component  {
                         event={this.state.event}
                         user={this.props.user}
                         addNote={this.addHandler}
+                        editNote={this.props.editNote}
                         close={this.togglePopup}
                         editMode={this.state.editMode}
                         room={this.props.room}
