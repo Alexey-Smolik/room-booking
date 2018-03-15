@@ -8,16 +8,20 @@ class Popup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            name: '',
-            surname: '',
-            startDate: moment()
+            title: '',
+            desc: '',
+            startDate: moment(),
+            endDate: moment()
         };
         this.submitHandler = this.submitHandler.bind(this);
     }
 
     componentWillMount(){
         this.setState({
-            startDate: moment(this.props.event.start)
+            startDate: moment(this.props.event.start),
+            endDate: moment(this.props.event.end),
+            title: this.props.event.title,
+            desc: this.props.event.desc
         });
 
         /*if(this.props.editMode) {
@@ -27,7 +31,6 @@ class Popup extends React.Component {
 
     submitHandler(e) {
         e.preventDefault();
-
     }
 
     handleChangeDate(date) {
@@ -39,12 +42,13 @@ class Popup extends React.Component {
             this.setState({ startDate: date });
         }*/
     }
-    handleChangeName(e) {
-        e.preventDefault();
-        this.setState({ name: e.target.value });
+
+    handleChangeTitle(){
+
     }
-    handleChangeSurname(e) {
-        this.setState({ surname: e.target.value });
+
+    handleChangeDesc(){
+
     }
 
     render() {
@@ -56,21 +60,20 @@ class Popup extends React.Component {
                         <FormGroup
                             controlId="formBasicText">
 
-                            <ControlLabel>Your name</ControlLabel>
+                            <ControlLabel>Title</ControlLabel>
                             <FormControl
-
                                 type="text"
-                                value={this.state.name || ''}
-                                placeholder="Enter name"
-                                onChange={this.handleChangeName.bind(this)}
+                                value={this.state.title}
+                                onChange={this.handleChangeTitle}
+                                placeholder="Title"
                             />
 
-                            <ControlLabel>Your surname</ControlLabel>
+                            <ControlLabel>Description</ControlLabel>
                             <FormControl
                                 type="text"
-                                value={this.state.surname || ''}
-                                placeholder="Enter surname"
-                                onChange={this.handleChangeSurname.bind(this)}
+                                value={this.state.desc}
+                                onChange={this.handleChangeDesc}
+                                placeholder="Decription"
                             />
 
                             <DatePicker
@@ -78,7 +81,16 @@ class Popup extends React.Component {
                                 onChange={this.handleChangeDate}
                                 showTimeSelect
                                 timeFormat="HH:mm"
-                                timeIntervals={15}
+                                timeIntervals={30}
+                                dateFormat="LLL"
+                                timeCaption="time"
+                            />
+                            <DatePicker
+                                selected={this.state.endDate}
+                                onChange={this.handleChangeDate}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={30}
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />

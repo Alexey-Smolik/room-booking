@@ -1,12 +1,13 @@
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import moment from 'moment';
+import 'moment/locale/en-gb';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
-
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-BigCalendar.momentLocalizer(moment); // or globalizeLocalizer
+
+BigCalendar.momentLocalizer(moment);
 
 class Calendar extends  React.Component  {
     constructor(props){
@@ -18,7 +19,6 @@ class Calendar extends  React.Component  {
         this.submitHandler = this.submitHandler.bind(this);
         this.togglePopup = this.togglePopup.bind(this);
     }
-
 
     submitHandler(event){
         this.setState({
@@ -47,6 +47,7 @@ class Calendar extends  React.Component  {
                 }
             }))
         }
+
         return(
             <div>
                 <React.Fragment>
@@ -54,10 +55,13 @@ class Calendar extends  React.Component  {
                         selectable
                         events={events}
                         defaultView="week"
+                        min={moment('2018-02-23 08:00:00').toDate()}
+                        max={moment('2018-02-23 19:00:00').toDate()}
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
-                        onSelectEvent={(event) => console.log(event)}
-                        onSelectSlot={(event) => console.log(event)}
+                        culture={"en-GB"}
+                        onSelectEvent={(event) => this.submitHandler(event)}
+                        onSelectSlot={slot => this.submitHandler(slot)}
                     />
                 </React.Fragment>
 
