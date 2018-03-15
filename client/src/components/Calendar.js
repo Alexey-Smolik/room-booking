@@ -16,11 +16,27 @@ class Calendar extends  React.Component  {
             showPopup:false,
             editMode: false
         };
-        this.submitHandler = this.onSelectHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
         this.togglePopup = this.togglePopup.bind(this);
     }
 
-    onSelectHandler(event){
+    submitHandler(event) {
+
+        var eventsArray = this.props.room.events;
+        for(var i=0; i< eventsArray.length ; i++){
+            if( (((event.start < new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))
+                &&  (event.end > new Date(eventsArray[i].date_from)))
+                ||
+                ((event.start > new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))))
+                ||
+                ((event.start < new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to)))
+                ||
+                ((event.start > new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to))  &&
+                (event.start < new Date(eventsArray[i].date_to)))    ) {
+                alert("There is event on your date");
+                return;
+            }
+        }
         this.setState({
             showPopup: !this.state.showPopup,
             event: event
@@ -37,7 +53,7 @@ class Calendar extends  React.Component  {
     render() {
         let events = [];
         if(this.props.room){
-            events = this.props.room.events.map((event => {
+            events = this.props.room.events.map( event => {
                 return {
                     id: event.id,
                     desc: event.description,
@@ -45,7 +61,7 @@ class Calendar extends  React.Component  {
                     start: new Date(event.date_from),
                     end: new Date(event.date_to)
                 }
-            }))
+            })
         }
 
         return(
@@ -60,8 +76,8 @@ class Calendar extends  React.Component  {
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
                         culture={"en-GB"}
-                        onSelectEvent={(event) => this.onSelectHandler(event)}
-                        onSelectSlot={slot => this.onSelectHandler(slot)}
+                        onSelectEvent={(event) => this.submitHandler(event)}
+                        onSelectSlot={slot => this.submitHandler(slot)}
                     />
                 </React.Fragment>
 
