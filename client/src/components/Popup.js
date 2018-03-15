@@ -15,15 +15,6 @@ class Popup extends React.Component {
         this.submitHandler = this.submitHandler.bind(this);
     }
 
-    ehelloWorld(){
-        console.log("dsadas");
-    }
-
-
-    test(){
-        console.log(123);
-    }
-
     componentWillMount(){
         this.setState({
             startDate: moment(this.props.event.start)
