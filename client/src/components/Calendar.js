@@ -19,6 +19,7 @@ class Calendar extends  React.Component  {
         this.togglePopup = this.togglePopup.bind(this);
     }
 
+
     submitHandler(event){
         this.setState({
             showPopup: !this.state.showPopup,
@@ -55,8 +56,8 @@ class Calendar extends  React.Component  {
                         defaultView="week"
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
-                        onSelectEvent={(event) => this.submitHandler(event)}
-                        onSelectSlot={slot => this.submitHandler(slot)}
+                        onSelectEvent={(event) => console.log(event)}
+                        onSelectSlot={(event) => console.log(event)}
                     />
                 </React.Fragment>
 

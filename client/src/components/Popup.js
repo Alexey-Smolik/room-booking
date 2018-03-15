@@ -40,6 +40,7 @@ class Popup extends React.Component {
         }*/
     }
     handleChangeName(e) {
+        e.preventDefault();
         this.setState({ name: e.target.value });
     }
     handleChangeSurname(e) {
