@@ -7,6 +7,7 @@ import * as actions from "../actions";
 class LeftNavBar extends Component {
     componentDidMount() {
         this.props.getRooms();
+        this.props.getCurrentUser();
     }
 
     getDataTable(id){

@@ -16,11 +16,11 @@ class Calendar extends  React.Component  {
             showPopup:false,
             editMode: false
         };
-        this.submitHandler = this.submitHandler.bind(this);
+        this.submitHandler = this.onSelectHandler.bind(this);
         this.togglePopup = this.togglePopup.bind(this);
     }
 
-    submitHandler(event){
+    onSelectHandler(event){
         this.setState({
             showPopup: !this.state.showPopup,
             event: event
@@ -60,29 +60,29 @@ class Calendar extends  React.Component  {
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
                         culture={"en-GB"}
-                        onSelectEvent={(event) => this.submitHandler(event)}
-                        onSelectSlot={slot => this.submitHandler(slot)}
+                        onSelectEvent={(event) => this.onSelectHandler(event)}
+                        onSelectSlot={slot => this.onSelectHandler(slot)}
                     />
                 </React.Fragment>
 
                 {this.state.showPopup ?
                     <Popup
                         event={this.state.event}
-                        id={this.props.id}
-                        user={this.state.user}
+                        user={this.props.user}
                         addNote={this.addHandler}
-                        editNote={this.props.editNote}
                         close={this.togglePopup}
                         editMode={this.state.editMode}
+                        room={this.props.room}
                     /> : null}
             </div>
         )
     }
 }
 
-function mapStateToProps({ events }) {
+function mapStateToProps({ events, user }) {
     return {
-        room: events
+        room: events,
+        user: user
     };
 }
 
