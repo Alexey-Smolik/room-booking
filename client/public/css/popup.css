@@ -1,19 +1,19 @@
-h1 {
+/*h1 {
     margin: 0;
     padding: 0;
-}
-html, body, .app {
+}*/
+/*html, body, .app {
     margin: 0;
     padding: 0;
     position: relative;
     width: 100%;
-}
+}*/
 
-.app{
+/*.app{
     width: 70%;
     margin: 0 auto;
     padding: 50px;
-}
+}*/
 
 .nav-bar{
     text-align: right;
@@ -41,11 +41,11 @@ html, body, .app {
     background: white;
 }
 
-form{
+/*form{
     width: 50%;
     margin: 0 auto;
     padding: 50px;
-}
+}*/
 
 form input{
     margin: 0 auto;
@@ -61,3 +61,4 @@ form button{
 .img-button{
     width: 10%;
 }
+

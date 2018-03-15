@@ -53,6 +53,7 @@ nav {
 header {
     padding: 28px 0;
 
+
 }
 .text {
     text-align: center;
@@ -61,13 +62,15 @@ header {
 aside {
     float: left;
     width: 250px;
+    margin-right: 54px;
+
 }
 
 
-section {
+/*section {
     margin-left: 280px;
     padding-bottom: 50px;
-}
+}*/
 
 nav a {
     text-decoration: none;
@@ -97,10 +100,10 @@ nav li {
 
 }
 
-.top-menu li.active {
+/*.top-menu li.active {
     background: #383e41;
     color: #fbfdff;
-}
+}*/
 
 .top-menu a {
     color: #b2b2b2;
@@ -108,17 +111,18 @@ nav li {
 
 .aside-menu li {
     font-weight: 300;
-    list-style-type: square;
+    list-style-type: none;
     border-top: 1px solid #e7e7e7;
 }
 
-.aside-menu li.active {
+/*.aside-menu li.active {
     color: #383e41;
     font-weight: bolder;
-}
+}*/
 
 .aside-menu a {
     color: #8f8f8f;
+    padding-left: 15px;
 }
 
 blockquote {
@@ -135,32 +139,38 @@ blockquote p {
     margin: 0;
 }
 
-
-
-figure {
+/*figure {
     display: inline-block;
     margin: 0;
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
-}
+}*/
 
 #logout {
     float: right;
 }
 
-.jqx-grid.jqx-scheduler.jqx-reset.jqx-rc-all.jqx-widget.jqx-widget-content.jqx-disableselect {
-    width: 100% !important;
+h1 {
+
+    font-style: italic;
+    display: inline-block;
+    margin-left: 305px;
+}
+
+.rbc-calendar {
+    background-color: white;
+    width: 80%;
+    margin-left: 20px;
     height: 75vh !important;
+
 }
 
-.jqx-scheduler-toolbar.jqx-widget-header {
-    width: 100% !important;
+.rbc-header {
+    background-color: #d4d5d8;
 }
 
-[type=button] {
-    -webkit-appearance: none !important;
+.rbc-toolbar-label {
+    color: #0c0c0c;
+
 }
 
-.rbc-calendar .rbc-event {
-    z-index: 11;
-}
