@@ -9,15 +9,10 @@
 .twitter { background-color:#55ACEE;color:#fff; }
 .facebook:hover,.twitter:hover { color:#fff; }
 
-html, body {
-    height: 100vh;
-}
-
 body {
     color: #8f8f8f;
     font: 12px Tahoma, sans-serif;
-    background: url(../bg.png) #f8f8f8;
-    background-size: cover;
+    background: #f8f8f8 url(../images/bg.png);
     margin: 0;
 
 }
