@@ -16,49 +16,28 @@ class Popup extends React.Component {
     }
 
     componentWillMount(){
-        if(this.props.editMode) {
-            const user = this.props.user;
-            this.setState({
-                name: user.name,
-                surname: user.surname,
-                startDate: user.date
-            });
-        }
+        this.setState({
+            startDate: moment(this.props.event.start)
+        });
+
+        /*if(this.props.editMode) {
+
+        }*/
     }
 
     submitHandler(e) {
         e.preventDefault();
-        if(this.state.name.length > 1) {
-            if(this.props.editMode) {
-                this.props.editNote({
-                    id: this.props.user.id,
-                    name: this.state.name,
-                    surname: this.state.surname,
-                    date: this.state.startDate
-                });
-                this.props.close();
-            } else {
-                this.props.addNote({
-                    id: this.props.id,
-                    name: this.state.name,
-                    surname: this.state.surname,
-                    date: this.state.startDate
-                });
-            }
-            this.props.close();
-        } else {
-            alert("Name cannot be null");
-        }
+
     }
 
     handleChangeDate(date) {
-        if(date > moment() ) {
+        /*if(date > moment() ) {
             alert("Date of birthday cannot be less than " + moment()._d.toLocaleDateString());
             this.setState({ startDate: moment() });
 
         } else {
             this.setState({ startDate: date });
-        }
+        }*/
     }
     handleChangeName(e) {
         this.setState({ name: e.target.value });
@@ -68,7 +47,6 @@ class Popup extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className='popup'>
                 <div className='popup_inner'>
@@ -79,6 +57,7 @@ class Popup extends React.Component {
 
                             <ControlLabel>Your name</ControlLabel>
                             <FormControl
+
                                 type="text"
                                 value={this.state.name || ''}
                                 placeholder="Enter name"
