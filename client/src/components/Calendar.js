@@ -19,9 +19,6 @@ class Calendar extends  React.Component  {
         this.togglePopup = this.togglePopup.bind(this);
     }
 
-    ehelloWorld(){
-        console.log("dsadas");
-    }
 
     submitHandler(event){
         this.setState({
