@@ -9,10 +9,15 @@
 .twitter { background-color:#55ACEE;color:#fff; }
 .facebook:hover,.twitter:hover { color:#fff; }
 
+html, body {
+    height: 100vh;
+}
+
 body {
     color: #8f8f8f;
     font: 12px Tahoma, sans-serif;
-    background: #f8f8f8 url(../images/bg.png);
+    background: url(../bg.png) #f8f8f8;
+    background-size: cover;
     margin: 0;
 
 }
@@ -163,4 +168,82 @@ figure {
 
 .rbc-calendar .rbc-event {
     z-index: 11;
+}
+
+
+/*Alex10101 info-window & info-button*/
+
+
+
+.info {
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.info-button {
+    width: 22px;
+    height: 22px;
+    font-weight: bold;
+    line-height: 15px;
+    padding-bottom: 10px;
+    border-radius: 50%;
+    border: 2px solid #8f8f8f;
+    background: transparent;
+    color: #8f8f8f;
+    cursor: pointer;
+}
+
+.info-button:focus {
+    background: #c5c5c5;
+    text-decoration: none;
+    outline: none;
+}
+
+div.info-close {
+    width: 20px;
+    height: 20px;
+    float: right;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    right: 3px;
+    top: -14px;
+    cursor: pointer;
+}
+
+.room-info {
+    width: 740px;
+    border-radius: 1%;
+    background: rgba(210, 210, 210, 0.7);
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    left: calc(50% - 350px);
+}
+
+.room-info {
+    padding-top: 5px;
+}
+
+.room-info > * {
+    margin: 10px auto;
+    text-align: center;
+}
+
+
+.room-image img {
+    max-width: 700px;
+    border-radius: 1%;
+}
+
+.room-description {
+    max-width: 650px;
+    color: #000;
+    font-size: 18px;
+}
+
+.room-issues {
+    color: #222;
+    font-size: 16px;
 }
