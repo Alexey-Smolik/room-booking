@@ -161,5 +161,6 @@ figure {
     -webkit-appearance: none !important;
 }
 
-
-
+.rbc-calendar .rbc-event {
+    z-index: 11;
+}

@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 
-import BigCalendar from 'react-big-calendar';
-
 import {Provider} from 'react-redux';
 import { createStore , applyMiddleware } from 'redux';
 import reducers from './reducers/index';

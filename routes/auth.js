@@ -129,7 +129,6 @@ routes.post('/login', (req, res) => {
         });
 });
 
-
 routes.post('/local', passport.authenticate('local', { successRedirect: '/main', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));

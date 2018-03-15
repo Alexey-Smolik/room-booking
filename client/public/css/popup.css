@@ -1,0 +1,63 @@
+h1 {
+    margin: 0;
+    padding: 0;
+}
+html, body, .app {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+
+.app{
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.nav-bar{
+    text-align: right;
+}
+
+.popup {
+    z-index: 12;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 25%;
+    bottom: 25%;
+    margin: auto;
+    background: white;
+}
+
+form{
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+form input{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+form button{
+    margin-left: 20px;
+}
+
+.img-button{
+    width: 10%;
+}
