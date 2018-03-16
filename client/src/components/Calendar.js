@@ -23,36 +23,38 @@ class Calendar extends  React.Component  {
         this.editEvent = this.editEvent.bind(this);
     }
 
-    dateFilter(event, eventsArray){
-        var eventsArray = eventsArray;
+    dateFilter(event, eventID = -1){
+        var eventsArray = this.props.room.events;
 
         for(var i=0; i< eventsArray.length ; i++){
+            console.log(eventID, eventsArray[i].id);
             let start = new Date(eventsArray[i].date_from);
             let end = new Date(eventsArray[i].date_to);
             start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
             end.setTime(end.getTime() + end.getTimezoneOffset()*60*1000 );
 
-            if( (((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
+            if( ((((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
                 ((event.start >= start)  && (event.end <= end)))  ||
                 ((event.start <= start)  && (event.end >= end))   ||
-                ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end))    ) {
-                return false;
+                ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end)))  && (eventID > -1 && eventID === eventsArray[i].id) ) {
+                console.log("TRUE");
+                return true;
             }
         }
-        return true;
+        console.log("False");
+        return false;
     }
 
     editEvent(event){
         this.setState({
             showPopup: !this.state.showPopup,
-            event: event
+            event: event,
+            editMode: true
         });
     }
 
     addEvent(event) {
-        var eventsArray = this.props.room.events;
-
-        if( this.dateFilter(event,eventsArray) ) {
+        if( this.dateFilter(event) ) {
             this.setState({
                 showPopup: !this.state.showPopup,
                 event: event
@@ -65,14 +67,17 @@ class Calendar extends  React.Component  {
     closePopup() {
         this.setState({
             showPopup: !this.state.showPopup,
-            event: ''
+            event: '',
+            editMode: false
         });
     }
 
 
 
     render() {
+
         let events = [];
+
         if(this.props.room){
             events = this.props.room.events.map( event => {
                 //console.log(moment(event.date_from).toDate());
