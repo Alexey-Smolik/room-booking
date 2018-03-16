@@ -75,8 +75,6 @@ class Calendar extends  React.Component  {
         let events = [];
         if(this.props.room){
             events = this.props.room.events.map( event => {
-                //console.log(moment(event.date_from).toDate());
-
                 let start = new Date(event.date_from);
                 let end = new Date(event.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );

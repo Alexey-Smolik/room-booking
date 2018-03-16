@@ -86,10 +86,8 @@ class Popup extends React.Component {
 
     deleteHandler(e){
         e.preventDefault();
-
+        this.props.deleteEvent(this.props.event.id);
         this.props.closePopup();
-
-
     }
 
 
@@ -145,7 +143,7 @@ class Popup extends React.Component {
 
                         <Button bsStyle="success" type="submit">Confirm</Button>
                         <Button bsStyle="warning" onClick={this.props.closePopup}>Cancel</Button>
-                        <Button bsStyle="success" onClick={this.props.deleteHandler} /*type="reset"*/>Delete</Button>
+                        <Button bsStyle="success" onClick={this.deleteHandler} /*type="reset"*/>Delete</Button>
                     </form>
                 </div>
             </div>
