@@ -14,11 +14,13 @@ class Calendar extends  React.Component  {
         super(props);
         this.state = {
             showPopup:false,
-            editMode: false
+            editMode: false,
+            event: ''
         };
-        this.submitHandler = this.submitHandler.bind(this);
-        this.togglePopup = this.togglePopup.bind(this);
+        this.closePopup = this.closePopup.bind(this);
         this.dateFilter = this.dateFilter.bind(this);
+        this.addEvent = this.addEvent.bind(this);
+        this.editEvent = this.editEvent.bind(this);
     }
 
     dateFilter(event, eventsArray){
@@ -40,7 +42,14 @@ class Calendar extends  React.Component  {
         return true;
     }
 
-    submitHandler(event) {
+    editEvent(event){
+        this.setState({
+            showPopup: !this.state.showPopup,
+            event: event
+        });
+    }
+
+    addEvent(event) {
         var eventsArray = this.props.room.events;
 
         if( this.dateFilter(event,eventsArray) ) {
@@ -53,12 +62,14 @@ class Calendar extends  React.Component  {
         }
     }
 
-    togglePopup() {
+    closePopup() {
         this.setState({
             showPopup: !this.state.showPopup,
             event: ''
         });
     }
+
+
 
     render() {
         let events = [];
@@ -93,8 +104,8 @@ class Calendar extends  React.Component  {
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
                         culture={"en-GB"}
-                        onSelectEvent={(event) => this.submitHandler(event)}
-                        onSelectSlot={slot => this.submitHandler(slot)}
+                        onSelectEvent={ (event) => this.editEvent(event) }
+                        onSelectSlot={ (event) => this.addEvent(event)}
                     />
                 </React.Fragment>
 
@@ -104,7 +115,7 @@ class Calendar extends  React.Component  {
                         user={this.props.user}
                         addNote={this.addHandler}
                         editNote={this.props.editNote}
-                        close={this.togglePopup}
+                        close={this.closePopup}
                         editMode={this.state.editMode}
                         room={this.props.room}
                     /> : null}
