@@ -113,11 +113,10 @@ class Calendar extends  React.Component  {
                     <Popup
                         event={this.state.event}
                         user={this.props.user}
-                        addNote={this.addHandler}
-                        editNote={this.props.editNote}
-                        close={this.closePopup}
+                        closePopup={this.closePopup}
                         editMode={this.state.editMode}
                         room={this.props.room}
+                        dateFilter={this.dateFilter}
                     /> : null}
             </div>
         )

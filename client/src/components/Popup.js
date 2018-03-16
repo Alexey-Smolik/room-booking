@@ -22,6 +22,7 @@ class Popup extends React.Component {
         this.handleChangeDate = this.handleChangeDate.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this)
         this.handleChangeDesc = this.handleChangeDesc.bind(this);
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
 
     componentWillMount(){
@@ -54,6 +55,7 @@ class Popup extends React.Component {
         };
 
         this.props.createEvent(event);
+        this.props.closePopup();
     }
 
     handleChangeDate(e) {
@@ -81,6 +83,15 @@ class Popup extends React.Component {
         e.preventDefault();
         this.setState({ desc: e.target.value });
     }
+
+    deleteHandler(e){
+        e.preventDefault();
+
+        this.props.closePopup();
+
+
+    }
+
 
     render() {
         return (
@@ -111,6 +122,7 @@ class Popup extends React.Component {
                                 onChange={this.handleChangeDesc}
                                 placeholder="Decription"
                             />
+
                             <DatePicker
                                 selected={this.state.startDate}
                                 onChange={this.handleChangeDate}
@@ -132,8 +144,8 @@ class Popup extends React.Component {
                         </FormGroup>
 
                         <Button bsStyle="success" type="submit">Confirm</Button>
-                        <Button bsStyle="warning" onClick={this.props.close}>Cancel</Button>
-                        <Button bsStyle="success" type="reset">Delete</Button>
+                        <Button bsStyle="warning" onClick={this.props.closePopup}>Cancel</Button>
+                        <Button bsStyle="success" onClick={this.props.deleteHandler} /*type="reset"*/>Delete</Button>
                     </form>
                 </div>
             </div>
