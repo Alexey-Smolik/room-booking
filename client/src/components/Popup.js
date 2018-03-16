@@ -52,7 +52,6 @@ class Popup extends React.Component {
             end: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()))
         };
 
-        console.log("POPU|P" ,this.props.event.id);
         if(this.props.dateFilter(timeObj, this.props.event.id)) {
             var event = {
                 name: this.state.title,
