@@ -41,32 +41,48 @@ class Popup extends React.Component {
 
     submitHandler(e) {
         e.preventDefault();
-
-        let start = new Date(this.state.startDate._d),
+        var start = new Date(this.state.startDate._d),
             end = new Date(this.state.endDate._d);
+        start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
+        end.setTime(end.getTime() + end.getTimezoneOffset()*60*1000 );
 
-        let event = {
-            name: this.state.title,
-            description: this.state.desc,
-            date_from: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
-            date_to: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())),
-            roomId: this.state.room.id,
-            userId: this.state.user.id
+
+        var timeObj = {
+            start: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
+            end: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()))
         };
 
-        this.props.createEvent(event);
-        this.props.closePopup();
+        console.log("POPU|P" ,this.props.event.id);
+        if(this.props.dateFilter(timeObj, this.props.event.id)) {
+            var event = {
+                name: this.state.title,
+                description: this.state.desc,
+                date_from: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
+                date_to: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())),
+                roomId: this.state.room.id,
+                userId: this.state.user.id
+            };
+
+            if(this.props.editMode) {
+                this.props.editEvent(this.props.event.id , event);
+                this.props.closePopup();
+            } else {
+                this.props.createEvent(event);
+                this.props.closePopup();
+            }
+        }
+        else {
+            alert("There is event on this date");
+        }
     }
 
-    handleChangeDate(e) {
-        e.preventDefault();
-        /*if(date < moment() ) {
-            alert("Date of birthday cannot be less than");
-            this.setState({ startDate: moment() });
-
+    handleChangeDate(e,id){
+        console.log("Event", moment(e) );
+        if(id == 1) {
+            this.setState({ startDate: e });
         } else {
-            this.setState({ startDate: date });
-        }*/
+            this.setState({ endDate: e });
+        }
     }
 
     handleChangeUsername(e){
@@ -123,7 +139,7 @@ class Popup extends React.Component {
 
                             <DatePicker
                                 selected={this.state.startDate}
-                                onChange={this.handleChangeDate}
+                                onChange={ (e) => this.handleChangeDate(e,1)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
@@ -132,7 +148,7 @@ class Popup extends React.Component {
                             />
                             <DatePicker
                                 selected={this.state.endDate}
-                                onChange={this.handleChangeDate}
+                                onChange={ (e) => this.handleChangeDate(e,2)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
@@ -143,7 +159,7 @@ class Popup extends React.Component {
 
                         <Button bsStyle="success" type="submit">Confirm</Button>
                         <Button bsStyle="warning" onClick={this.props.closePopup}>Cancel</Button>
-                        <Button bsStyle="success" onClick={this.deleteHandler} /*type="reset"*/>Delete</Button>
+                        { this.props.editMode ? <Button bsStyle="success" onClick={this.deleteHandler} /*type="reset"*/>Delete</Button> : null}
                     </form>
                 </div>
             </div>
