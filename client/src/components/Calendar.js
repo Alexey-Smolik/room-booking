@@ -18,29 +18,39 @@ class Calendar extends  React.Component  {
         };
         this.submitHandler = this.submitHandler.bind(this);
         this.togglePopup = this.togglePopup.bind(this);
+        this.dateFilter = this.dateFilter.bind(this);
+    }
+
+    dateFilter(event, eventsArray){
+        var eventsArray = eventsArray;
+
+        for(var i=0; i< eventsArray.length ; i++){
+            let start = new Date(eventsArray[i].date_from);
+            let end = new Date(eventsArray[i].date_to);
+            start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
+            end.setTime(end.getTime() + end.getTimezoneOffset()*60*1000 );
+
+            if( (((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
+                ((event.start >= start)  && (event.end <= end)))  ||
+                ((event.start <= start)  && (event.end >= end))   ||
+                ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end))    ) {
+                return false;
+            }
+        }
+        return true;
     }
 
     submitHandler(event) {
-
         var eventsArray = this.props.room.events;
-        for(var i=0; i< eventsArray.length ; i++){
-            if( (((event.start < new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))
-                &&  (event.end > new Date(eventsArray[i].date_from)))
-                ||
-                ((event.start > new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))))
-                ||
-                ((event.start < new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to)))
-                ||
-                ((event.start > new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to))  &&
-                (event.start < new Date(eventsArray[i].date_to)))    ) {
-                alert("There is event on your date");
-                return;
-            }
+
+        if( this.dateFilter(event,eventsArray) ) {
+            this.setState({
+                showPopup: !this.state.showPopup,
+                event: event
+            });
+        } else {
+            alert("There is event on your date");
         }
-        this.setState({
-            showPopup: !this.state.showPopup,
-            event: event
-        });
     }
 
     togglePopup() {
