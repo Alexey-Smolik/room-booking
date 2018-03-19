@@ -40,7 +40,7 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <LeftNavBar rooms={this.props.rooms}   />
+                        <LeftNavBar />
                         <Route path="/" exact component={HelloWindow} />
                         <Route path="/room/:roomID"  component={Calendar} />
 

@@ -3,27 +3,36 @@ import { Button, FormGroup , ControlLabel , FormControl } from 'react-bootstrap'
 import  DatePicker from "react-datepicker";
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
+import * as actions from '../actions';
+import {connect} from "react-redux";
 
 class Popup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            room: '',
             title: '',
             desc: '',
+            user: '',
             startDate: moment(),
-            endDate: moment()
+            endDate: moment(),
+
         };
         this.submitHandler = this.submitHandler.bind(this);
+        this.handleChangeDate = this.handleChangeDate.bind(this);
+        this.handleChangeTitle = this.handleChangeTitle.bind(this)
+        this.handleChangeDesc = this.handleChangeDesc.bind(this);
     }
 
     componentWillMount(){
         this.setState({
+            room: this.props.room,
             startDate: moment(this.props.event.start),
             endDate: moment(this.props.event.end),
             title: this.props.event.title,
-            desc: this.props.event.desc
+            desc: this.props.event.desc,
+            user: this.props.user
         });
-
         /*if(this.props.editMode) {
 
         }*/
@@ -31,11 +40,26 @@ class Popup extends React.Component {
 
     submitHandler(e) {
         e.preventDefault();
+
+        let start = new Date(this.state.startDate._d),
+            end = new Date(this.state.endDate._d);
+
+        let event = {
+            name: this.state.title,
+            description: this.state.desc,
+            date_from: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
+            date_to: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())),
+            roomId: this.state.room.id,
+            userId: this.state.user.id
+        };
+
+        this.props.createEvent(event);
     }
 
-    handleChangeDate(date) {
-        /*if(date > moment() ) {
-            alert("Date of birthday cannot be less than " + moment()._d.toLocaleDateString());
+    handleChangeDate(e) {
+        e.preventDefault();
+        /*if(date < moment() ) {
+            alert("Date of birthday cannot be less than");
             this.setState({ startDate: moment() });
 
         } else {
@@ -43,12 +67,19 @@ class Popup extends React.Component {
         }*/
     }
 
-    handleChangeTitle(){
-
+    handleChangeUsername(e){
+        e.preventDefault();
+        this.setState({ username: e.target.value });
     }
 
-    handleChangeDesc(){
+    handleChangeTitle(e){
+        e.preventDefault();
+        this.setState({ title: e.target.value });
+    }
 
+    handleChangeDesc(e){
+        e.preventDefault();
+        this.setState({ desc: e.target.value });
     }
 
     render() {
@@ -57,9 +88,15 @@ class Popup extends React.Component {
                 <div className='popup_inner'>
 
                     <form onSubmit={this.submitHandler}>
-                        <FormGroup
-                            controlId="formBasicText">
-
+                        <FormGroup controlId="formBasicText">
+                            <ControlLabel>Username</ControlLabel>
+                            <FormControl
+                                type="text"
+                                disabled
+                                value={this.state.user.username}
+                                onChange={this.handleChangeUsername}
+                                placeholder="Title"
+                            />
                             <ControlLabel>Title</ControlLabel>
                             <FormControl
                                 type="text"
@@ -67,7 +104,6 @@ class Popup extends React.Component {
                                 onChange={this.handleChangeTitle}
                                 placeholder="Title"
                             />
-
                             <ControlLabel>Description</ControlLabel>
                             <FormControl
                                 type="text"
@@ -75,7 +111,6 @@ class Popup extends React.Component {
                                 onChange={this.handleChangeDesc}
                                 placeholder="Decription"
                             />
-
                             <DatePicker
                                 selected={this.state.startDate}
                                 onChange={this.handleChangeDate}
@@ -106,5 +141,5 @@ class Popup extends React.Component {
     }
 }
 
-export default Popup;
+export default connect(null,actions)(Popup);
 
