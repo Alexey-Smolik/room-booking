@@ -82,7 +82,6 @@ class Calendar extends  React.Component  {
 
 
     render() {
-
         let events = [];
 
         if(this.props.room){

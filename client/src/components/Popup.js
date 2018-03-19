@@ -16,7 +16,6 @@ class Popup extends React.Component {
             user: '',
             startDate: moment(),
             endDate: moment(),
-
         };
         this.submitHandler = this.submitHandler.bind(this);
         this.handleChangeDate = this.handleChangeDate.bind(this);
@@ -34,9 +33,6 @@ class Popup extends React.Component {
             desc: this.props.event.desc,
             user: this.props.user
         });
-        /*if(this.props.editMode) {
-
-        }*/
     }
 
     submitHandler(e) {
@@ -70,8 +66,8 @@ class Popup extends React.Component {
         }
     }
 
-    handleChangeDate(e,id){
-        if(id === 1) {
+    handleChangeDate(e, id){
+        if(id) {
             this.setState({ startDate: e });
         } else {
             this.setState({ endDate: e });
@@ -98,7 +94,6 @@ class Popup extends React.Component {
         this.props.deleteEvent(this.props.event.id);
         this.props.closePopup();
     }
-
 
     render() {
         return (

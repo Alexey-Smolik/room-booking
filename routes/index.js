@@ -14,6 +14,7 @@ routes.use(express.static('/public'), authHelpers);
 routes.use('/main', (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'main.html'));
 });
+
 routes.use('/api/users', users);
 routes.use('/api/rooms', rooms);
 routes.use('/api/companies', companies);
