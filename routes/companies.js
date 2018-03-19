@@ -25,7 +25,7 @@ routes.get('/:id', (req, res) => {
 routes.post('/', (req, res) => {
     companies.create(req.body)
         .then(company => {
-            res.status(201).send(company);
+            res.status(201).send(company.dataValues);
         })
         .catch(err => {
             res.status(501).send({ message: err.message });
@@ -47,13 +47,19 @@ routes.put('/:id', (req, res) => {
 });
 
 routes.delete('/:id', (req, res) => {
-    companies.destroy({ where: { id: req.params.id } })
+    companies.findById(req.params.id)
         .then(company => {
-            company ? res.status(200).send({ message: 'Company successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
+            if (!company) {
+                return res.status(404).send({
+                    message: 'Company Not Found',
+                });
+            }
+            return company
+                .destroy()
+                .then(() => res.status(200).send(company))
+                .catch(error => res.status(400).send(error));
         })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+        .catch(error => res.status(400).send(error));
 });
 
 module.exports = routes;
