@@ -125,7 +125,7 @@ routes.post('/login', (req, res) => {
             res.status(201).redirect('/');
         })
         .catch(err => {
-            res.status(501).send({ status: "error", message: err.message });
+            res.status(501).send({ message: err.message });
         });
 });
 

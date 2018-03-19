@@ -81,8 +81,7 @@ routes.put('/:id', (req, res) => {
             else res.status(500).send({ message: 'Wrong id' });
         })
         .then(rooms => {
-            console.log(rooms);
-            res.status(200).send(user);
+            res.status(200).send(rooms);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
