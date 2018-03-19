@@ -24,10 +24,9 @@ class Calendar extends  React.Component  {
     }
 
     dateFilter(event, eventID = -1) {
-        var eventsArray = this.props.room.events;
+        let eventsArray = this.props.room.events;
 
-        for (var i = 0; i < eventsArray.length; i++) {
-            console.log(eventID, eventsArray[i].id);
+        for (let i = 0; i < eventsArray.length; i++) {
             let start = new Date(eventsArray[i].date_from);
             let end = new Date(eventsArray[i].date_to);
             start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
@@ -39,7 +38,6 @@ class Calendar extends  React.Component  {
                         ((event.start <= start) && (event.end >= end)) ||
                         ((event.start >= start) && (event.end >= end) && (event.start <= end))) ||
                     (eventID > -1 && eventID === eventsArray[i].id)) {
-                    console.log("TRUE");
                     return true;
                 }
             } else {
@@ -51,7 +49,6 @@ class Calendar extends  React.Component  {
                 }
             }
         }
-        console.log("COOl");
         return !this.state.editMode;
     }
 
