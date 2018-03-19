@@ -4,25 +4,65 @@ const events = require('../models').events;
 const users = require('../models').users;
 
 routes.get('/', (req, res) => {
-    rooms.findAll()
-        .then(rooms => {
-            res.status(200).send(rooms);
-        })
-        .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
-        });
+    if(req.query.availability !== 'undefined') {
+        if (req.query.startDate && req.query.endDate) {
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+                .then(events => {
+                    return events.map(event => event.roomId);
+                })
+                .then(roomsId => {
+                    roomsId = roomsId.filter((value, index, self) => {
+                        return self.indexOf(value) === index;
+                    });
+
+                    let where = {};
+                    where.id = req.query.availability ? { $notIn: roomsId } : { $in: roomsId };
+
+                    return rooms.findAll({ where: where});
+                })
+                .then(rooms => {
+                    res.send(rooms);
+                })
+                .catch(err => {
+                    res.status(500).send({message: err.message});
+                });
+        } else res.status(500).send({ message: 'Wrong params' });
+    }
+    else {
+        rooms.findAll()
+            .then(rooms => {
+                res.send(rooms);
+            })
+            .catch(err => {
+                res.status(500).send({ message: err.message});
+            });
+    }
 });
 
 routes.get('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username', 'id'] }] }] })
         .then(room => {
             if(room) res.send(room);
-            else res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+            else res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
+            res.status(500).send({ message: err.message });
         });
 });
+
+/*routes.get('/free', (req, res) => {
+    console.log(req.query.startDate);
+    if(req.query.startDate && req.query.endDate){
+        events.find({ where: { date_from: { $gte: req.query.startDate }, date_to: { $lte: req.query.endDate } } })
+            .then(events => {
+                res.send(events);
+            })
+            .catch(err => {
+                res.status(500).send({ message: err.message });
+            });
+    }
+    else res.status(500).send({ message: 'Wrong params' });
+});*/
 
 routes.post('/', (req, res) => {
     rooms.create(req.body)
@@ -30,7 +70,7 @@ routes.post('/', (req, res) => {
             res.status(201).send(room);
         })
         .catch(err => {
-            res.status(501).send({ status: "error", message: err.message });
+            res.status(501).send({ message: err.message });
         });
 });
 
@@ -38,24 +78,23 @@ routes.put('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id } })
         .then(rooms => {
             if(rooms) return rooms.update(req.body, { where : { id: req.params.id } });
-            else res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+            else res.status(500).send({ message: 'Wrong id' });
         })
         .then(rooms => {
-            console.log(rooms);
-            res.status(200).send(user);
+            res.status(200).send(rooms);
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
+            res.status(500).send({ message: err.message });
         });
 });
 
 routes.delete('/:id', (req, res) => {
     rooms.destroy({ where: { id: req.params.id } })
         .then(rooms => {
-            rooms ? res.status(200).send({ status: 'success', messsage: 'Room successfully deleted' }) : res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+            rooms ? res.status(200).send({ message: 'Room successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
+            res.status(500).send({ message: err.message });
         });
 });
 

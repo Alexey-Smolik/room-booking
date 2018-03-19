@@ -14,48 +14,78 @@ class Calendar extends  React.Component  {
         super(props);
         this.state = {
             showPopup:false,
-            editMode: false
+            editMode: false,
+            event: ''
         };
-        this.submitHandler = this.submitHandler.bind(this);
-        this.togglePopup = this.togglePopup.bind(this);
+        this.closePopup = this.closePopup.bind(this);
+        this.dateFilter = this.dateFilter.bind(this);
+        this.addEvent = this.addEvent.bind(this);
+        this.editEvent = this.editEvent.bind(this);
     }
 
-    submitHandler(event) {
+    dateFilter(event, eventID = -1) {
+        let eventsArray = this.props.room.events;
 
-        var eventsArray = this.props.room.events;
-        for(var i=0; i< eventsArray.length ; i++){
-            if( (((event.start < new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))
-                &&  (event.end > new Date(eventsArray[i].date_from)))
-                ||
-                ((event.start > new Date(eventsArray[i].date_from))  && (event.end < new Date(eventsArray[i].date_to))))
-                ||
-                ((event.start < new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to)))
-                ||
-                ((event.start > new Date(eventsArray[i].date_from))  && (event.end > new Date(eventsArray[i].date_to))  &&
-                (event.start < new Date(eventsArray[i].date_to)))    ) {
-                alert("There is event on your date");
-                return;
+        for (let i = 0; i < eventsArray.length; i++) {
+            let start = new Date(eventsArray[i].date_from);
+            let end = new Date(eventsArray[i].date_to);
+            start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+            end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+
+            if (this.state.editMode) {
+                if (((((event.start <= start) && (event.end <= end) && (event.end >= start)) ||
+                        ((event.start >= start) && (event.end <= end))) ||
+                        ((event.start <= start) && (event.end >= end)) ||
+                        ((event.start >= start) && (event.end >= end) && (event.start <= end))) ||
+                    (eventID > -1 && eventID === eventsArray[i].id)) {
+                    return true;
+                }
+            } else {
+                if( (((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
+                        ((event.start >= start)  && (event.end <= end)))  ||
+                    ((event.start <= start)  && (event.end >= end))   ||
+                    ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end))    ) {
+                    return false;
+                }
             }
         }
+        return !this.state.editMode;
+    }
+
+    editEvent(event){
         this.setState({
             showPopup: !this.state.showPopup,
-            event: event
+            event: event,
+            editMode: true
         });
     }
 
-    togglePopup() {
+    addEvent(event) {
+        if( this.dateFilter(event) ) {
+            this.setState({
+                showPopup: !this.state.showPopup,
+                event: event
+            });
+        } else {
+            alert("There is event on your date");
+        }
+    }
+
+    closePopup() {
         this.setState({
             showPopup: !this.state.showPopup,
-            event: ''
+            event: '',
+            editMode: false
         });
     }
+
+
 
     render() {
         let events = [];
+
         if(this.props.room){
             events = this.props.room.events.map( event => {
-                //console.log(moment(event.date_from).toDate());
-
                 let start = new Date(event.date_from);
                 let end = new Date(event.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
@@ -83,8 +113,8 @@ class Calendar extends  React.Component  {
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date(2018, 2, 1)}
                         culture={"en-GB"}
-                        onSelectEvent={(event) => this.submitHandler(event)}
-                        onSelectSlot={slot => this.submitHandler(slot)}
+                        onSelectEvent={ (event) => this.editEvent(event) }
+                        onSelectSlot={ (event) => this.addEvent(event)}
                     />
                 </React.Fragment>
 
@@ -92,11 +122,10 @@ class Calendar extends  React.Component  {
                     <Popup
                         event={this.state.event}
                         user={this.props.user}
-                        addNote={this.addHandler}
-                        editNote={this.props.editNote}
-                        close={this.togglePopup}
+                        closePopup={this.closePopup}
                         editMode={this.state.editMode}
                         room={this.props.room}
+                        dateFilter={this.dateFilter}
                     /> : null}
             </div>
         )

@@ -16,12 +16,12 @@ class Popup extends React.Component {
             user: '',
             startDate: moment(),
             endDate: moment(),
-
         };
         this.submitHandler = this.submitHandler.bind(this);
         this.handleChangeDate = this.handleChangeDate.bind(this);
         this.handleChangeTitle = this.handleChangeTitle.bind(this)
         this.handleChangeDesc = this.handleChangeDesc.bind(this);
+        this.deleteHandler = this.deleteHandler.bind(this);
     }
 
     componentWillMount(){
@@ -33,9 +33,6 @@ class Popup extends React.Component {
             desc: this.props.event.desc,
             user: this.props.user
         });
-        /*if(this.props.editMode) {
-
-        }*/
     }
 
     submitHandler(e) {
@@ -43,28 +40,38 @@ class Popup extends React.Component {
 
         let start = new Date(this.state.startDate._d),
             end = new Date(this.state.endDate._d);
+        start.setTime(start.getTime() - start.getTimezoneOffset()*60*1000 );
+        end.setTime(end.getTime() - end.getTimezoneOffset()*60*1000 );
 
-        let event = {
-            name: this.state.title,
-            description: this.state.desc,
-            date_from: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
-            date_to: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())),
-            roomId: this.state.room.id,
-            userId: this.state.user.id
-        };
+        if(this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
+            let event = {
+                name: this.state.title,
+                description: this.state.desc,
+                date_from: start,
+                date_to: end,
+                roomId: this.state.room.id,
+                userId: this.state.user.id
+            };
 
-        this.props.createEvent(event);
+            if(this.props.editMode) {
+                this.props.editEvent(this.props.event.id , event);
+                this.props.closePopup();
+            } else {
+                this.props.createEvent(event);
+                this.props.closePopup();
+            }
+        }
+        else {
+            alert("There is event on this date");
+        }
     }
 
-    handleChangeDate(e) {
-        e.preventDefault();
-        /*if(date < moment() ) {
-            alert("Date of birthday cannot be less than");
-            this.setState({ startDate: moment() });
-
+    handleChangeDate(e, id){
+        if(id) {
+            this.setState({ startDate: e });
         } else {
-            this.setState({ startDate: date });
-        }*/
+            this.setState({ endDate: e });
+        }
     }
 
     handleChangeUsername(e){
@@ -82,12 +89,18 @@ class Popup extends React.Component {
         this.setState({ desc: e.target.value });
     }
 
+    deleteHandler(e){
+        e.preventDefault();
+        this.props.deleteEvent(this.props.event.id);
+        this.props.closePopup();
+    }
+
     render() {
         return (
             <div className='popup'>
                 <div className='popup_inner'>
 
-                    <form id="popup_form" onSubmit={this.submitHandler}>
+                    <form onSubmit={this.submitHandler}>
                         <FormGroup controlId="formBasicText">
                             <ControlLabel>Username</ControlLabel>
                             <FormControl
@@ -105,41 +118,36 @@ class Popup extends React.Component {
                                 placeholder="Title"
                             />
                             <ControlLabel>Description</ControlLabel>
-                            <textarea
-                                //type="text"
+                            <FormControl
+                                type="text"
                                 value={this.state.desc}
                                 onChange={this.handleChangeDesc}
-                                //placeholder="Decription"
+                                placeholder="Decription"
                             />
-                            <div id = "date">
+
                             <DatePicker
                                 selected={this.state.startDate}
-                                onChange={this.handleChangeDate}
+                                onChange={ (e) => this.handleChangeDate(e,1)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
-
                             <DatePicker
                                 selected={this.state.endDate}
-                                onChange={this.handleChangeDate}
+                                onChange={ (e) => this.handleChangeDate(e,2)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
-
-                            </div>
-
                         </FormGroup>
-                        <div id="form_button">
+
                         <Button bsStyle="success" type="submit">Confirm</Button>
-                        <Button bsStyle="info" type="reset">Delete</Button>
-                        <Button bsStyle="primary" onClick={this.props.close}>Cancel</Button>
-                        </div>
+                        <Button bsStyle="warning" onClick={this.props.closePopup}>Cancel</Button>
+                        { this.props.editMode ? <Button bsStyle="success" onClick={this.deleteHandler} /*type="reset"*/>Delete</Button> : null}
                     </form>
                 </div>
             </div>

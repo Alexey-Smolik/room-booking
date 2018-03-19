@@ -20,7 +20,7 @@ routes.get('/:id', (req, res) => {
             res.send(events);
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', message: err.message });
+            res.status(500).send({ message: err.message });
         })
 });
 
@@ -30,7 +30,7 @@ routes.post('/', (req, res) => {
             res.status(201).send(event);
         })
         .catch(err => {
-            res.status(501).send({ status: "error", message: err.message });
+            res.status(501).send({ message: err.message });
         });
 });
 
@@ -38,23 +38,23 @@ routes.put('/:id', (req, res) => {
     events.findOne({ where: { id: req.params.id } })
         .then(event => {
             if(event) return events.update(req.body, { where : { id: req.params.id } });
-            else res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+            else res.status(500).send({ message: 'Wrong id' });
         })
         .then(event => {
             res.status(200).send(event);
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
+            res.status(500).send({ message: err.message });
         });
 });
 
 routes.delete('/:id', (req, res) => {
     events.destroy({ where: { id: req.params.id } })
         .then(event => {
-            event ? res.status(200).send({ status: 'success', messsage: 'Event successfully deleted' }) : res.status(500).send({ status: 'error', messsage: 'Wrong id' });
+            event ? res.status(200).send({ message: 'Event successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {
-            res.status(500).send({ status: 'error', messsage: err.message });
+            res.status(500).send({ message: err.message });
         });
 });
 
