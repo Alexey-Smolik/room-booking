@@ -1,10 +1,19 @@
-import { GET_ROOMS } from '../actions/types';
+import {
+    GET_ROOMS,
+    DELETE_ROOM,
+    CREATE_ROOM,
+} from '../actions/types';
 
-export default function ( state = null, action) {
+export default function ( state = [], action) {
     switch( action.type) {
         case GET_ROOMS:
-            console.log("Reducer -> getrooms");
             return  action.payload || false;
+
+        case CREATE_ROOM:
+            return [...state, action.payload] || false;
+
+        case DELETE_ROOM:
+            return  [...state.filter(({ id }) => id !== action.payload.id)] || false;
 
         default:
             return state;

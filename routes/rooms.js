@@ -62,7 +62,8 @@ routes.get('/:id', (req, res) => {
 routes.post('/', (req, res) => {
     rooms.create(req.body)
         .then(room => {
-            res.status(201).send(room);
+
+            res.status(201).send(room.dataValues);
         })
         .catch(err => {
             res.status(501).send({ message: err.message });
@@ -84,13 +85,19 @@ routes.put('/:id', (req, res) => {
 });
 
 routes.delete('/:id', (req, res) => {
-    rooms.destroy({ where: { id: req.params.id } })
-        .then(rooms => {
-            rooms ? res.status(200).send({ message: 'Room successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
+    rooms.findById(req.params.id)
+        .then(room => {
+            if (!room) {
+                return res.status(404).send({
+                    message: 'Room Not Found',
+                });
+            }
+            return room
+                .destroy()
+                .then(() => res.status(200).send(room))
+                .catch(error => res.status(400).send(error));
         })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+        .catch(error => res.status(400).send(error));
 });
 
 module.exports = routes;

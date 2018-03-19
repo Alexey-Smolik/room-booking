@@ -1,6 +1,16 @@
 import axios from 'axios';
-import { GET_ROOM, GET_ROOMS, DELETE_EVENT, FILTER_ROOM,
-    EDIT_EVENT, CREATE_EVENT , GET_EVENTS, GET_CURRENT_USER} from './types';
+import {
+    GET_ROOM,
+    GET_ROOMS,
+    DELETE_ROOM,
+    CREATE_ROOM,
+    DELETE_EVENT,
+    EDIT_EVENT,
+    CREATE_EVENT,
+    GET_EVENTS,
+    GET_CURRENT_USER,
+    GET_ALL_USERS,
+} from './types';
 
 export const getRoom = (roomID) => async dispatch => {
     const res = await axios.get('/api/rooms', roomID);
@@ -9,8 +19,19 @@ export const getRoom = (roomID) => async dispatch => {
 
 export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
-    console.log("Action -> getrooms");
     dispatch({ type: GET_ROOMS, payload: res.data });
+};
+export const createRoom = (roomData) => async dispatch => {
+    const res = await axios.post('/api/rooms/', roomData);
+    dispatch({ type: CREATE_ROOM, payload: res.data });
+};
+export const updateRoom = (roomData) => async dispatch => {
+    const res = await axios.put('/api/rooms', roomData);
+    dispatch({ type: GET_ROOMS, payload: res.data });
+};
+export const deleteRoom = (roomID) => async dispatch => {
+    const res = await axios.delete(`/api/rooms/${roomID}`, );
+    dispatch({ type: DELETE_ROOM, payload: res.data });
 };
 
 export const getEvents = (roomID) => async dispatch => {
@@ -18,8 +39,6 @@ export const getEvents = (roomID) => async dispatch => {
     console.log("Action -> getEvents");
     dispatch({ type: GET_EVENTS, payload: res.data });
 };
-
-
 
 export const deleteEvent = (eventID) => async dispatch => {
     const res = await axios.delete('/api/events/' + eventID);
@@ -43,6 +62,12 @@ export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
     console.log("Action -> get Current user");
     dispatch({ type: GET_CURRENT_USER, payload: res.data });
+};
+
+export const getAllUsers = () => async dispatch => {
+    const res = await axios.get('/api/users/');
+    console.log("Action -> get all users");
+    dispatch({ type: GET_ALL_USERS, payload: res.data });
 };
 
 
