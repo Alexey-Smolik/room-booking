@@ -87,7 +87,7 @@ class Popup extends React.Component {
             <div className='popup'>
                 <div className='popup_inner'>
 
-                    <form onSubmit={this.submitHandler}>
+                    <form id="popup_form" onSubmit={this.submitHandler}>
                         <FormGroup controlId="formBasicText">
                             <ControlLabel>Username</ControlLabel>
                             <FormControl
@@ -105,12 +105,13 @@ class Popup extends React.Component {
                                 placeholder="Title"
                             />
                             <ControlLabel>Description</ControlLabel>
-                            <FormControl
-                                type="text"
+                            <textarea
+                                //type="text"
                                 value={this.state.desc}
                                 onChange={this.handleChangeDesc}
-                                placeholder="Decription"
+                                //placeholder="Decription"
                             />
+                            <div id = "date">
                             <DatePicker
                                 selected={this.state.startDate}
                                 onChange={this.handleChangeDate}
@@ -120,6 +121,7 @@ class Popup extends React.Component {
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
+
                             <DatePicker
                                 selected={this.state.endDate}
                                 onChange={this.handleChangeDate}
@@ -129,11 +131,15 @@ class Popup extends React.Component {
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
-                        </FormGroup>
 
+                            </div>
+
+                        </FormGroup>
+                        <div id="form_button">
                         <Button bsStyle="success" type="submit">Confirm</Button>
-                        <Button bsStyle="warning" onClick={this.props.close}>Cancel</Button>
-                        <Button bsStyle="success" type="reset">Delete</Button>
+                        <Button bsStyle="info" type="reset">Delete</Button>
+                        <Button bsStyle="primary" onClick={this.props.close}>Cancel</Button>
+                        </div>
                     </form>
                 </div>
             </div>

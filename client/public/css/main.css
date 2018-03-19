@@ -9,12 +9,15 @@
 .twitter { background-color:#55ACEE;color:#fff; }
 .facebook:hover,.twitter:hover { color:#fff; }
 
+html {
+    height: 100%;
+}
+
 body {
     color: #8f8f8f;
     font: 12px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/bg.png);
     margin: 0;
-
 }
 
 #username{
@@ -92,13 +95,13 @@ nav li {
     padding: 10px;
 }
 
-.top-menu li {
+/*.top-menu li {
     display: inline-block;
     padding: 10px 135px;
     margin: 0;
     width: 2%;
 
-}
+}*/
 
 /*.top-menu li.active {
     background: #383e41;
@@ -115,10 +118,21 @@ nav li {
     border-top: 1px solid #e7e7e7;
 }
 
-/*.aside-menu li.active {
+/*.aside-menu a:active {
+    color: #383e41;
+    font-weight: bolder;
+}
+
+.aside-menu a:hover {
     color: #383e41;
     font-weight: bolder;
 }*/
+
+.aside-menu a:focus {
+    color: #383e41;
+    font-weight: bolder;
+}
+
 
 .aside-menu a {
     color: #8f8f8f;
@@ -151,18 +165,23 @@ blockquote p {
 }
 
 h1 {
-
+    position: absolute;
     font-style: italic;
     display: inline-block;
-    margin-left: 305px;
+    font-weight: bold;
+    /*margin-left: 305px;*/
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+
 }
 
 .rbc-calendar {
     background-color: white;
-    width: 80%;
-    margin-left: 20px;
+    margin-left: 300px;
     height: 75vh !important;
-
+    position: relative;
 }
 
 .rbc-header {
@@ -173,4 +192,84 @@ h1 {
     color: #0c0c0c;
 
 }
+
+/*Alex10101 info-window & info-button*/
+
+.info-show {
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.info-button {
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    font-weight: bolder;
+    line-height: 1px;
+    padding-bottom: 1px;
+    border-radius: 50%;
+    border: 1px solid #8f8f8f;
+    background: transparent;
+    color: #8f8f8f;
+    cursor: pointer;
+}
+
+.info-button:focus {
+    background: #c5c5c5;
+    text-decoration: none;
+    outline: none;
+}
+
+div.info-close {
+    width: 20px;
+    height: 20px;
+    float: right;
+    color: black;
+    font-size: 20px;
+    position: absolute;
+    right: 3px;
+    top: -14px;
+    cursor: pointer;
+}
+
+.room-info {
+    width: 740px;
+    border-radius: 1%;
+    background: rgba(216, 252, 255, 0.7);
+    position: absolute;
+    z-index: 1;
+    top: 50px;
+    left: calc(50% - 350px);
+
+}
+
+.room-info {
+    padding-top: 5px;
+}
+
+.room-info > * {
+    margin: 10px auto;
+    text-align: center;
+}
+
+
+.room-image img {
+    max-width: 700px;
+    border-radius: 1%;
+}
+
+.room-description {
+    max-width: 650px;
+    color: #000;
+    font-size: 18px;
+}
+
+.room-issues {
+    color: #222;
+    font-size: 16px;
+}
+
+/*End of info-styles*/
+
 
