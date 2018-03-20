@@ -14,8 +14,8 @@ html {
 }
 
 body {
-    color: #8f8f8f;
-    font: 12px Tahoma, sans-serif;
+    color: #383e41;
+    font: 13px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/bg.png);
     margin: 0;
 }
@@ -26,12 +26,13 @@ body {
 
 
 button {
-    color: #fff;
-    background-color: #81898f;
+    color: #383e41;
+    background-color: #d4d5d8;
     border: none;
     height: 32px;
     font-family: 'Oswald', sans-serif;
     font-size: 15px;
+
 }
 form[name="search"] {
     float: right;
@@ -66,6 +67,8 @@ aside {
     float: left;
     width: 250px;
     margin-right: 54px;
+
+    box-shadow: 20px -15px 10px 5px rgba(0, 0, 0, .2);
 
 }
 
@@ -141,16 +144,17 @@ nav li {
 
 blockquote {
     margin: 0;
-    background: #81898f;
+    background: -webkit-linear-gradient(180deg, #EEEEEE, #81898f);
     font-family: 'Oswald', sans-serif;
     font-weight: 300;
 }
 
 blockquote p {
     color: #fff;
-    font-style: italic;
+    font-family: 'Oswald', sans-serif;
     font-size: 33px;
     margin: 0;
+
 }
 
 /*figure {
@@ -166,9 +170,10 @@ blockquote p {
 
 h1 {
     position: absolute;
-    font-style: italic;
     display: inline-block;
+    font-family: 'Oswald', sans-serif;
     font-weight: bold;
+    /*box-shadow: 20px -15px 10px 5px rgba(0, 0, 0, .2);*/
     /*margin-left: 305px;*/
     top: 50%;
     left: 50%;

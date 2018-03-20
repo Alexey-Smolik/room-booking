@@ -4,29 +4,24 @@ const events = require('../models').events;
 const users = require('../models').users;
 
 routes.get('/', (req, res) => {
-    if(req.query.availability !== 'undefined') {
-        if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
-                .then(events => {
-                    return events.map(event => event.roomId);
-                })
-                .then(roomsId => {
-                    roomsId = roomsId.filter((value, index, self) => {
-                        return self.indexOf(value) === index;
-                    });
-
-                    let where = {};
-                    where.id = req.query.availability ? { $notIn: roomsId } : { $in: roomsId };
-
-                    return rooms.findAll({ where: where});
-                })
-                .then(rooms => {
-                    res.send(rooms);
-                })
-                .catch(err => {
-                    res.status(500).send({message: err.message});
+    if (req.query.startDate && req.query.endDate) {
+        events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+            .then(events => {
+                return events.map(event => event.roomId);
+            })
+            .then(roomsId => {
+                roomsId = roomsId.filter((value, index, self) => {
+                    return self.indexOf(value) === index;
                 });
-        } else res.status(500).send({ message: 'Wrong params' });
+
+                return rooms.findAll({ where: { id: { $notIn: roomsId } }});
+            })
+            .then(rooms => {
+                res.send(rooms);
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
     }
     else {
         rooms.findAll()
