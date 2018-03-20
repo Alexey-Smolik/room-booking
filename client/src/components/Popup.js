@@ -16,7 +16,6 @@ class Popup extends React.Component {
             user: '',
             startDate: moment(),
             endDate: moment(),
-
         };
         this.submitHandler = this.submitHandler.bind(this);
         this.handleChangeDate = this.handleChangeDate.bind(this);
@@ -38,23 +37,18 @@ class Popup extends React.Component {
 
     submitHandler(e) {
         e.preventDefault();
-        var start = new Date(this.state.startDate._d),
+
+        let start = new Date(this.state.startDate._d),
             end = new Date(this.state.endDate._d);
-        start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
-        end.setTime(end.getTime() + end.getTimezoneOffset()*60*1000 );
+        start.setTime(start.getTime() - start.getTimezoneOffset()*60*1000 );
+        end.setTime(end.getTime() - end.getTimezoneOffset()*60*1000 );
 
-
-        var timeObj = {
-            start: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
-            end: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()))
-        };
-
-        if(this.props.dateFilter(timeObj, this.props.event.id)) {
-            var event = {
+        if(this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
+            let event = {
                 name: this.state.title,
                 description: this.state.desc,
-                date_from: new Date(Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes())),
-                date_to: new Date(Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())),
+                date_from: start,
+                date_to: end,
                 roomId: this.state.room.id,
                 userId: this.state.user.id
             };
@@ -72,9 +66,8 @@ class Popup extends React.Component {
         }
     }
 
-    handleChangeDate(e,id){
-        console.log("Event", moment(e) );
-        if(id == 1) {
+    handleChangeDate(e, id){
+        if(id) {
             this.setState({ startDate: e });
         } else {
             this.setState({ endDate: e });
@@ -98,12 +91,9 @@ class Popup extends React.Component {
 
     deleteHandler(e){
         e.preventDefault();
-
+        this.props.deleteEvent(this.props.event.id);
         this.props.closePopup();
-
-
     }
-
 
     render() {
         return (

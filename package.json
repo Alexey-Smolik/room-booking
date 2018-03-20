@@ -38,6 +38,7 @@
     "pg": "^7.4.1",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
+    "redux-devtools-extension": "^2.13.2",
     "sequelize": "^4.33.4",
     "webpack-dev-server": "^3.0.0"
   },
