@@ -6,7 +6,7 @@ const Header = () => {
             <header>
                 <form className="hello" name="search" action="#" method="get">
                     <label id="username">Hello, </label>
-                    <button type="submit">Log out</button>
+                    <button href="/auth/logout" type="submit">Log out</button>
                 </form>
             </header>
 

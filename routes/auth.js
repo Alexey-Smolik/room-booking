@@ -132,16 +132,16 @@ routes.post('/login', (req, res) => {
 routes.post('/local', passport.authenticate('local', { successRedirect: '/main', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));
-routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/main', failureRedirect: '/' }));
+routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/fb', passport.authenticate('facebook'));
-routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/main', failureRedirect: '/' }));
+routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/twitter', passport.authenticate('twitter'));
-routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/main', failureRedirect: '/' }));
+routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
-routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/main', failureRedirect: '/' }));
+routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
     req.session.destroy();

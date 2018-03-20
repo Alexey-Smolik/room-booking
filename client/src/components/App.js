@@ -5,6 +5,7 @@ import Header from './Header';
 import LeftNavBar from './LeftNavBar';
 import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
+import AuthComponent from './AuthComponent';
 
 class App extends Component {
     render() {
@@ -13,10 +14,10 @@ class App extends Component {
                 <BrowserRouter>
                     <div>
                         <Header />
-                        <LeftNavBar />
-                        <Route path="/" exact component={HelloWindow} />
+                        <Route exact path="/"  component={AuthComponent} />
+                        <Route path="/room"  component={LeftNavBar} />
                         <Route path="/room/:roomID"  component={Calendar} />
-
+                        {/*<Route path="/helloWindow"  component={HelloWindow} />*/}
                     </div>
                 </BrowserRouter>
             </div>
