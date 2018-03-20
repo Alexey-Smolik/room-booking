@@ -1,4 +1,4 @@
-const routes = require('express').Router();
+ const routes = require('express').Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const VKontakteStrategy = require('passport-vkontakte').Strategy;
