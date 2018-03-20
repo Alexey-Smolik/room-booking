@@ -8,6 +8,7 @@ const Header = () => {
                     <label id="username">Hello, </label>
                     <button href="/auth/logout" type="submit">Log out</button>
                 </form>
+                <a href="/auth/logout">Logout</a>
             </header>
 
             <div id="heading">

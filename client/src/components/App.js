@@ -16,6 +16,7 @@ class App extends Component {
                         <Header />
                         <Route exact path="/"  component={AuthComponent} />
                         <Route path="/room"  component={LeftNavBar} />
+                        <Route excat path="/room"  component={HelloWindow} />
                         <Route path="/room/:roomID"  component={Calendar} />
                         {/*<Route path="/helloWindow"  component={HelloWindow} />*/}
                     </div>
