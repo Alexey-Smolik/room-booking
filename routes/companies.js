@@ -23,37 +23,43 @@ routes.get('/:id', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
-    companies.create(req.body)
-        .then(company => {
-            res.status(201).send(company);
-        })
-        .catch(err => {
-            res.status(501).send({ message: err.message });
-        });
+    if(req.user.role === 1) {
+        companies.create(req.body)
+            .then(company => {
+                res.status(201).send(company);
+            })
+            .catch(err => {
+                res.status(501).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 routes.put('/:id', (req, res) => {
-    companies.findOne({ where: { id: req.params.id } })
-        .then(company => {
-            if(company) return companies.update(req.body, { where : { id: req.params.id } });
-            else res.status(500).send({ message: 'Wrong id' });
-        })
-        .then(company => {
-            res.status(200).send(company);
-        })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+    if(req.user.role === 1) {
+        companies.findOne({where: {id: req.params.id}})
+            .then(company => {
+                if (company) return companies.update(req.body, {where: {id: req.params.id}});
+                else res.status(500).send({message: 'Wrong id'});
+            })
+            .then(company => {
+                res.status(200).send(company);
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 routes.delete('/:id', (req, res) => {
-    companies.destroy({ where: { id: req.params.id } })
-        .then(company => {
-            company ? res.status(200).send({ message: 'Company successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
-        })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+    if(req.user.role === 1) {
+        companies.destroy({where: {id: req.params.id}})
+            .then(company => {
+                company ? res.status(200).send({message: 'Company successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 module.exports = routes;
