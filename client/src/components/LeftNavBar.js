@@ -52,7 +52,6 @@ class LeftNavBar extends Component {
         }
     }
 
-// End of info render.
 
     componentDidMount() {
         this.props.getRooms();

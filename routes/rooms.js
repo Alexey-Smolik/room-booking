@@ -3,6 +3,8 @@ const rooms = require('../models').rooms;
 const events = require('../models').events;
 const users = require('../models').users;
 
+
+// ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
             events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
@@ -83,6 +85,12 @@ routes.delete('/:id', (req, res) => {
                 res.status(500).send({message: err.message});
             });
     } else res.status(500).send({ message: 'You have no rights' });
+});
+
+
+// ----- ROUTES FOR ROOMS IMAGES -----
+routes.post('/:id/images', (req, res) => {
+
 });
 
 module.exports = routes;

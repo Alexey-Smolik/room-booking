@@ -30,6 +30,9 @@ db.events.belongsTo(db.rooms);
 db.users.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.events.belongsTo(db.users);
 
+db.rooms.hasMany(db.images, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
+db.images.belongsTo(db.rooms);
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
