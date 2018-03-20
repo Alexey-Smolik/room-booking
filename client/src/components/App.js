@@ -6,6 +6,7 @@ import LeftNavBar from './LeftNavBar';
 import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
+import Image from './Image';
 
 class App extends Component {
     render() {
@@ -13,9 +14,11 @@ class App extends Component {
             <div className="App">
                 <BrowserRouter>
                     <div>
+                        <Image />
                         <Header />
                         <Route exact path="/"  component={AuthComponent} />
                         <Route path="/room"  component={LeftNavBar} />
+                        <Route excat path="/room"  component={HelloWindow} />
                         <Route path="/room/:roomID"  component={Calendar} />
                         {/*<Route path="/helloWindow"  component={HelloWindow} />*/}
                     </div>
