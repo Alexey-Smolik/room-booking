@@ -54,7 +54,7 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         companies.destroy({where: {id: req.params.id}})
             .then(company => {
-                company ? res.status(200).send({message: 'Company successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+                company ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
