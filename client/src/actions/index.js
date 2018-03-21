@@ -29,8 +29,8 @@ export const createRoom = (roomData) => async dispatch => {
     dispatch({ type: CREATE_ROOM, payload: res.data });
 };
 export const updateRoom = (roomData) => async dispatch => {
-    const res = await axios.put('/api/rooms', roomData);
-    dispatch({ type: GET_ALL_ROOMS, payload: res.data });
+    await axios.put('/api/rooms', roomData);
+    dispatch(getRooms());
 };
 export const deleteRoom = (roomID) => async dispatch => {
     const res = await axios.delete(`/api/rooms/${roomID}`, );
@@ -50,8 +50,8 @@ export const createCompany = (companyData) => async dispatch => {
     dispatch({ type: CREATE_COMPANY, payload: res.data });
 };
 export const updateCompany = (companyData) => async dispatch => {
-    const res = await axios.put('/api/companies', companyData);
-    dispatch({ type: GET_ALL_COMPANIES, payload: res.data });
+    await axios.put('/api/companies', companyData);
+    dispatch(getCompanies());
 };
 export const deleteCompany = (companyID) => async dispatch => {
     const res = await axios.delete(`/api/companies/${companyID}`, );
