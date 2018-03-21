@@ -66,11 +66,11 @@ class Popup extends React.Component {
         }
     }
 
-    handleChangeDate(e, id){
-        if(id) {
-            this.setState({ startDate: e });
+    handleChangeDate(e, isFirstdataPicker){
+        if(isFirstdataPicker) {
+            this.setState({ startDate: e }) ;
         } else {
-            this.setState({ endDate: e });
+            this.setState({ endDate: e }) ;
         }
     }
 
@@ -127,7 +127,7 @@ class Popup extends React.Component {
 
                             <DatePicker
                                 selected={this.state.startDate}
-                                onChange={ (e) => this.handleChangeDate(e,1)}
+                                onChange={ (e) => this.handleChangeDate(e,true)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
@@ -136,7 +136,7 @@ class Popup extends React.Component {
                             />
                             <DatePicker
                                 selected={this.state.endDate}
-                                onChange={ (e) => this.handleChangeDate(e,2)}
+                                onChange={ (e) => this.handleChangeDate(e,false)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
