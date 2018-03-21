@@ -49,8 +49,8 @@ export const createCompany = (companyData) => async dispatch => {
     const res = await axios.post('/api/companies/', companyData);
     dispatch({ type: CREATE_COMPANY, payload: res.data });
 };
-export const updateCompany = (companyData) => async dispatch => {
-    await axios.put('/api/companies', companyData);
+export const updateCompany = (companyData, id) => async dispatch => {
+    await axios.put(`/api/companies/${id}`, companyData);
     dispatch(getCompanies());
 };
 export const deleteCompany = (companyID) => async dispatch => {
