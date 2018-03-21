@@ -20,9 +20,4 @@ routes.use('/api/rooms', rooms);
 routes.use('/api/companies', companies);
 routes.use('/api/events', events);
 
-routes.use('*', (req,res) => {
-    console.log(1111);
-    res.status(404).send('212122112');
-});
-
 module.exports = routes;

@@ -2,11 +2,14 @@ const routes = require('express').Router();
 const rooms = require('../models').rooms;
 const events = require('../models').events;
 const users = require('../models').users;
-
+const images = require('../models').images;
+const multer  = require('multer');
+const config = require('../config/main');
 
 // ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
+            console.log(req.query.startDate);
             events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
                 .then(events => {
                     return events.map(event => event.roomId);
@@ -89,8 +92,31 @@ routes.delete('/:id', (req, res) => {
 
 
 // ----- ROUTES FOR ROOMS IMAGES -----
-routes.post('/:id/images', (req, res) => {
+routes.post('/:id/image', (req, res) => {
+    let storage = multer.diskStorage({
+        destination: config.imagesDestination + req.params.id,
+        filename: function (req, file, cb) {
+            cb(null, file.originalname);
+        }
+    });
 
+    let upload = multer({ storage: storage }).single('file');
+
+    upload(req, res, err => {
+        console.log(req.file);
+        if(err) res.status(500).send(err.message);
+        else {
+            images.findOrCreate({
+                where: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id },
+                defaults: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id }
+            })
+                .then(image => {
+                    if();
+                    res.send(image)
+                })
+                .catch(err => res.status(500).send({message: err.message}));
+        }
+    });
 });
 
 module.exports = routes;

@@ -91,8 +91,6 @@ export const getAllUsers = () => async dispatch => {
 };
 
 
-
-
 // export const filterDate = (date_from, date_to) => async dispatch => {
 //     const res = await axios.post('/api/events', date_from, date_to);
 //     dispatch({ type: FILTER_ROOM, payload: res.data });
