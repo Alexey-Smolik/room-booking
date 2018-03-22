@@ -7,6 +7,9 @@ import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
 import Image from './Image';
+import EventsFilter from './EventsFilter';
+
+// {<Route path="/helloWindow"  component={HelloWindow} />}
 
 class App extends Component {
     render() {
@@ -16,11 +19,11 @@ class App extends Component {
                     <div>
                         <Image />
                         <Header />
+                        <EventsFilter />
                         <Route exact path="/"  component={AuthComponent} />
                         <Route path="/room"  component={LeftNavBar} />
                         <Route excat path="/room"  component={HelloWindow} />
                         <Route path="/room/:roomID"  component={Calendar} />
-                        {/*<Route path="/helloWindow"  component={HelloWindow} />*/}
                     </div>
                 </BrowserRouter>
             </div>

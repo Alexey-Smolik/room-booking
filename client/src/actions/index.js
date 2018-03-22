@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     GET_ROOM,
     GET_ALL_ROOMS,
+    GET_ROOMS_BY_DATE,
     DELETE_ROOM,
     CREATE_ROOM,
     DELETE_EVENT,
@@ -24,6 +25,14 @@ export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
     dispatch({ type: GET_ALL_ROOMS, payload: res.data });
 };
+
+export const getRoomsByDate = (start_date, end_date) => async dispatch => {
+    const res = await axios.get('/api/rooms?startDate=' + start_date + "&endDate=" + end_date);
+    console.log(start_date, end_date);
+    console.log(res.data);
+    dispatch({ type: GET_ROOMS_BY_DATE, payload: res.data });
+};
+
 export const createRoom = (roomData) => async dispatch => {
     const res = await axios.post('/api/rooms/', roomData);
     dispatch({ type: CREATE_ROOM, payload: res.data });
@@ -90,10 +99,4 @@ export const getAllUsers = () => async dispatch => {
     dispatch({ type: GET_ALL_USERS, payload: res.data });
 };
 
-
-// export const filterDate = (date_from, date_to) => async dispatch => {
-//     const res = await axios.post('/api/events', date_from, date_to);
-//     dispatch({ type: FILTER_ROOM, payload: res.data });
-//
-// };
 

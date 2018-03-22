@@ -92,31 +92,31 @@ routes.delete('/:id', (req, res) => {
 
 
 // ----- ROUTES FOR ROOMS IMAGES -----
-routes.post('/:id/image', (req, res) => {
-    let storage = multer.diskStorage({
-        destination: config.imagesDestination + req.params.id,
-        filename: function (req, file, cb) {
-            cb(null, file.originalname);
-        }
-    });
+// routes.post('/:id/image', (req, res) => {
+//     let storage = multer.diskStorage({
+//         destination: config.imagesDestination + req.params.id,
+//         filename: function (req, file, cb) {
+//             cb(null, file.originalname);
+//         }
+//     });
 
-    let upload = multer({ storage: storage }).single('file');
+//     let upload = multer({ storage: storage }).single('file');
 
-    upload(req, res, err => {
-        console.log(req.file);
-        if(err) res.status(500).send(err.message);
-        else {
-            images.findOrCreate({
-                where: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id },
-                defaults: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id }
-            })
-                .then(image => {
-                    if();
-                    res.send(image)
-                })
-                .catch(err => res.status(500).send({message: err.message}));
-        }
-    });
-});
+//     upload(req, res, err => {
+//         console.log(req.file);
+//         if(err) res.status(500).send(err.message);
+//         else {
+//             images.findOrCreate({
+//                 where: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id },
+//                 defaults: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id }
+//             })
+//                 .then(image => {
+//                     if();
+//                     res.send(image)
+//                 })
+//                 .catch(err => res.status(500).send({message: err.message}));
+//         }
+//     });
+// });
 
 module.exports = routes;
