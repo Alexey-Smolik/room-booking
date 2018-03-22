@@ -4,34 +4,34 @@ const events = require('../models').events;
 const users = require('../models').users;
 
 routes.get('/', (req, res) => {
-    if (req.query.startDate && req.query.endDate) {
-        events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
-            .then(events => {
-                return events.map(event => event.roomId);
-            })
-            .then(roomsId => {
-                roomsId = roomsId.filter((value, index, self) => {
-                    return self.indexOf(value) === index;
-                });
+        if (req.query.startDate && req.query.endDate) {
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+                .then(events => {
+                    return events.map(event => event.roomId);
+                })
+                .then(roomsId => {
+                    roomsId = roomsId.filter((value, index, self) => {
+                        return self.indexOf(value) === index;
+                    });
 
-                return rooms.findAll({ where: { id: { $notIn: roomsId } }});
-            })
-            .then(rooms => {
-                res.send(rooms);
-            })
-            .catch(err => {
-                res.status(500).send({message: err.message});
-            });
-    }
-    else {
-        rooms.findAll()
-            .then(rooms => {
-                res.send(rooms);
-            })
-            .catch(err => {
-                res.status(500).send({ message: err.message});
-            });
-    }
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }});
+                })
+                .then(rooms => {
+                    res.send(rooms);
+                })
+                .catch(err => {
+                    res.status(500).send({message: err.message});
+                });
+        }
+        else {
+            rooms.findAll()
+                .then(rooms => {
+                    res.send(rooms);
+                })
+                .catch(err => {
+                    res.status(500).send({ message: err.message});
+                });
+        }
 });
 
 routes.get('/:id', (req, res) => {
@@ -45,52 +45,44 @@ routes.get('/:id', (req, res) => {
         });
 });
 
-/*routes.get('/free', (req, res) => {
-    console.log(req.query.startDate);
-    if(req.query.startDate && req.query.endDate){
-        events.find({ where: { date_from: { $gte: req.query.startDate }, date_to: { $lte: req.query.endDate } } })
-            .then(events => {
-                res.send(events);
+routes.post('/', (req, res) => {
+    if(req.user.role === 1) {
+        rooms.create(req.body)
+            .then(room => {
+                res.status(201).send(room);
             })
             .catch(err => {
-                res.status(500).send({ message: err.message });
+                res.status(501).send({ message: err.message });
             });
-    }
-    else res.status(500).send({ message: 'Wrong params' });
-});*/
-
-routes.post('/', (req, res) => {
-    rooms.create(req.body)
-        .then(room => {
-            res.status(201).send(room);
-        })
-        .catch(err => {
-            res.status(501).send({ message: err.message });
-        });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 routes.put('/:id', (req, res) => {
-    rooms.findOne({ where: { id: req.params.id } })
-        .then(rooms => {
-            if(rooms) return rooms.update(req.body, { where : { id: req.params.id } });
-            else res.status(500).send({ message: 'Wrong id' });
-        })
-        .then(rooms => {
-            res.status(200).send(rooms);
-        })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+    if(req.user.role === 1) {
+        rooms.findOne({where: {id: req.params.id}})
+            .then(rooms => {
+                if (rooms) return rooms.update(req.body, {where: {id: req.params.id}});
+                else res.status(500).send({message: 'Wrong id'});
+            })
+            .then(rooms => {
+                res.status(200).send(rooms);
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 routes.delete('/:id', (req, res) => {
-    rooms.destroy({ where: { id: req.params.id } })
-        .then(rooms => {
-            rooms ? res.status(200).send({ message: 'Room successfully deleted' }) : res.status(500).send({ message: 'Wrong id' });
-        })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
+    if(req.user.role === 1) {
+        rooms.destroy({where: {id: req.params.id}})
+            .then(rooms => {
+                rooms ? res.status(200).send({message: 'Room successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
 });
 
 module.exports = routes;

@@ -20,6 +20,10 @@ module.exports = function(sequelize, DataTypes) {
         personal_id: {
             type: DataTypes.CHAR(60),
             allowNull: true
+        },
+        role: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     }, {
         timestamps: false

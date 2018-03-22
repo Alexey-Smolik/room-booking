@@ -79,8 +79,6 @@ class Calendar extends  React.Component  {
         });
     }
 
-
-
     render() {
         let events = [];
 

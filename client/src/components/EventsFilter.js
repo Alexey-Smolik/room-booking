@@ -4,6 +4,9 @@ import moment from 'moment';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
 
+
+// Imports in App.js
+
 class EventsFilter extends React.Component {
 	 constructor(props){
         super(props);
@@ -11,7 +14,10 @@ class EventsFilter extends React.Component {
             title: '',
             desc: '',
             startDate: moment(),
-            endDate: moment()
+            endDate: moment(),
+            ddd : '2018-03-21 10:36:00',
+            dde : '2018-03-21 13:36:00',
+            response: ""
         };
         this.submitHandler = this.submitHandler.bind(this);
         this.handleChangeStart = this.handleChangeStart.bind(this);
@@ -24,23 +30,32 @@ class EventsFilter extends React.Component {
 
     submitHandler(e) {
     	e.preventDefault();
+      this.setState({
+        // response: this.props.getRoomsByDate(new Date(this.state.startDate._d ).toISOString(), new Date(this.state.endDate._d).toISOString())
+        response: this.props.getRoomsByDate(this.state.ddd, this.state.dde)
+      });
+      // console.log("Dates : ", new Date(this.state.startDate._d ).toISOString(), new Date(this.state.endDate._d).toISOString())
+      // console.log("Dates From :", this.state.ddd, " To : ", this.state.dde);
+      // console.log("Response : ", this.state.response);
     }
 
     handleChangeStart(date) {
     	this.setState({
 	      startDate: date
 	    });
+      // console.log("START :", this.state, this.props);
     }
 
     handleChangeEnd(date) {
     	this.setState({
 	      endDate: date
 	    });
+      // console.log("END :", this.state, this.props);
     }
 
     events() {
     	if(this.props.events) {
-    		console.log(this.props.events);
+    		// console.log(this.props.events);
       	 	return(
       	 		this.props.events.map( (index, key) => {
       	 			return(
@@ -74,36 +89,57 @@ class EventsFilter extends React.Component {
       // </div>
 
 
-   /* render() {
+    render() {
       return(
-      	 <div id="head_date">
+          <div className='dates_filter'>
+      	 <div id='filter_date_from'>
+      	 	<p className='start'>Start:</p>
+            <DatePicker
+    			    selected={this.state.startDate}
+    			    selectsStart
+    			    dateFormat="LLL"
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={30}
+                    timeCaption="time"
+    			    startDate={this.state.startDate}
+    			    endDate={this.state.endDate}
+    			    onChange={this.handleChangeStart}
+    			/>
+         </div>
+              <div id='filter_date_to'>
+              <p className='end'>End:</p>
+    			<DatePicker
+    			    selected={this.state.endDate}
+    			    selectsEnd
+    			    dateFormat="LLL"
+                    showTimeSelect
+                    timeFormat="HH:mm"
+                    timeIntervals={30}
+                    timeCaption="time"
+    			    startDate={this.state.startDate}
+    			    endDate={this.state.endDate}
+    			    onChange={this.handleChangeEnd}
+    			/>
+              </div>
+          <div className="buttons_filter">
+            <button className='filter_btn' onClick={this.submitHandler}>Search</button>
+            <button className='filter_btn'>Cancel</button>
+              <form className="hello" name="search" action="#" method="get">
+                  <label id="username_hello">Hello, </label>
+                  <a className="link_log" href="/auth/logout">Log out</a>
+              </form>
+            </div>
 
-          <DatePicker
-			    selected={this.state.startDate}
-			    selectsStart
-			    dateFormat="LLL"
-			    startDate={this.state.startDate}
-			    endDate={this.state.endDate}
-			    onChange={this.handleChangeStart}
-			/>
-
-             <label>To</label>
-			<DatePicker id="head_date_to"
-			    selected={this.state.endDate}
-			    selectsEnd
-			    dateFormat="LLL"
-			    startDate={this.state.startDate}
-			    endDate={this.state.endDate}
-			    onChange={this.handleChangeEnd}
-			/>
-		 </div>
+          </div>
       );     
     }
 }
-*/
-function mapStateToProps({ events }) {
+
+function mapStateToProps({ events, rooms }) {
     return {
-        events: events
+        events: events,
+        rooms: rooms
     };
 }
 

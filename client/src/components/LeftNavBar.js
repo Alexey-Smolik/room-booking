@@ -19,7 +19,7 @@ class LeftNavBar extends Component {
                 src: "img.jpg",
                 alt: "#"
             }
-        }
+        };
 
         this.infoHandler = this.infoHandler.bind(this);
     }
@@ -28,9 +28,9 @@ class LeftNavBar extends Component {
         this.setState({
             id: index.id,
             description: index.description        
-        })
+        });
 
-        if(index.id === this.state.id || this.state.id !== index.id && this.state.infoVisible == false) {
+        if(index.id === this.state.id || (this.state.id !== index.id && !this.state.infoVisible)) {
             this.setState({
                 infoVisible: !this.state.infoVisible
             });
