@@ -1,29 +1,11 @@
-h1 {
-    margin: 0;
-    padding: 0;
-}
-html, body, .app {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    width: 100%;
-}
-
-.app{
-    width: 70%;
-    margin: 0 auto;
-    padding: 50px;
-}
 
 .nav-bar{
     text-align: right;
 }
 
-.popup {
+.overlay {
     z-index: 12;
     position: fixed;
-    width: 100%;
-    height: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -37,27 +19,110 @@ html, body, .app {
     right: 25%;
     top: 25%;
     bottom: 25%;
-    margin: auto;
-    background: white;
+    /*margin:  0 auto;*/
+    background: url(../images/popup2.jpg);
+
+
 }
 
-form{
-    width: 50%;
+/*#popup_form{
+    width: 60%;
     margin: 0 auto;
     padding: 50px;
+    height: 100%;
+}*/
+
+.form-group {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
 }
 
 form input{
-    margin: 0 auto;
-    margin-bottom: 30px;
+    /*margin: 0 auto;*/
+    margin-bottom: 20px;
     width: 100%;
     text-align: center;
 }
 
-form button{
-    margin-left: 20px;
+textarea {
+    width: 100%;
+    /*text-align: center;*/
+    height: 70px;
+
 }
 
-.img-button{
-    width: 10%;
+/*#form_button{
+
+    display: inline-block;
+    margin-left: 20%;
+    margin-top: 20px;
+
+}*/
+
+.btn.btn-default {
+    margin-left: 30px;
 }
+
+/*.btn.btn-info {
+    margin-left: 30px;
+}
+
+.btn.btn-primary {
+    margin-left: 30px;
+}*/
+
+#dates {
+    margin-top: 20px;
+}
+
+.form-control {
+    width: 50%;
+    min-width: 100px ;
+}
+
+button {
+    background-color: #f0f0f0;
+}
+
+
+
+
+/*.img-button{
+    width: 10%;
+}*/
+
+
+
+.react-datepicker__input-container {
+    display: inline-block;
+    margin-top: 20px;
+
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--previous {
+    margin-left: 15px !important;
+}
+
+.react-datepicker__navigation.react-datepicker__navigation--next.react-datepicker__navigation--next--with-time {
+    margin-right: 20px !important;
+}
+
+/*.react-datepicker__time-list-item {
+    text-align: left;
+}*/
+
+.react-datepicker__time-list {
+    padding: 7px 0;
+}
+
+.react-datepicker__header.react-datepicker__header--time {
+    height: 58px;
+}
+
+
+
+
+
+
+

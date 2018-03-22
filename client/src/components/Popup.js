@@ -97,10 +97,10 @@ class Popup extends React.Component {
 
     render() {
         return (
-            <div className='popup'>
-                <div className='popup_inner'>
+            <div className='overlay'>
 
-                    <form onSubmit={this.submitHandler}>
+
+                    <form className='popup_inner' onSubmit={this.submitHandler}>
                         <FormGroup controlId="formBasicText">
                             <ControlLabel>Username</ControlLabel>
                             <FormControl
@@ -118,13 +118,16 @@ class Popup extends React.Component {
                                 placeholder="Title"
                             />
                             <ControlLabel>Description</ControlLabel>
-                            <FormControl
-                                type="text"
+
+                            <textarea
+                                //type="text"
                                 value={this.state.desc}
                                 onChange={this.handleChangeDesc}
-                                placeholder="Decription"
+                                placeholder="Description"
+
                             />
 
+                            <div id="date_to">
                             <DatePicker
                                 selected={this.state.startDate}
                                 onChange={ (e) => this.handleChangeDate(e,true)}
@@ -134,6 +137,7 @@ class Popup extends React.Component {
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
+                            </div>
                             <DatePicker
                                 selected={this.state.endDate}
                                 onChange={ (e) => this.handleChangeDate(e,false)}
@@ -143,17 +147,19 @@ class Popup extends React.Component {
                                 dateFormat="LLL"
                                 timeCaption="time"
                             />
+
+                            <div id="form_button">
+                                <Button  /*bsStyle="success" */  type="submit">Confirm</Button>
+                                { this.props.editMode ? <Button id="del_canc" /*bsStyle="primary"*/ onClick={this.deleteHandler} >Delete</Button> : null}
+                                <Button id="del_canc" /*bsStyle="info"*/ onClick={this.props.closePopup}>Cancel</Button>
+                            </div>
                         </FormGroup>
 
-                        <Button bsStyle="success" type="submit">Confirm</Button>
-                        <Button bsStyle="warning" onClick={this.props.closePopup}>Cancel</Button>
-                        { this.props.editMode ? <Button bsStyle="success" onClick={this.deleteHandler} /*type="reset"*/>Delete</Button> : null}
                     </form>
                 </div>
-            </div>
+
         );
     }
 }
 
 export default connect(null,actions)(Popup);
-

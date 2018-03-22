@@ -70,7 +70,7 @@ class LeftNavBar extends Component {
                         <Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
                             {index.name}
                         </Link>
-                        <div className="info">
+                        <div className="info-show">
                             <button className="info-button" onClick={() => this.infoHandler(index)}>i</button>
                         </div>
                     </li>
@@ -84,6 +84,7 @@ class LeftNavBar extends Component {
 
     render() {
         return(
+
             <aside>
                 <nav>
                     <ul className="aside-menu">
@@ -92,6 +93,7 @@ class LeftNavBar extends Component {
                     </ul>
                 </nav>
             </aside>
+
         );
     }
 }

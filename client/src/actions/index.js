@@ -28,8 +28,6 @@ export const getRooms = () => async dispatch => {
 
 export const getRoomsByDate = (start_date, end_date) => async dispatch => {
     const res = await axios.get('/api/rooms?startDate=' + start_date + "&endDate=" + end_date);
-    console.log(start_date, end_date);
-    console.log(res.data);
     dispatch({ type: GET_ROOMS_BY_DATE, payload: res.data });
 };
 
@@ -37,9 +35,9 @@ export const createRoom = (roomData) => async dispatch => {
     const res = await axios.post('/api/rooms/', roomData);
     dispatch({ type: CREATE_ROOM, payload: res.data });
 };
-export const updateRoom = (roomData) => async dispatch => {
-    const res = await axios.put('/api/rooms', roomData);
-    dispatch({ type: GET_ALL_ROOMS, payload: res.data });
+export const updateRoom = (roomData, id) => async dispatch => {
+    await axios.put(`/api/rooms/${id}`, roomData);
+    dispatch(getRooms());
 };
 export const deleteRoom = (roomID) => async dispatch => {
     const res = await axios.delete(`/api/rooms/${roomID}`, );
@@ -58,9 +56,9 @@ export const createCompany = (companyData) => async dispatch => {
     const res = await axios.post('/api/companies/', companyData);
     dispatch({ type: CREATE_COMPANY, payload: res.data });
 };
-export const updateCompany = (companyData) => async dispatch => {
-    const res = await axios.put('/api/companies', companyData);
-    dispatch({ type: GET_ALL_COMPANIES, payload: res.data });
+export const updateCompany = (companyData, id) => async dispatch => {
+    await axios.put(`/api/companies/${id}`, companyData);
+    dispatch(getCompanies());
 };
 export const deleteCompany = (companyID) => async dispatch => {
     const res = await axios.delete(`/api/companies/${companyID}`, );
