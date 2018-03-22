@@ -9,34 +9,34 @@ const config = require('../config/main');
 
 // ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
-        if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
-                .then(events => {
-                    return events.map(event => event.roomId);
-                })
-                .then(roomsId => {
-                    roomsId = roomsId.filter((value, index, self) => {
-                        return self.indexOf(value) === index;
-                    });
+    if (req.query.startDate && req.query.endDate) {
+        events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+            .then(events => {
+                return events.map(event => event.roomId);
+            })
+            .then(roomsId => {
+                roomsId = roomsId.filter((value, index, self) => {
+                    return self.indexOf(value) === index;
+                });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }});
-                })
-                .then(rooms => {
-                    res.send(rooms);
-                })
-                .catch(err => {
-                    res.status(500).send({message: err.message});
-                });
-        }
-        else {
-            rooms.findAll()
-                .then(rooms => {
-                    res.send(rooms);
-                })
-                .catch(err => {
-                    res.status(500).send({ message: err.message});
-                });
-        }
+                return rooms.findAll({ where: { id: { $notIn: roomsId } }});
+            })
+            .then(rooms => {
+                res.send(rooms);
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    }
+    else {
+        rooms.findAll()
+            .then(rooms => {
+                res.send(rooms);
+            })
+            .catch(err => {
+                res.status(500).send({ message: err.message});
+            });
+    }
 });
 
 routes.get('/:id', (req, res) => {
@@ -78,11 +78,12 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
             .then(rooms => {
-                rooms ? res.status(200).send({message: 'Room successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+                rooms ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
@@ -90,8 +91,6 @@ routes.delete('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-
-// ----- ROUTES FOR ROOMS IMAGES -----
 routes.post('/:id/image', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [companies] })
         .then(room => {
