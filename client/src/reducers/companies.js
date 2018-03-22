@@ -18,7 +18,7 @@ export default function ( state = [], action) {
             return [...state, action.payload] || false;
 
         case DELETE_COMPANY:
-            return  [...state.filter(({ id }) => id !== action.payload.id)] || false;
+            return  [...state.filter(({ id }) => id !== action.payload)] || false;
 
         default:
             return state;
