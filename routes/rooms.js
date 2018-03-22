@@ -82,7 +82,7 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
             .then(rooms => {
-                rooms ? res.status(200).send({message: 'Room successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+                rooms ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});

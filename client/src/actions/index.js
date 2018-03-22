@@ -28,8 +28,8 @@ export const createRoom = (roomData) => async dispatch => {
     const res = await axios.post('/api/rooms/', roomData);
     dispatch({ type: CREATE_ROOM, payload: res.data });
 };
-export const updateRoom = (roomData) => async dispatch => {
-    await axios.put('/api/rooms', roomData);
+export const updateRoom = (roomData, id) => async dispatch => {
+    await axios.put(`/api/rooms/${id}`, roomData);
     dispatch(getRooms());
 };
 export const deleteRoom = (roomID) => async dispatch => {
