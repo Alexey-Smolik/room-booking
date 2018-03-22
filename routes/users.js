@@ -14,15 +14,14 @@ routes.get('/', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
-    if(req.user.role === 1) {
-        users.create(req.body)
-            .then(user => {
-                res.status(201).send(user);
-            })
-            .catch(err => {
-                res.status(501).send({ message: err.message });
-            });
-    } else res.status(500).send({ message: 'You have no rights' });
+    req.body.role = 3;
+    users.create(req.body)
+        .then(user => {
+            res.status(201).send(user);
+        })
+        .catch(err => {
+            res.status(501).send({ message: err.message });
+        });
 });
 
 routes.put('/:id', (req, res) => {

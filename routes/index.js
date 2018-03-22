@@ -20,5 +20,4 @@ routes.use('/api/rooms', rooms);
 routes.use('/api/companies', companies);
 routes.use('/api/events', events);
 
-
 module.exports = routes;

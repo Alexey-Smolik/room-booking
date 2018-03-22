@@ -3,6 +3,7 @@ require('dotenv').config();
 const config = {
     env: process.env.NODE_ENV,
     port: process.env.PORT || 8080,
+    imagesDestination: './images/',
     db: {
         driver: process.env.DATABASE_DRIVER,
         database: process.env.DATABASE_NAME,

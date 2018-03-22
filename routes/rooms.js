@@ -2,7 +2,12 @@ const routes = require('express').Router();
 const rooms = require('../models').rooms;
 const events = require('../models').events;
 const users = require('../models').users;
+const images = require('../models').images;
+const companies = require('../models').companies;
+const multer  = require('multer');
+const config = require('../config/main');
 
+// ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
             events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
@@ -83,6 +88,43 @@ routes.delete('/:id', (req, res) => {
                 res.status(500).send({message: err.message});
             });
     } else res.status(500).send({ message: 'You have no rights' });
+});
+
+
+// ----- ROUTES FOR ROOMS IMAGES -----
+routes.post('/:id/image', (req, res) => {
+    rooms.findOne({ where: { id: req.params.id }, include: [companies] })
+        .then(room => {
+            if(room){
+                return multer.diskStorage({
+                    destination: config.imagesDestination +
+                    room.dataValues.company.dataValues.id + '_' + room.dataValues.company.dataValues.name + '/' +
+                    req.params.id + '_' + room.dataValues.name,
+                    filename: function (req, file, cb) {
+                        cb(null, file.originalname);
+                    }
+                });
+            }
+            else res.status(500).send({message: 'Wrong room id'});
+        })
+        .then(storage => {
+            let upload = multer({ storage: storage }).single('file');
+
+            upload(req, res, err => {
+                if(err) res.status(500).send(err.message);
+                else{
+                    images.findOne({ where: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id }})
+                        .then(image => {
+                            if(image) res.status(501).send({message: 'Image with that name already exists'});
+                            else return images.create({ url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id })
+                        })
+                        .then(image => {
+                            res.send(image)
+                        })
+                }
+            });
+        })
+        .catch(err => res.status(500).send({message: err.message}));
 });
 
 module.exports = routes;

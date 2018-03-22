@@ -29,7 +29,7 @@ passport.use(new VKontakteStrategy({
     function(accessToken, refreshToken, params, profile, done) {
         users.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id.toString() },
-            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString() }
+            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString(), role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
@@ -73,7 +73,7 @@ passport.use(new TwitterStrategy({
 
         users.findOrCreate({
             where: { provider: 'twitter', personal_id: profile.user_id },
-            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id }
+            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id, role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
@@ -93,7 +93,7 @@ passport.use(new GoogleStrategy({
     function(accessToken, refreshToken, profile, done) {
         users.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id },
-            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id }
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
