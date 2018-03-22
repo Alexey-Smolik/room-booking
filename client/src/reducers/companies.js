@@ -15,7 +15,7 @@ export default function ( state = [], action) {
             return  action.payload || false;
 
         case CREATE_COMPANY:
-            return [...state, action.payload] || false;
+            return [action.payload, ...state] || false;
 
         case DELETE_COMPANY:
             return  [...state.filter(({ id }) => id !== action.payload)] || false;

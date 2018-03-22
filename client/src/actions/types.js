@@ -1,5 +1,6 @@
 export const GET_ROOM = 'get-room';
 export const GET_ALL_ROOMS = 'get-rooms';
+export const GET_ROOMS_BY_DATE = 'get-rooms-by-date';
 export const DELETE_ROOM = 'delete-room';
 export const CREATE_ROOM = 'create-room';
 

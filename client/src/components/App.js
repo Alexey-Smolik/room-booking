@@ -7,7 +7,6 @@ import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
 
-
 class App extends Component {
     render() {
         return (
@@ -19,7 +18,6 @@ class App extends Component {
                         <Route path="/room"  component={LeftNavBar} />
                         <Route excat path="/room"  component={HelloWindow} />
                         <Route path="/room/:roomID"  component={Calendar} />
-                        {/*<Route path="/helloWindow"  component={HelloWindow} />*/}
                     </div>
                 </BrowserRouter>
             </div>
