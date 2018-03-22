@@ -149,9 +149,9 @@ class Popup extends React.Component {
                             />
 
                             <div id="form_button">
-                                <Button  /*bsStyle="success" */ type="submit">Confirm</Button>
-                                { this.props.editMode ? <Button /*bsStyle="primary"*/ onClick={this.deleteHandler} >Delete</Button> : null}
-                                <Button /*bsStyle="info"*/ onClick={this.props.closePopup}>Cancel</Button>
+                                <Button  /*bsStyle="success" */  type="submit">Confirm</Button>
+                                { this.props.editMode ? <Button id="del_canc" /*bsStyle="primary"*/ onClick={this.deleteHandler} >Delete</Button> : null}
+                                <Button id="del_canc" /*bsStyle="info"*/ onClick={this.props.closePopup}>Cancel</Button>
                             </div>
                         </FormGroup>
 
