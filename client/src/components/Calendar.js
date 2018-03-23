@@ -23,6 +23,11 @@ class Calendar extends  React.Component  {
         this.editEvent = this.editEvent.bind(this);
     }
 
+    componentWillMount(){
+        this.props.getEvents(this.props.match.params.roomID);
+        console.log("Update events");
+    }
+
     dateFilter(event, eventID = -1) {
         let eventsArray = this.props.room.events;
 
@@ -80,7 +85,6 @@ class Calendar extends  React.Component  {
     }
 
     render() {
-        console.log("Current user" , this.props.user);
 
         let events = [];
 
