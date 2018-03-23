@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
-import Header from './Header';
+import TopNavBar from './TopNavBar';
 import LeftNavBar from './LeftNavBar';
 import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
@@ -13,7 +13,7 @@ class App extends Component {
             <div className="App">
                 <BrowserRouter>
                     <div>
-                        <Header />
+                        <TopNavBar />
                         <Route exact path="/"  component={AuthComponent} />
                         <Route path="/room"  component={LeftNavBar} />
                         <Route excat path="/room"  component={HelloWindow} />

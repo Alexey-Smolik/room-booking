@@ -89,7 +89,7 @@ export const createEvent = (newEvent) => async dispatch => {
 export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
     console.log("Action -> get Current user");
-    dispatch({ type: GET_CURRENT_USER, payload: res.data });
+    dispatch({ type: GET_CURRENT_USER, payload: res.data.username });
 };
 export const getAllUsers = () => async dispatch => {
     const res = await axios.get('/api/users/');

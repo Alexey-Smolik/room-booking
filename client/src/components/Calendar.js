@@ -80,10 +80,12 @@ class Calendar extends  React.Component  {
     }
 
     render() {
+        console.log("Current user" , this.props.user);
+
         let events = [];
 
         if(this.props.room){
-            events = this.props.room.events.map( event => {
+            {this.props.room.events && (events = this.props.room.events.map( event => {
                 let start = new Date(event.date_from);
                 let end = new Date(event.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
@@ -96,7 +98,7 @@ class Calendar extends  React.Component  {
                     start: start,
                     end: end
                 }
-            })
+            }))}
         }
 
         return(

@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 // Imports in Header.js, changing rooms state and change it back.
 
-class EventsFilter extends React.Component {
+class SearchEmptyRoom extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -80,10 +80,6 @@ class EventsFilter extends React.Component {
         <div className="buttons_filter">
           <button className='filter_btn' onClick={this.submitHandler}>Search</button>
           <button className='filter_btn' onClick={() => this.props.getRooms()}>Cancel</button>
-          <form className="hello" name="search" action="#" method="get">
-              <label id="username_hello">Hello, </label>
-              <a className="link_log" href="/auth/logout">Log out</a>
-          </form>
         </div>
       </div>
     );     
@@ -96,4 +92,4 @@ function mapStateToProps({ rooms }) {
   }
 }
 
-export default connect(mapStateToProps,actions)(EventsFilter);
+export default connect(mapStateToProps,actions)(SearchEmptyRoom);
