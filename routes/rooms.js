@@ -10,7 +10,7 @@ const config = require('../config/main');
 // ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}, include: [images]})
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}, include: [images], order: [['id', 'DESC']]})
                 .then(events => {
                     return events.map(event => event.roomId);
                 })
@@ -29,7 +29,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images]})
+            rooms.findAll({include: [images],order: [['id', 'DESC']]}
                 .then(rooms => {
                     res.send(rooms);
                 })
