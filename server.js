@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, '/node_modules/jqwidgets-framework')));
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(logger('dev'));

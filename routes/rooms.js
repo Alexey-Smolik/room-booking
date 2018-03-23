@@ -10,7 +10,7 @@ const config = require('../config/main');
 // ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}, include: [images]})
                 .then(events => {
                     return events.map(event => event.roomId);
                 })
@@ -29,7 +29,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll()
+            rooms.findAll({include: [images]})
                 .then(rooms => {
                     res.send(rooms);
                 })
@@ -92,7 +92,28 @@ routes.delete('/:id', (req, res) => {
 
 
 // ----- ROUTES FOR ROOMS IMAGES -----
-routes.post('/:id/image', (req, res) => {
+routes.get('images/:id', (req, res) => {
+    images.findOne({ where: { id: req.params.id }})
+        .then(image => {
+            if(image) res.send(image);
+            else res.status(500).send({ message: 'Wrong id' });
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
+});
+
+routes.get(':id/images', (req, res) => {
+    images.find({ where: { roomId: req.params.id } })
+        .then(images => {
+            res.send(images);
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
+});
+
+routes.post('/:id/images', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [companies] })
         .then(room => {
             if(room){
@@ -126,5 +147,6 @@ routes.post('/:id/image', (req, res) => {
         })
         .catch(err => res.status(500).send({message: err.message}));
 });
+
 
 module.exports = routes;

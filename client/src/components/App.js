@@ -7,7 +7,6 @@ import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
 
-
 class App extends Component {
     render() {
         return (

@@ -375,6 +375,12 @@ div.info-close {
     margin: 0;
 }
 
+
+/* EVENT SELECTED */
+.rbc-calendar .rbc-event {
+    z-index: 11;
+}
+
 /*Popup*/
 
 .nav-bar{
