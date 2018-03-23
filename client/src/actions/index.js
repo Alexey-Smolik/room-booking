@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     GET_ROOM,
     GET_ALL_ROOMS,
+    GET_ROOMS_BY_DATE,
     DELETE_ROOM,
     CREATE_ROOM,
     DELETE_EVENT,
@@ -24,12 +25,18 @@ export const getRooms = () => async dispatch => {
     const res = await axios.get('/api/rooms');
     dispatch({ type: GET_ALL_ROOMS, payload: res.data });
 };
+
+export const getRoomsByDate = (start_date, end_date) => async dispatch => {
+    const res = await axios.get('/api/rooms?startDate=' + start_date + "&endDate=" + end_date);
+    dispatch({ type: GET_ROOMS_BY_DATE, payload: res.data });
+};
+
 export const createRoom = (roomData) => async dispatch => {
     const res = await axios.post('/api/rooms/', roomData);
     dispatch({ type: CREATE_ROOM, payload: res.data });
 };
-export const updateRoom = (roomData) => async dispatch => {
-    await axios.put('/api/rooms', roomData);
+export const updateRoom = (roomData, id) => async dispatch => {
+    await axios.put(`/api/rooms/${id}`, roomData);
     dispatch(getRooms());
 };
 export const deleteRoom = (roomID) => async dispatch => {
@@ -82,7 +89,7 @@ export const createEvent = (newEvent) => async dispatch => {
 export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
     console.log("Action -> get Current user");
-    dispatch({ type: GET_CURRENT_USER, payload: res.data });
+    dispatch({ type: GET_CURRENT_USER, payload: res.data});
 };
 export const getAllUsers = () => async dispatch => {
     const res = await axios.get('/api/users/');
@@ -90,10 +97,4 @@ export const getAllUsers = () => async dispatch => {
     dispatch({ type: GET_ALL_USERS, payload: res.data });
 };
 
-
-// export const filterDate = (date_from, date_to) => async dispatch => {
-//     const res = await axios.post('/api/events', date_from, date_to);
-//     dispatch({ type: FILTER_ROOM, payload: res.data });
-//
-// };
 

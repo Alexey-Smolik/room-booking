@@ -21,12 +21,13 @@
     "react-datepicker": "^1.2.2",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
-    "redux-devtools-extension": "^2.13.2",
     "react-dom": "^16.2.0",
+    "react-materialize": "^2.1.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {
@@ -34,5 +35,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "material-ui": "^0.20.0",
+    "semantic-ui-react": "^0.79.0"
   }
 }

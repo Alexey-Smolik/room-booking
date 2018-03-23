@@ -23,6 +23,11 @@ class Calendar extends  React.Component  {
         this.editEvent = this.editEvent.bind(this);
     }
 
+    componentWillMount(){
+        this.props.getEvents(this.props.match.params.roomID);
+        console.log("Update events");
+    }
+
     dateFilter(event, eventID = -1) {
         let eventsArray = this.props.room.events;
 
@@ -80,10 +85,11 @@ class Calendar extends  React.Component  {
     }
 
     render() {
+
         let events = [];
 
         if(this.props.room){
-            events = this.props.room.events.map( event => {
+            {this.props.room.events && (events = this.props.room.events.map( event => {
                 let start = new Date(event.date_from);
                 let end = new Date(event.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset()*60*1000 );
@@ -96,7 +102,7 @@ class Calendar extends  React.Component  {
                     start: start,
                     end: end
                 }
-            })
+            }))}
         }
 
         return(
