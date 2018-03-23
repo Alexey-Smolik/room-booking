@@ -6,8 +6,18 @@ import LeftNavBar from './LeftNavBar';
 import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
+import {getCurrentUser} from "../actions";
+import {connect} from 'react-redux';
 
 class App extends Component {
+
+
+    componentDidMount() {
+        this.props.dispatch(getCurrentUser());
+        console.log(this.props);
+    }
+
+
     render() {
         return (
             <div className="App">
@@ -25,4 +35,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default connect(null, null)(App);

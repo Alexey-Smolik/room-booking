@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import moment from 'moment';
 import * as actions from '../actions';
 import {connect} from 'react-redux';
+import TopLoginSection from "./TopLoginSection";
 
 
 // Imports in Header.js, changing rooms state and change it back.
@@ -45,7 +46,11 @@ class SearchEmptyRoom extends React.Component {
   }
 
   render() {
+
+      var user = this.props.user && this.props.user.username;
+
     return(
+        user ?
       <div className='dates_filter'>
         <div id='filter_date_from'>
           <p className='start'>Start:</p>
@@ -80,8 +85,11 @@ class SearchEmptyRoom extends React.Component {
         <div className="buttons_filter">
           <button className='filter_btn' onClick={this.submitHandler}>Search</button>
           <button className='filter_btn' onClick={() => this.props.getRooms()}>Cancel</button>
+
+            <TopLoginSection user={this.props.user}/>
         </div>
       </div>
+            :null
     );     
   }
 }

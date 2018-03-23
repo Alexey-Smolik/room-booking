@@ -1,5 +1,4 @@
 import React from 'react';
-import TopLoginSection from './TopLoginSection';
 import TopEventSearch from './TopEventSearch';
 import TopHeader from './TopHeader';
 import { getCurrentUser } from "../actions";
@@ -14,11 +13,10 @@ class TopNavBar extends React.Component {
 
 
     render() {
-        console.log(this.props.user)
+        console.log(this.props)
         return (
             <div className="reactHeader">
                 <TopEventSearch user={this.props.user}/>
-                <TopLoginSection user={this.props.user}/>
                 <TopHeader/>
             </div>
         );
