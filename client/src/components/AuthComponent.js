@@ -15,10 +15,10 @@ const AuthComponent = () => {
                                     <div className="row">
                                         <div className="col-xs-6 col-sm-6 col-md-6 separator social-login-box"> <br />
                                             <br />
-                                            <a href="/auth/vk" class="btn vk btn-block" role="button">Login with Vkontakte</a>
-                                            <a href="/auth/fb" class="btn facebook btn-block" role="button">Login with Facebook</a>
-                                            <a href="/auth/twitter" class="btn twitter btn-block" role="button">Login with Twitter</a>
-                                            <a href="/auth/google" class="btn google btn-block" role="button">Login with Google</a>
+                                            <a href="/auth/vk" className="btn vk btn-block" role="button">Login with Vkontakte</a>
+                                            <a href="/auth/fb" className="btn facebook btn-block" role="button">Login with Facebook</a>
+                                            <a href="/auth/twitter" className="btn twitter btn-block" role="button">Login with Twitter</a>
+                                            <a href="/auth/google" className="btn google btn-block" role="button">Login with Google</a>
                                         </div>
                                         <div className="col-xs-6 col-sm-6 col-md-6 login-box">
                                             <div role="form">
