@@ -2,7 +2,9 @@ const routes = require('express').Router();
 const companies = require('../models').companies;
 
 routes.get('/', (req, res) => {
-    companies.findAll()
+    companies.findAll({
+        order: [['id', 'DESC']]
+    })
         .then(companies => {
             res.send(companies);
         })
