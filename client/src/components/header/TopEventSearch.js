@@ -1,8 +1,11 @@
 import React from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment';
-import * as actions from '../actions';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
+
+import {deleteCurrentUser, getRooms} from "../../actions";
 import TopLoginSection from "./TopLoginSection";
 
 
@@ -46,11 +49,7 @@ class SearchEmptyRoom extends React.Component {
   }
 
   render() {
-
-      var user = this.props.user && this.props.user.username;
-
     return(
-        user ?
       <div className='dates_filter'>
         <div id='filter_date_from'>
           <p className='start'>Start:</p>
@@ -83,16 +82,29 @@ class SearchEmptyRoom extends React.Component {
           />
         </div>
         <div className="buttons_filter">
-          <button className='filter_btn' onClick={this.submitHandler}>Search</button>
-          <button className='filter_btn' onClick={() => this.props.getRooms()}>Cancel</button>
+          <button className='filter_btn' onClick={(e) => this.submitHandler}>Search</button>
+          <button className='filter_btn' onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
-            <TopLoginSection user={this.props.user}/>
+
+            <TopLoginSection user={this.props.user} logout={() => this.props.dispatch(deleteCurrentUser())}/>
         </div>
       </div>
-            :null
     );     
   }
 }
+
+SearchEmptyRoom.defaultProps = {
+    user: {},
+    room: PropTypes.object
+};
+
+SearchEmptyRoom.propTypes = {
+    optionalObjectWithShape: PropTypes.shape({
+        user: PropTypes.object,
+        room: PropTypes.object
+    })
+};
+
 
 function mapStateToProps({ rooms }) {
   return {
@@ -100,4 +112,4 @@ function mapStateToProps({ rooms }) {
   }
 }
 
-export default connect(mapStateToProps,actions)(SearchEmptyRoom);
+export default connect(mapStateToProps)(SearchEmptyRoom);

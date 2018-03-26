@@ -11,13 +11,6 @@ import {connect} from 'react-redux';
 
 class App extends Component {
 
-
-    componentDidMount() {
-        this.props.dispatch(getCurrentUser());
-        console.log(this.props);
-    }
-
-
     render() {
         return (
             <div className="App">

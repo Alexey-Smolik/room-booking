@@ -17,6 +17,7 @@ export const GET_EVENTS = 'get-event';
 export const GET_CURRENT_USER = 'get-current-user';
 export const GET_ALL_USERS = 'get-all-users';
 export const FILTER_ROOM = 'filter-room';
+export const REMOVE_USER_FROM_STATE = 'remove-user-from-state';
 
 
 

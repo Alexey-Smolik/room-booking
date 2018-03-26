@@ -15,6 +15,7 @@ import {
     GET_ALL_COMPANIES,
     CREATE_COMPANY,
     DELETE_COMPANY,
+    REMOVE_USER_FROM_STATE
 } from './types';
 
 export const getRoom = (roomID) => async dispatch => {
@@ -67,7 +68,6 @@ export const deleteCompany = (companyID) => async dispatch => {
 
 export const getEvents = (roomID) => async dispatch => {
     const res = await axios.get('/api/rooms/'+roomID);
-    console.log("Action -> getEvents");
     dispatch({ type: GET_EVENTS, payload: res.data });
 };
 export const deleteEvent = (eventID) => async dispatch => {
@@ -88,12 +88,19 @@ export const createEvent = (newEvent) => async dispatch => {
 
 export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
-    console.log("Action -> get Current user");
+    console.log("Current user", res);
     dispatch({ type: GET_CURRENT_USER, payload: res.data});
 };
+
+export const deleteCurrentUser = () => async dispatch => {
+    const res = await axios.get('/auth/logout');
+    dispatch({ type: REMOVE_USER_FROM_STATE, payload: res.data});
+};
+
+
+
 export const getAllUsers = () => async dispatch => {
     const res = await axios.get('/api/users/');
-    console.log("Action -> get all users");
     dispatch({ type: GET_ALL_USERS, payload: res.data });
 };
 

@@ -1,12 +1,24 @@
 import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from "../actions";
+//import * as actions from "../actions";
+import {getCurrentUser, getRooms, getEvents} from "../actions";
 
 
 class LeftNavBar extends Component {
 
-// Rendering room-info window from props that takes from onclick-event.  
+// Rendering room-info window from props that takes from onclick-event.
+
+
+    componentWillMount() {
+
+        //this.props.dispatch(getCurrentUser());
+    }
+
+    componentDidMount() {
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCurrentUser());
+    }
 
     constructor(props){
         super(props);
@@ -27,7 +39,7 @@ class LeftNavBar extends Component {
     infoHandler(index){
         this.setState({
             id: index.id,
-            description: index.description        
+            description: index.description
         });
 
         if(index.id === this.state.id || (this.state.id !== index.id && !this.state.infoVisible)) {
@@ -53,13 +65,10 @@ class LeftNavBar extends Component {
     }
 
 
-    componentDidMount() {
-        this.props.getRooms();
-        this.props.getCurrentUser();
-    }
+
 
     getDataTable(id){
-        this.props.getEvents(id);
+        this.props.dispatch(getEvents(id));
     }
 
     renderMenu(){
@@ -67,7 +76,7 @@ class LeftNavBar extends Component {
             return this.props.rooms.map( (index, key) => {
                 return (
                     <li key={key}>
-                        <Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
+                        <Link to={`/room/`+ index.id} onClick={() => this.getDataTable( index.id)}>
                             {index.name}
                         </Link>
                         <div className="info-show">
@@ -84,7 +93,6 @@ class LeftNavBar extends Component {
 
     render() {
         return(
-
             <aside>
                 <nav>
                     <ul className="aside-menu">
@@ -104,4 +112,4 @@ function mapStateToProps({ rooms }) {
     };
 }
 
-export default connect(mapStateToProps,actions)(LeftNavBar);
+export default connect(mapStateToProps)(LeftNavBar);

@@ -1,26 +1,34 @@
 import React from 'react';
-import TopEventSearch from './TopEventSearch';
-import TopHeader from './TopHeader';
-import { getCurrentUser } from "../actions";
 import {connect} from "react-redux";
+import PropTypes from 'prop-types';
+
+import TopEventSearch from './header/TopEventSearch';
+import TopHeader from './header/TopHeader';
+
 
 class TopNavBar extends React.Component {
 
-
-    componentDidMount() {
-        this.props.dispatch(getCurrentUser());
-    }
-
-
     render() {
-        console.log(this.props)
+
+        let user = this.props.user;
+        console.log(this.props);
         return (
             <div className="reactHeader">
-                <TopEventSearch user={this.props.user}/>
+                {user && <TopEventSearch  user={this.props.user}/>}
                 <TopHeader/>
             </div>
         );
     }
+}
+
+TopNavBar.defaultProps = {
+    user: "Undefined"
+};
+
+TopNavBar.propTypes = {
+    optionalObjectWithShape: PropTypes.shape({
+        user: PropTypes.object
+    })
 };
 
 function mapStateToProps({ user }) {

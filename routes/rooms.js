@@ -8,7 +8,8 @@ const issues = require('../models').issues;
 const multer  = require('multer');
 const config = require('../config/main');
 
-// ----- ROUTES FOR ROOMS -----
+// ----- HANDLERS FOR ROOMS -----
+// --- GET ALL ROOMS ---
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
             events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
@@ -40,6 +41,7 @@ routes.get('/', (req, res) => {
         }
 });
 
+// --- GET ROOM BY ID ---
 routes.get('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username', 'id'] }] }] })
         .then(room => {
@@ -63,6 +65,7 @@ routes.post('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- EDIT ROOM BY ID ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.findOne({where: {id: req.params.id}})

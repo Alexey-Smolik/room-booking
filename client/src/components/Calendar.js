@@ -87,7 +87,7 @@ class Calendar extends  React.Component  {
     render() {
 
         let events = [];
-
+        console.log(this.props.match.params);
         if(this.props.room){
             {this.props.room.events && (events = this.props.room.events.map( event => {
                 let start = new Date(event.date_from);

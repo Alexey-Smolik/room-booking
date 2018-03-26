@@ -11,11 +11,11 @@ import App from './components/App';
 
 
 
-// import { composeWithDevTools } from 'redux-devtools-extension';
-// const createStoreWithMiddleware =  composeWithDevTools(applyMiddleware(reduxThunk))(createStore);
-// const store = createStoreWithMiddleware(reducers);
+import { composeWithDevTools } from 'redux-devtools-extension';
+const createStoreWithMiddleware =  composeWithDevTools(applyMiddleware(reduxThunk))(createStore);
+const store = createStoreWithMiddleware(reducers);
 
-const store = createStore( reducers, {}, applyMiddleware(reduxThunk) );
+//const store = createStore( reducers, {}, applyMiddleware(reduxThunk) );
 
 
 render(
