@@ -5,19 +5,20 @@ const users = require('./users');
 const rooms = require('./rooms');
 const companies = require('./companies');
 const events = require('./events');
+//const issues = require('./issues');
 const path = require('path');
 const authHelpers = require('../middleware/auth');
 
 routes.use('/auth', auth);
-routes.use(express.static('/public'), authHelpers);
 
-routes.use('/main', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public', 'main.html'));
-});
+routes.use(authHelpers);
+routes.use(express.static(path.join(__dirname, 'public')));
+routes.use(express.static(path.join(__dirname, 'public/images')));
 
 routes.use('/api/users', users);
 routes.use('/api/rooms', rooms);
 routes.use('/api/companies', companies);
 routes.use('/api/events', events);
+//routes.use('/api/issues', issues);
 
 module.exports = routes;

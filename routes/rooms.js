@@ -4,13 +4,14 @@ const events = require('../models').events;
 const users = require('../models').users;
 const images = require('../models').images;
 const companies = require('../models').companies;
+const issues = require('../models').issues;
 const multer  = require('multer');
 const config = require('../config/main');
 
 // ----- ROUTES FOR ROOMS -----
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}, include: [images]})
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
                 .then(events => {
                     return events.map(event => event.roomId);
                 })
@@ -19,7 +20,7 @@ routes.get('/', (req, res) => {
                         return self.indexOf(value) === index;
                     });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }});
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues]});
                 })
                 .then(rooms => {
                     res.send(rooms);
@@ -29,7 +30,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images]})
+            rooms.findAll({include: [images, issues]})
                 .then(rooms => {
                     res.send(rooms);
                 })
