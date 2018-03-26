@@ -14,7 +14,7 @@ class TopNavBar extends React.Component {
 
     render() {
 
-        var user = this.props.user;
+        let user = this.props.user;
         console.log(this.props);
         return (
             <div className="reactHeader">
