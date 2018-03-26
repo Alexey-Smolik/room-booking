@@ -8,6 +8,10 @@ module.exports = function(sequelize, DataTypes) {
         description: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     },{
         timestamps: false
