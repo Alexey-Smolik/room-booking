@@ -98,7 +98,6 @@ export const deleteCurrentUser = () => async dispatch => {
 };
 
 
-
 export const getAllUsers = () => async dispatch => {
     const res = await axios.get('/api/users/');
     dispatch({ type: GET_ALL_USERS, payload: res.data });

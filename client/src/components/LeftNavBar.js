@@ -2,7 +2,7 @@ import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 //import * as actions from "../actions";
-import {getCurrentUser, getRooms, getEvents} from "../actions";
+import {getCurrentUser, getRooms, getEvents, getAllUsers} from "../actions";
 
 
 class LeftNavBar extends Component {
@@ -18,6 +18,7 @@ class LeftNavBar extends Component {
     componentDidMount() {
         this.props.dispatch(getRooms());
         this.props.dispatch(getCurrentUser());
+        this.props.dispatch(getAllUsers());
     }
 
     constructor(props){
