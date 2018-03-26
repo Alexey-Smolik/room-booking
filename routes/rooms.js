@@ -29,7 +29,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images],order: [['id', 'DESC']]}
+            rooms.findAll({include: [images],order: [['id', 'DESC']]})
                 .then(rooms => {
                     res.send(rooms);
                 })
