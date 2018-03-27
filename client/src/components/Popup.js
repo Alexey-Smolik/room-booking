@@ -4,6 +4,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
+import { createEvent, deleteEvent , editEvent } from "../actions";
 
 class Popup extends Component {
   constructor(props) {
@@ -47,10 +48,10 @@ class Popup extends Component {
       };
 
       if (this.props.editMode) {
-        this.props.editEvent(this.props.event.id, event);
+        this.props.dispatch(editEvent(this.props.event.id, event));
         this.props.closePopup();
       } else {
-        this.props.createEvent(event);
+        this.props.dispatch(createEvent(event));
         this.props.closePopup();
       }
     } else {
@@ -78,7 +79,7 @@ class Popup extends Component {
 
   deleteHandler = (e) => {
     e.preventDefault();
-    this.props.deleteEvent(this.props.event.id);
+    this.props.dispatch(deleteEvent(this.props.event.id));
     this.props.closePopup();
   }
 
