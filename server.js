@@ -28,3 +28,5 @@ models.sequelize.sync()
         app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}\nSockets listening on port ${port}`));
     })
     .catch((err) => console.log(err));
+
+module.exports = app;
