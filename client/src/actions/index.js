@@ -15,6 +15,11 @@ import {
     GET_ALL_COMPANIES,
     CREATE_COMPANY,
     DELETE_COMPANY,
+    CREATE_ISSUE,
+    GET_ISSUES,
+    EDIT_ISSUE,
+    DELETE_ISSUE,
+    HANDLE_MOUSE_EVENT
 } from './types';
 
 export const getRoom = (roomID) => async dispatch => {
@@ -44,6 +49,8 @@ export const deleteRoom = (roomID) => async dispatch => {
     dispatch({ type: DELETE_ROOM, payload: res.data });
 };
 
+
+
 export const getCompany = (companyID) => async dispatch => {
     const res = await axios.get(`/api/companies/${companyID}`);
     dispatch({ type: GET_COMPANY, payload: res.data });
@@ -64,6 +71,8 @@ export const deleteCompany = (companyID) => async dispatch => {
     const res = await axios.delete(`/api/companies/${companyID}`, );
     dispatch({ type: DELETE_COMPANY, payload: res.data });
 };
+
+
 
 export const getEvents = (roomID) => async dispatch => {
     const res = await axios.get('/api/rooms/'+roomID);
@@ -86,6 +95,8 @@ export const createEvent = (newEvent) => async dispatch => {
         console.log("createEvent -> Error message:" , res.body);
 };
 
+
+
 export const getCurrentUser = () => async dispatch => {
     const res = await axios.get('/api/users/current');
     console.log("Action -> get Current user");
@@ -98,3 +109,32 @@ export const getAllUsers = () => async dispatch => {
 };
 
 
+
+export const getIssues = () => async dispatch => {
+    console.log('Getting Issues');
+    // const res = await axios.get('/api/issues');
+    // dispatch({ type: GET_ISSUES, payload: res.data });
+};
+export const createIssue = (newIssue) => async dispatch => {
+    console.log('createIssue : ', newIssue);
+    // const res = await axios.post('/api/issues', newIssue);
+    // if(res.status === 200)
+    //     dispatch({ type: CREATE_ISSUE, payload: res.data });
+    // else
+        // console.log("createIssue -> Error message:" , res.body);
+};
+export const editIssue = (issueID, editedIssue) => async dispatch => {
+    console.log('Editing issues, ID :', issueID, 'Body : ', editedIssue);
+    const res = await axios.put('/api/issues/' + issueID, editedIssue);
+    dispatch({ type: EDIT_ISSUE, payload: res.data });
+};
+export const deleteIssue = (issueID) => async dispatch => {
+    console.log('Delete Issue: ', issueID);
+    // const res = await axios.delete('/api/issues/' + issueID);
+    // dispatch({ type: DELETE_ISSUE, payload: res.data });
+};
+
+
+export const handleMouseEvent = (event) => async dispatch => {
+    dispatch({ type: HANDLE_MOUSE_EVENT, payload: event })
+}

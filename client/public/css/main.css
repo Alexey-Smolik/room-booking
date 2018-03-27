@@ -229,7 +229,7 @@ h1 {
 
 }
 
-/*Alex10101 info-window & info-button*/
+/* info-window & info-button */
 
 .info-show {
     float: right;
@@ -251,8 +251,11 @@ h1 {
     cursor: pointer;
 }
 
+.info-button.black {
+    background: rgba(200, 200, 200, 0.7);
+}
+
 .info-button:focus {
-    background: #c5c5c5;
     text-decoration: none;
     outline: none;
 }
@@ -272,7 +275,7 @@ div.info-close {
 .room-info {
     width: 740px;
     border-radius: 1%;
-    background: rgba(216, 252, 255, 0.7);
+    background: rgba(197, 203, 204, 0.7);
     position: absolute;
     z-index: 1;
     top: 50px;
@@ -304,6 +307,34 @@ div.info-close {
 .room-issues {
     color: #222;
     font-size: 16px;
+}
+
+/*Issues*/
+
+.room-issues-container {
+    width: 90%;
+}
+
+.room-issues >* {
+    margin: 10px 0;
+}
+
+.room-issues-input {
+    padding: 8px 0 0 10px;
+}
+
+.room-issues-input:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+.room-issues-button {
+    cursor: pointer;
+}
+
+.room-issues-button:focus {
+    outline: none;
+    text-decoration: none;
 }
 
 /*Auth form*/

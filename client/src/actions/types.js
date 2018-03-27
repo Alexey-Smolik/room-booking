@@ -18,5 +18,9 @@ export const GET_CURRENT_USER = 'get-current-user';
 export const GET_ALL_USERS = 'get-all-users';
 export const FILTER_ROOM = 'filter-room';
 
+export const CREATE_ISSUE = 'create-issue';
+export const GET_ISSUES = 'get-issues';
+export const EDIT_ISSUE = 'edit-issue';
+export const DELETE_ISSUE = 'delete-issue';
 
-
+export const HANDLE_MOUSE_EVENT = 'handle-mouse-event';

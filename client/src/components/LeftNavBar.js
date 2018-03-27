@@ -2,56 +2,45 @@ import React , { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
+import RoomsInfo from "./RoomsInfo";
 
 
 class LeftNavBar extends Component {
 
-// Rendering room-info window from props that takes from onclick-event.  
+// Pushing props from onclick-event in room-info.   
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            id : "",
-            infoVisible: false,
-            description: "",
-            issues: "No Issues",
-            image: {
-                src: "img.jpg",
-                alt: "#"
-            }
-        };
+            activeButton: ''
+        }
 
         this.infoHandler = this.infoHandler.bind(this);
     }
 
-    infoHandler(index){
+    infoHandler(e, props) {
+        if(this.props.mouseEvents) {
+            let btn = this.state.activeButton;
+                btn.className = 'info-button';
+            if(this.props.mouseEvents.id === props.id) {
+                this.props.handleMouseEvent('');
+                e.target.className = "info-button";
+                return;
+            } 
+        }
         this.setState({
-            id: index.id,
-            description: index.description        
-        });
-
-        if(index.id === this.state.id || (this.state.id !== index.id && !this.state.infoVisible)) {
-            this.setState({
-                infoVisible: !this.state.infoVisible
-            });
-        }
+            activeButton: e.target
+        })
+        e.target.className = "info-button black";
+        this.props.handleMouseEvent(props);
     }
 
-    infoRender(){
-        if(this.state.infoVisible && this.state.id) {
-            return(
-                <div className="room-info">
-                    <div className="info-close" onClick={() => this.infoHandler(this.state.id)}>x</div>
-                    <div className="room-image">
-                        <img src={this.state.image.src} alt={this.state.image.alt} />
-                    </div>
-                    <div className="room-description">Description: {this.state.description}</div>
-                    <div className="room-issues">Issues: {this.state.issues}</div>
-                </div>
-            );
+    infoCloseWatcher() {
+        if(this.state.activeButton && !this.props.mouseEvents) {
+            let btn = this.state.activeButton;
+            btn.className = "info-button";
         }
     }
-
 
     componentDidMount() {
         this.props.getRooms();
@@ -71,7 +60,7 @@ class LeftNavBar extends Component {
                             {index.name}
                         </Link>
                         <div className="info-show">
-                            <button className="info-button" onClick={() => this.infoHandler(index)}>i</button>
+                            <button className="info-button" onClick={(e) => this.infoHandler(e, index)}>i</button>
                         </div>
                     </li>
                 );
@@ -82,26 +71,31 @@ class LeftNavBar extends Component {
         )
     }
 
-    render() {
-        return(
+    render() {        
+        this.infoCloseWatcher();
 
+        return(
             <aside>
                 <nav>
                     <ul className="aside-menu">
                         {this.renderMenu()}
-                        {this.infoRender()}
+                        {this.props.mouseEvents ? 
+                            <RoomsInfo 
+                                mouseEvents={this.props.mouseEvents} 
+                                handleMouseEvent={this.props.handleMouseEvent}
+                            /> : []}
                     </ul>
                 </nav>
             </aside>
-
         );
-    }
+    } 
 }
 
-function mapStateToProps({ rooms }) {
+function mapStateToProps({ rooms, mouseEvents }) {
     return {
-        rooms: rooms
+        rooms: rooms,
+        mouseEvents: mouseEvents
     };
 }
 
-export default connect(mapStateToProps,actions)(LeftNavBar);
+export default connect(mapStateToProps, actions)(LeftNavBar);

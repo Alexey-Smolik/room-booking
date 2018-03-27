@@ -25,6 +25,7 @@ class Popup extends React.Component {
     }
 
     componentWillMount(){
+        console.log(this.props);
         this.setState({
             room: this.props.room,
             startDate: moment(this.props.event.start),
