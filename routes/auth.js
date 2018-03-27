@@ -46,19 +46,18 @@ passport.use(new FacebookStrategy({
         clientSecret: config.FacebookStrategy.secretKey,
         callbackURL: `/auth/facebook/callback`
     },
-    function(accessToken, refreshToken, profile, params, done) {
-        /*User.findOrCreate({
-            where: { provider: profile.provider, personal_id: profile.id.toString() },
-            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString() }
+    function(accessToken, refreshToken, params, profile, done) {
+        users.findOrCreate({
+            where: { provider: profile.provider, personal_id: profile.id },
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
         })
             .then(user => {
-                //console.log(user[0].dataValues);
                 if (!user) return done(null, false);
                 return done(null, user[0].dataValues);
             })
             .catch(err => {
                 return done(err);
-            });*/
+            });
     }
 ));
 
@@ -68,12 +67,9 @@ passport.use(new TwitterStrategy({
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, params, done) {
-        profile.token = accessToken;
-        profile.secretToken = refreshToken;
-
         users.findOrCreate({
-            where: { provider: 'twitter', personal_id: profile.user_id },
-            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id, role: 3 }
+            where: { provider: profile.provider, personal_id: profile.id },
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);

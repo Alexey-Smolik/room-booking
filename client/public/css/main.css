@@ -20,6 +20,7 @@ body {
     color: #383e41;
     font: 13px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/back.jpg);
+    background-size: cover;
     margin: 0;
 
 }
@@ -228,7 +229,7 @@ h1 {
 }
 
 .rbc-event {
-    background-color: #818181 !important;
+    background-color: rgba(162, 162, 166, 0.93) !important;
 }
 
 
@@ -532,7 +533,9 @@ textarea {
 }
 
 input {
-    border-radius: 3px 0 0 3px;
+    /*border-radius: 3px 0 0 3px;*/
+    border-radius: 5px;
+
 }
 
 /*footer*/
