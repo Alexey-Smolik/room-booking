@@ -45,7 +45,7 @@ routes.get('/', (req, res) => {
 routes.get('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username', 'id'] }] }] })
         .then(room => {
-            if(room) res.send(room);
+            if(room) res.status(200).send(room);
             else res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {

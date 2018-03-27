@@ -8,10 +8,6 @@ import TopHeader from './header/TopHeader';
 
 
 class TopNavBar extends React.Component {
-
-
-
-
     render() {
 
         let user = this.props.user;

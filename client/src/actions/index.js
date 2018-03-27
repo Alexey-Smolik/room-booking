@@ -93,6 +93,7 @@ export const getCurrentUser = () => async dispatch => {
 };
 
 export const deleteCurrentUser = () => async dispatch => {
+    alert("Logout");
     const res = await axios.get('/auth/logout');
     dispatch({ type: REMOVE_USER_FROM_STATE, payload: res.data});
 };

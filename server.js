@@ -21,7 +21,7 @@ app.use(passport.session());
 app.use('/', require('./routes'));
 
 io.on('connection', socket => {
-    console.log(socket);
+    console.log('connected');
 });
 
 models.sequelize.sync()

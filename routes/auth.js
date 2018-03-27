@@ -149,6 +149,7 @@ routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
+    console.log('logout');
     req.session.destroy();
     res.redirect('/');
 });
