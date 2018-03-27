@@ -21,7 +21,7 @@ routes.get('/', (req, res) => {
                         return self.indexOf(value) === index;
                     });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues], order: [['id', 'DESC']]});
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues,{model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
                 })
                 .then(rooms => {
                     res.send(rooms);
@@ -31,7 +31,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images, issues],order: [['id', 'DESC']]})
+            rooms.findAll({include: [images, issues,{model: companies, attributes : ['name']}],order: [['id', 'DESC']]})
                 .then(rooms => {
                     res.send(rooms);
                 })
