@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client \" "
+    "dev": "concurrently \"npm run server \" \"npm run client \" ",
+    "lint": " eslint src"
   },
   "repository": {
     "type": "git",
@@ -45,7 +46,14 @@
     "react-dnd-html5-backend": "^2.5.4",
     "redux-devtools-extension": "^2.13.2",
     "sequelize": "^4.33.4",
+    "socket.io": "^2.0.4",
     "webpack-dev-server": "^3.0.0"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0"
+  }
 }

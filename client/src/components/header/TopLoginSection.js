@@ -1,14 +1,15 @@
 import React from 'react';
+import { ControlLabel } from 'react-bootstrap';
+
 
 const TopLoginSection = (props) => {
-
-    let user =  props.user.username;
-    return(
-        <form className="hello" name="search" action="#" method="get">
-            <label id="username_hello">Hello, {user || 'undefined'} </label>
-            <a  className="link_log" href="/" onClick={ () => this.props.logout() }>Log out</a>
-        </form>
-    );
+  const { username } = props.user;
+  return (
+    <form className="hello" name="search" action="#" method="get">
+      <ControlLabel id="username_hello">Hello, {username || 'undefined'} </ControlLabel>
+      <a className="link_log" href="/" onClick={() => props.logout()}>Log out</a>
+    </form>
+  );
 };
 export default TopLoginSection;
 
