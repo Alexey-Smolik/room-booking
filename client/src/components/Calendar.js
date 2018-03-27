@@ -6,7 +6,9 @@ import { getEvents } from '../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import openSocket from 'socket.io-client';
 
+const socket = openSocket('http://localhost:8000');
 BigCalendar.momentLocalizer(moment);
 
 class Calendar extends React.Component {
@@ -15,8 +17,7 @@ class Calendar extends React.Component {
     showPopup: false,
     editMode: false,
     event: '',
-  };    
-  
+  };
 
   componentWillMount() {
     this.props.dispatch(getEvents(this.props.match.params.roomID));
@@ -67,7 +68,7 @@ class Calendar extends React.Component {
     } else {
       alert('There is event on your date');
     }
-  }
+  };
 
   closePopup = () => {
     this.setState({
@@ -75,7 +76,7 @@ class Calendar extends React.Component {
       event: '',
       editMode: false,
     });
-  }
+  };
 
   render() {
     let events = [];
