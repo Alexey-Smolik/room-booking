@@ -1,58 +1,52 @@
-import React from 'react';
-import DatePicker from "react-datepicker";
-import moment from 'moment';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-
-import {deleteCurrentUser, getRooms} from "../../actions";
-import TopLoginSection from "./TopLoginSection";
+import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import { getRoomsByDate, getRooms, deleteCurrentUser } from '../../actions';
+import TopLoginSection from './TopLoginSection';
 
 
 // Imports in Header.js, changing rooms state and change it back.
 
-class SearchEmptyRoom extends React.Component {
-  constructor(props){
+class SearchEmptyRoom extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-        startDate: moment(),
-        endDate: moment(),
-        response: ""
+      startDate: moment(),
+      endDate: moment(),
     };
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
-
   }
 
   submitHandler(e) {
     e.preventDefault();
-    let start = new Date(this.state.startDate._d),
-          end = new Date(this.state.endDate._d);
-
-    this.setState({
-      response: this.props.getRoomsByDate(start, end)
-    });
+    const start = new Date(this.state.startDate._d);
+    const end = new Date(this.state.endDate._d);
+    this.props.dispatch(getRoomsByDate(start, end));
   }
 
   handleChangeStart(date) {
     this.setState({
-      startDate: date
+      startDate: date,
     });
   }
 
   handleChangeEnd(date) {
     this.setState({
-      endDate: date
+      endDate: date,
     });
   }
 
   render() {
-    return(
-      <div className='dates_filter'>
-        <div id='filter_date_from'>
-          <p className='start'>Start:</p>
+    const { user } = this.props;
+    return (
+      <div className="dates_filter">
+        <div id="filter_date_from">
+          <p className="start">Start:</p>
           <DatePicker
             selected={this.state.startDate}
             selectsStart
@@ -66,8 +60,8 @@ class SearchEmptyRoom extends React.Component {
             timeCaption="time"
           />
         </div>
-        <div id='filter_date_to'>
-          <p className='end'>End:</p>
+        <div id="filter_date_to">
+          <p className="end">End:</p>
           <DatePicker
             selected={this.state.endDate}
             selectsEnd
@@ -82,34 +76,23 @@ class SearchEmptyRoom extends React.Component {
           />
         </div>
         <div className="buttons_filter">
-          <button className='filter_btn' onClick={(e) => this.submitHandler}>Search</button>
-          <button className='filter_btn' onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+          <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
+          <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
 
-            <TopLoginSection user={this.props.user} logout={() => this.props.dispatch(deleteCurrentUser())}/>
+          <TopLoginSection user={user} logout={() => this.props.dispatch(deleteCurrentUser())} />
         </div>
       </div>
-    );     
+    );
   }
 }
 
 SearchEmptyRoom.defaultProps = {
-    user: {},
-    room: PropTypes.object
+  user: 'undefined',
 };
 
 SearchEmptyRoom.propTypes = {
-    optionalObjectWithShape: PropTypes.shape({
-        user: PropTypes.object,
-        room: PropTypes.object
-    })
+  user: PropTypes.string,
 };
 
-
-function mapStateToProps({ rooms }) {
-  return {
-      rooms: rooms
-  }
-}
-
-export default connect(mapStateToProps)(SearchEmptyRoom);
+export default connect()(SearchEmptyRoom);
