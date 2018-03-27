@@ -21,18 +21,24 @@ Object.keys(db).forEach(function(modelName) {
     }
 });
 
+// ----- SEQUELIZE ASSOCIATIONS -----
+// --- COMPANIES WITH ROOMS ---
 db.companies.hasMany(db.rooms, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.rooms.belongsTo(db.companies);
 
+// --- ROOMS WITH EVENTS ---
 db.rooms.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.events.belongsTo(db.rooms);
 
+// --- USERS WITH EVENTS ---
 db.users.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.events.belongsTo(db.users);
 
+// --- ROOMS WITH IMAGES ---
 db.rooms.hasMany(db.images, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.images.belongsTo(db.rooms);
 
+// --- ROOMS WITH ISSUES ---
 db.rooms.hasMany(db.issues, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
 db.issues.belongsTo(db.rooms);
 

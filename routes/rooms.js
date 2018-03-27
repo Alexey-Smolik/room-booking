@@ -53,6 +53,7 @@ routes.get('/:id', (req, res) => {
         });
 });
 
+// --- ADD NEW ROOM ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {
         rooms.create(req.body)
@@ -65,7 +66,7 @@ routes.post('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-// --- EDIT ROOM BY ID ---
+// --- EDIT ROOM ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.findOne({where: {id: req.params.id}})
@@ -82,6 +83,7 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- DELETE ROOM ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
@@ -96,6 +98,7 @@ routes.delete('/:id', (req, res) => {
 
 
 // ----- ROUTES FOR ROOMS IMAGES -----
+// --- GET IMAGE BY Id ---
 routes.get('images/:id', (req, res) => {
     images.findOne({ where: { id: req.params.id }})
         .then(image => {
@@ -107,6 +110,7 @@ routes.get('images/:id', (req, res) => {
         });
 });
 
+// --- GET IMAGES BY RoomId ---
 routes.get(':id/images', (req, res) => {
     images.find({ where: { roomId: req.params.id } })
         .then(images => {
@@ -117,6 +121,7 @@ routes.get(':id/images', (req, res) => {
         });
 });
 
+// --- ADD NEW IMAGE ---
 routes.post('/:id/images', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [companies] })
         .then(room => {

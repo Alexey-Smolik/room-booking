@@ -1,6 +1,8 @@
 const routes = require('express').Router();
 const companies = require('../models').companies;
 
+// ----- HANDLERS FOR ISSUES -----
+// --- GET ALL COMPANIES ---
 routes.get('/', (req, res) => {
     companies.findAll({
         order: [['id', 'DESC']]
@@ -13,6 +15,7 @@ routes.get('/', (req, res) => {
         });
 });
 
+// --- GET COMPANY BY Id ---
 routes.get('/:id', (req, res) => {
     companies.findOne({ where: { id: req.params.id } })
         .then(company => {
@@ -24,6 +27,7 @@ routes.get('/:id', (req, res) => {
         });
 });
 
+// --- ADD NEW COMPANY ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {
         companies.create(req.body)
@@ -36,6 +40,7 @@ routes.post('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- EDIT COMPANY ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         companies.findOne({where: {id: req.params.id}})
@@ -52,6 +57,7 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- DELETE COMPANY ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         companies.destroy({where: {id: req.params.id}})
