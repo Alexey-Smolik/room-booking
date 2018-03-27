@@ -1,54 +1,52 @@
-import React from 'react';
-import DatePicker from "react-datepicker";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import * as actions from '../actions';
-import {connect} from 'react-redux';
+import { getRoomsByDate, getRooms, deleteCurrentUser } from '../../actions';
+import TopLoginSection from './TopLoginSection';
 
 
 // Imports in Header.js, changing rooms state and change it back.
 
-class EventsFilter extends React.Component {
-  constructor(props){
+class SearchEmptyRoom extends Component {
+  constructor(props) {
     super(props);
     this.state = {
-        startDate: moment(),
-        endDate: moment(),
-        response: ""
+      startDate: moment(),
+      endDate: moment(),
     };
 
     this.submitHandler = this.submitHandler.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
-
   }
 
   submitHandler(e) {
     e.preventDefault();
-    let start = new Date(this.state.startDate._d),
-          end = new Date(this.state.endDate._d);
-
-    this.setState({
-      response: this.props.getRoomsByDate(start, end)
-    });
+    const start = new Date(this.state.startDate._d);
+    const end = new Date(this.state.endDate._d);
+    this.props.dispatch(getRoomsByDate(start, end));
   }
 
   handleChangeStart(date) {
     this.setState({
-      startDate: date
+      startDate: date,
     });
   }
 
   handleChangeEnd(date) {
     this.setState({
-      endDate: date
+      endDate: date,
     });
   }
 
   render() {
-    return(
-      <div className='dates_filter'>
-        <div id='filter_date_from'>
-          <p className='start'>Start:</p>
+    const { user } = this.props;
+    return (
+      <div className="dates_filter">
+        <div id="filter_date_from">
+          <p className="start">Start:</p>
           <DatePicker
             selected={this.state.startDate}
             selectsStart
@@ -62,8 +60,8 @@ class EventsFilter extends React.Component {
             timeCaption="time"
           />
         </div>
-        <div id='filter_date_to'>
-          <p className='end'>End:</p>
+        <div id="filter_date_to">
+          <p className="end">End:</p>
           <DatePicker
             selected={this.state.endDate}
             selectsEnd
@@ -78,22 +76,23 @@ class EventsFilter extends React.Component {
           />
         </div>
         <div className="buttons_filter">
-          <button className='filter_btn' onClick={this.submitHandler}>Search</button>
-          <button className='filter_btn' onClick={() => this.props.getRooms()}>Cancel</button>
-          <form className="hello" name="search" action="#" method="get">
-              <label id="username_hello">Hello, </label>
-              <a className="link_log" href="/auth/logout">Log out</a>
-          </form>
+          <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
+          <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+
+
+          <TopLoginSection user={user} logout={() => this.props.dispatch(deleteCurrentUser())} />
         </div>
       </div>
-    );     
+    );
   }
 }
 
-function mapStateToProps({ rooms }) {
-  return {
-      rooms: rooms
-  }
-}
+SearchEmptyRoom.defaultProps = {
+  user: 'undefined',
+};
 
-export default connect(mapStateToProps,actions)(EventsFilter);
+SearchEmptyRoom.propTypes = {
+  user: PropTypes.string,
+};
+
+export default connect()(SearchEmptyRoom);

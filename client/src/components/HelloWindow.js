@@ -1,13 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class HelloWindow extends Component {
-    render() {
-        return (
-            <h1>Choose the room</h1>
-
-        );
-
-    }
-}
+const HelloWindow = () => <h1>Select a room</h1>;
 
 export default HelloWindow;

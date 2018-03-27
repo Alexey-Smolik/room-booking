@@ -15,8 +15,10 @@ export const EDIT_EVENT = 'edit-event';
 export const GET_EVENTS = 'get-event';
 
 export const GET_CURRENT_USER = 'get-current-user';
+export const USER_AUTH_FORM = 'user-auth-form';
 export const GET_ALL_USERS = 'get-all-users';
 export const FILTER_ROOM = 'filter-room';
+export const REMOVE_USER_FROM_STATE = 'remove-user-from-state';
 
 export const CREATE_ISSUE = 'create-issue';
 export const GET_ISSUES = 'get-issues';

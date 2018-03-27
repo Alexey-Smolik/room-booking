@@ -4,45 +4,48 @@ const events = require('../models').events;
 const users = require('../models').users;
 const images = require('../models').images;
 const companies = require('../models').companies;
+const issues = require('../models').issues;
 const multer  = require('multer');
 const config = require('../config/main');
 
-// ----- ROUTES FOR ROOMS -----
+// ----- HANDLERS FOR ROOMS -----
+// --- GET ALL ROOMS ---
 routes.get('/', (req, res) => {
-    if (req.query.startDate && req.query.endDate) {
-        events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
-            .then(events => {
-                return events.map(event => event.roomId);
-            })
-            .then(roomsId => {
-                roomsId = roomsId.filter((value, index, self) => {
-                    return self.indexOf(value) === index;
-                });
+        if (req.query.startDate && req.query.endDate) {
+            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+                .then(events => {
+                    return events.map(event => event.roomId);
+                })
+                .then(roomsId => {
+                    roomsId = roomsId.filter((value, index, self) => {
+                        return self.indexOf(value) === index;
+                    });
 
-                return rooms.findAll({ where: { id: { $notIn: roomsId } }});
-            })
-            .then(rooms => {
-                res.send(rooms);
-            })
-            .catch(err => {
-                res.status(500).send({message: err.message});
-            });
-    }
-    else {
-        rooms.findAll()
-            .then(rooms => {
-                res.send(rooms);
-            })
-            .catch(err => {
-                res.status(500).send({ message: err.message});
-            });
-    }
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues,{model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+                })
+                .then(rooms => {
+                    res.send(rooms);
+                })
+                .catch(err => {
+                    res.status(500).send({message: err.message});
+                });
+        }
+        else {
+            rooms.findAll({include: [images, issues,{model: companies, attributes : ['name']}],order: [['id', 'DESC']]})
+                .then(rooms => {
+                    res.send(rooms);
+                })
+                .catch(err => {
+                    res.status(500).send({ message: err.message});
+                });
+        }
 });
 
+// --- GET ROOM BY ID ---
 routes.get('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username', 'id'] }] }] })
         .then(room => {
-            if(room) res.send(room);
+            if(room) res.status(200).send(room);
             else res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {
@@ -50,6 +53,7 @@ routes.get('/:id', (req, res) => {
         });
 });
 
+// --- ADD NEW ROOM ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {
         rooms.create(req.body)
@@ -62,6 +66,7 @@ routes.post('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- EDIT ROOM ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.findOne({where: {id: req.params.id}})
@@ -78,7 +83,7 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-
+// --- DELETE ROOM ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
@@ -91,7 +96,33 @@ routes.delete('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-routes.post('/:id/image', (req, res) => {
+
+// ----- ROUTES FOR ROOMS IMAGES -----
+// --- GET IMAGE BY Id ---
+routes.get('images/:id', (req, res) => {
+    images.findOne({ where: { id: req.params.id }})
+        .then(image => {
+            if(image) res.send(image);
+            else res.status(500).send({ message: 'Wrong id' });
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
+});
+
+// --- GET IMAGES BY RoomId ---
+routes.get(':id/images', (req, res) => {
+    images.find({ where: { roomId: req.params.id } })
+        .then(images => {
+            res.send(images);
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
+});
+
+// --- ADD NEW IMAGE ---
+routes.post('/:id/images', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [companies] })
         .then(room => {
             if(room){

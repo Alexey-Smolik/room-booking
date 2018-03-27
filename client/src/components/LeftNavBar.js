@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
@@ -7,7 +7,7 @@ import RoomsInfo from "./RoomsInfo";
 
 class LeftNavBar extends Component {
 
-// Pushing props from onclick-event in room-info.   
+// Pushing props from onclick-event in room-info.
 
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ class LeftNavBar extends Component {
                 this.props.handleMouseEvent('');
                 e.target.className = "info-button";
                 return;
-            } 
+            }
         }
         this.setState({
             activeButton: e.target
@@ -71,7 +71,7 @@ class LeftNavBar extends Component {
         )
     }
 
-    render() {        
+    render() {
         this.infoCloseWatcher();
 
         return(
@@ -79,16 +79,16 @@ class LeftNavBar extends Component {
                 <nav>
                     <ul className="aside-menu">
                         {this.renderMenu()}
-                        {this.props.mouseEvents ? 
-                            <RoomsInfo 
-                                mouseEvents={this.props.mouseEvents} 
+                        {this.props.mouseEvents ?
+                            <RoomsInfo
+                                mouseEvents={this.props.mouseEvents}
                                 handleMouseEvent={this.props.handleMouseEvent}
                             /> : []}
                     </ul>
                 </nav>
             </aside>
         );
-    } 
+    }
 }
 
 function mapStateToProps({ rooms, mouseEvents }) {

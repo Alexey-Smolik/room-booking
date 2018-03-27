@@ -21,18 +21,33 @@
     "react-datepicker": "^1.2.2",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
-    "redux-devtools-extension": "^2.13.2",
     "react-dom": "^16.2.0",
+    "react-loader": "^2.4.3",
+    "react-materialize": "^2.1.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "prop-types": "^15.6.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": " eslint src"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-rallycoding": "^3.2.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "material-ui": "^0.20.0",
+    
+    "redux-devtools-extension": "^2.13.2",
+    "semantic-ui-react": "^0.79.0"
   }
 }
