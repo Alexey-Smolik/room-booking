@@ -1,6 +1,8 @@
 const routes = require('express').Router();
 const users = require('../models').users;
 
+// ----- HANDLERS FOR USERS -----
+// --- GET ALL USERS ---
 routes.get('/', (req, res) => {
     if(req.user.role === 1){
         users.findAll()
@@ -13,6 +15,7 @@ routes.get('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- ADD NEW USER ---
 routes.post('/', (req, res) => {
     req.body.role = 3;
     users.create(req.body)
@@ -24,6 +27,7 @@ routes.post('/', (req, res) => {
         });
 });
 
+// --- EDIT USER ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         users.findOne({where: {id: req.params.id}})
@@ -40,6 +44,7 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- DELETE USER ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         users.destroy({where: {id: req.params.id}})
@@ -52,6 +57,7 @@ routes.delete('/:id', (req, res) => {
     }
 });
 
+// --- GET CURRENT USER ---
 routes.get('/current', (req, res) => {
     req.user ? res.send(req.user) : res.send(401).send({ message: 'Unauthorized' });
 });

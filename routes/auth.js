@@ -8,6 +8,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const users = require('../models').users;
 const config = require('../config/main');
 
+// Local stratagy for authorization
 passport.use(new LocalStrategy(
     (username, password, done) => {
         users.find({ where: { username: username, password: password }})
@@ -21,6 +22,7 @@ passport.use(new LocalStrategy(
     }
 ));
 
+// Vkontakte stratagy for authorization
 passport.use(new VKontakteStrategy({
         clientID: config.vkStrategy.appId,
         clientSecret: config.vkStrategy.secretKey,
@@ -41,6 +43,7 @@ passport.use(new VKontakteStrategy({
     }
 ));
 
+// Facebook stratagy for authorization
 passport.use(new FacebookStrategy({
         clientID: config.FacebookStrategy.appId,
         clientSecret: config.FacebookStrategy.secretKey,
@@ -62,6 +65,7 @@ passport.use(new FacebookStrategy({
     }
 ));
 
+// Twitter stratagy for authorization
 passport.use(new TwitterStrategy({
         consumerKey: config.TwitterStrategy.consumerKey,
         consumerSecret: config.TwitterStrategy.consumerSecret,
@@ -85,6 +89,7 @@ passport.use(new TwitterStrategy({
     }
 ));
 
+// Google stratagy for authorization
 passport.use(new GoogleStrategy({
         clientID: config.GoogleStrategy.clientID,
         clientSecret: config.GoogleStrategy.clientSecret,
@@ -144,6 +149,7 @@ routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
+    console.log('logout');
     req.session.destroy();
     res.redirect('/');
 });

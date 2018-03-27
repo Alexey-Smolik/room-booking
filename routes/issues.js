@@ -1,6 +1,8 @@
 const routes = require('express').Router();
 const issues = require('../models').issues;
 
+// ----- HANDLERS FOR ISSUES -----
+// --- GET ALL ISSUES ---
 routes.get('/', (req, res) => {
     issues.findAll()
         .then(issues => {
@@ -11,6 +13,7 @@ routes.get('/', (req, res) => {
         });
 });
 
+// --- GET ISSUE BY Id ---
 routes.get('/:id', (req, res) => {
     issues.findOne({ where: { id: req.params.id } })
         .then(issue => {
@@ -22,6 +25,7 @@ routes.get('/:id', (req, res) => {
         });
 });
 
+// --- ADD NEW ISSUE ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {
         issues.create(req.body)
@@ -34,6 +38,7 @@ routes.post('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- EDIT ISSUE ---
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         issues.findOne({where: {id: req.params.id}})
@@ -50,6 +55,7 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- DELETE ISSUE ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         issues.destroy({where: {id: req.params.id}})
