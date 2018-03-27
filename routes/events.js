@@ -2,20 +2,13 @@ const routes = require('express').Router();
 const events = require('../models').events;
 const rooms = require('../models').rooms;
 const companies = require('../models').companies;
-const io = require('socket.io')();
-
-io.on('connection', socket => {
-    socket.on('chat message', msg => {
-        console.log(msg);
-    })
-});
+const io = require('../sockets');
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL EVENTS ---
 routes.get('/', (req, res) => {
     events.findAll({ include: [ { model: rooms, include: companies } ] })
         .then(events => {
-            io.sockets.emit('new event', event);
             res.status(200).send(events);
         })
         .catch(err => {
@@ -39,6 +32,7 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.create(req.body)
             .then(event => {
+                io.sockets.emit('new event', event.dataValues);
                 res.status(201).send(event);
             })
             .catch(err => {

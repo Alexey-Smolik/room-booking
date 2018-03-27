@@ -7,26 +7,26 @@ import TopHeader from './TopHeader';
 
 
 const TopNavBar = (props) => {
-  const { user } = props;
-  return (
-    <div className="reactHeader">
-      {user && <TopEventSearch user={user} />}
-      <TopHeader />
-    </div>
-  );
+    const { user } = props;
+    return (
+        <div className="reactHeader">
+            {user && <TopEventSearch user={user} />}
+            <TopHeader />
+        </div>
+    );
 };
 
 TopNavBar.defaultProps = {
-  user: 'undefined',
+    user: 'undefined',
 };
 
 TopNavBar.propTypes = {
-  user: PropTypes.string,
+    user: PropTypes.string,
 };
 
 
 const mapStateToProps = ({ user }) => ({
-  user,
+    user,
 });
 
 export default connect(mapStateToProps)(TopNavBar);
