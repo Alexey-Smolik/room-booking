@@ -25,7 +25,6 @@ class LeftNavBar extends Component {
   componentDidMount() {
     this.props.dispatch(getRooms());
     this.props.dispatch(getCurrentUser());
-    this.props.dispatch(getCurrentUser());
   }
 
   getDataTable = (id) => {
