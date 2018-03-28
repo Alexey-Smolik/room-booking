@@ -111,7 +111,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const getAllIssues = () => async dispatch => {
   const res = await axios.get('/api/issues/');
-  dispatch({type: GET_ALL_ISSUES, pathname: res.data});
+  dispatch({type: GET_ALL_ISSUES, payload: res.data});
 };
 export const getRoomIssues = (issueID) => async dispatch => {
     const res = await axios.get(`/api/issues/${issueID}`);
