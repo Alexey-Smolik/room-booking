@@ -14,19 +14,23 @@
 
 html {
     height: 100%;
+    width: 100%;
 }
 
 body {
     color: #383e41;
     font: 13px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/back.jpg);
+    background-size: cover;
     margin: 0;
 
 }
 
 #username_hello{
+    color: #383e41 !important;
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
+    font-weight: normal !important;
     margin: 0;
     padding-top: 5px;
 }
@@ -228,7 +232,7 @@ h1 {
 }
 
 .rbc-event {
-    background-color: #818181 !important;
+    background-color: rgba(162, 162, 166, 0.93) !important;
 }
 
 
@@ -310,6 +314,23 @@ div.info-close {
 
 /*Auth form*/
 
+
+.col-xs-12.col-sm-12.col-lg-6 {
+    /*left: 25%;
+    right: 25%;
+    margin-top: 15%;*/
+    /*margin-top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);*/
+    /*left:25%;
+    margin-top: 15%;
+    bottom: 25%;
+    right: 25%;*/
+    margin-top: 15%;
+    margin-left: 25%;
+    z-index: 2;
+}
 .panel-title {
     padding-bottom: 5px;
     margin: 0;
@@ -331,29 +352,33 @@ div.info-close {
 }
 
 .col-xs-6.col-sm-6.col-md-6.separator.social-login-box {
-    padding: 10px;
+    padding: 10px 10px 50px 10px;
     width: 100%;
 }
 
 .btn-block {
    /* margin-left: 7px;
     padding: 5px;*/
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .btn-block:focus {
     color: blue;
 }
 
-#login {
-    margin: 10px 10px 10px;
-    /*border: 1px solid black;*/
-     /*background-color: #383e41;*/
+.login {
+    float: right;
+    width: 50px;
+    height: 32px;
+    border: 1px solid #333;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
     background-color: #B71C1C;
     color: white;
+    border-radius: 4px !important;
 }
 
-#login:active {
+.login:active {
     border: 2px solid blue;
 }
 
@@ -362,7 +387,7 @@ div.info-close {
 }
 
 #password {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .col-xs-12.col-sm-12.col-md-12 {
@@ -532,7 +557,9 @@ textarea {
 }
 
 input {
-    border-radius: 3px 0 0 3px;
+    /*border-radius: 3px 0 0 3px;*/
+    border-radius: 5px;
+
 }
 
 /*footer*/

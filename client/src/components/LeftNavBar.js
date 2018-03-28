@@ -22,6 +22,10 @@ class LeftNavBar extends Component {
     };
   }
 
+
+
+
+
   componentDidMount() {
     this.props.dispatch(getRooms());
     this.props.dispatch(getCurrentUser());
@@ -77,6 +81,7 @@ class LeftNavBar extends Component {
       <li>Click me</li>
     );
   }
+
 
   render() {
     return (
