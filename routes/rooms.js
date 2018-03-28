@@ -112,7 +112,7 @@ routes.get('images/:id', (req, res) => {
 
 // --- GET IMAGES BY RoomId ---
 routes.get('/:id/images', (req, res) => {
-    images.find({ where: { roomId: req.params.id } })
+    images.findAll({ where: { roomId: req.params.id } })
         .then(images => {
             res.send(images);
         })
