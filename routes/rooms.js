@@ -160,7 +160,7 @@ routes.post('/:id/images', (req, res) => {
 // ----- ROUTES FOR ROOMS ISSUES -----
 // --- GET ISSUES BY RoomId ---
 routes.get('/:id/issues', (req, res) => {
-    issues.find({ where: { roomId: req.params.id } })
+    issues.findAll({ where: { roomId: req.params.id } })
         .then(issues => {
             res.send(issues);
         })
