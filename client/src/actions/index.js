@@ -113,13 +113,13 @@ export const getAllIssues = () => async dispatch => {
   const res = await axios.get('/api/issues/');
   dispatch({type: GET_ALL_ISSUES, payload: res.data});
 };
-export const getRoomIssues = (issueID) => async dispatch => {
-    const res = await axios.get(`/api/issues/${issueID}`);
+export const getRoomIssues = (roomID) => async dispatch => {
+    const res = await axios.get(`/api/issues/${roomID}`);
     dispatch({type: GET_ROOM_ISSUES, payload: res.data});
 };
-export const updateIssue = (issueID, issueData) => async dispatch => {
+export const updateIssue = (issueID, roomID, issueData) => async dispatch => {
     await axios.put(`/api/issues/${issueID}`, issueData);
-    dispatch(getAllIssues());
+    roomID ?  dispatch(getCompanies(roomID)):  dispatch(getAllIssues());
 };
 export const createIssue = (issueData) => async dispatch => {
     const res = await axios.post('/api/issues/', issueData);
