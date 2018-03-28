@@ -19,7 +19,9 @@ routes.get('/', (req, res) => {
 
 // --- GET ISSUES BY roomId ---
 routes.get('/:id', (req, res) => {
-    issues.findAll({ where: { roomId: req.params.id }, include: [{model: rooms, attributes : ['name']}] })
+    issues.findAll({
+        where: { roomId: req.params.id }, order: [['id', 'DESC']], include: [{model: rooms, attributes : ['name']}]
+    })
         .then(issue => {
             if(issue) res.send(issue);
             else res.status(500).send({ message: 'Wrong id' });
