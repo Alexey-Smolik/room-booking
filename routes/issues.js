@@ -1,10 +1,14 @@
 const routes = require('express').Router();
 const issues = require('../models').issues;
+const rooms= require('../models').rooms;
+
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL ISSUES ---
 routes.get('/', (req, res) => {
-    issues.findAll()
+    issues.findAll({
+        order: [['id', 'DESC']], include: [{model: rooms, attributes : ['name']}],
+    })
         .then(issues => {
             res.send(issues);
         })
@@ -13,9 +17,9 @@ routes.get('/', (req, res) => {
         });
 });
 
-// --- GET ISSUE BY Id ---
+// --- GET ISSUES BY roomId ---
 routes.get('/:id', (req, res) => {
-    issues.findOne({ where: { id: req.params.id } })
+    issues.findAll({ where: { roomId: req.params.id }, include: [{model: rooms, attributes : ['name']}] })
         .then(issue => {
             if(issue) res.send(issue);
             else res.status(500).send({ message: 'Wrong id' });

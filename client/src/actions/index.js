@@ -17,6 +17,10 @@ import {
   DELETE_COMPANY,
   REMOVE_USER_FROM_STATE,
   USER_AUTH_FORM,
+  GET_ALL_ISSUES,
+  GET_ROOM_ISSUES,
+  CREATE_ISSUE,
+  DELETE_ISSUE,
 } from './types';
 
 export const getRoom = roomID => async (dispatch) => {
@@ -100,11 +104,34 @@ export const deleteCurrentUser = () => async (dispatch) => {
   const res = await axios.get('/auth/logout');
   dispatch({ type: REMOVE_USER_FROM_STATE, payload: res.data });
 };
-
-
 export const getAllUsers = () => async (dispatch) => {
   const res = await axios.get('/api/users/');
   dispatch({ type: GET_ALL_USERS, payload: res.data });
 };
+
+export const getAllIssues = () => async dispatch => {
+  const res = await axios.get('/api/issues/');
+  dispatch({type: GET_ALL_ISSUES, pathname: res.data});
+};
+export const getRoomIssues = (issueID) => async dispatch => {
+    const res = await axios.get(`/api/issues/${issueID}`);
+    dispatch({type: GET_ROOM_ISSUES, payload: res.data});
+};
+export const updateIssue = (issueID, issueData) => async dispatch => {
+    await axios.put(`/api/issues/${issueID}`, issueData);
+    dispatch(getAllIssues());
+};
+export const createIssue = (issueData) => async dispatch => {
+    const res = await axios.post('/api/issues/', issueData);
+    dispatch({type: CREATE_ISSUE, payload: res.data});
+};
+export const deleteIssue = (issueID) => async dispatch => {
+    const res = await axios.delete(`/api/issues/${issueID}`);
+    dispatch({type: DELETE_ISSUE, payload: res.data});
+};
+
+
+
+
 
 
