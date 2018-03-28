@@ -21,7 +21,7 @@ routes.get('/', (req, res) => {
                         return self.indexOf(value) === index;
                     });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues,{model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues, {model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
                 })
                 .then(rooms => {
                     res.send(rooms);
@@ -111,7 +111,7 @@ routes.get('images/:id', (req, res) => {
 });
 
 // --- GET IMAGES BY RoomId ---
-routes.get(':id/images', (req, res) => {
+routes.get('/:id/images', (req, res) => {
     images.find({ where: { roomId: req.params.id } })
         .then(images => {
             res.send(images);
@@ -159,7 +159,7 @@ routes.post('/:id/images', (req, res) => {
 
 // ----- ROUTES FOR ROOMS ISSUES -----
 // --- GET ISSUES BY RoomId ---
-routes.get(':id/issues', (req, res) => {
+routes.get('/:id/issues', (req, res) => {
     issues.find({ where: { roomId: req.params.id } })
         .then(issues => {
             res.send(issues);
