@@ -7,24 +7,27 @@ import RoomsInfo from "./RoomsInfo";
 
 class LeftNavBar extends Component {
 
-// Getting rooms and onclick-event(only for info-button colouring) from redux state. 
-// Pushing props(active button) from onclick-event in room-info and redux state.
+// Getting rooms from redux state. 
+// Pushing props(active button) from onclick-event in room-info.
+// handleMouseEvent uses in RoomsInfo
 
     constructor(props) {
         super(props);
         this.state = {
-            activeButton: ''
+            activeButton: '',
+            mouseEvent: ''
         }
 
         this.infoHandler = this.infoHandler.bind(this);
+        this.handleMouseEvent = this.handleMouseEvent.bind(this);
     }
 
     infoHandler(e, props) {
-        if(this.props.mouseEvents) {
+        if(this.state.mouseEvent) {
             let btn = this.state.activeButton;
                 btn.className = 'info-button';
-            if(this.props.mouseEvents.id === props.id) {
-                this.props.handleMouseEvent('');
+            if(this.state.mouseEvent.id === props.id) {
+                this.handleMouseEvent('');
                 e.target.className = "info-button";
                 return;
             }
@@ -33,11 +36,19 @@ class LeftNavBar extends Component {
             activeButton: e.target
         })
         e.target.className = "info-button black";
-        this.props.handleMouseEvent(props);
+        this.handleMouseEvent(props);
+    }
+
+    handleMouseEvent(props) {
+        this.setState({
+            mouseEvent: props
+        })
+
+        return this.state.mouseEvent
     }
 
     infoCloseWatcher() {
-        if(this.state.activeButton && !this.props.mouseEvents) {
+        if(this.state.activeButton && !this.state.mouseEvent) {
             let btn = this.state.activeButton;
             btn.className = "info-button";
         }
@@ -50,6 +61,10 @@ class LeftNavBar extends Component {
 
     getDataTable(id){
         this.props.getEvents(id);
+    }
+
+    test() {
+        console.log(123, 'From LeftNavBar');
     }
 
     renderMenu(){
@@ -80,10 +95,11 @@ class LeftNavBar extends Component {
                 <nav>
                     <ul className="aside-menu">
                         {this.renderMenu()}
-                        {this.props.mouseEvents ?
+                        {this.state.mouseEvent ?
                             <RoomsInfo
-                                mouseEvents={this.props.mouseEvents}
-                                handleMouseEvent={this.props.handleMouseEvent}
+                                mouseEvents={this.state.mouseEvent}
+                                handleMouseEvent={this.handleMouseEvent}
+                                test={this.test}
                             /> : []}
                     </ul>
                 </nav>
@@ -92,10 +108,9 @@ class LeftNavBar extends Component {
     }
 }
 
-function mapStateToProps({ rooms, mouseEvents }) {
+function mapStateToProps({ rooms }) {
     return {
         rooms: rooms,
-        mouseEvents: mouseEvents
     };
 }
 

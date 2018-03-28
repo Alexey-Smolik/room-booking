@@ -4,7 +4,6 @@ import roomEvents  from './roomEvents';
 import userReducer  from './userReducer';
 import companiesReducer from './companies';
 import issues from './issues';
-import mouseEvents from './mouseEvents';
 
 export default combineReducers({
     rooms: roomsList,
@@ -12,5 +11,4 @@ export default combineReducers({
     user: userReducer,
     companies: companiesReducer,
     issues: issues,
-    mouseEvents: mouseEvents
 });

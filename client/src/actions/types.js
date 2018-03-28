@@ -24,5 +24,3 @@ export const CREATE_ISSUE = 'create-issue';
 export const GET_ISSUES = 'get-issues';
 export const EDIT_ISSUE = 'edit-issue';
 export const DELETE_ISSUE = 'delete-issue';
-
-export const HANDLE_MOUSE_EVENT = 'handle-mouse-event';

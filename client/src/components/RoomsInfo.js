@@ -4,12 +4,11 @@ import * as actions from "../actions";
 
 class RoomsInfo extends React.Component {
 
-// Getting props from NavBar & Redux, getting issues from Server.
+// Getting props & from NavBar & Redux, getting issues from Server.
+// Getting handleMouseEvent from LeftNavBar
 
-// Side-click event that reading first class name letters and changes Redux state.  
+// Side-click event that reading first class name letters and changes LeftNavBar(by handleMouseEvent) state.  
 // Side-clicks prevented if input field is not empty.
-
-// When closing by info-close button changes Redux state(for info-button colouring!).
 
 // Input value resets if other info-button being clicked.
 
@@ -30,8 +29,10 @@ class RoomsInfo extends React.Component {
  		window.addEventListener('click', this.sideClick);
  		this.setState({
  			id: this.props.mouseEvents.id,
+ 			issues: this.props.issues
  		})
  		console.log(this.props.getIssues(this.props.mouseEvents.id))
+ 		console.log(this.props);
  	}
 
  	componentWillUnmount() {
@@ -62,6 +63,7 @@ class RoomsInfo extends React.Component {
  	}
 
 	sideClick = (e) => {
+		this.props.test();
 		if(this.state.inputValue) {
 			return;
 		}
@@ -106,7 +108,7 @@ class RoomsInfo extends React.Component {
 
     issuesList() {
     	return this.state.issues.map( (item, index) => {
-    		return <div className="room-issue" key={index}> {item} </div>
+    		return <div className="room-issue" key={index}> {item.description} </div>
     	});
     }
 
@@ -119,7 +121,7 @@ class RoomsInfo extends React.Component {
     infoRender(){
         return(
             <div className="room-info">
-                <div className="info-close" onClick={() => this.props.handleMouseEvent('')}>x</div>
+                <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
                 <div className="room-image">
                     <img className="room-image-image" src='img.jpg' alt='#' />
                 </div>

@@ -19,7 +19,6 @@ import {
     GET_ISSUES,
     EDIT_ISSUE,
     DELETE_ISSUE,
-    HANDLE_MOUSE_EVENT,
     REMOVE_USER_FROM_STATE,
     USER_AUTH_FORM,
 } from './types';
@@ -138,8 +137,3 @@ export const deleteIssue = (issueID) => async dispatch => {
     // const res = await axios.delete('/api/issues/' + issueID);
     // dispatch({ type: DELETE_ISSUE, payload: res.data });
 };
-
-
-export const handleMouseEvent = (event) => async dispatch => {
-    dispatch({ type: HANDLE_MOUSE_EVENT, payload: event })
-}
