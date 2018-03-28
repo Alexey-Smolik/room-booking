@@ -329,6 +329,7 @@ div.info-close {
     right: 25%;*/
     margin-top: 15%;
     margin-left: 25%;
+    min-width: 200px;
     z-index: 2;
 }
 .panel-title {
