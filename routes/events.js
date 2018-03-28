@@ -32,7 +32,7 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.create(req.body)
             .then(event => {
-                io.sockets.emit('new event', event.dataValues);
+                io.emit('new event', event.dataValues);
                 res.status(201).send(event);
             })
             .catch(err => {
@@ -50,6 +50,7 @@ routes.put('/:id', (req, res) => {
                 else res.status(500).send({message: 'Wrong id'});
             })
             .then(event => {
+                io.emit('edit event', event.dataValues);
                 res.status(200).send(event);
             })
             .catch(err => {
@@ -63,7 +64,10 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.destroy({where: {id: req.params.id}})
             .then(event => {
-                event ? res.status(200).send({message: 'Event successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+                if(event){
+                    io.emit('delete event', event.dataValues);
+                    res.status(200).send({message: 'Event successfully deleted'});
+                } else res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
