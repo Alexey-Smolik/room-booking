@@ -3,10 +3,12 @@ import roomsList from './roomReducer';
 import roomEvents from './eventReducer';
 import userReducer from './userReducer';
 import companiesReducer from './companiesReducer';
+import issuesReducer from './issuesReducer';
 
 export default combineReducers({
   rooms: roomsList,
   events: roomEvents,
   user: userReducer,
   companies: companiesReducer,
+  issues: issuesReducer,
 });
