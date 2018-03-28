@@ -30,7 +30,7 @@ class AuthComponent extends Component {
         <form method="post" action="/auth/local" id="authForm">
           <div className="container">
             <div className="row">
-              <div className="col-xs-12 col-sm-12 col-lg-6" style={{ marginLeft: '25%', marginTop: '15%' }}>
+              <div className="col-xs-12 col-sm-12 col-lg-6" >
               <div className="panel panel-primary">
                 <div className="panel-heading">
                   <h3 className="panel-title">Sign in</h3>
@@ -45,17 +45,17 @@ class AuthComponent extends Component {
                       <a href="/auth/google" className="btn google btn-block" role="button">Login with Google</a>
                     </div>
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                      <form onSubmit={this.handleSubmit}>
+                      <div onSubmit={this.handleSubmit}>
                         <div className="input-group">
                           <span className="input-group-addon"><span className="glyphicon glyphicon-user" /></span>
-                          <input type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
+                          <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
                         </div>
                         <div className="input-group">
                           <span className="input-group-addon"><span className="glyphicon glyphicon-lock" /></span>
-                          <input type="text" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                          <input id="password" type="text" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
-                        <input type="submit" value="Submit" />
-                      </form>
+                        <input className="login" type="submit" value="Sign in" />
+                      </div>
                     </div>
                   </div>
                 </div>
