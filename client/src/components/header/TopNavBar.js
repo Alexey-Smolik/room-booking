@@ -21,7 +21,7 @@ TopNavBar.defaultProps = {
 };
 
 TopNavBar.propTypes = {
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 

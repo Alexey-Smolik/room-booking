@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-//import { userAuthForm } from '../actions';
-import * as actions from '../actions';
+import { userAuthForm } from '../actions';
 import { connect } from 'react-redux';
 
 
@@ -21,9 +20,7 @@ class AuthComponent extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let {username, password} = this.state;
-    if( username && password) {
-      this.props.userAuthForm();
-    }
+    { username && password &&  this.props.dispatch(userAuthForm()) }
   }
 
 
@@ -73,4 +70,4 @@ class AuthComponent extends Component {
 }
 
 
-export default connect(null, actions)(AuthComponent);
+export default connect()(AuthComponent);

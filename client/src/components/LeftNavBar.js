@@ -27,9 +27,6 @@ class LeftNavBar extends Component {
     this.props.dispatch(getCurrentUser());
   }
 
-  getDataTable = (id) => {
-    this.props.dispatch(getEvents(id));
-  }
 
   infoHandler = (index) => {
     this.setState({
@@ -64,7 +61,7 @@ class LeftNavBar extends Component {
     if (this.props.rooms) {
       return this.props.rooms.map((index, key) => (
         <li key={key}>
-          <Link to={`/room/${index.id}`} onClick={() => this.getDataTable(index.id)}>
+          <Link to={`/room/${index.id}`} onClick={() => {this.props.dispatch(getEvents(index.id))}}>
             {index.name}
           </Link>
           <div className="info-show">
