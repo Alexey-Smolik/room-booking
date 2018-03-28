@@ -7,7 +7,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
-const io = require('socket.io')();
+const io = require('./sockets');
 require('./config/main');
 
 app.use(cookieParser());
@@ -20,9 +20,6 @@ app.use(passport.session());
 
 app.use('/', require('./routes'));
 
-io.on('connection', socket => {
-    console.log('connected');
-});
 
 models.sequelize.sync()
     .then(() => {
