@@ -114,10 +114,11 @@ export const getAllUsers = () => async (dispatch) => {
 
 
 
-export const getIssues = () => async dispatch => {
+export const getIssues = (issueID) => async dispatch => {
     console.log('Getting Issues');
-    // const res = await axios.get('/api/issues');
-    // dispatch({ type: GET_ISSUES, payload: res.data });
+    const res = await axios.get('/api/issues/' + issueID);
+    console.log(res.data);
+    dispatch({ type: GET_ISSUES, payload: res.data });
 };
 export const createIssue = (newIssue) => async dispatch => {
     console.log('createIssue : ', newIssue);

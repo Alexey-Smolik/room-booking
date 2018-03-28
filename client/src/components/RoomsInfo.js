@@ -4,6 +4,15 @@ import * as actions from "../actions";
 
 class RoomsInfo extends React.Component {
 
+// Getting props from NavBar & Redux, getting issues from Server.
+
+// Side-click event that reading first class name letters and changes Redux state.  
+// Side-clicks prevented if input field is not empty.
+
+// When closing by info-close button changes Redux state(for info-button colouring!).
+
+// Input value resets if other info-button being clicked.
+
 	constructor(props) {
 		super(props); 
 		this.state = {
@@ -20,8 +29,9 @@ class RoomsInfo extends React.Component {
  	componentDidMount() {
  		window.addEventListener('click', this.sideClick);
  		this.setState({
- 			id: this.props.mouseEvents.id
+ 			id: this.props.mouseEvents.id,
  		})
+ 		console.log(this.props.getIssues(this.props.mouseEvents.id))
  	}
 
  	componentWillUnmount() {
@@ -72,7 +82,7 @@ class RoomsInfo extends React.Component {
     	} else {
     		if(this.state.inputValue) {
     			this.props.createIssue(this.state.inputValue);
-	    		this.props.getIssues();
+	    		// this.props.getIssues();
 	    		e.target.previousSibling.value = "";
 	    		this.setState({
 	    			inputValue: ""

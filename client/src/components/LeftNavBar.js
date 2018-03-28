@@ -7,7 +7,8 @@ import RoomsInfo from "./RoomsInfo";
 
 class LeftNavBar extends Component {
 
-// Pushing props from onclick-event in room-info.
+// Getting rooms and onclick-event(only for info-button colouring) from redux state. 
+// Pushing props(active button) from onclick-event in room-info and redux state.
 
     constructor(props) {
         super(props);
