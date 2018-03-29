@@ -30,7 +30,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', require('./routes'));
 
-
 models.sequelize.sync()
     .then(() => {
         //const port = 8000;
