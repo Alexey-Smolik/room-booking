@@ -10,10 +10,8 @@ class Popup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      room: '',
       title: '',
       description: '',
-      user: '',
       startDate: moment(),
       endDate: moment(),
     };
@@ -37,10 +35,7 @@ class Popup extends Component {
     start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
-    let { id } = this.props.event;
-    let { user } = this.props
-
-
+    let { user } = this.props;
 
     if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
       const event = {
@@ -48,11 +43,12 @@ class Popup extends Component {
         description: this.state.description,
         date_from: start,
         date_to: end,
-        roomId: this.state.room.id,
-        userId: this.state.user.id,
-        user: user,
-        id: id
+        id: this.props.event.id,
+        roomId: this.props.roomID,
+        userId: this.props.user.id,
+        user: this.props.user,
       };
+
 
       if (this.props.editMode) {
         this.props.dispatch(editEvent(this.props.event.id, event));

@@ -1,43 +1,38 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from "../actions";
-import RoomsInfo, { changeState } from "./RoomsInfo";
+// import * as actions from "../actions";
+import { getCurrentUser, getRooms, getEvents } from '../actions';
 
 
 class LeftNavBar extends Component {
+// Rendering room-info window from props that takes from onclick-event.
 
-// Getting rooms from redux state. 
-// Pushing props(active button) from onclick-event in room-info.
-// handleMouseEvent uses in RoomsInfo
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: '',
+      infoVisible: false,
+      description: '',
+      issues: 'No Issues',
+      image: {
+        src: 'img.jpg',
+        alt: '#',
+      },
+    };
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeButton: '',
-            mouseEvent: ''
-        }
+  componentDidMount() {
+    this.props.dispatch(getRooms());
+    this.props.dispatch(getCurrentUser());
+  }
 
-        this.infoHandler = this.infoHandler.bind(this);
-        this.handleMouseEvent = this.handleMouseEvent.bind(this);
-    }
 
-    infoHandler(e, props) {
-        if(this.state.mouseEvent) {
-            let btn = this.state.activeButton;
-                btn.className = 'info-button';
-            if(this.state.mouseEvent.id === props.id) {
-                this.handleMouseEvent('');
-                e.target.className = "info-button";
-                return;
-            }
-        }
-        this.setState({
-            activeButton: e.target
-        })
-        e.target.className = "info-button black";
-        this.handleMouseEvent(props);
-    }
+  infoHandler = (index) => {
+    this.setState({
+      id: index.id,
+      description: index.description,
+    });
 
     handleMouseEvent(props) {
         this.setState({
@@ -58,58 +53,45 @@ class LeftNavBar extends Component {
         this.props.getRooms();
         this.props.getCurrentUser();
     }
+    return false;
+  }
 
-    getDataTable(id){
-        this.props.getEvents(id);
+  renderMenu = () => {
+    if (this.props.rooms) {
+      return this.props.rooms.map((index, key) => (
+        <li key={key}>
+          <Link to={`/room/${index.id}`} onClick={() => {this.props.dispatch(getEvents(index.id))}}>
+            {index.name}
+          </Link>
+          <div className="info-show">
+            <button className="info-button" onClick={() => this.infoHandler(index)}>i</button>
+          </div>
+        </li>
+      ));
     }
-
-    renderMenu(){
-        if(this.props.rooms) {
-            return this.props.rooms.map( (index, key) => {
-                return (
-                    <li key={key}>
-                        <Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
-                            {index.name}
-                        </Link>
-                        <div className="info-show">
-                            <button className="info-button" onClick={(e) => this.infoHandler(e, index)}>i</button>
-                        </div>
-                    </li>
-                );
-            });
-        }
-        return (
-            <li>Click me</li>
-        )
-    }
+    return (
+      <li>Click me</li>
+    );
+  }
 
 
+  render() {
+    return (
+      <aside>
+        <nav>
+          <ul className="aside-menu">
+            {this.renderMenu()}
+            {this.infoRender()}
+          </ul>
+        </nav>
+      </aside>
 
-    render() {
-        this.infoCloseWatcher();
-
-        return(
-            <aside>
-                <nav>
-
-                    <ul className="aside-menu">
-                        {this.renderMenu()}
-                        {this.state.mouseEvent ?
-                            <RoomsInfo
-                                selectedRoom={this.state.mouseEvent}
-                                handleMouseEvent={this.handleMouseEvent}
-                            /> : []}
-                    </ul>
-                </nav>
-            </aside>
-        );
-    }
+    );
+  }
 }
 
-function mapStateToProps({ rooms }) {
-    return {
-        rooms: rooms,
-    };
-}
+const mapStateToProps = ({ rooms }) => ({
+  rooms,
+});
 
-export default connect(mapStateToProps, actions)(LeftNavBar);
+export default connect(mapStateToProps)(LeftNavBar);
