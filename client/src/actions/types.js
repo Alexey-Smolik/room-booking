@@ -28,3 +28,6 @@ export const GET_ROOM_ISSUES = 'get-room-issues';
 export const CREATE_ISSUE = 'create-issue';
 export const DELETE_ISSUE = 'delete-issue';
 
+export const GET_ROOM_IMAGES = 'get-room-images';
+export const ADD_ROOM_IMAGE = 'add_room_image';
+export const DELETE_ROOM_IMAGE = 'delete-room
