@@ -16,7 +16,7 @@ const App = () => (
         <TopNavBar />
         <Route exact path="/" component={AuthComponent} />
         <Route path="/room" component={LeftNavBar} />
-        <Route excat path="/room" component={HelloWindow} />
+        <Route exact path="/room" component={HelloWindow} />
         <Route path="/room/:roomID" component={Calendar} />
         <Footer />
       </div>

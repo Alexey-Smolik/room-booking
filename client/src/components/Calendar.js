@@ -52,35 +52,36 @@ class Calendar extends React.Component {
   }
 
   editEvent = (event) => {
-    this.setState({
-      showPopup: !this.state.showPopup,
+    this.setState( (prevState) => ({
+      showPopup: !prevState.showPopup,
       event,
-      editMode: true,
-    });
-  }
+      editMode: true
+    }))
+  };
+
 
   addEvent = (event) => {
     if (this.dateFilter(event)) {
-      this.setState({
-        showPopup: !this.state.showPopup,
+      this.setState( (prevState) => ({
+        showPopup: !prevState.showPopup,
         event,
-      });
+      }))
     } else {
       alert('There is event on your date');
     }
   };
 
   closePopup = () => {
-    this.setState({
-      showPopup: !this.state.showPopup,
+    this.setState((prevState) => ({
+      showPopup: !prevState.showPopup,
       event: '',
       editMode: false,
-    });
-  };
+    }))
+  }
 
   render() {
+    console.log(this.props);
     let events = [];
-    console.log(this.props.match.params);
     if (this.props.room) {
       { this.props.room.events && (events = this.props.room.events.map((event) => {
         const start = new Date(event.date_from);
@@ -90,7 +91,7 @@ class Calendar extends React.Component {
 
         return {
           id: event.id,
-          desc: event.description,
+          description: event.description,
           title: event.name,
           start,
           end,

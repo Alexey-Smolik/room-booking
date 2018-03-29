@@ -21,12 +21,12 @@ TopNavBar.defaultProps = {
 };
 
 TopNavBar.propTypes = {
-    user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 
 const mapStateToProps = ({ user }) => ({
-    user,
+  user,
 });
 
 export default connect(mapStateToProps)(TopNavBar);

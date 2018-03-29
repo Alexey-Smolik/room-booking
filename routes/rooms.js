@@ -111,8 +111,8 @@ routes.get('images/:id', (req, res) => {
 });
 
 // --- GET IMAGES BY RoomId ---
-routes.get(':id/images', (req, res) => {
-    images.find({ where: { roomId: req.params.id } })
+routes.get('/:id/images', (req, res) => {
+    images.findAll({ where: { roomId: req.params.id } })
         .then(images => {
             res.send(images);
         })
@@ -155,6 +155,18 @@ routes.post('/:id/images', (req, res) => {
             });
         })
         .catch(err => res.status(500).send({message: err.message}));
+});
+
+// ----- ROUTES FOR ROOMS ISSUES -----
+// --- GET ISSUES BY RoomId ---
+routes.get('/:id/issues', (req, res) => {
+    issues.findAll({ where: { roomId: req.params.id } })
+        .then(issues => {
+            res.send(issues);
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
 });
 
 module.exports = routes;

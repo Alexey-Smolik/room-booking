@@ -20,7 +20,8 @@ export const GET_ALL_USERS = 'get-all-users';
 export const FILTER_ROOM = 'filter-room';
 export const REMOVE_USER_FROM_STATE = 'remove-user-from-state';
 
+export const GET_ALL_ISSUES = 'get-all-issues';
+export const GET_ROOM_ISSUES = 'get-room-issues';
 export const CREATE_ISSUE = 'create-issue';
-export const GET_ISSUES = 'get-issues';
-export const EDIT_ISSUE = 'edit-issue';
 export const DELETE_ISSUE = 'delete-issue';
+
