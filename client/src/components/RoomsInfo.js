@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
+import Carousel from 'react-bootstrap/lib/Carousel';
 
 class RoomsInfo extends React.Component {
 
@@ -13,65 +14,68 @@ class RoomsInfo extends React.Component {
 // Input value resets if other info-button being clicked.
 
 	constructor(props) {
-		super(props); 
+		super(props);
 		this.state = {
-			id: '',
-			issues: ['issue1', 'issue2', 'issue3'],
+			id: this.props.selectedRoom.id,
+			issues: this.props.selectedRoom.issues,
 			inputValue: '',
 			inputElem: '',
 			issueAdd: false
-		}
+		};
 		this.clearInputValue = this.clearInputValue.bind(this);
 		this.handleIssueAdd = this.handleIssueAdd.bind(this);
-	}
+		this.inputHandler = this.inputHandler.bind(this);
+	};
 
  	componentDidMount() {
  		window.addEventListener('click', this.sideClick);
- 		this.setState({
- 			id: this.props.mouseEvents.id,
- 			issues: this.props.issues
- 		})
- 		console.log(this.props.getIssues(this.props.mouseEvents.id))
- 		console.log(this.props);
- 	}
+ 	};
 
  	componentWillUnmount() {
  		window.removeEventListener('click', this.sideClick);
- 	}
+ 	};
 
  	componentWillReceiveProps() {
  		this.setState({
  			issueAdd: false
- 		})
+ 		});
 
  		if(this.state.inputElem) {
  			let input = this.state.inputElem;
  			input.value = "";
- 		}
- 	}
+ 		};
+ 	};
+
+
 
  	clearInputValue(e) {
  		if(this.state.inputValue) {
- 			if(this.props.mouseEvents.id !== this.state.id) {
+ 			if(this.props.selectedRoom.id !== this.state.id) {
 	 			let input = this.state.inputElem;
 	 			input.value = "";
 	 			this.setState({
 	 				inputValue: ''
-	 			})
-	 		}
- 		}
- 	}
+	 			});
+	 		};
+ 		};
+ 	};
+
+	handleIssueAdd = () => {
+		this.setState({
+			issueAdd: !this.state.issueAdd
+		});
+	};
 
 	sideClick = (e) => {
-		this.props.test();
 		if(this.state.inputValue) {
 			return;
-		}
+		};
 		let name = e.target.className.substr(0, 4);
-		if(name !== 'room' && name !== 'info') {
+		let parent = e.target.parentNode.className ? e.target.parentNode.className.substr(0, 4) : 'null';
+		if(name !== 'room' && name !== 'info' && (parent !== 'room' && parent !== 'caro')) {
 			this.props.handleMouseEvent('');
-		}
-	}
+		};
+	};
 
     inputHandler(e, num) {
 		if(e && num) {
@@ -80,18 +84,23 @@ class RoomsInfo extends React.Component {
 	    			inputValue : e.target.value,
 	    			inputElem: e.target
 	    		});
-    		}
+    		};
     	} else {
     		if(this.state.inputValue) {
-    			this.props.createIssue(this.state.inputValue);
-	    		// this.props.getIssues();
+    			const data = {
+    				description: this.state.inputValue,
+    				active: true,
+    				roomId: this.props.selectedRoom.id
+    			};
+    			this.props.createIssue(data);
+    			this.props.getRoomIssues(this.props.selectedRoom.id);
 	    		e.target.previousSibling.value = "";
 	    		this.setState({
 	    			inputValue: ""
-	    		})
-    		}
-    	}
-    }
+	    		});
+    		};
+    	};
+    };
 
     issueAdd() {
     	if(this.state.issueAdd) {
@@ -100,52 +109,92 @@ class RoomsInfo extends React.Component {
 	        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
 					<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
 	        	</div>
-	    	)
+	    	);
     	} else {
     		return <button className="room-button" onClick={() => this.handleIssueAdd()}>Add</button>
-    	}
-    }
+    	};
+    };
 
-    issuesList() {
-    	return this.state.issues.map( (item, index) => {
-    		return <div className="room-issue" key={index}> {item.description} </div>
-    	});
-    }
-
-	handleIssueAdd = () => {
-		this.setState({
-			issueAdd: !this.state.issueAdd
-		})
-	}
+    issuesList(props) {
+		if(props) {
+			return props.map( (item, index) => {
+	    		return <div className="room-issue" key={index}> {item.description} </div>
+	    	});
+		}
+    };
 
     infoRender(){
         return(
             <div className="room-info">
                 <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
                 <div className="room-image">
-                    <img className="room-image-image" src='img.jpg' alt='#' />
+					{ this.props.selectedRoom.images.length ? <ControlledCarousel images={this.props.selectedRoom.images} /> : [] }   	
                 </div>
-                <div className="room-description">Description: {this.props.mouseEvents.description}</div>
+                <div className="room-description">Description: {this.props.selectedRoom.description}</div>
                 
                 <div className="room-issues-container">
-                	<div className="room-issues">Issues: {this.issuesList()} </div>
+                	<div className="room-issues">Issues: {this.props.issues.length ? this.issuesList(this.props.issues) : this.issuesList(this.props.selectedRoom.issues) } </div>
                 	{this.issueAdd()}
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
 	render() {		
 		return (				
 			<div>{this.infoRender()}</div>
 		);
-	}
-}
+	};
+};
 
 function mapStateToProps({ issues }) {
     return {
         issues: issues
     };
+};
+
+class ControlledCarousel extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.handleSelect = this.handleSelect.bind(this);
+    this.state = {
+      index: 0,
+      direction: null
+    };
+  };
+
+  handleSelect(selectedIndex, e) {
+    this.setState({
+      index: selectedIndex,
+      direction: e.direction
+    });
+  };
+
+  renderItem() {
+  	return this.props.images.map( (item, index) => {
+  		return(
+  			<Carousel.Item key={item.id}>
+	          <img key={index+item.id} className="room-image" width={900} height={500} alt="900x500" src={item.url} />
+	          <Carousel.Caption key={index}></Carousel.Caption>
+	        </Carousel.Item>
+  		);
+  	});
+  };
+
+  render() {
+    const { index, direction } = this.state;
+
+    return (
+      <Carousel
+        activeIndex={index}
+        direction={direction}
+        onSelect={this.handleSelect}
+      >
+
+        {this.renderItem()}        
+      </Carousel>
+    )
+  }
 }
 
 export default connect(mapStateToProps, actions)(RoomsInfo);

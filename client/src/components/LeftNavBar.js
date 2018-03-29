@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from "../actions";
-import RoomsInfo from "./RoomsInfo";
+import RoomsInfo, { changeState } from "./RoomsInfo";
 
 
 class LeftNavBar extends Component {
@@ -63,10 +63,6 @@ class LeftNavBar extends Component {
         this.props.getEvents(id);
     }
 
-    test() {
-        console.log(123, 'From LeftNavBar');
-    }
-
     renderMenu(){
         if(this.props.rooms) {
             return this.props.rooms.map( (index, key) => {
@@ -87,19 +83,21 @@ class LeftNavBar extends Component {
         )
     }
 
+
+
     render() {
         this.infoCloseWatcher();
 
         return(
             <aside>
                 <nav>
+
                     <ul className="aside-menu">
                         {this.renderMenu()}
                         {this.state.mouseEvent ?
                             <RoomsInfo
-                                mouseEvents={this.state.mouseEvent}
+                                selectedRoom={this.state.mouseEvent}
                                 handleMouseEvent={this.handleMouseEvent}
-                                test={this.test}
                             /> : []}
                     </ul>
                 </nav>
