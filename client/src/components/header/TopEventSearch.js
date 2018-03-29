@@ -45,8 +45,8 @@ class SearchEmptyRoom extends Component {
     const { user } = this.props;
     return (
       <div className="dates_filter">
+          <div className='dates_picker_cont'>
         <div id="filter_date_from">
-          <p className="start">Start:</p>
           <DatePicker
             selected={this.state.startDate}
             selectsStart
@@ -61,7 +61,6 @@ class SearchEmptyRoom extends Component {
           />
         </div>
         <div id="filter_date_to">
-          <p className="end">End:</p>
           <DatePicker
             selected={this.state.endDate}
             selectsEnd
@@ -78,11 +77,12 @@ class SearchEmptyRoom extends Component {
         <div className="buttons_filter">
           <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
           <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+        </div>
+          </div>
 
 
           <TopLoginSection user={user} logout={() => this.props.dispatch(deleteCurrentUser())} />
         </div>
-      </div>
     );
   }
 }
@@ -92,7 +92,7 @@ SearchEmptyRoom.defaultProps = {
 };
 
 SearchEmptyRoom.propTypes = {
-  user: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default connect()(SearchEmptyRoom);

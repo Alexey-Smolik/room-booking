@@ -8,7 +8,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const users = require('../models').users;
 const config = require('../config/main');
 
-// Local stratagy for authorization
+// Local Strategy for authorization
 passport.use(new LocalStrategy(
     (username, password, done) => {
         users.find({ where: { username: username, password: password }})
@@ -22,7 +22,7 @@ passport.use(new LocalStrategy(
     }
 ));
 
-// Vkontakte stratagy for authorization
+// Vkontakte Strategy for authorization
 passport.use(new VKontakteStrategy({
         clientID: config.vkStrategy.appId,
         clientSecret: config.vkStrategy.secretKey,
@@ -43,7 +43,7 @@ passport.use(new VKontakteStrategy({
     }
 ));
 
-// Facebook stratagy for authorization
+// Facebook Strategy for authorization
 passport.use(new FacebookStrategy({
         clientID: config.FacebookStrategy.appId,
         clientSecret: config.FacebookStrategy.secretKey,
@@ -64,13 +64,13 @@ passport.use(new FacebookStrategy({
     }
 ));
 
-// Twitter stratagy for authorization
+// Twitter Strategy for authorization
 passport.use(new TwitterStrategy({
         consumerKey: config.TwitterStrategy.consumerKey,
         consumerSecret: config.TwitterStrategy.consumerSecret,
         callbackURL: `/auth/twitter/callback`
     },
-    function(accessToken, refreshToken, profile, params, done) {
+    function(accessToken, refreshToken, profile, done) {
         users.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id },
             defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
@@ -85,7 +85,7 @@ passport.use(new TwitterStrategy({
     }
 ));
 
-// Google stratagy for authorization
+// Google Strategy for authorization
 passport.use(new GoogleStrategy({
         clientID: config.GoogleStrategy.clientID,
         clientSecret: config.GoogleStrategy.clientSecret,

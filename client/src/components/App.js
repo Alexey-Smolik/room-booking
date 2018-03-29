@@ -15,9 +15,11 @@ const App = () => (
       <div>
         <TopNavBar />
         <Route exact path="/" component={AuthComponent} />
-        <Route path="/room" component={LeftNavBar} />
-        <Route exact path="/room" component={HelloWindow} />
-        <Route path="/room/:roomID" component={Calendar} />
+          <div className="bodyWrapper">
+              <Route path="/room" component={LeftNavBar} />
+              <Route exact path="/room" component={HelloWindow} />
+              <Route path="/room/:roomID" component={Calendar} />
+          </div>
         <Footer />
       </div>
     </BrowserRouter>
