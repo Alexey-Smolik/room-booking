@@ -9,7 +9,7 @@ import TopLoginSection from './TopLoginSection';
 
 // Imports in Header.js, changing rooms state and change it back.
 
-class SearchEmptyRoom extends Component {
+class TopEventSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -87,12 +87,12 @@ class SearchEmptyRoom extends Component {
   }
 }
 
-SearchEmptyRoom.defaultProps = {
+TopEventSearch.defaultProps = {
   user: 'undefined',
 };
 
-SearchEmptyRoom.propTypes = {
-  user: PropTypes.string,
+TopEventSearch.propTypes = {
+  user: PropTypes.object,
 };
 
-export default connect()(SearchEmptyRoom);
+export default connect()(TopEventSearch);
