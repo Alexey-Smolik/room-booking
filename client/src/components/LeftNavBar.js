@@ -34,25 +34,24 @@ class LeftNavBar extends Component {
       description: index.description,
     });
 
-    if (index.id === this.state.id || (this.state.id !== index.id && !this.state.infoVisible)) {
-      this.setState({
-        infoVisible: !this.state.infoVisible,
-      });
-    }
-  }
+    handleMouseEvent(props) {
+        this.setState({
+            mouseEvent: props
+        })
 
-  infoRender = () => {
-    if (this.state.infoVisible && this.state.id) {
-      return (
-        <div className="room-info">
-          <div className="info-close" key="1" onClick={this.infoHandler(this.state.id)}>x</div>
-          <div className="room-image">
-            <img src={this.state.image.src} alt={this.state.image.alt} />
-          </div>
-          <div className="room-description">Description: {this.state.description}</div>
-          <div className="room-issues">Issues: {this.state.issues}</div>
-        </div>
-      );
+        return this.state.mouseEvent
+    }
+
+    infoCloseWatcher() {
+        if(this.state.activeButton && !this.state.mouseEvent) {
+            let btn = this.state.activeButton;
+            btn.className = "info-button";
+        }
+    }
+
+    componentDidMount() {
+        this.props.getRooms();
+        this.props.getCurrentUser();
     }
     return false;
   }

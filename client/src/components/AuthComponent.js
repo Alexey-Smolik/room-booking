@@ -37,8 +37,7 @@ class AuthComponent extends Component {
                 </div>
                 <div className="panel-body">
                   <div className="row">
-                    <div className="col-xs-6 col-sm-6 col-md-6 separator social-login-box"> <br />
-                      <br />
+                    <div className="col-xs-6 col-sm-6 col-md-6 separator social-login-box">
                       <a href="/auth/vk" className="btn vk btn-block" role="button">Login with Vkontakte</a>
                       <a href="/auth/fb" className="btn facebook btn-block" role="button">Login with Facebook</a>
                       <a href="/auth/twitter" className="btn twitter btn-block" role="button">Login with Twitter</a>
