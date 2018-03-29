@@ -51,7 +51,7 @@ class AuthComponent extends Component {
                         </div>
                         <div className="input-group">
                           <span className="input-group-addon"><span className="glyphicon glyphicon-lock" /></span>
-                          <input id="password" type="text" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                          <input id="password" type="password" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
                         <input className="login" type="submit" value="Sign in" />
                       </div>
