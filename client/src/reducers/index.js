@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import roomsList from './roomReducer';
-import roomEvents from './eventReducer';
+import roomReducer from './roomReducer';
+import eventReducer from './eventReducer';
 import userReducer from './userReducer';
 import companiesReducer from './companiesReducer';
 
 export default combineReducers({
-  rooms: roomsList,
-  events: roomEvents,
+  rooms: roomReducer,
+  events: eventReducer,
   user: userReducer,
   companies: companiesReducer,
 });

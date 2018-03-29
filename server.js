@@ -7,7 +7,6 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const path = require('path');
 const logger = require('morgan');
-const io = require('./sockets');
 require('./config/main');
 
 app.use(cookieParser());
@@ -20,12 +19,9 @@ app.use(passport.session());
 
 app.use('/', require('./routes'));
 
-
 models.sequelize.sync()
     .then(() => {
-        const port = 8000;
-        io.listen(port);
-        app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}\nSockets listening on port ${port}`));
+        app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}`));
     })
     .catch((err) => console.log(err));
 

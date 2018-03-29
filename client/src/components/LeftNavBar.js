@@ -22,10 +22,6 @@ class LeftNavBar extends Component {
     };
   }
 
-
-
-
-
   componentDidMount() {
     this.props.dispatch(getRooms());
     this.props.dispatch(getCurrentUser());
