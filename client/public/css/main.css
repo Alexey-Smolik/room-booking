@@ -31,7 +31,7 @@ body {
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
     font-weight: normal !important;
-    /*margin: 0;*/
+    margin-right: 10px;
     margin-bottom: 0;
     padding-top: 5px;
     text-align: right;
@@ -403,7 +403,7 @@ div.info-close {
 }
 
 .col-xs-6.col-sm-6.col-md-6.separator.social-login-box {
-    padding: 10px 10px 50px 10px;
+    padding: 10px 10px 30px 10px;
     width: 100%;
 }
 
@@ -701,8 +701,11 @@ input {
     .react-datepicker-wrapper:before {
         font-family: 'Oswald', sans-serif;
         font-size: 14px;
-        position: absolute;
-        margin-left: -18px;
+        /*position: absolute;*/
+        /*margin-left: -18px;*/
+        padding-top: 20px;
+        margin-right: 6px;
+
     }
 
     #filter_date_from .react-datepicker-wrapper:before {
