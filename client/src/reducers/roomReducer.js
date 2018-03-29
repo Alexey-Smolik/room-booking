@@ -1,12 +1,17 @@
 import {
-  GET_ALL_ROOMS,
-  GET_ROOMS_BY_DATE,
-  DELETE_ROOM,
-  CREATE_ROOM,
+    GET_ALL_ROOMS,
+    GET_ROOMS_BY_DATE,
+    DELETE_ROOM,
+    CREATE_ROOM,
+    GET_ROOM,
 } from '../actions/types';
 
 export default function (state = [], action) {
   switch (action.type) {
+
+    case GET_ROOM:
+      return action.payload || false;
+
     case GET_ALL_ROOMS:
       return action.payload || false;
 

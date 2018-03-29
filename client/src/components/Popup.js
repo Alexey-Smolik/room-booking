@@ -12,7 +12,7 @@ class Popup extends Component {
     this.state = {
       room: '',
       title: '',
-      desc: '',
+      description: '',
       user: '',
       startDate: moment(),
       endDate: moment(),
@@ -25,7 +25,7 @@ class Popup extends Component {
       startDate: moment(this.props.event.start),
       endDate: moment(this.props.event.end),
       title: this.props.event.title,
-      desc: this.props.event.desc,
+      description: this.props.event.description,
       user: this.props.user,
     });
   }
@@ -37,14 +37,21 @@ class Popup extends Component {
     start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
+    let { id } = this.props.event;
+    let { user } = this.props
+
+
+
     if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
       const event = {
         name: this.state.title,
-        description: this.state.desc,
+        description: this.state.description,
         date_from: start,
         date_to: end,
         roomId: this.state.room.id,
         userId: this.state.user.id,
+        user: user,
+        id: id
       };
 
       if (this.props.editMode) {
@@ -74,7 +81,7 @@ class Popup extends Component {
 
   handleChangeDesc = (e) => {
     e.preventDefault();
-    this.setState({ desc: e.target.value });
+    this.setState({ description: e.target.value });
   }
 
   deleteHandler = (e) => {
@@ -107,7 +114,7 @@ class Popup extends Component {
 
             <textarea
                                 // type="text"
-              value={this.state.desc}
+              value={this.state.description}
               onChange={this.handleChangeDesc}
               placeholder="Description"
             />

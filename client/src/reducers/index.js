@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
-import roomsList from './roomsList';
-import roomEvents from './roomEvents';
+import roomsList from './roomReducer';
+import roomEvents from './eventReducer';
 import userReducer from './userReducer';
-import companiesReducer from './companies';
-import issuesReducer from './issues';
+import companiesReducer from './companiesReducer';
+import issuesReducer from './issuesReducer';
 
 export default combineReducers({
   rooms: roomsList,
