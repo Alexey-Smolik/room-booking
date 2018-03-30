@@ -48,7 +48,7 @@ class Calendar extends React.Component {
                 }
     }
     return !this.state.editMode;
-  }
+  };
 
   editEvent = (event) => {
     this.setState( (prevState) => ({
@@ -76,7 +76,7 @@ class Calendar extends React.Component {
       event: '',
       editMode: false,
     }))
-  }
+  };
 
   render() {
     let events = [];
