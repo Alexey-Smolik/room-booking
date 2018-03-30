@@ -7,6 +7,7 @@ import Calendar from './Calendar';
 import HelloWindow from './HelloWindow';
 import AuthComponent from './AuthComponent';
 import Footer from './Footer';
+import AdminPanel from './AdminPanel';
 
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
               <Route path="/room" component={LeftNavBar} />
               <Route exact path="/room" component={HelloWindow} />
               <Route path="/room/:roomID" component={Calendar} />
+              <Route path="/adminPanel" component={AdminPanel} />
           </div>
         <Footer />
       </div>

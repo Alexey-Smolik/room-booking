@@ -119,13 +119,15 @@ class RoomsContainer extends React.Component {
                         })}
                     </NavDropdown>
                 </Nav>
-            <Jumbotron>
+
                 { this.props.user && this.props.user.role === 1 ?
                     this.props.location.pathname !== '/adminPanel/rooms/' ?
                         <div>
                             <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                                 <Tab eventKey={1} title="Events calendar">
+                                    <Jumbotron>
                                     <Calendar roomId = {this.props.location.pathname.slice(18)}/>
+                                    </Jumbotron>
                                 </Tab>
                                 <Tab eventKey={2} title="Photos">
                                     <ImagesContainer  roomId={this.props.location.pathname.slice(18)}/>
@@ -193,7 +195,7 @@ class RoomsContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-                </Jumbotron>
+
             </div>
         );
     }

@@ -1,6 +1,5 @@
 import React from 'react';
-import {Nav, NavItem,Navbar, MenuItem, NavDropdown } from 'react-bootstrap';
-
+import {Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import {  Route } from 'react-router-dom';
 import {
@@ -16,6 +15,7 @@ import RoomsContainer from "./adminPage/RoomsContainer";
 import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
+
 
 class AdminPanel extends React.Component {
     constructor(props) {

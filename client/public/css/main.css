@@ -11,18 +11,18 @@
 .facebook:hover, .twitter:hover, .vk:hover, .google:hover { color: #383e41; }
 
     /*main page*/
-
 html {
     height: 100%;
-    width: 100%;
 }
 
-body {
+
+body.default {
     color: #383e41;
     font: 13px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/back.jpg) no-repeat;
-    background-size: cover;
     margin: 0;
+    background-size: cover;
+
 }
 
 #username_hello{
@@ -87,6 +87,7 @@ nav {
 
 #wrapper {
     max-width: 80%;
+    height: 100%;
     margin: auto;
 }
 
@@ -242,6 +243,7 @@ h1 {
 
 .rbc-calendar {
     background-color: #ffffff;
+    border: 1px solid #cbcbcb;
     /*margin-left: 250px;*/
     height: 78vh !important;
     position: relative;
@@ -776,6 +778,7 @@ input {
     }
 
 .elinext {
+    margin-left: 5px;
     text-decoration: none;
     color: #B71C1C;
 }

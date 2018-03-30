@@ -40,10 +40,10 @@ this.props.dispatch(addRoomImage(image,this.props.roomId))
                             />
                         }
                         )}
-<Dropzone   onDrop={()=>{this.handleDrop()}}
+<Dropzone className="load_img"  onDrop={()=>{this.handleDrop()}}
 
             accept="image/*"
-            style={{height:"200px", width: "200px", float:"right", backgroundImage: 'url("https://image.flaticon.com/icons/svg/118/118748.svg")'}}/>
+           style={{height:"50px", width: "50px", float:"right", backgroundImage: 'url("https://image.flaticon.com/icons/svg/118/118748.svg")'}}/>
                     </div>
                     : <div>
                         <h3>Your haven't permission to view this page</h3>
