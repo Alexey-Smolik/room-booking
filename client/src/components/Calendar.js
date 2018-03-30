@@ -79,7 +79,6 @@ class Calendar extends React.Component {
   }
 
   render() {
-    console.log(this.props.events);
     let events = [];
     let { roomID } = this.props.match.params;
 
