@@ -12,20 +12,16 @@ import {
 class ImagesContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-        };
-
         this.props.dispatch(getRoomImages(this.props.roomId));
-
     }
-handleDrop(image) {
 
-this.props.dispatch(addRoomImage(image,this.props.roomId))
-}
-
+    onDropImage(image) {
+        let formData = new FormData();
+        formData.append('file',image);
+        this.props.dispatch(addRoomImage(formData, this.props.roomId))
+    }
 
     render() {
-
         return (
             <Jumbotron>
                 { this.props.user && this.props.user.role === 1 ?
@@ -40,10 +36,12 @@ this.props.dispatch(addRoomImage(image,this.props.roomId))
                             />
                         }
                         )}
-<Dropzone   onDrop={()=>{this.handleDrop()}}
-
-            accept="image/*"
-            style={{height:"200px", width: "200px", float:"right", backgroundImage: 'url("https://image.flaticon.com/icons/svg/118/118748.svg")'}}/>
+                        <Dropzone
+                            onDrop={(images) =>{this.onDropImage(images[0])}}
+                            accept="image/*"
+                            style={{height:"200px", width: "200px", float:"right", backgroundImage: 'url("https://image.flaticon.com/icons/svg/118/118748.svg")'}}
+                            acceptStyle={{backgroundColor:' red'}}
+                        />
                     </div>
                     : <div>
                         <h3>Your haven't permission to view this page</h3>
