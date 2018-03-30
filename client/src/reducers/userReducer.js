@@ -13,7 +13,7 @@ export default function (state = {}, action) {
           return { ...state, allUsers: [action.payload, ...state.allUsers]};
 
       case DELETE_USER_DB:
-          return { ...state, allUsers: state.filter(({ id }) => id !== action.payload)};
+          return { ...state, allUsers: state.allUsers.filter(({ id }) => id !== action.payload)};
 
 
       case GET_CURRENT_USER:
