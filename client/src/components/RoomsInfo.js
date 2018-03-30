@@ -5,10 +5,10 @@ import Carousel from 'react-bootstrap/lib/Carousel';
 
 class RoomsInfo extends React.Component {
 
-// Getting props & from NavBar & Redux, getting issues from Server.
+// Getting props from NavBar & Redux, getting issues from Server.
 // Getting handleMouseEvent from LeftNavBar
 
-// Side-click event that reading first class name letters and changes LeftNavBar(by handleMouseEvent) state.  
+// Side-click event that reading first class name letters & parent className then changes LeftNavBar(by handleMouseEvent) state.  
 // Side-clicks prevented if input field is not empty.
 
 // Input value resets if other info-button being clicked.
@@ -123,12 +123,25 @@ class RoomsInfo extends React.Component {
 		}
     };
 
+    carouselRender() {
+      console.log(this.props);
+      if(this.props.selectedRoom.images.length) {
+        if(this.props.selectedRoom.images.length === 1) {
+          return <img className="room-image" alt="#" src={this.props.selectedRoom.images[0].url} />
+        } else {
+          return <ControlledCarousel images={this.props.selectedRoom.images}/>
+        }
+      } else {
+        return []
+      }
+    }
+
     infoRender(){
         return(
             <div className="room-info">
                 <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
                 <div className="room-image">
-					{ this.props.selectedRoom.images.length ? <ControlledCarousel images={this.props.selectedRoom.images} /> : [] }   	
+					       { this.carouselRender()}   	
                 </div>
                 <div className="room-description">Description: {this.props.selectedRoom.description}</div>
                 
