@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import { getRoomsByDate, getRooms, deleteCurrentUser } from '../../actions';
+import * as actions from '../../actions';
 import TopLoginSection from './TopLoginSection';
+
+import ReactDOM from "react-dom";
+
+import "react-select/dist/react-select.css";
+import "react-virtualized/styles.css";
+import "react-virtualized-select/styles.css";
+import Select from "react-virtualized-select";
+
 
 
 // Imports in Header.js, changing rooms state and change it back.
@@ -15,10 +23,14 @@ class SearchEmptyRoom extends Component {
     this.state = {
       startDate: moment(),
       endDate: moment(),
+      pmUsers: '',
+      stateChange: true
     };
 
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
+    this.selectValue = this.selectValue.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   submitHandler(e) {
@@ -30,7 +42,29 @@ class SearchEmptyRoom extends Component {
       start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
       end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes());
 
-      this.props.dispatch(getRoomsByDate(start, end));
+      this.props.getRoomsByDate(start, end);
+  }
+
+  componentWillMount() {
+    this.props.getAllUsers()
+  }
+
+  componentDidUpdate() {
+    if(this.state.stateChange === true) {
+       if(this.props.user.allUsers) {
+
+        var arr = this.props.user.allUsers.filter( (item) => {
+          if(item.role < 3) {
+            return item
+          }
+        });
+
+        this.setState({
+          pmUsers: arr,
+          stateChange: false
+        });
+      }
+    }
   }
 
   handleChangeStart(date) {
@@ -42,6 +76,26 @@ class SearchEmptyRoom extends Component {
   handleChangeEnd(date) {
     this.setState({
       endDate: date,
+    });
+  }
+
+  selectValue(e) {
+    this.setState({
+      stateChange: e
+    })
+  }
+
+  handleSelect() {
+      console.log(this.state.stateChange)
+      console.log(this.props)
+  }
+
+  selectOptions() {
+    return this.state.pmUsers.map( (item, index) => {
+      return({
+        label: item.username,
+        id: index      
+      })
     });
   }
 
@@ -80,12 +134,17 @@ class SearchEmptyRoom extends Component {
         </div>
         <div className="buttons_filter">
           <button className="filter_btn" onClick={e => this.submitHandler(e)}>Search</button>
-          <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+          <button className="filter_btn" onClick={() => this.props.getRooms()}>Cancel</button>
         </div>
-          </div>
-
-
-          <TopLoginSection user={user} logout={() => this.props.dispatch(deleteCurrentUser())} />
+          </div>          
+            {this.state.pmUsers.length ? 
+              <div className="pm-search" style={{width: "500px", margin: "15px"}}>
+                <Select style={{width: "450px", float: "left"}} options={this.selectOptions()} value={this.state.stateChange} onChange={(e) => this.selectValue(e)} /> 
+                <button onClick={this.handleSelect} style={{float: 'right'}} >Ok</button>
+              </div>
+            : []}
+          
+          <TopLoginSection user={user} logout={() => this.props.deleteCurrentUser()} />
         </div>
     );
   }
@@ -99,4 +158,10 @@ SearchEmptyRoom.propTypes = {
   user: PropTypes.object,
 };
 
-export default connect()(SearchEmptyRoom);
+let mapStateToProps = ({ rooms }) => {
+    return {
+        rooms
+    };
+}
+
+export default connect(mapStateToProps, actions)(SearchEmptyRoom);
