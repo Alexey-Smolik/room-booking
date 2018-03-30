@@ -6,9 +6,9 @@ import { getEvents } from '../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import openSocket from 'socket.io-client';
+//import openSocket from 'socket.io-client';
 
-const socket = openSocket('http://localhost:8000');
+//const socket = openSocket('http://localhost:8000');
 BigCalendar.momentLocalizer(moment);
 
 class Calendar extends React.Component {
@@ -21,11 +21,10 @@ class Calendar extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(getEvents(this.props.match.params.roomID));
-    console.log('Update events');
   }
 
   dateFilter = (event, eventID = -1) => {
-    const eventsArray = this.props.room.events;
+    const eventsArray = this.props.events;
 
     for (let i = 0; i < eventsArray.length; i++) {
       const start = new Date(eventsArray[i].date_from);
@@ -80,24 +79,25 @@ class Calendar extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.events);
     let events = [];
-    if (this.props.room) {
-      { this.props.room.events && (events = this.props.room.events.map((event) => {
-        const start = new Date(event.date_from);
-        const end = new Date(event.date_to);
-        start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
-        end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+    let { roomID } = this.props.match.params;
 
-        return {
-          id: event.id,
-          description: event.description,
-          title: event.name,
-          start,
-          end,
-        };
-      })); }
+    { this.props.events &&  (events = this.props.events.map((event) => {
+          const start = new Date(event.date_from);
+          const end = new Date(event.date_to);
+          start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+          end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+
+          return {
+            id: event.id,
+            description: event.description,
+            title: event.name,
+            start, end,
+          };
+      }));
     }
+
 
     return (
           <div>
@@ -116,25 +116,25 @@ class Calendar extends React.Component {
                     />
                 </React.Fragment>
 
-              {this.state.showPopup ?
-                  <Popup
+              {this.state.showPopup &&  <Popup
                       event={this.state.event}
                       user={this.props.user}
                       closePopup={this.closePopup}
                       editMode={this.state.editMode}
-                      room={this.props.room}
-                      dateFilter={this.dateFilter}
-                    /> : null}
-            </div>
+                      roomID={roomID}
+                      dateFilter={this.dateFilter}/>}
+          </div>
     );
   }
 }
 
-let mapStateToProps = ({ events, user }) => {
-  return {
-    room: events,
-    user,
-  };
+let mapStateToProps = ({ events, user, rooms }) => {
+    return {
+        rooms,
+        user,
+        events
+
+    };
 }
 
 export default connect(mapStateToProps)(Calendar);

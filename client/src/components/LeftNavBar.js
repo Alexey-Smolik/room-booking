@@ -7,7 +7,7 @@ import RoomsInfo, { changeState } from "./RoomsInfo";
 
 class LeftNavBar extends Component {
 
-// Getting rooms from redux state. 
+// Getting rooms from redux state.
 // Pushing props(active button) from onclick-event in room-info.
 // handleMouseEvent uses in RoomsInfo
 
@@ -25,7 +25,7 @@ class LeftNavBar extends Component {
     infoHandler(e, props) {
         if(this.state.mouseEvent) {
             let btn = this.state.activeButton;
-                btn.className = 'info-button';
+            btn.className = 'info-button';
             if(this.state.mouseEvent.id === props.id) {
                 this.handleMouseEvent('');
                 e.target.className = "info-button";
