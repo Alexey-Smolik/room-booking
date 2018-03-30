@@ -69,7 +69,6 @@ class UsersContainer extends React.Component {
     render() {
         let filteredUsers = this.props.user && this.props.user.allUsers && this.props.user.allUsers.filter((user) => {
             return user.username.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                user.password.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 user.role.toString().includes(this.state.searchValue)
         });
         return (
