@@ -5,6 +5,7 @@ import UserItem from './UserItem'
 import {
     getCurrentUser,
     getAllUsers,
+    addUserDB
 } from '../../actions/index';
 
 class UsersContainer extends React.Component {
@@ -17,25 +18,24 @@ class UsersContainer extends React.Component {
             searchValue: '',
             addFieldIsVisible: false,
         };
-
     }
     componentWillMount() {
         this.props.dispatch(getAllUsers());
     }
     addUser(e) {
         const userData = {
-            name: this.state.username,
-            address: this.state.userPassword,
+            username: this.state.username,
+            password: this.state.userPassword,
             role: this.state.userRole,
         };
-
-        this.toggleAddCompanyField();
+        this.props.dispatch(addUserDB(userData));
+        this.toggleAddUserField();
         this.setState({
             username: '',
             userPassword: '',
             userRole: '',
         });
-        e.preventDefault()
+        e.preventDefault();
     }
     toggleAddUserField() {
         this.setState({
@@ -67,7 +67,7 @@ class UsersContainer extends React.Component {
         e.preventDefault();
     };
     render() {
-        let filteredUsers = this.props.user.allUsers && this.props.user.allUsers.filter((user) => {
+        let filteredUsers = this.props.user && this.props.user.allUsers && this.props.user.allUsers.filter((user) => {
             return user.username.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 user.password.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 user.role.toString().includes(this.state.searchValue)
@@ -94,8 +94,8 @@ class UsersContainer extends React.Component {
                             </div>
                             <form onSubmit={(e) => {this.addUser(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onUsernameChange(e)} value={this.state.username}  required />
-                                <FormControl className="form-control" type="text" onChange={(e) => this.onUserPasswordChange(e)} value={this.state.companyAddress} required/>
-                                <FormControl className="form-control" type="number" min="1" max="3" onChange={(e) => this.onUserRoleChange(e)} value={this.state.companyAddress} required/>
+                                <FormControl className="form-control" type="text" onChange={(e) => this.onUserPasswordChange(e)} value={this.state.userPassword} required/>
+                                <FormControl className="form-control" type="number" min="1" max="3" onChange={(e) => this.onUserRoleChange(e)} value={this.state.userRole} required/>
                                 <Button type="submit"  bsStyle="success" >Save</Button>
                             </form>
                             { filteredUsers && filteredUsers.map( (user) => {
