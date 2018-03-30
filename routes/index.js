@@ -12,8 +12,7 @@ const authHelpers = require('../middleware/auth');
 routes.use('/auth', auth);
 
 routes.use(authHelpers); // middleware for user authentification
-routes.use(express.static(path.join(__dirname, 'public')));
-routes.use(express.static(path.join(__dirname, 'public/images')));
+routes.use(express.static(path.join(__dirname, '../public')));
 
 routes.use('/api/users', users); // users handler
 routes.use('/api/rooms', rooms); // rooms handler

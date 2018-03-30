@@ -7,7 +7,14 @@ const Footer  = () => {
             <div className="footer_block">
                 <img className="img_logo" src={"/images/logo1.png"} alt={"logo"} />
             </div>
-            <span className='firm_name'>© 2018 <a className="elinext" href="https://www.elinext.com/" target="_blank">ELINEXT</a></span>
+            <span className='firm_name'>© 2018
+                <a className="elinext"
+                   href="https://www.elinext.com/"
+                   target="_blank"
+                   rel="noopener noreferrer" >
+                    ELINEXT
+                </a>
+            </span>
         </div>
     );
 };

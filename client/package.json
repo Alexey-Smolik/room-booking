@@ -9,8 +9,8 @@
     "/api/*": {
       "target": "http://172.16.0.183:5000"
     },
-    "/images/*" : {
-      "target" : "http://172.16.0.183:5000"
+    "/images/*": {
+      "target": "http://172.16.0.183:5000"
     }
   },
   "dependencies": {

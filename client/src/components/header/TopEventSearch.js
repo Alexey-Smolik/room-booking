@@ -17,16 +17,20 @@ class SearchEmptyRoom extends Component {
       endDate: moment(),
     };
 
-    this.submitHandler = this.submitHandler.bind(this);
     this.handleChangeStart = this.handleChangeStart.bind(this);
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
   }
 
   submitHandler(e) {
-    e.preventDefault();
-    const start = new Date(this.state.startDate._d);
-    const end = new Date(this.state.endDate._d);
-    this.props.dispatch(getRoomsByDate(start, end));
+      e.preventDefault();
+
+      let start = new Date(this.state.startDate._d);
+      let end = new Date(this.state.endDate._d);
+
+      start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
+      end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes());
+
+      this.props.dispatch(getRoomsByDate(start, end));
   }
 
   handleChangeStart(date) {
@@ -75,7 +79,7 @@ class SearchEmptyRoom extends Component {
           />
         </div>
         <div className="buttons_filter">
-          <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
+          <button className="filter_btn" onClick={e => this.submitHandler(e)}>Search</button>
           <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
         </div>
           </div>

@@ -1,34 +1,31 @@
 import {
   DELETE_EVENT,
   EDIT_EVENT,
-  CREATE_EVENT,
+  ADD_EVENT,
   GET_EVENTS
 } from '../actions/types';
 
 export default function (state = [], action) {
-  switch (action.type) {
+    switch (action.type) {
+        case GET_EVENTS:
+            return action.payload || false;
 
         case DELETE_EVENT:
-            return state.events.filter( event =>
+            return state.filter( event =>
+                event.id !== action.payload);
+
+        case ADD_EVENT:
+            let newState2 = state.filter( event =>
                 event.id !== action.payload.id);
+            return [...newState2, action.payload ];
 
-      case CREATE_EVENT:
-          let newState2 = state.events.filter( event =>
-            event.id !== action.payload.id);
-          console.log([...newState2, action.payload ]);
-          return [...newState2, action.payload ];
+        case EDIT_EVENT:
+            let newState1 = state.filter( event =>
+                event.id !== action.payload.id);
+            console.log(newState1);
+            return [...newState1, action.payload ];
 
-    case EDIT_EVENT:
-        console.log(action.payload );
-        let newState1 = state.events.filter( event =>
-            event.id !== action.payload.id);
-        console.log([...newState1, action.payload ]);
-        return [...newState1, action.payload ];
-
-    case GET_EVENTS:
-      return action.payload || false;
-
-    default:
-      return state;
-  }
+        default:
+          return state;
+    }
 }
