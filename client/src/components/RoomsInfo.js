@@ -19,8 +19,7 @@ class RoomsInfo extends React.Component {
 			id: this.props.selectedRoom.id,
 			issues: this.props.selectedRoom.issues,
 			inputValue: '',
-			inputElem: '',
-			issueAdd: false
+			inputElem: ''
 		};
 		this.clearInputValue = this.clearInputValue.bind(this);
 		this.handleIssueAdd = this.handleIssueAdd.bind(this);
@@ -70,9 +69,7 @@ class RoomsInfo extends React.Component {
 		if(this.state.inputValue) {
 			return;
 		};
-		let name = e.target.className.substr(0, 4);
-		let parent = e.target.parentNode.className ? e.target.parentNode.className.substr(0, 4) : 'null';
-		if(name !== 'room' && name !== 'info' && (parent !== 'room' && parent !== 'caro')) {
+		if(e.target.className === 'overlay') {
 			this.props.handleMouseEvent('');
 		};
 	};
@@ -103,16 +100,12 @@ class RoomsInfo extends React.Component {
     };
 
     issueAdd() {
-    	if(this.state.issueAdd) {
-    		return(
-	    		<div className="room-issues-form"> 
-	        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
-					<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
-	        	</div>
-	    	);
-    	} else {
-    		return <button className="room-button" onClick={() => this.handleIssueAdd()}>Add</button>
-    	};
+  		return(
+    		<div className="room-issues-form"> 
+        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
+				<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
+        	</div>
+    	);
     };
 
     issuesList(props) {
@@ -155,7 +148,7 @@ class RoomsInfo extends React.Component {
 
 	render() {		
 		return (				
-			<div>{this.infoRender()}</div>
+			<div className="overlay">{this.infoRender()}</div>
 		);
 	};
 };
