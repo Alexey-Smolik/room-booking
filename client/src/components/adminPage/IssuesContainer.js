@@ -49,7 +49,7 @@ class IssuesContainer extends React.Component {
             roomId: roomID,
         };
         this.props.dispatch(createIssue(issueData));
-        this.props.roomID && this.props.dispatch(this.getIssues());
+        !this.props.roomID && this.getIssues();
         this.toggleAddIssueField();
         this.setState({
             searchValue: '',
@@ -89,7 +89,7 @@ class IssuesContainer extends React.Component {
         });
         return (
             <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All issues</h3>
                         <div  style={{display:  'flex'}}>
@@ -104,7 +104,7 @@ class IssuesContainer extends React.Component {
                         <div>
                             <div style={{display:  'flex', justifyContent: 'space-around'}}>
                                 <ControlLabel className="control-label" >Description</ControlLabel>
-                                { !this.props.roomId && <ControlLabel className="control-label" >Room name</ControlLabel>}
+                                { !this.props.roomID && <ControlLabel className="control-label" >Room name</ControlLabel>}
                                 { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" >Status</ControlLabel>}
                             </div>
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>

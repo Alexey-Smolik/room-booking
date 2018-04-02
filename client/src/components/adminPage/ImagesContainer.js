@@ -23,7 +23,7 @@ class ImagesContainer extends React.Component {
     render() {
         return (
             <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>Room images</h3>
                         {this.props.images.map((image, index) => {
