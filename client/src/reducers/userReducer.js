@@ -17,7 +17,8 @@ export default function (state = {}, action) {
 
 
       case GET_CURRENT_USER:
-        return action.payload || false;
+          console.log("Action");
+        return { ...state, currentUser: action.payload } || false;
 
       case REMOVE_USER_FROM_STATE:
         return null || false;

@@ -62,7 +62,7 @@ class CompaniesContainer extends React.Component {
         });
         return (
             <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All companies</h3>
                             <div  style={{display:  'flex'}}>
@@ -104,8 +104,8 @@ class CompaniesContainer extends React.Component {
 }
 function mapStateToProps ({user, companies}) {
     return {
-        user: user,
-        companies: companies
+        user,
+        companies,
     }
 }
 

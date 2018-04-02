@@ -1,20 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom';
-import TopNavBar from './header/TopNavBar';
-import LeftNavBar from './LeftNavBar';
-import Calendar from './Calendar';
-import HelloWindow from './HelloWindow';
-import AuthComponent from './AuthComponent';
-import Footer from './Footer';
-import AdminPanel from './AdminPanel'
+import NavBar from './header/NavBar';
+import LeftNavBar from './body/LeftNavBar';
+import Calendar from './body/Calendar';
+import HelloWindow from './body/HelloWindow';
+import AuthComponent from './body/AuthComponent';
+import Footer from './Footer/Footer';
+import AdminPanel from './AdminPanel';
 
 
 const App = () => (
   <div className="App">
     <BrowserRouter>
       <div>
-        <TopNavBar />
+        <NavBar />
         <Route exact path="/" component={AuthComponent} />
           <div className="bodyWrapper">
               <Route path="/room" component={LeftNavBar} />

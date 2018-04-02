@@ -98,9 +98,9 @@ class RoomItem extends React.Component {
 }
 function mapStateToProps ({user, rooms, companies}) {
     return {
-        user: user,
-        rooms: rooms,
-        companies: companies,
+        user,
+        rooms,
+        companies,
     }
 }
 

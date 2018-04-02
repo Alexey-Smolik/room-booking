@@ -1,18 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Nav, MenuItem, NavDropdown, ControlLabel, FormControl,Jumbotron, Tab, Tabs } from 'react-bootstrap';
-import Calendar from '../Calendar';
-import IssuesContainer from './IssuesContainer';
-import ImagesContainer from './ImagesContainer';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Button, ControlLabel, FormControl,Jumbotron } from 'react-bootstrap';
 import RoomItem from './RoomItem'
 import {
     createRoom,
-    getEvents,
-    getRoomIssues,
     getRooms,
     getCompanies,
-    getRoomImages,
 } from '../../actions/index';
 
 class RoomsContainer extends React.Component {
@@ -99,45 +92,12 @@ class RoomsContainer extends React.Component {
                 room.company.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 room.floor.toString().includes(this.state.searchValue)
         });
-
         return (
             <div>
 
-                <Nav>
-                    <NavDropdown eventKey={1} title="Select room" id="nav-dropdown">
-                        <LinkContainer to={"/adminPanel/rooms/"} exact >
-                            <MenuItem eventKey={1.0}>All rooms</MenuItem>
-                        </LinkContainer>
-                        <MenuItem divider />
-                        { this.props.rooms.map((room, index) => {
-                            return <LinkContainer to={"/adminPanel/rooms/" + room.id} onClick={()=> {
-                                this.props.dispatch(getEvents(room.id));
-                                this.props.dispatch(getRoomIssues(room.id));
-                                this.props.dispatch(getRoomImages(room.id))
-                            }} key={index}>
-                                <MenuItem key={index}>{room.name}</MenuItem>
-                                </LinkContainer>
-                        })}
-                    </NavDropdown>
-                </Nav>
             <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
-                    this.props.location.pathname !== '/adminPanel/rooms/' ?
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
-                            <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-                                <Tab eventKey={1} title="Events calendar">
-                                    <Calendar roomId = {this.props.location.pathname.slice(18)}/>
-                                </Tab>
-                                <Tab eventKey={2} title="Photos">
-                                    <ImagesContainer  roomId={this.props.location.pathname.slice(18)}/>
-                                </Tab>
-                                <Tab eventKey={3} title="Issues" >
-                                    <IssuesContainer issues={this.props.issues} roomId={this.props.location.pathname.slice(18)}/>
-                                </Tab>
-                            </Tabs>
-
-                        </div>
-                        : <div>
                             <h3>All rooms</h3>
                             <div  style={{display:  'flex'}}>
                                 <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room"/>
@@ -199,12 +159,11 @@ class RoomsContainer extends React.Component {
         );
     }
 }
-function mapStateToProps ({user, rooms, companies, issues}) {
+function mapStateToProps ({user, rooms, companies}) {
     return {
         user: user,
         rooms: rooms,
         companies: companies,
-        issues: issues,
     }
 }
 
