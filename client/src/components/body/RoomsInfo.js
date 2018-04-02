@@ -5,10 +5,10 @@ import Carousel from 'react-bootstrap/lib/Carousel';
 
 class RoomsInfo extends React.Component {
 
-// Getting props & from NavBar & Redux, getting issues from Server.
+// Getting props from NavBar & Redux, getting issues from Server.
 // Getting handleMouseEvent from LeftNavBar
 
-// Side-click event that reading first class name letters and changes LeftNavBar(by handleMouseEvent) state.  
+// Side-click event that reading first class name letters & parent className then changes LeftNavBar(by handleMouseEvent) state.  
 // Side-clicks prevented if input field is not empty.
 
 // Input value resets if other info-button being clicked.
@@ -19,8 +19,7 @@ class RoomsInfo extends React.Component {
 			id: this.props.selectedRoom.id,
 			issues: this.props.selectedRoom.issues,
 			inputValue: '',
-			inputElem: '',
-			issueAdd: false
+			inputElem: ''
 		};
 		this.clearInputValue = this.clearInputValue.bind(this);
 		this.handleIssueAdd = this.handleIssueAdd.bind(this);
@@ -70,9 +69,7 @@ class RoomsInfo extends React.Component {
 		if(this.state.inputValue) {
 			return;
 		};
-		let name = e.target.className.substr(0, 4);
-		let parent = e.target.parentNode.className ? e.target.parentNode.className.substr(0, 4) : 'null';
-		if(name !== 'room' && name !== 'info' && (parent !== 'room' && parent !== 'caro')) {
+		if(e.target.className === 'overlay') {
 			this.props.handleMouseEvent('');
 		};
 	};
@@ -103,16 +100,12 @@ class RoomsInfo extends React.Component {
     };
 
     issueAdd() {
-    	if(this.state.issueAdd) {
-    		return(
-	    		<div className="room-issues-form"> 
-	        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
-					<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
-	        	</div>
-	    	);
-    	} else {
-    		return <button className="room-button" onClick={() => this.handleIssueAdd()}>Add</button>
-    	};
+  		return(
+    		<div className="room-issues-form"> 
+        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
+				<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
+        	</div>
+    	);
     };
 
     issuesList(props) {
@@ -123,12 +116,25 @@ class RoomsInfo extends React.Component {
 		}
     };
 
+    carouselRender() {
+      console.log(this.props);
+      if(this.props.selectedRoom.images.length) {
+        if(this.props.selectedRoom.images.length === 1) {
+          return <img className="room-image" alt="#" src={this.props.selectedRoom.images[0].url} />
+        } else {
+          return <ControlledCarousel images={this.props.selectedRoom.images}/>
+        }
+      } else {
+        return []
+      }
+    }
+
     infoRender(){
         return(
             <div className="room-info">
                 <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
                 <div className="room-image">
-					{ this.props.selectedRoom.images.length ? <ControlledCarousel images={this.props.selectedRoom.images} /> : [] }   	
+					       { this.carouselRender()}   	
                 </div>
                 <div className="room-description">Description: {this.props.selectedRoom.description}</div>
                 
@@ -142,7 +148,7 @@ class RoomsInfo extends React.Component {
 
 	render() {		
 		return (				
-			<div>{this.infoRender()}</div>
+			<div className="overlay">{this.infoRender()}</div>
 		);
 	};
 };

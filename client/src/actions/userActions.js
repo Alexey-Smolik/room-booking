@@ -30,6 +30,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 
 
+
 export const addUserDB = (user) => async (dispatch) => {
     const res = await axios.get('/api/users/');
     dispatch({ type: ADD_USER_DB, payload: user });

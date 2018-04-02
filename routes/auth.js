@@ -72,8 +72,8 @@ passport.use(new TwitterStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
         users.findOrCreate({
-            where: { provider: profile.provider, personal_id: profile.id },
-            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
+            where: { provider: 'twitter', personal_id: profile.user_id },
+            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id, role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);

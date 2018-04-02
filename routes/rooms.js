@@ -7,17 +7,30 @@ const companies = require('../models').companies;
 const issues = require('../models').issues;
 const multer  = require('multer');
 const config = require('../config/main');
+const moment = require('moment');
 
 // ----- HANDLERS FOR ROOMS -----
 // --- GET ALL ROOMS ---
 routes.get('/', (req, res) => {
         if (req.query.startDate && req.query.endDate) {
-            events.findAll({where: {date_from: {$gte: req.query.startDate}, date_to: {$lte: req.query.endDate}}})
+            events.findAll({where: {date_from: {$between: [new Date(req.query.startDate), new Date(req.query.endDate)]}}})
                 .then(events => {
                     return events.map(event => event.roomId);
                 })
                 .then(roomsId => {
-                    roomsId = roomsId.filter((value, index, self) => {
+                    return Promise.all([events.findAll({where: {date_to: {$between: [new Date(req.query.startDate), new Date(req.query.endDate)]}}}), roomsId.filter((value, index, self) => {
+                        return self.indexOf(value) === index;
+                    })]);
+                })
+                .then(rooms => {
+                    return Promise.all([
+                        events.findAll({where: {date_from: {$lt: new Date(req.query.endDate)}, date_to: {$gt: new Date(req.query.endDate)}}}),
+                        rooms[0].map(event => event.roomId).concat(rooms[1]).filter((value, index, self) => {
+                            return self.indexOf(value) === index;
+                    })]);
+                })
+                .then(promiseRooms => {
+                    let roomsId = promiseRooms[0].map(event => event.roomId).concat(promiseRooms[1]).filter((value, index, self) => {
                         return self.indexOf(value) === index;
                     });
 
@@ -87,8 +100,8 @@ routes.put('/:id', (req, res) => {
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
-            .then(rooms => {
-                rooms ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
+            .then(room => {
+                room ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
@@ -143,10 +156,10 @@ routes.post('/:id/images', (req, res) => {
             upload(req, res, err => {
                 if(err) res.status(500).send(err.message);
                 else{
-                    images.findOne({ where: { url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id }})
+                    images.findOne({ where: { url: req.file.destination.slice(8) + '/' + req.file.originalname, roomId: req.params.id }})
                         .then(image => {
                             if(image) res.status(501).send({message: 'Image with that name already exists'});
-                            else return images.create({ url: req.file.destination + '/' + req.file.originalname, roomId: req.params.id })
+                            else return images.create({ url: req.file.destination.slice(8) + '/' + req.file.originalname, roomId: req.params.id })
                         })
                         .then(image => {
                             res.send(image)
@@ -157,12 +170,37 @@ routes.post('/:id/images', (req, res) => {
         .catch(err => res.status(500).send({message: err.message}));
 });
 
+// --- DELETE IMAGE ---
+routes.delete('/images/:id', (req, res) => {
+    if(req.user.role === 1) {
+        images.destroy({where: {id: req.params.id}})
+            .then(image => {
+                image ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
+            })
+            .catch(err => {
+                res.status(500).send({message: err.message});
+            });
+    } else res.status(500).send({ message: 'You have no rights' });
+});
+
 // ----- ROUTES FOR ROOMS ISSUES -----
 // --- GET ISSUES BY RoomId ---
 routes.get('/:id/issues', (req, res) => {
     issues.findAll({ where: { roomId: req.params.id } })
         .then(issues => {
             res.send(issues);
+        })
+        .catch(err => {
+            res.status(500).send({message: err.message});
+        });
+});
+
+// ----- ROUTES FOR ROOMS EVENTS -----
+// --- GET EVENTS BY RoomId ---
+routes.get('/:id/events', (req, res) => {
+    events.findAll({ where: { roomId: req.params.id } })
+        .then(events => {
+            res.send(events);
         })
         .catch(err => {
             res.status(500).send({message: err.message});

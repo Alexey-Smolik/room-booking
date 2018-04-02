@@ -17,7 +17,6 @@ export const GET_EVENTS = 'get-event';
 export const GET_CURRENT_USER = 'get-current-user';
 export const ADD_USER_DB = 'add-user-db';
 export const DELETE_USER_DB = 'delete-user-db';
-export const EDIT_USER_DB = 'edit-user-db';
 export const USER_AUTH_FORM = 'user-auth-form';
 export const GET_ALL_USERS = 'get-all-users';
 export const FILTER_ROOM = 'filter-room';
@@ -28,3 +27,6 @@ export const GET_ROOM_ISSUES = 'get-room-issues';
 export const CREATE_ISSUE = 'create-issue';
 export const DELETE_ISSUE = 'delete-issue';
 
+export const GET_ROOM_IMAGES = 'get-room-images';
+export const ADD_ROOM_IMAGE = 'add_room_image';
+export const DELETE_ROOM_IMAGE = 'delete-room';
