@@ -12,6 +12,8 @@ export const getEvents = roomID => async (dispatch) => {
 };
 
 export const createEvent = newEvent => async (dispatch) => {
+    console.log(newEvent);
+
     const res = await axios.post('/api/events', newEvent);
     if (res.status === 201) {
         dispatch({ type: ADD_EVENT, payload: res.data });
