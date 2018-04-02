@@ -21,8 +21,8 @@ class IssuesContainer extends React.Component {
     }
 
     getIssues() {
-        if(this.props.roomId) {
-            this.props.dispatch(getRoomIssues(this.props.roomId))
+        if(this.props.roomID) {
+            this.props.dispatch(getRoomIssues(this.props.roomID))
         } else {
             this.props.dispatch(getAllIssues());
         }
@@ -32,13 +32,13 @@ class IssuesContainer extends React.Component {
         this.getIssues();
     }
     addIssue(e) {
-        let roomId = null;
-        if(this.props.roomId) {
-            roomId = this.props.roomId
+        let roomID = null;
+        if(this.props.roomID) {
+            roomID = this.props.roomID
         } else {
             this.props.rooms.forEach((room) => {
                 if(room.name === this.state.roomName ) {
-                    roomId = room.id;
+                    roomID = room.id;
                 }
             });
         }
@@ -46,10 +46,10 @@ class IssuesContainer extends React.Component {
         const issueData = {
             description: this.state.description,
             active: true,
-            roomId: roomId,
+            roomId: roomID,
         };
         this.props.dispatch(createIssue(issueData));
-        this.getIssues();
+        this.props.roomID && this.props.dispatch(this.getIssues());
         this.toggleAddIssueField();
         this.setState({
             searchValue: '',
@@ -109,7 +109,7 @@ class IssuesContainer extends React.Component {
                             </div>
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onDescriptionChange(e)} value={this.state.description}  required />
-                                { !this.props.roomId && <FormControl componentClass="select"  onChange={(e) => this.onRoomNameChange(e)}  value={this.state.roomName} required>
+                                { !this.props.roomID && <FormControl componentClass="select"  onChange={(e) => this.onRoomNameChange(e)}  value={this.state.roomName} required>
                                     {this.state.roomName === '' && <option  defaultValue/>}
                                     {this.props.rooms.map((room) => {
                                         return <option value={room.name} key={room.id}>{room.name}</option>
@@ -122,7 +122,7 @@ class IssuesContainer extends React.Component {
                                     return <IssueItem
                                         description={issue.description}
                                         roomName={issue.room.name}
-                                        roomId = {this.props.roomId}
+                                        roomID = {this.props.roomID}
                                         active={issue.active}
                                         key={issue.id}
                                         id={issue.id}
@@ -131,7 +131,7 @@ class IssuesContainer extends React.Component {
                                     return <IssueItem
                                         description={issue.description}
                                         roomName={this.state.roomName}
-                                        roomId = {this.props.roomId}
+                                        roomID = {this.props.roomID}
                                         active={issue.active}
                                         key={issue.id}
                                         id={issue.id}
@@ -151,8 +151,8 @@ class IssuesContainer extends React.Component {
 }
 function mapStateToProps ({user, rooms}) {
     return {
-        user: user,
-        rooms: rooms,
+        user,
+        rooms
     }
 }
 

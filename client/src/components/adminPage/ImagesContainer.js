@@ -1,24 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, ControlLabel , FormControl,Jumbotron, Grid, Row,Col, Thumbnail, Image, Carousel } from 'react-bootstrap';
+import {Jumbotron } from 'react-bootstrap';
 import ImageItem from './ImageItem'
 import Dropzone from 'react-dropzone'
 import {
     getRoomImages,
-    deleteRoomImage,
     addRoomImage,
 } from '../../actions/index';
 
 class ImagesContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.props.dispatch(getRoomImages(this.props.roomId));
+        this.props.dispatch(getRoomImages(this.props.roomID));
     }
 
     onDropImage(image) {
         let formData = new FormData();
         formData.append('file',image);
-        this.props.dispatch(addRoomImage(formData, this.props.roomId))
+        this.props.dispatch(addRoomImage(formData, this.props.roomID))
     }
 
     render() {
@@ -53,8 +52,8 @@ class ImagesContainer extends React.Component {
 }
 function mapStateToProps ({user, images }) {
     return {
-        user: user,
-        images: images
+        user,
+        images,
     }
 }
 
