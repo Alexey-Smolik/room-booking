@@ -23,14 +23,15 @@ class ImagesContainer extends React.Component {
     render() {
         return (
             <div className="images_for_rooms">
-                <Dropzone
-                    onDrop={(images) =>{this.onDropImage(images[0])}}
-                    accept="image/*"
-                    style={{height:"50px", width: "50px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
-                    acceptStyle={{backgroundColor:' red'}}
-                />
-                { this.props.user && this.props.user.role === 1 ?
+
+                { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
+                        <Dropzone
+                            onDrop={(images) =>{this.onDropImage(images[0])}}
+                            accept="image/*"
+                            style={{height:"50px", width: "50px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
+                            acceptStyle={{backgroundColor:' red'}}
+                        />
                         <h3>Room images</h3>
 
                         {this.props.images.map((image, index) => {

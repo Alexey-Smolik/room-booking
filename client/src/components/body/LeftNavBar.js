@@ -36,7 +36,7 @@ class LeftNavBar extends Component {
 
   componentDidMount() {
       console.log("Current user2", this.props.user);
-      socket.on('test', this.test);
+      socket.on('add room', this.test);
       socket.on('disconnect', this.disconnect);
   };
 

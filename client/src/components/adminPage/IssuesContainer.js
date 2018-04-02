@@ -88,8 +88,8 @@ class IssuesContainer extends React.Component {
                 issue.active.toString().includes(this.state.searchValue)
         });
         return (
-            <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+            <div>
+                { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All issues</h3>
                         <div  style={{display:  'flex'}}>
@@ -102,10 +102,10 @@ class IssuesContainer extends React.Component {
                             </Button>
                         </div>
                         <div>
-                            <div style={{display:  'flex', justifyContent: 'space-around'}}>
+                            <div style={{display:  'flex', justifyContent: 'space-between'}}>
                                 <ControlLabel className="control-label" >Description</ControlLabel>
                                 { !this.props.roomId && <ControlLabel className="control-label" >Room name</ControlLabel>}
-                                { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" >Status</ControlLabel>}
+                                { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" id = "status" >Status</ControlLabel>}
                             </div>
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onDescriptionChange(e)} value={this.state.description}  required />
@@ -145,7 +145,7 @@ class IssuesContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-            </Jumbotron>
+            </div>
         );
     }
 }

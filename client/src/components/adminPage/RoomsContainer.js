@@ -95,7 +95,7 @@ class RoomsContainer extends React.Component {
         return (
             <div>
 
-            <Jumbotron>
+            <div>
                 { this.props.user && this.props.user.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
@@ -154,7 +154,7 @@ class RoomsContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-                </Jumbotron>
+                </div>
             </div>
         );
     }

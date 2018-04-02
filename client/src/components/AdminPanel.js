@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import {Nav, NavItem, MenuItem, NavDropdown, Jumbotron } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import {  Route } from 'react-router-dom';
 import {
@@ -60,7 +60,7 @@ class AdminPanel extends React.Component {
                 <Route exact path="/adminPanel/rooms/" component={RoomsContainer}/>
                 <Route path="/adminPanel/rooms/:roomID" component={SingleRoomContainer}/>
                 <Route path="/adminPanel/users/" component={UsersContainer}/>
-                <Route path="/adminPanel/issues/" render={()=><IssuesContainer issues = {this.props.issues} />}/>
+                <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {this.props.issues} /></Jumbotron>}/>
             </div>
         );
     }

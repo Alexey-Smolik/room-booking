@@ -22,14 +22,15 @@ class Calendar extends React.Component {
         this.checkRole = this.checkRole.bind(this);
     }
 
-  state = {
+    state = {
     showPopup: false,
     editMode: false,
     event: '',
-  };
+    };
 
   componentWillMount() {
-    this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID));
+      this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID));
+
   }
 
   dateFilter = (event, eventID = -1) => {
@@ -57,7 +58,7 @@ class Calendar extends React.Component {
                 }
     }
     return !this.state.editMode;
-  };
+  }
 
   editEvent = (event) => {
     this.setState( (prevState) => ({
@@ -68,7 +69,7 @@ class Calendar extends React.Component {
   };
 
 
-  addEvent = (event) => {
+    addEvent = (event) => {
     if (this.dateFilter(event)) {
       this.setState( (prevState) => ({
         showPopup: !prevState.showPopup,
@@ -85,7 +86,7 @@ class Calendar extends React.Component {
       event: '',
       editMode: false,
     }))
-  };
+    };
 
     checkRole(){
         console.log(this.props.user);
@@ -99,10 +100,9 @@ class Calendar extends React.Component {
     }
 
   render() {
+    console.log(this.props.events);
     let events = [];
-
-
-    let  roomID  = this.props.roomID || this.props.match.params.roomID;
+      let  roomID = this.props.roomID || this.props.match.params.roomID;
 
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
@@ -118,6 +118,7 @@ class Calendar extends React.Component {
           };
       }));
     }
+
 
 
     return (

@@ -1777,7 +1777,7 @@ ol ol {
     max-height: 65vh;
     padding-top: 30px;
     padding-bottom: 30px;
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
     color: inherit;
     background-color: #eee;
     overflow: auto;
@@ -1947,7 +1947,7 @@ img {
 
 .label.label-danger {
     border-radius: .25rem;
-    background-color: #B71C1C;
+    background-color: green;
     color: white;
     text-align: center;
     margin-left: 10px;
@@ -1956,7 +1956,7 @@ img {
 
 .label.label-success {
     border-radius: .25rem;
-    background-color: green;
+    background-color: #B71C1C;
     color: white;
     text-align: center;
     margin-left: 10px;
@@ -1965,6 +1965,14 @@ img {
 
 .label.label-danger:hover {
     border-color: #122b40;
+}
+
+#status {
+    margin-right: 50px;
+}
+
+label {
+    margin-top: .5rem;
 }
 
 

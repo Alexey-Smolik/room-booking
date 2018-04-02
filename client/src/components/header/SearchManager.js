@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import {  getAllUsers, getRooms } from '../../actions';
+import LoginSection from './LoginSection';
 
 
 import "react-select/dist/react-select.css";
@@ -96,7 +97,6 @@ class SearchEmptyRoom extends Component {
   }
 
   render() {
-      console.log(user);
     const { user } = this.props;
     return (
       <div className="dates_filter">
@@ -132,6 +132,7 @@ class SearchEmptyRoom extends Component {
             <div className="buttons_filter">
               <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
               <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+
             </div>
           </div>
         </div>
@@ -139,9 +140,9 @@ class SearchEmptyRoom extends Component {
   }
 }
 
- SearchEmptyRoom.defaultProps = {
-   user: null,
- };
+SearchEmptyRoom.defaultProps = {
+  user: 'undefined',
+};
 
 SearchEmptyRoom.propTypes = {
   user: PropTypes.object,
