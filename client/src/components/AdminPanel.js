@@ -15,7 +15,7 @@ import RoomsContainer from "./adminPage/RoomsContainer";
 import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
-import SingleRoomContainer from "./adminPage/SingleRoomContainer";
+import InnerRoomContainer from "./adminPage/InnerRoomContainer";
 
 class AdminPanel extends React.Component {
     constructor(props) {
@@ -58,7 +58,7 @@ class AdminPanel extends React.Component {
 
                 <Route path="/adminPanel/companies/"  component={CompaniesContainer}/>
                 <Route exact path="/adminPanel/rooms/" component={RoomsContainer}/>
-                <Route path="/adminPanel/rooms/:roomID" component={SingleRoomContainer}/>
+                <Route path="/adminPanel/rooms/:roomID" component={InnerRoomContainer}/>
                 <Route path="/adminPanel/users/" component={UsersContainer}/>
                 <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {this.props.issues} /></Jumbotron>}/>
             </div>
@@ -71,5 +71,5 @@ function mapStateToProps({issues,rooms}) {
         rooms: rooms
     }
 }
-export default connect(mapStateToProps,null)(AdminPanel);
+export default connect(mapStateToProps)(AdminPanel);
 

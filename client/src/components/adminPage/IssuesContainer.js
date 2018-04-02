@@ -49,13 +49,13 @@ class IssuesContainer extends React.Component {
             roomId: roomID,
         };
         this.props.dispatch(createIssue(issueData));
-        this.props.roomID && this.props.dispatch(this.getIssues());
         this.toggleAddIssueField();
         this.setState({
             searchValue: '',
             roomName: '',
             description: '',
         });
+        !this.props.roomID && this.getIssues();
         e.preventDefault();
     };
     toggleAddIssueField() {
@@ -102,10 +102,10 @@ class IssuesContainer extends React.Component {
                             </Button>
                         </div>
                         <div>
-                            <div style={{display:  'flex', justifyContent: 'space-between'}}>
+                            <div style={{display:  'flex', justifyContent: 'space-around'}}>
                                 <ControlLabel className="control-label" >Description</ControlLabel>
-                                { !this.props.roomId && <ControlLabel className="control-label" >Room name</ControlLabel>}
-                                { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" id = "status" >Status</ControlLabel>}
+                                { !this.props.roomID && <ControlLabel className="control-label" >Room name</ControlLabel>}
+                                { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" >Status</ControlLabel>}
                             </div>
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onDescriptionChange(e)} value={this.state.description}  required />

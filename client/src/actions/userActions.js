@@ -32,18 +32,18 @@ export const getAllUsers = () => async (dispatch) => {
 
 
 export const addUserDB = (user) => async (dispatch) => {
-    const res = await axios.get('/api/users/');
-    dispatch({ type: ADD_USER_DB, payload: user });
+    const res = await axios.post(`/api/users/`, user);
+    dispatch({ type: ADD_USER_DB, payload: res.data });
 };
 
 export const deleteUserDB = (userID) => async (dispatch) => {
-    const res = await axios.get('/api/users/${userID}');
-    dispatch({ type: DELETE_USER_DB, payload: userID });
+    const res = await axios.get(`/api/users/${userID}`);
+    dispatch({ type: DELETE_USER_DB, payload: res.data });
 };
 
 export const editUserDB = (userID, user) => async (dispatch) => {
-    const res = await axios.get('/api/users/${userID}');
-    dispatch({ type: EDIT_USER_DB, payload: user });
+    await axios.put(`/api/users/${userID}`, user);
+    dispatch(getAllUsers());
 };
 
 

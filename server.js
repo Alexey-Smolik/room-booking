@@ -7,8 +7,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const pgSession = require('connect-pg-simple')(session);
-//const io = require('./sockets');
-//require('./config/main');
+const io = require('./sockets');
 const config = require('./config/main');
 
 app.use(cookieParser());
@@ -32,9 +31,9 @@ app.use('/', require('./routes'));
 
 models.sequelize.sync()
     .then(() => {
-        //const port = 8000;
-        //io.listen(port);
-        app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}\nSockets listening on port`));
+        const port = 8000;
+        io.listen(port);
+        app.listen(process.env.PORT, () => console.log(`Server is running on port ${process.env.PORT}\nSockets listening on port ${port}`));
     })
     .catch((err) => console.log(err));
 

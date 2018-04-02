@@ -95,8 +95,8 @@ class RoomsContainer extends React.Component {
         return (
             <div>
 
-            <div>
-                { this.props.user && this.props.user.role === 1 ?
+            <Jumbotron>
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
                             <div  style={{display:  'flex'}}>

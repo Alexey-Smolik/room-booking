@@ -2,8 +2,11 @@ const routes = require('express').Router();
 const events = require('../models').events;
 const rooms = require('../models').rooms;
 const companies = require('../models').companies;
+const io = require('../sockets');
+
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL EVENTS ---
+
 routes.get('/', (req, res) => {
     events.findAll({ include: [ { model: rooms, include: companies } ] })
         .then(events => {
@@ -30,7 +33,7 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.create(req.body)
             .then(event => {
-                io.emit('new event', event.dataValues);
+                io.emit('add event', event.dataValues);
                 res.status(201).send(event);
             })
             .catch(err => {
@@ -46,6 +49,9 @@ routes.put('/:id', (req, res) => {
             .then(event => {
                 if (event) return events.update(req.body, {where: {id: req.params.id}});
                 else res.status(500).send({message: 'Wrong id'});
+            })
+            .then(() => {
+                return events.findOne({where: {id: req.params.id}})
             })
             .then(event => {
                 io.emit('edit event', event.dataValues);
@@ -63,8 +69,8 @@ routes.delete('/:id', (req, res) => {
         events.destroy({where: {id: req.params.id}})
             .then(event => {
                 if(event){
-                    io.emit('delete event', event.dataValues);
-                    res.status(200).send({message: 'Event successfully deleted'});
+                    io.emit('delete event', req.params.id);
+                    res.status(200).send(req.params.id);
                 } else res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
