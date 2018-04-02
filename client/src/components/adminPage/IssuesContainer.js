@@ -49,13 +49,13 @@ class IssuesContainer extends React.Component {
             roomId: roomID,
         };
         this.props.dispatch(createIssue(issueData));
-        !this.props.roomID && this.getIssues();
         this.toggleAddIssueField();
         this.setState({
             searchValue: '',
             roomName: '',
             description: '',
         });
+        !this.props.roomID && this.getIssues();
         e.preventDefault();
     };
     toggleAddIssueField() {
