@@ -96,6 +96,7 @@ class RoomsContainer extends React.Component {
             return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                room.company.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                 room.floor.toString().includes(this.state.searchValue)
         });
 

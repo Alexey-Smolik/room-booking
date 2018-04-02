@@ -3,9 +3,8 @@ import { Button, FormGroup , ControlLabel , FormControl,Jumbotron } from 'react-
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import {
-    updateCompany,
-    deleteCompany,
-    getCompanies
+    deleteUserDB,
+    editUserDB,
 } from '../../actions/index'
 
 class CompanyItem extends React.Component {
@@ -27,19 +26,13 @@ class CompanyItem extends React.Component {
         });
 
         const userData = {
-            name: this.state.username,
+            username: this.state.username,
             password: this.state.password,
             role: this.state.role,
         };
 
-        for(let prop in userData) {
-            if(userData[prop] === '') {
-                userData[prop] = this.props[prop];
-            }
-        }
-
         if(this.state.btnText === 'Save') {
-            // this.props.dispatch(updateCompany(userData,id));
+            this.props.dispatch(editUserDB(id,userData));
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
@@ -76,7 +69,7 @@ class CompanyItem extends React.Component {
                 <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing}/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeUserData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
-                    this.props.dispatch(deleteCompany(this.props.id));
+                    this.props.dispatch(deleteUserDB(this.props.id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})

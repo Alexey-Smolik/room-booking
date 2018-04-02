@@ -84,6 +84,7 @@ class IssuesContainer extends React.Component {
     render() {
         let filteredIssues = this.props.issues && this.props.issues.filter((issue) => {
             return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase())||
                 issue.active.toString().includes(this.state.searchValue)
         });
         return (
