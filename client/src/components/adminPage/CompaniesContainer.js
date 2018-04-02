@@ -104,8 +104,8 @@ class CompaniesContainer extends React.Component {
 }
 function mapStateToProps ({user, companies}) {
     return {
-        user: user,
-        companies: companies
+        user,
+        companies,
     }
 }
 

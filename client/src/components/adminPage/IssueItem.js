@@ -22,7 +22,7 @@ class CompanyItem extends React.Component {
         this.setState({
             active: !this.state.active
         });
-        this.props.dispatch(updateIssue(id, this.props.roomId, { active: !this.state.active}));
+        this.props.dispatch(updateIssue(id, this.props.roomID, { active: !this.state.active}));
     };
 
     onIssueDescriptionChange (e) {
@@ -42,7 +42,7 @@ class CompanyItem extends React.Component {
             roomName: this.state.roomName,
         };
         if(this.state.btnText === 'Save') {
-            this.props.dispatch(updateIssue(id, issueData));
+            this.props.dispatch(updateIssue(id, this.props.roomID,issueData));
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
@@ -52,12 +52,12 @@ class CompanyItem extends React.Component {
     }
 
     render() {
-        const {id,roomName, roomId} = this.props;
+        const {id,roomName, roomID} = this.props;
         const { description, active, isFieldEditing, btnText} = this.state;
         return (
             <div style={{display:  'flex', paddingBottom: '15px'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing}/>
-                { !roomId && <FormControl  type="text" value={roomName}   disabled/>}
+                { !roomID && <FormControl  type="text" value={roomName}   disabled/>}
                 <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "solved"}</Label>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeIssueData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {

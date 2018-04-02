@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Button, ControlLabel , FormControl,Jumbotron } from 'react-bootstrap';
 import UserItem from './UserItem'
 import {
-    getCurrentUser,
     getAllUsers,
     addUserDB
 } from '../../actions/index';

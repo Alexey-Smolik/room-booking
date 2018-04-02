@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, ControlLabel , FormControl,Jumbotron, Grid, Row,Col, Thumbnail, Image, Carousel } from 'react-bootstrap';
+import { Button,Col, Image } from 'react-bootstrap';
 
 import Lightbox from 'react-image-lightbox';
 import {
-    getRoomImages,
     deleteRoomImage
 } from '../../actions/index';
 
@@ -59,10 +58,9 @@ class ImageItem extends React.Component {
         );
     }
 }
-function mapStateToProps ({user, images }) {
+function mapStateToProps ({images }) {
     return {
-        user: user,
-        images: images
+        images
     }
 }
 

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, FormGroup , ControlLabel , FormControl,Jumbotron } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router'
 import {
     deleteUserDB,
     editUserDB,
@@ -84,7 +83,7 @@ class CompanyItem extends React.Component {
 }
 function mapStateToProps ({user}) {
     return {
-        user: user
+        user
     }
 }
 
