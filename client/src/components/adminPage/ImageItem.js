@@ -29,7 +29,7 @@ class ImageItem extends React.Component {
             imagesUrl.push(`http://localhost:3000/${image.url}`)
         });
         return (
-            <div /*className="jumbotron"*/ style={{ display: "inline-block"}}>
+            <div  style={{ display: "inline-block"}}>
 
                 { isMouseEnter && <Button bsStyle="danger" style={{position:"absolute"}} onMouseEnter={() => this.setState({isMouseEnter: true})} onMouseLeave={() => this.setState({isMouseEnter: false})} onClick={() => {this.props.dispatch(deleteRoomImage(this.props.id))}}>X</Button>}
                 <img onClick={()=>{this.setState({isLightboxOpen: true})}}  onMouseEnter={() => this.setState({isMouseEnter: true})} onMouseLeave={() => this.setState({isMouseEnter: false})} style={{width:"200px", height: "200px"}} src={`http://localhost:3000/${this.props.url}`} thumbnail />

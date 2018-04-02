@@ -248,6 +248,10 @@ h1 {
     position: relative;
 }
 
+    .rbc-time-content {
+        overflow: hidden !important;
+    }
+
 .rbc-header {
     background-color: #d4d5d8;
 }

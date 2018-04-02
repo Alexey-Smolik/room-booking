@@ -16,9 +16,9 @@ const TopNavBar = (props) => {
     );
 };
 
-TopNavBar.defaultProps = {
-    user: 'undefined',
-};
+ TopNavBar.defaultProps = {
+     user: null,
+ };
 
 TopNavBar.propTypes = {
     user: PropTypes.object,

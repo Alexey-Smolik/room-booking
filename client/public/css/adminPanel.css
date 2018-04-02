@@ -1939,7 +1939,32 @@ img {
 
 .load_img {
     margin-left: 20px;
+}
 
+.images_for_rooms {
+    overflow: auto;
+}
+
+.label.label-danger {
+    border-radius: .25rem;
+    background-color: #B71C1C;
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.label.label-success {
+    border-radius: .25rem;
+    background-color: green;
+    color: white;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.label.label-danger:hover {
+    border-color: #122b40;
 }
 
 

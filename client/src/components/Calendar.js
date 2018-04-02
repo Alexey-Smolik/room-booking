@@ -20,7 +20,7 @@ class Calendar extends React.Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(getEvents(this.props.roomId || this.props.match.params.roomID));
+    this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID));
   }
 
   dateFilter = (event, eventID = -1) => {
@@ -80,7 +80,7 @@ class Calendar extends React.Component {
 
   render() {
     let events = [];
-    let  roomID  = this.props.roomId || this.props.match.params.roomID;
+    let  roomID  = this.props.roomID || this.props.match.params.roomID;
 
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);

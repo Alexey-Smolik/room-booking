@@ -100,6 +100,7 @@ class SearchEmptyRoom extends Component {
   }
 
   render() {
+      console.log(user);
     const { user } = this.props;
     return (
       <div className="dates_filter">
@@ -150,9 +151,9 @@ class SearchEmptyRoom extends Component {
   }
 }
 
-SearchEmptyRoom.defaultProps = {
-  user: 'undefined',
-};
+ SearchEmptyRoom.defaultProps = {
+   user: null,
+ };
 
 SearchEmptyRoom.propTypes = {
   user: PropTypes.object,
