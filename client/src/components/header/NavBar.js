@@ -8,27 +8,19 @@ import Header from './Header';
 import {deleteCurrentUser} from "../../actions";
 
 
-const NavBar = (props) => {
-    const { user } = props;
-    console.log(user);
-
-    return (
-        <div className="reactHeader">
-            {user && <TopEventSearch user={user} />}
-            {user && <LoginSection user={user} logout={() => this.props.dispatch(deleteCurrentUser())} />}
-            <Header />
-        </div>
-    );
-};
-
-
-
-NavBar.defaultProps = {
-    user: 'undefined',
-};
-
-NavBar.propTypes = {
-    user: PropTypes.object,
+class NavBar extends React.Component {
+    render() {
+        let user =  this.props.user || null;
+        let currentUser = this.props.user.currentUser || null;
+        console.log(currentUser);
+        return (
+            <div className="reactHeader">
+                {currentUser && <TopEventSearch user={currentUser}/>}
+                {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
+                <Header/>
+            </div>
+        );
+    }
 };
 
 

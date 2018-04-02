@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Jumbotron, Tab, Tabs } from 'react-bootstrap';
-import Calendar from '../Calendar';
+import Calendar from '../body/Calendar';
 import IssuesContainer from './IssuesContainer';
 import ImagesContainer from './ImagesContainer';
 

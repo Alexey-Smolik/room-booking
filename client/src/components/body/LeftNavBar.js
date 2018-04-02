@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentUser, getRooms, getEvents } from '../../actions/index';
 import io from 'socket.io-client';
+import {getAllUsers} from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
 class LeftNavBar extends Component {
@@ -27,6 +28,8 @@ class LeftNavBar extends Component {
   componentWillMount(){
       this.props.dispatch(getRooms());
       this.props.dispatch(getCurrentUser());
+      this.props.dispatch(getAllUsers());
+
       console.log("Current user1", this.props.user);
 
   };

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import { getRoomsByDate, getRooms, deleteCurrentUser } from '../../actions';
+import {  getAllUsers, getRooms } from '../../actions';
 
-import ReactDOM from "react-dom";
 
 import "react-select/dist/react-select.css";
 import "react-virtualized/styles.css";
@@ -45,9 +44,6 @@ class SearchEmptyRoom extends Component {
       this.props.getRoomsByDate(start, end);
   }
 
-  componentWillMount() {
-    this.props.getAllUsers()
-  }
 
   componentDidUpdate() {
     if(this.state.stateChange === true) {
@@ -156,4 +152,4 @@ let mapStateToProps = ({ rooms }) => {
     };
 }
 
-export default connect(mapStateToProps, actions)(SearchEmptyRoom);
+export default connect(mapStateToProps)(SearchEmptyRoom);

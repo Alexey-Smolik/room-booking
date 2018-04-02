@@ -2,7 +2,7 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/en-gb';
-import { getEvents } from '../../actions/index';
+import { getEvents } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -78,9 +78,9 @@ class Calendar extends React.Component {
     } else {
       alert('There is event on your date');
     }
-    };
+  };
 
-    closePopup = () => {
+  closePopup = () => {
     this.setState((prevState) => ({
       showPopup: !prevState.showPopup,
       event: '',
