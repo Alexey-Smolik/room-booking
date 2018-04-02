@@ -5,7 +5,7 @@ const users = require('../models').users;
 // --- GET ALL USERS ---
 routes.get('/', (req, res) => {
     if(req.user.role === 1){
-        users.findAll()
+        users.findAll({order: [['id', 'DESC']]})
             .then(users => {
                 res.status(200).send(users);
             })
@@ -17,7 +17,7 @@ routes.get('/', (req, res) => {
 
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
-    req.body.role = 3;
+    req.body.role = req.body.role || 3;
     users.create(req.body)
         .then(user => {
             res.status(201).send(user);
@@ -49,7 +49,7 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         users.destroy({where: {id: req.params.id}})
             .then(user => {
-                user ? res.status(200).send({message: 'User successfully deleted'}) : res.status(500).send({message: 'Wrong id'});
+                user ? res.status(200).send(req.params.id.toString()) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});

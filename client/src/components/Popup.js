@@ -31,7 +31,7 @@ class Popup extends Component {
   submitHandler = (e) => {
     e.preventDefault();
     let start = new Date(this.state.startDate._d),
-      end = new Date(this.state.endDate._d);
+        end = new Date(this.state.endDate._d);
     start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
