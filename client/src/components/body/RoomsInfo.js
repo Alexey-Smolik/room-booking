@@ -42,7 +42,7 @@ class RoomsInfo extends React.Component {
  		if(this.state.inputElem) {
  			let input = this.state.inputElem;
  			input.value = "";
- 		};
+ 		}
  	};
 
 
@@ -55,8 +55,8 @@ class RoomsInfo extends React.Component {
 	 			this.setState({
 	 				inputValue: ''
 	 			});
-	 		};
- 		};
+	 		}
+ 		}
  	};
 
 	handleIssueAdd = () => {
@@ -68,10 +68,10 @@ class RoomsInfo extends React.Component {
 	sideClick = (e) => {
 		if(this.state.inputValue) {
 			return;
-		};
+		}
 		if(e.target.className === 'overlay') {
 			this.props.handleMouseEvent('');
-		};
+		}
 	};
 
     inputHandler(e, num) {
@@ -81,7 +81,7 @@ class RoomsInfo extends React.Component {
 	    			inputValue : e.target.value,
 	    			inputElem: e.target
 	    		});
-    		};
+    		}
     	} else {
     		if(this.state.inputValue) {
     			const data = {
@@ -95,8 +95,8 @@ class RoomsInfo extends React.Component {
 	    		this.setState({
 	    			inputValue: ""
 	    		});
-    		};
-    	};
+    		}
+    	}
     };
 
     issueAdd() {
@@ -151,13 +151,13 @@ class RoomsInfo extends React.Component {
 			<div className="overlay">{this.infoRender()}</div>
 		);
 	};
-};
+}
 
 function mapStateToProps({ issues }) {
     return {
         issues: issues
     };
-};
+}
 
 class ControlledCarousel extends React.Component {
   constructor(props, context) {
