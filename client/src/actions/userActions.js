@@ -37,7 +37,7 @@ export const addUserDB = (user) => async (dispatch) => {
 };
 
 export const deleteUserDB = (userID) => async (dispatch) => {
-    const res = await axios.get(`/api/users/${userID}`);
+    const res = await axios.delete(`/api/users/${userID}`);
     dispatch({ type: DELETE_USER_DB, payload: res.data });
 };
 
