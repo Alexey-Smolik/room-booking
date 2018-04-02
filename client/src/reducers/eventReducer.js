@@ -17,6 +17,7 @@ export default function (state = [], action) {
         case ADD_EVENT:
             let newState2 = state.filter( event =>
                 event.id !== action.payload.id);
+            console.log(newState2);
             return [...newState2, action.payload ];
 
         case EDIT_EVENT:
