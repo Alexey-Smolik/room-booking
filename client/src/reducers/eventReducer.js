@@ -7,24 +7,29 @@ import {
 
 export default function (state = [], action) {
     switch (action.type) {
+
+
         case GET_EVENTS:
             return action.payload || false;
 
         case DELETE_EVENT:
-            return state.filter( event =>
-                event.id !== action.payload);
+            return [...state.filter( event =>  event.id != action.payload)];
 
         case ADD_EVENT:
-            let newState2 = state.filter( event =>
-                event.id !== action.payload.id);
-            console.log(newState2);
-            return [...newState2, action.payload ];
+            if( action.payload.newEvent.roomId == action.payload.roomId)
+            {
+                return [...state.filter(event => event.id !== action.payload.newEvent.id), action.payload.newEvent];
+            } else {
+                return [...state];
+            }
 
         case EDIT_EVENT:
-            let newState1 = state.filter( event =>
-                event.id !== action.payload.id);
-            console.log(newState1);
-            return [...newState1, action.payload ];
+            if( action.payload.newEvent.roomId == action.payload.roomId)
+            {
+                return [...state.filter(event => event.id !== action.payload.newEvent.id), action.payload.newEvent];
+            } else {
+                return [...state];
+            }
 
         default:
           return state;

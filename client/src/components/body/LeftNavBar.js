@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentUser, getRooms, getEvents } from '../../actions/index';
+import {getAllUsers, addRoomToState, deleteRoomFromState, editRoomInState} from "../../actions";
 import io from 'socket.io-client';
-import {getAllUsers} from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
 class LeftNavBar extends Component {
 
-  constructor(props) {
+    constructor(props) {
     super(props);
     this.state = {
       id: '',
@@ -21,35 +21,52 @@ class LeftNavBar extends Component {
       },
     };
 
+    //this.connect = this.connect.bind(this);
+    this.socketAddRoom = this.socketAddRoom.bind(this);
+    this.socketEditRoom = this.socketEditRoom.bind(this);
+    this.socketDeleteRoom = this.socketDeleteRoom.bind(this);
+    }
 
-    this.test = this.test.bind(this);
-  }
+    componentWillMount(){
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCurrentUser());
+        this.props.dispatch(getAllUsers());
+    };
 
-  componentWillMount(){
-      this.props.dispatch(getRooms());
-      this.props.dispatch(getCurrentUser());
-      this.props.dispatch(getAllUsers());
-
-      console.log("Current user1", this.props.user);
-
-  };
-
-  componentDidMount() {
-      console.log("Current user2", this.props.user);
-      socket.on('test', this.test);
-      socket.on('disconnect', this.disconnect);
-  };
-
-
-  componentWillReceiveProps(){
-    let { user } = this.props;
-    { user &&  socket.emit('connect user', {user})}
-  };
+    componentDidMount() {
+        socket.on('add room', this.socketAddRoom);
+        socket.on('edit room', this.socketEditRoom);
+        socket.on('delete room', this.socketDeleteRoom);
+        //socket.on('disconnect', this.disconnect);
+        //socket.emit('connect user', this.connect());
+    };
 
 
-  test(server){
-      console.log("Test", server);
-  }
+    // componentWillReceiveProps(){
+    //     let { currentUser } = this.props.user;
+    //     { currentUser &&  socket.emit('connect user', {currentUser})}
+    // };
+
+
+    socketAddRoom(server) {
+        this.props.dispatch(addRoomToState(server));
+
+    }
+
+    socketEditRoom(server) {
+        this.props.dispatch(editRoomInState(server));
+    }
+
+    socketDeleteRoom(server) {
+        this.props.dispatch(deleteRoomFromState(server));
+    }
+
+    //
+    // connect(server){
+    //   console.log("Connect", server);
+    //     let { currentUser } = this.props.user;
+    //     { currentUser &&  socket.emit('connect user', {currentUser})}
+    // }
 
 
 

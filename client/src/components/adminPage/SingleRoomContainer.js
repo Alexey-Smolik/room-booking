@@ -7,10 +7,10 @@ import ImagesContainer from './ImagesContainer';
 
 
 class InnerRoomContainer extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
+    // constructor(props) {
+    //     super(props);
+    //
+    // }
 
     render() {
 

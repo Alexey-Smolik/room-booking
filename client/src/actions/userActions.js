@@ -14,7 +14,8 @@ export const getCurrentUser = () => async (dispatch) => {
 };
 
 export const userAuthForm = () => async (dispatch) => {
-    const res = await axios.post('/auth/local');
+    //const res = await axios.post('/auth/local');
+    await axios.post('/auth/local');
     dispatch(getCurrentUser());
 };
 
@@ -32,17 +33,20 @@ export const getAllUsers = () => async (dispatch) => {
 
 
 export const addUserDB = (user) => async (dispatch) => {
-    const res = await axios.get('/api/users/');
+    //const res = await axios.get('/api/users/');
+    await axios.get('/api/users/');
     dispatch({ type: ADD_USER_DB, payload: user });
 };
 
 export const deleteUserDB = (userID) => async (dispatch) => {
-    const res = await axios.get('/api/users/${userID}');
+    //const res = await axios.get('/api/users/${userID}');
+    await axios.get('/api/users/${userID}');
     dispatch({ type: DELETE_USER_DB, payload: userID });
 };
 
 export const editUserDB = (userID, user) => async (dispatch) => {
-    const res = await axios.get('/api/users/${userID}');
+    //const res = await axios.get('/api/users/${userID}');
+    await axios.get('/api/users/${userID}');
     dispatch({ type: EDIT_USER_DB, payload: user });
 };
 
