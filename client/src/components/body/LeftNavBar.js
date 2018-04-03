@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from "../../actions";
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
-import {getAllUsers} from "../../actions";
+import {getAllUsers, addEventToState , deleteEventFromState , editEventInState , getRooms , getCurrentUser, getEvents } from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
 
@@ -54,16 +54,16 @@ class LeftNavBar extends Component {
 
 
     socketAddRoom(server) {
-        this.props.dispatch(addRoomToState(server));
+        this.props.dispatch(addEventToState(server));
 
     }
 
     socketEditRoom(server) {
-        this.props.dispatch(editRoomInState(server));
+        this.props.dispatch(editEventInState(server));
     }
 
     socketDeleteRoom(server) {
-        this.props.dispatch(deleteRoomFromState(server));
+        this.props.dispatch(deleteEventFromState(server));
     }
 
     //
@@ -106,12 +106,12 @@ class LeftNavBar extends Component {
     }
 
     componentDidMount() {
-        this.props.getRooms();
-        this.props.getCurrentUser();
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCurrentUser());
     }
 
     getDataTable(id){
-        this.props.getEvents(id);
+        this.props.dispatch(getEvents(id));
     }
 
     renderMenu(){
@@ -162,4 +162,4 @@ const mapStateToProps = ({ rooms,user}) => ({
     user
 });
 
-export default connect(mapStateToProps, actions)(LeftNavBar);
+export default connect(mapStateToProps)(LeftNavBar);
