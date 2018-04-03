@@ -16,7 +16,6 @@ class RoomItem extends React.Component {
             roomFloor: this.props.floor,
             roomDescription: this.props.description,
             isFieldEditing: false,
-            companyName: '',
         };
     }
 
@@ -32,10 +31,11 @@ class RoomItem extends React.Component {
             }
         });
         const roomData = {
+            id: id,
             name: this.state.roomName,
             description: this.state.roomDescription,
             floor: this.state.roomFloor,
-            companyId: companyId,
+            companyName: this.props.companyName,
         };
 
         for(let prop in roomData) {

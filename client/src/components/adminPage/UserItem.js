@@ -25,6 +25,7 @@ class CompanyItem extends React.Component {
         });
 
         const userData = {
+            id: id,
             username: this.state.username,
             password: this.state.password,
             role: this.state.role,

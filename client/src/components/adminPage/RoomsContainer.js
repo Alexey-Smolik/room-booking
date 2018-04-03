@@ -38,18 +38,15 @@ class RoomsContainer extends React.Component {
         this.props.dispatch(createRoom(roomData));
         this.props.dispatch(getRooms());
         this.toggleAddRoomField();
-        this.setState({
-            searchValue: '',
-            roomName: '',
-            roomFloor: '',
-            roomCompanyName: '',
-            roomDescription: '',
-        });
         e.preventDefault()
     }
     toggleAddRoomField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            searchValue: '',
+            roomName: '',
+            roomFloor: '',
+            roomDescription: '',
         })
     }
     onRoomNameChange (e) {
@@ -93,8 +90,6 @@ class RoomsContainer extends React.Component {
                 room.floor.toString().includes(this.state.searchValue)
         });
         return (
-
-
             <Jumbotron>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
@@ -142,7 +137,7 @@ class RoomsContainer extends React.Component {
                                             name={room.name}
                                             description={room.description}
                                             floor={room.floor}
-                                            companyName={this.state.roomCompanyName}
+                                            companyName={room.companyName}
                                             id={room.id}
                                             key={room.id}
                                         />

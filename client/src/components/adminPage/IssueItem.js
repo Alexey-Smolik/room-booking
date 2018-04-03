@@ -11,7 +11,6 @@ class CompanyItem extends React.Component {
         super(props);
         this.state = {
             description: this.props.description,
-            roomName: this.props.roomName,
             active: this.props.active,
             isFieldEditing: false,
             btnText: 'Edit',
@@ -22,7 +21,13 @@ class CompanyItem extends React.Component {
         this.setState({
             active: !this.state.active
         });
-        this.props.dispatch(updateIssue(id, this.props.roomID, { active: !this.state.active}));
+        let issueData ={
+            id: id,
+            description: this.state.description,
+            roomName: this.props.roomName,
+            active: !this.state.active,
+        };
+        this.props.dispatch(updateIssue(id, this.props.roomID, issueData));
     };
 
     onIssueDescriptionChange (e) {
@@ -38,6 +43,7 @@ class CompanyItem extends React.Component {
             isFieldEditing: true,
         });
         const issueData = {
+            id: id,
             description: this.state.description,
             roomName: this.state.roomName,
         };

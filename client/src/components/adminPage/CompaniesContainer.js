@@ -26,15 +26,13 @@ class CompaniesContainer extends React.Component {
         };
         this.props.dispatch(createCompany(companyData));
         this.toggleAddCompanyField();
-        this.setState({
-            companyName: '',
-            companyAddress: '',
-        });
         e.preventDefault()
     }
     toggleAddCompanyField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            companyName: '',
+            companyAddress: '',
         })
     }
     onCompanyAddressChange (e) {

@@ -50,17 +50,14 @@ class IssuesContainer extends React.Component {
         };
         this.props.dispatch(createIssue(issueData));
         this.toggleAddIssueField();
-        this.setState({
-            searchValue: '',
-            roomName: '',
-            description: '',
-        });
         !this.props.roomID && this.getIssues();
         e.preventDefault();
     };
     toggleAddIssueField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            searchValue: '',
+            description: '',
         })
     }
     onDescriptionChange(e) {
@@ -83,13 +80,18 @@ class IssuesContainer extends React.Component {
     };
     render() {
         let filteredIssues = this.props.issues && this.props.issues.filter((issue) => {
-            return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase())||
-                issue.active.toString().includes(this.state.searchValue)
+         if(this.props.roomID) {
+             return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                 issue.active.toString().includes(this.state.searchValue)
+         } else {
+             return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                 issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                 issue.active.toString().includes(this.state.searchValue)
+         }
         });
         return (
             <div>
-                { this.props.user && this.props.user.currentUser.role === 1 ?
+                { this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All issues</h3>
                         <div  style={{display:  'flex'}}>
@@ -130,7 +132,7 @@ class IssuesContainer extends React.Component {
                                 } else {
                                     return <IssueItem
                                         description={issue.description}
-                                        roomName={this.state.roomName}
+                                        roomName={this.props.roomName}
                                         roomID = {this.props.roomID}
                                         active={issue.active}
                                         key={issue.id}
