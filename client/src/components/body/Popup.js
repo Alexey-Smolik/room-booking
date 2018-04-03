@@ -45,8 +45,7 @@ class Popup extends Component {
         date_to: end,
         id: this.props.event.id,
         roomId: this.props.roomID,
-        userId: this.props.user.id,
-        user: user,
+        userId: this.props.user.currentUser.id
       };
 
 

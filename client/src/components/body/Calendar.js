@@ -89,8 +89,8 @@ class Calendar extends React.Component {
     };
 
     checkRole(){
-        console.log(this.props.user);
-        let role = this.props.user;
+        console.log("Role" , this.props.user.currentUser);
+        let {role} = this.props.user.currentUser;
         if(role === 1 || role === 2) {
             console.log(role);
             return true;

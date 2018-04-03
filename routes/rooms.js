@@ -227,7 +227,7 @@ routes.get('/:id/issues', (req, res) => {
 // --- GET EVENTS BY RoomId ---
 routes.get('/:id/events', (req, res) => {
     let where = req.query.userId ? { roomId: req.params.id, userId: req.query.userId } : { roomId: req.params.id };
-    events.findAll({ where: where })
+    events.findAll({ where: where, include: [ { model: users, attributes: ['username'] }] })
         .then(events => {
             res.send(events);
         })
