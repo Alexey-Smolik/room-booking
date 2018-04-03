@@ -22,10 +22,18 @@ class ImagesContainer extends React.Component {
 
     render() {
         return (
-            <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+            <div className="images_for_rooms">
+
+                { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
+                        <Dropzone
+                            onDrop={(images) =>{this.onDropImage(images[0])}}
+                            accept="image/*"
+                            style={{height:"50px", width: "50px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
+                            acceptStyle={{backgroundColor:' red'}}
+                        />
                         <h3>Room images</h3>
+
                         {this.props.images.map((image, index) => {
                             return <ImageItem
                                 id={image.id}
@@ -35,18 +43,13 @@ class ImagesContainer extends React.Component {
                             />
                         }
                         )}
-                        <Dropzone
-                            onDrop={(images) =>{this.onDropImage(images[0])}}
-                            accept="image/*"
-                            style={{height:"200px", width: "200px", float:"right", backgroundImage: 'url("https://image.flaticon.com/icons/svg/118/118748.svg")'}}
-                            acceptStyle={{backgroundColor:' red'}}
-                        />
+
                     </div>
                     : <div>
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-            </Jumbotron>
+            </div>
         );
     }
 }

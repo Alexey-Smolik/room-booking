@@ -57,8 +57,8 @@ class Calendar extends React.Component {
 
 
 
-    componentWillMount() {
-        this.props.dispatch(getEvents(this.props.match.params.roomID));
+  componentWillMount() {
+    this.props.dispatch(getEvents(this.props.match.params.roomID));
 
     };
 
@@ -95,6 +95,8 @@ class Calendar extends React.Component {
       editMode: true
     }))
   };
+
+
     addEvent = (event) => {
     if (this.dateFilter(event)) {
       this.setState( (prevState) => ({
@@ -112,9 +114,11 @@ class Calendar extends React.Component {
       editMode: false,
     }))
     };
+
     checkRole(){
         let {role} = this.props.user.currentUser;
         if(role === 1 || role === 2) {
+            console.log(role);
             return true;
         }
         alert("You cannot get access");

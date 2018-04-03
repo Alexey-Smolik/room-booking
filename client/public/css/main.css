@@ -11,18 +11,18 @@
 .facebook:hover, .twitter:hover, .vk:hover, .google:hover { color: #383e41; }
 
     /*main page*/
-
 html {
     height: 100%;
-    width: 100%;
 }
 
-body {
+
+body.default {
     color: #383e41;
     font: 13px Tahoma, sans-serif;
     background: #f8f8f8 url(../images/back.jpg) no-repeat;
-    background-size: cover;
     margin: 0;
+    background-size: cover;
+
 }
 
 #username_hello{
@@ -242,10 +242,15 @@ h1 {
 
 .rbc-calendar {
     background-color: #ffffff;
+    border: 1px solid #cbcbcb;
     /*margin-left: 250px;*/
     height: 78vh !important;
     position: relative;
 }
+
+    .rbc-time-content {
+        overflow: hidden !important;
+    }
 
 .rbc-header {
     background-color: #d4d5d8;
@@ -449,9 +454,9 @@ div.info-close {
 }
 
 .login {
-    float: right;
+    /*float: right;
     width: 50px;
-    height: 32px;
+    height: 32px;*/
     border: 1px solid #333;
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
@@ -635,8 +640,8 @@ textarea {
     padding-top: 15px;
 }
 
-.start {
-    display: inline-block;
+/*.start {
+   display: inline-block;
     float: left;
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
@@ -650,7 +655,7 @@ textarea {
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
     margin: 20px 5px  0 5px;
-}
+}*/
 
 .filter_btn {
     border: 1px solid #333;
@@ -735,7 +740,7 @@ input {
         /*position: absolute;*/
         /*margin-left: -18px;*/
         padding-top: 20px;
-        margin-right: 6px;
+        margin-right: 7px;
 
     }
 
@@ -776,6 +781,7 @@ input {
     }
 
 .elinext {
+    margin-left: 5px;
     text-decoration: none;
     color: #B71C1C;
 }

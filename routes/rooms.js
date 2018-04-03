@@ -8,6 +8,7 @@ const issues = require('../models').issues;
 const multer  = require('multer');
 const config = require('../config/main');
 const moment = require('moment');
+const io = require('../sockets');
 
 // ----- HANDLERS FOR ROOMS -----
 // --- GET ALL ROOMS ---
@@ -44,7 +45,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images, issues,{model: companies, attributes : ['name']}],order: [['id', 'DESC']]})
+            rooms.findAll({include: [images, issues, {model: companies, attributes : ['name']}],order: [['id', 'DESC']]})
                 .then(rooms => {
                     res.send(rooms);
                 })
@@ -66,11 +67,31 @@ routes.get('/:id', (req, res) => {
         });
 });
 
+// --- GET ROOMS BY EVENTS UserId ---
+routes.get('/events/:userId', (req, res) => {
+    events.findAll({ where: { userId: req.params.userId } })
+        .then(events => {
+            return events.map(event => event.roomId).filter((value, index, self) => {
+                return self.indexOf(value) === index;
+            });
+        })
+        .then(roomsId => {
+            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, {model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+        })
+        .then(rooms => {
+            res.send(rooms);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
 // --- ADD NEW ROOM ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {
         rooms.create(req.body)
             .then(room => {
+                io.emit('add room', room.dataValues);
                 res.status(201).send(room);
             })
             .catch(err => {
@@ -83,12 +104,16 @@ routes.post('/', (req, res) => {
 routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.findOne({where: {id: req.params.id}})
-            .then(rooms => {
-                if (rooms) return rooms.update(req.body, {where: {id: req.params.id}});
+            .then(room => {
+                if (room) return rooms.update(req.body, {where: {id: req.params.id}});
                 else res.status(500).send({message: 'Wrong id'});
             })
-            .then(rooms => {
-                res.status(200).send(rooms);
+            .then(() => {
+                return rooms.findOne({where: {id: req.params.id}})
+            })
+            .then(room => {
+                io.emit('edit room', room.dataValues);
+                res.status(200).send(room);
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
@@ -101,7 +126,10 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         rooms.destroy({where: {id: req.params.id}})
             .then(room => {
-                room ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
+                if(room){
+                    io.emit('delete room', req.params.id);
+                    res.status(200).send(req.params.id);
+                } else res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
@@ -112,7 +140,7 @@ routes.delete('/:id', (req, res) => {
 
 // ----- ROUTES FOR ROOMS IMAGES -----
 // --- GET IMAGE BY Id ---
-routes.get('images/:id', (req, res) => {
+routes.get('/images/:id', (req, res) => {
     images.findOne({ where: { id: req.params.id }})
         .then(image => {
             if(image) res.send(image);
@@ -158,7 +186,7 @@ routes.post('/:id/images', (req, res) => {
                 else{
                     images.findOne({ where: { url: req.file.destination.slice(8) + '/' + req.file.originalname, roomId: req.params.id }})
                         .then(image => {
-                            if(image) res.status(501).send({message: 'Image with that name already exists'});
+                            if(image) res.status(501).send({message: 'You replace image that was already exists'});
                             else return images.create({ url: req.file.destination.slice(8) + '/' + req.file.originalname, roomId: req.params.id })
                         })
                         .then(image => {
@@ -186,7 +214,7 @@ routes.delete('/images/:id', (req, res) => {
 // ----- ROUTES FOR ROOMS ISSUES -----
 // --- GET ISSUES BY RoomId ---
 routes.get('/:id/issues', (req, res) => {
-    issues.findAll({ where: { roomId: req.params.id } })
+    issues.findAll({ where: { roomId: req.params.id }, order: [['id', 'DESC']] })
         .then(issues => {
             res.send(issues);
         })
@@ -198,7 +226,8 @@ routes.get('/:id/issues', (req, res) => {
 // ----- ROUTES FOR ROOMS EVENTS -----
 // --- GET EVENTS BY RoomId ---
 routes.get('/:id/events', (req, res) => {
-    events.findAll({ where: { roomId: req.params.id } })
+    let where = req.query.userId ? { roomId: req.params.id, userId: req.query.userId } : { roomId: req.params.id };
+    events.findAll({ where: where })
         .then(events => {
             res.send(events);
         })

@@ -72,7 +72,7 @@ class UsersContainer extends React.Component {
         });
         return (
             <Jumbotron>
-                { this.props.user && this.props.user.role === 1 ?
+                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All users</h3>
                         <div  style={{display:  'flex'}}>

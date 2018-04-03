@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCurrentUser, getRooms, getEvents } from '../../actions/index';
-import {getAllUsers, addRoomToState, deleteRoomFromState, editRoomInState} from "../../actions";
+import * as actions from "../../actions";
+import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
+import {getAllUsers} from "../../actions";
 const socket = io('http://172.16.0.183:8000');
+
 
 class LeftNavBar extends Component {
 
+// Getting rooms from redux state.
+// Pushing props(active button) from onclick-event in room-info.
+// handleMouseEvent uses in RoomsInfo
+
     constructor(props) {
-    super(props);
-    this.state = {
-      id: '',
-      infoVisible: false,
-      description: '',
-      issues: 'No Issues',
-      image: {
-        src: 'img.jpg',
-        alt: '#',
-      },
-    };
+        super(props);
+        this.state = {
+            activeButton: '',
+            mouseEvent: ''
+        }
+
+        this.infoHandler = this.infoHandler.bind(this);
+        this.handleMouseEvent = this.handleMouseEvent.bind(this);
+
+
 
     //this.connect = this.connect.bind(this);
     this.socketAddRoom = this.socketAddRoom.bind(this);
@@ -68,69 +73,88 @@ class LeftNavBar extends Component {
     //     { currentUser &&  socket.emit('connect user', {currentUser})}
     // }
 
-
-
-  infoHandler = (index) => {
-    this.setState({
-      id: index.id,
-      description: index.description,
-    });
-
-    if (index.id === this.state.id || (this.state.id !== index.id && !this.state.infoVisible)) {
-      this.setState({
-        infoVisible: !this.state.infoVisible,
-      });
+    infoHandler(e, props) {
+        if(this.state.mouseEvent) {
+            let btn = this.state.activeButton;
+            btn.className = 'info-button';
+            if(this.state.mouseEvent.id === props.id) {
+                this.handleMouseEvent('');
+                e.target.className = "info-button";
+                return;
+            }
+        }
+        this.setState({
+            activeButton: e.target
+        })
+        e.target.className = "info-button black";
+        this.handleMouseEvent(props);
     }
-  }
 
-  infoRender = () => {
-    if (this.state.infoVisible && this.state.id) {
-      return (
-        <div className="room-info">
-          <div className="info-close" key="1" onClick={this.infoHandler(this.state.id)}>x</div>
-          <div className="room-image">
-            <img src={this.state.image.src} alt={this.state.image.alt} />
-          </div>
-          <div className="room-description">Description: {this.state.description}</div>
-          <div className="room-issues">Issues: {this.state.issues}</div>
-        </div>
-      );
+    handleMouseEvent(props) {
+        this.setState({
+            mouseEvent: props
+        })
+
+        return this.state.mouseEvent
     }
-    return false;
-  }
 
-  renderMenu = () => {
-    if (this.props.rooms) {
-      return this.props.rooms.map((index, key) => (
-        <li key={key}>
-          <Link to={`/room/${index.id}`} onClick={() => {this.props.dispatch(getEvents(index.id))}}>
-            {index.name}
-          </Link>
-          <div className="info-show">
-            <button className="info-button" onClick={() => this.infoHandler(index)}>i</button>
-          </div>
-        </li>
-      ));
+    infoCloseWatcher() {
+        if(this.state.activeButton && !this.state.mouseEvent) {
+            let btn = this.state.activeButton;
+            btn.className = "info-button";
+        }
     }
-    return (
-      <li>Click me</li>
-    );
-  }
+
+    componentDidMount() {
+        this.props.getRooms();
+        this.props.getCurrentUser();
+    }
+
+    getDataTable(id){
+        this.props.getEvents(id);
+    }
+
+    renderMenu(){
+        if(this.props.rooms) {
+            return this.props.rooms.map( (index, key) => {
+                return (
+                    <li key={key}>
+                        <Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
+                            {index.name}
+                        </Link>
+                        <div className="info-show">
+                            <button className="info-button" onClick={(e) => this.infoHandler(e, index)}>i</button>
+                        </div>
+                    </li>
+                );
+            });
+        }
+        return (
+            <li>Click me</li>
+        )
+    }
 
 
-  render() {
-    return (
-      <aside>
-        <nav>
-          <ul className="aside-menu">
-            {this.renderMenu()}
-            {this.infoRender()}
-          </ul>
-        </nav>
-      </aside>
 
-    );
-  }
+    render() {
+        this.infoCloseWatcher();
+
+        return(
+            <aside>
+                <nav>
+
+                    <ul className="aside-menu">
+                        {this.renderMenu()}
+                        {this.state.mouseEvent ?
+                            <RoomsInfo
+                                selectedRoom={this.state.mouseEvent}
+                                handleMouseEvent={this.handleMouseEvent}
+                            /> : []}
+                    </ul>
+                </nav>
+            </aside>
+        );
+    }
 }
 
 const mapStateToProps = ({ rooms,user}) => ({
@@ -138,4 +162,4 @@ const mapStateToProps = ({ rooms,user}) => ({
     user
 });
 
-export default connect(mapStateToProps)(LeftNavBar);
+export default connect(mapStateToProps, actions)(LeftNavBar);
