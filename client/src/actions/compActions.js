@@ -3,7 +3,8 @@ import {
     CREATE_COMPANY,
     DELETE_COMPANY,
     GET_ALL_COMPANIES,
-    GET_COMPANY
+    GET_COMPANY,
+    EDIT_COMPANY,
 } from "./types";
 
 export const getCompany = companyID => async (dispatch) => {
@@ -20,7 +21,7 @@ export const createCompany = companyData => async (dispatch) => {
 };
 export const updateCompany = (companyData, id) => async (dispatch) => {
     await axios.put(`/api/companies/${id}`, companyData);
-    dispatch(getCompanies());
+    dispatch({type: EDIT_COMPANY, payload: companyData});
 };
 export const deleteCompany = companyID => async (dispatch) => {
     const res = await axios.delete(`/api/companies/${companyID}`);
