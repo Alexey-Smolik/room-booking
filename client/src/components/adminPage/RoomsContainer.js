@@ -46,14 +46,8 @@ class RoomsContainer extends React.Component {
             searchValue: '',
             roomName: '',
             roomFloor: '',
-            roomCompanyName: '',
             roomDescription: '',
-        });
-        e.preventDefault()
-    }
-    toggleAddRoomField() {
-        this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+
         })
     }
     onRoomNameChange (e) {
@@ -103,7 +97,7 @@ class RoomsContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
-                            <div  style={{display:  'flex'}}>
+                            <div  className="add1" >
                                 <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%", marginRight: "10px" }}/>
                                 <Button
                                     type="button"
