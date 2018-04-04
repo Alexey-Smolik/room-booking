@@ -26,9 +26,10 @@ export default function (state = [], action) {
       return [action.payload, ...state] || false;
 
     case EDIT_ROOM:
-      return [action.payload, ...state.filter(({ id }) => id !== action.payload.id)];
+        state.map((issue,index) => {(issue.id === action.payload.id) ? state[index] = action.payload: null});
+        return state;
 
-    case DELETE_ROOM:
+      case DELETE_ROOM:
       return [...state.filter(({ id }) => id !== action.payload)] || false;
 
 

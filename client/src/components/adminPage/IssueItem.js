@@ -45,7 +45,7 @@ class CompanyItem extends React.Component {
         const issueData = {
             id: id,
             description: this.state.description,
-            roomName: this.state.roomName,
+            roomName: this.props.roomName,
         };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateIssue(id,issueData));
@@ -64,7 +64,7 @@ class CompanyItem extends React.Component {
             <div style={{display:  'flex', paddingBottom: '15px'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing}/>
                 { !roomID && <FormControl  type="text" value={roomName}   disabled/>}
-                <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "solved"}</Label>
+                <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "inactive"}</Label>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeIssueData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteIssue(id));
