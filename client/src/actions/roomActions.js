@@ -21,13 +21,13 @@ export const getRoomsByDate = (start_date, end_date) => async (dispatch) => {
 
 export const createRoom = roomData => async (dispatch) => {
     const res = await axios.post('/api/rooms/', roomData);
-    dispatch({ type: CREATE_ROOM, payload: roomData });
+    res.data.companyName = roomData.companyName;
+    dispatch({ type: CREATE_ROOM, payload: res.data });
 };
 
 export const updateRoom = (roomData, id) => async (dispatch) => {
     const res = await axios.put(`/api/rooms/${id}`, roomData);
-    res.data.companyName = roomData.companyName;
-    dispatch({ type: EDIT_ROOM, payload: res.data});
+    dispatch({ type: EDIT_ROOM, payload: roomData});
 };
 
 export const deleteRoom = roomID => async (dispatch) => {

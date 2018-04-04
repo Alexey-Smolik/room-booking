@@ -88,7 +88,6 @@ class IssuesContainer extends React.Component {
                  issue.active.toString().includes(this.state.searchValue)
          } else {
              return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                 issue.roomName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                  issue.active.toString().includes(this.state.searchValue)
          }
         });
