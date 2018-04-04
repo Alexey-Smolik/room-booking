@@ -27,7 +27,7 @@ class CompanyItem extends React.Component {
             roomName: this.props.roomName,
             active: !this.state.active,
         };
-        this.props.dispatch(updateIssue(id, this.props.roomID, issueData));
+        this.props.dispatch(updateIssue(id, issueData));
     };
 
     onIssueDescriptionChange (e) {
@@ -48,7 +48,7 @@ class CompanyItem extends React.Component {
             roomName: this.state.roomName,
         };
         if(this.state.btnText === 'Save') {
-            this.props.dispatch(updateIssue(id, this.props.roomID,issueData));
+            this.props.dispatch(updateIssue(id,issueData));
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
