@@ -32,7 +32,7 @@ body.default {
     font-weight: normal !important;
     margin-right: 10px;
     margin-bottom: 0;
-    padding-top: 5px;
+    /*padding-top: 5px;*/
     text-align: right;
 }
 
@@ -70,10 +70,12 @@ button {
     border-radius: 3px;
 }
 form[name="search"] {
-    display: flex;
+    /*display: flex;*/
+    display: inline-block;
     padding-top: 10px;
     justify-content: flex-end;
     align-items: center;
+    float: right;
 }
 
 nav {
@@ -561,14 +563,6 @@ textarea {
     margin-left: 20px;
 }
 
-/*.btn.btn-info {
-    margin-left: 30px;
-}
-
-.btn.btn-primary {
-    margin-left: 30px;
-}*/
-
 #dates {
     margin-top: 20px;
 }
@@ -715,6 +709,7 @@ input {
         }
         .dates_filter {
             flex-wrap: wrap;
+
         }
 
         .dates_picker_cont {
@@ -725,7 +720,8 @@ input {
         }
     }
     .dates_filter {
-        display: flex;
+        /*display: flex;*/
+        display: inline-block;
         justify-content: space-between;
     }
 

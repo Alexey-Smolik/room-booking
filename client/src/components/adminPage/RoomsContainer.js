@@ -95,12 +95,12 @@ class RoomsContainer extends React.Component {
         return (
             <div>
 
-            <Jumbotron>
+            <div>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
                             <div  style={{display:  'flex'}}>
-                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room"/>
+                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%", marginRight: "10px" }}/>
                                 <Button
                                     type="button"
                                     bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

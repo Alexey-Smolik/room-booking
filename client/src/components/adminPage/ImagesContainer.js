@@ -29,7 +29,7 @@ class ImagesContainer extends React.Component {
                         <Dropzone
                             onDrop={(images) =>{this.onDropImage(images[0])}}
                             accept="image/*"
-                            style={{height:"50px", width: "50px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
+                            style={{height:"33px", width: "33px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
                             acceptStyle={{backgroundColor:' red'}}
                         />
                         <h3>Room images</h3>
