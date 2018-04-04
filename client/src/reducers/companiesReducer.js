@@ -19,9 +19,10 @@ export default function (state = [], action) {
       return [action.payload, ...state];
 
     case EDIT_COMPANY:
-      return [action.payload, ...state.filter(({ id }) => id !== action.payload.id)];
+        state.map((issue,index) => {(issue.id === action.payload.id) ? state[index] = action.payload: null});
+        return state;
 
-    case DELETE_COMPANY:
+      case DELETE_COMPANY:
       return [...state.filter(({ id }) => id !== action.payload)];
 
     default:
