@@ -93,7 +93,7 @@ class RoomsContainer extends React.Component {
                 room.floor.toString().includes(this.state.searchValue)
         });
         return (
-            <div>
+
 
             <Jumbotron>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
@@ -154,8 +154,7 @@ class RoomsContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-                </Jumbotron>
-            </div>
+            </Jumbotron>
         );
     }
 }

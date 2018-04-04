@@ -2,17 +2,15 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/en-gb';
-import { getEvents } from '../../actions';
+import { getEvents, addEventToState, deleteEventFromState, editEventInState } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import io from 'socket.io-client';
-import PropTypes from "prop-types";
-
-//import openSocket from 'socket.io-client';
-
-//const socket = openSocket('http://localhost:8000');
+const socket = io('http://172.16.0.183:8000');
 BigCalendar.momentLocalizer(moment);
+
+
 
 class Calendar extends React.Component {
 
@@ -20,20 +18,51 @@ class Calendar extends React.Component {
     constructor(props){
         super(props);
         this.checkRole = this.checkRole.bind(this);
+        this.socketAddEvent = this.socketAddEvent.bind(this);
+        this.socketEditEvent = this.socketEditEvent.bind(this);
+        this.socketDeleteEvent = this.socketDeleteEvent.bind(this);
     }
 
-  state = {
-    showPopup: false,
-    editMode: false,
-    event: '',
-  };
+    state = {
+        showPopup: false,
+        editMode: false,
+        event: ''
+    };
+
+    componentDidMount(){
+        socket.on('add event', this.socketAddEvent);
+        socket.on('edit event', this.socketEditEvent);
+        socket.on('delete event', this.socketDeleteEvent);
+        socket.on('disconnect', this.disconnect);
+    };
+
+
+    socketAddEvent(event) {
+        let {roomID} = this.props.match.params;
+        console.log("Test1", event );
+        this.props.dispatch(addEventToState(event, roomID));
+
+    };
+
+    socketEditEvent(event) {
+        let {roomID} = this.props.match.params;
+        console.log("Test2", event);
+        this.props.dispatch(editEventInState(event,roomID));
+    };
+
+    socketDeleteEvent(eventID) {
+        console.log("Test3", eventID);
+        this.props.dispatch(deleteEventFromState(eventID));
+    };
+
+
 
   componentWillMount() {
-    this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID));
+    this.props.dispatch(getEvents(this.props.match.params.roomID));
 
-  }
+    };
 
-  dateFilter = (event, eventID = -1) => {
+    dateFilter = (event, eventID = -1) => {
     const eventsArray = this.props.events;
 
     for (let i = 0; i < eventsArray.length; i++) {
@@ -59,8 +88,7 @@ class Calendar extends React.Component {
     }
     return !this.state.editMode;
   }
-
-  editEvent = (event) => {
+    editEvent = (event) => {
     this.setState( (prevState) => ({
       showPopup: !prevState.showPopup,
       event,
@@ -79,8 +107,7 @@ class Calendar extends React.Component {
       alert('There is event on your date');
     }
   };
-
-  closePopup = () => {
+    closePopup = () => {
     this.setState((prevState) => ({
       showPopup: !prevState.showPopup,
       event: '',
@@ -89,7 +116,6 @@ class Calendar extends React.Component {
     };
 
     checkRole(){
-        console.log("Role" , this.props.user.currentUser);
         let {role} = this.props.user.currentUser;
         if(role === 1 || role === 2) {
             console.log(role);
@@ -100,10 +126,9 @@ class Calendar extends React.Component {
     }
 
   render() {
-    console.log(this.props.events);
-    let events = [];
-    let  roomID  =  this.props.roomID || this.props.match.params.roomID;
 
+    let events = [];
+    let { roomID } = this.props.match.params;
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
           const end = new Date(event.date_to);

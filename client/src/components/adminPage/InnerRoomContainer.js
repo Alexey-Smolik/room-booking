@@ -17,15 +17,11 @@ class InnerRoomContainer extends React.Component {
 
         let roomID = this.props.match.params.roomID;
         return (
-                <Jumbotron>
+            <Jumbotron>
+                {this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                         <Tab eventKey={1} title="Events calendar">
-                            {this.props.user.currentUser && this.props.user.currentUser.role === 1
-                                ? <Calendar roomID = {roomID}/>
-                                : <div>
-                                    <h3>Your haven't permission to view this page</h3>
-                                </div>
-                            }
+                            <Calendar roomID = {roomID}/>
                         </Tab>
                         <Tab eventKey={2} title="Photos">
                             <ImagesContainer  roomID={roomID}/>
@@ -37,6 +33,10 @@ class InnerRoomContainer extends React.Component {
                             {/*<EventsContainer roomID={roomID}/>*/}
                         </Tab>
                     </Tabs>
+                    : <div>
+                        <h3>Your haven't permission to view this page</h3>
+                    </div>
+                }
                 </Jumbotron>
 
         );

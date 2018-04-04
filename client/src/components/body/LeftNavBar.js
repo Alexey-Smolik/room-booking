@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as actions from "../../actions";
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
+import {getAllUsers, addEventToState , deleteEventFromState , editEventInState , getRooms , getCurrentUser, getEvents } from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
 
@@ -22,24 +23,55 @@ class LeftNavBar extends Component {
 
         this.infoHandler = this.infoHandler.bind(this);
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
+
+
+
+    //this.connect = this.connect.bind(this);
+    this.socketAddRoom = this.socketAddRoom.bind(this);
+    this.socketEditRoom = this.socketEditRoom.bind(this);
+    this.socketDeleteRoom = this.socketDeleteRoom.bind(this);
     }
+
+    componentWillMount(){
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCurrentUser());
+        this.props.dispatch(getAllUsers());
+    };
 
     componentDidMount() {
-        console.log("Current user2", this.props.user);
-        socket.on('test', this.test);
-        socket.on('disconnect', this.disconnect);
+        socket.on('add room', this.socketAddRoom);
+        socket.on('edit room', this.socketEditRoom);
+        socket.on('delete room', this.socketDeleteRoom);
+        //socket.on('disconnect', this.disconnect);
+        //socket.emit('connect user', this.connect());
     };
 
 
-    componentWillReceiveProps(){
-        let { user } = this.props;
-        { user &&  socket.emit('connect user', {user})}
-    };
+    // componentWillReceiveProps(){
+    //     let { currentUser } = this.props.user;
+    //     { currentUser &&  socket.emit('connect user', {currentUser})}
+    // };
 
 
-    test(server){
-        console.log("Test", server);
+    socketAddRoom(server) {
+        this.props.dispatch(addEventToState(server));
+
     }
+
+    socketEditRoom(server) {
+        this.props.dispatch(editEventInState(server));
+    }
+
+    socketDeleteRoom(server) {
+        this.props.dispatch(deleteEventFromState(server));
+    }
+
+    //
+    // connect(server){
+    //   console.log("Connect", server);
+    //     let { currentUser } = this.props.user;
+    //     { currentUser &&  socket.emit('connect user', {currentUser})}
+    // }
 
     infoHandler(e, props) {
         if(this.state.mouseEvent) {
@@ -74,12 +106,12 @@ class LeftNavBar extends Component {
     }
 
     componentDidMount() {
-        this.props.getRooms();
-        this.props.getCurrentUser();
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCurrentUser());
     }
 
     getDataTable(id){
-        this.props.getEvents(id);
+        this.props.dispatch(getEvents(id));
     }
 
     renderMenu(){
@@ -125,10 +157,9 @@ class LeftNavBar extends Component {
     }
 }
 
-function mapStateToProps({ rooms }) {
-    return {
-        rooms: rooms,
-    };
-}
+const mapStateToProps = ({ rooms,user}) => ({
+    rooms,
+    user
+});
 
-export default connect(mapStateToProps, actions)(LeftNavBar);
+export default connect(mapStateToProps)(LeftNavBar);

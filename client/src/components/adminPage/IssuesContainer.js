@@ -88,8 +88,8 @@ class IssuesContainer extends React.Component {
                 issue.active.toString().includes(this.state.searchValue)
         });
         return (
-            <Jumbotron>
-                { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
+            <div>
+                { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All issues</h3>
                         <div  style={{display:  'flex'}}>
@@ -145,7 +145,7 @@ class IssuesContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-            </Jumbotron>
+            </div>
         );
     }
 }
