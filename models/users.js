@@ -10,15 +10,15 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         password: {
-            type: DataTypes.CHAR(60),
+            type: DataTypes.STRING,
             allowNull: true
         },
         provider: {
-            type: DataTypes.CHAR(60),
+            type: DataTypes.STRING,
             allowNull: true
         },
         personal_id: {
-            type: DataTypes.CHAR(60),
+            type: DataTypes.STRING,
             allowNull: true
         },
         role: {

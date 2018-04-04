@@ -54,6 +54,7 @@ class AuthComponent extends Component {
                           <input id="password" type="text" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
                         <input className="login" type="submit" value="Sign in" />
+                          <a href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
                       </div>
                     </div>
                   </div>

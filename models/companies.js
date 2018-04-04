@@ -11,10 +11,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
     },
     address: {
-        type: DataTypes.CHAR(60),
+        type: DataTypes.STRING,
             allowNull: false
 
-    },
+    }
 }, {
     timestamps: false
 });

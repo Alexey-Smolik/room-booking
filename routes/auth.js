@@ -5,6 +5,8 @@ const VKontakteStrategy = require('passport-vkontakte').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
+const BasicStrategy = require('passport-http').BasicStrategy;
 const users = require('../models').users;
 const config = require('../config/main');
 
@@ -21,6 +23,9 @@ passport.use(new LocalStrategy(
             })
     }
 ));
+
+// Anonymus strategy for authorization
+passport.use(new AnonymIdStrategy());
 
 // Vkontakte Strategy for authorization
 passport.use(new VKontakteStrategy({
@@ -107,10 +112,12 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
+    done(null, user[Object.keys(user)[0]]);
 });
 
 passport.deserializeUser((id, done) => {
+    if(!Number.isInteger(id)) return done(null, id);
+
     users.find({where: { id: id }})
         .then(user => {
             done(null, user.dataValues);
@@ -130,7 +137,9 @@ routes.post('/login', (req, res) => {
         });
 });
 
-routes.post('/local', passport.authenticate('local', { successRedirect: '/main', failureRedirect: '/' }));
+routes.post('/local', passport.authenticate('local', { successRedirect: '/room', failureRedirect: '/' }));
+
+routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));
 routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/room', failureRedirect: '/' }));
