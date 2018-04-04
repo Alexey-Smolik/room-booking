@@ -33,24 +33,25 @@ class IssuesContainer extends React.Component {
     }
     addIssue(e) {
         let roomID = null;
+        let roomName = '';
         if(this.props.roomID) {
-            roomID = this.props.roomID
+            roomID = this.props.roomID;
         } else {
             this.props.rooms.forEach((room) => {
                 if(room.name === this.state.roomName ) {
                     roomID = room.id;
+                    roomName = room.name;
                 }
             });
         }
-
         const issueData = {
             description: this.state.description,
             active: true,
             roomId: roomID,
+            roomName: roomName
         };
         this.props.dispatch(createIssue(issueData));
         this.toggleAddIssueField();
-        !this.props.roomID && this.getIssues();
         e.preventDefault();
     };
     toggleAddIssueField() {
@@ -58,6 +59,7 @@ class IssuesContainer extends React.Component {
             addFieldIsVisible : !this.state.addFieldIsVisible,
             searchValue: '',
             description: '',
+            roomName: ''
         })
     }
     onDescriptionChange(e) {
@@ -80,12 +82,13 @@ class IssuesContainer extends React.Component {
     };
     render() {
         let filteredIssues = this.props.issues && this.props.issues.filter((issue) => {
-         if(this.props.roomID) {
+         if(issue.room) {
              return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                 issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                  issue.active.toString().includes(this.state.searchValue)
          } else {
              return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                 issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                 issue.roomName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                  issue.active.toString().includes(this.state.searchValue)
          }
         });
@@ -112,7 +115,7 @@ class IssuesContainer extends React.Component {
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onDescriptionChange(e)} value={this.state.description}  required />
                                 { !this.props.roomID && <FormControl componentClass="select"  onChange={(e) => this.onRoomNameChange(e)}  value={this.state.roomName} required>
-                                    {this.state.roomName === '' && <option  defaultValue/>}
+                                    <option  defaultValue/>
                                     {this.props.rooms.map((room) => {
                                         return <option value={room.name} key={room.id}>{room.name}</option>
                                     })}
@@ -132,14 +135,13 @@ class IssuesContainer extends React.Component {
                                 } else {
                                     return <IssueItem
                                         description={issue.description}
-                                        roomName={this.props.roomName}
+                                        roomName={issue.roomName}
                                         roomID = {this.props.roomID}
                                         active={issue.active}
                                         key={issue.id}
                                         id={issue.id}
                                     />
                                 }
-
                             }) }
                         </div>
                     </div>

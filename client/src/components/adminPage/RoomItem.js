@@ -24,12 +24,6 @@ class RoomItem extends React.Component {
             btnText: 'Save',
             isFieldEditing: true,
         });
-        let companyId = null;
-        this.props.companies.forEach((company) => {
-            if(company.name === this.state.selectedValue ) {
-                companyId = company.id;
-            }
-        });
         const roomData = {
             id: id,
             name: this.state.roomName,
@@ -37,13 +31,6 @@ class RoomItem extends React.Component {
             floor: this.state.roomFloor,
             companyName: this.props.companyName,
         };
-
-        for(let prop in roomData) {
-            if(roomData[prop] === '' || roomData[prop] === null) {
-                roomData[prop] = this.props[prop];
-            }
-        }
-
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateRoom(roomData,id));
             this.setState({
