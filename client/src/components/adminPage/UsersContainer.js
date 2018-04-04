@@ -73,8 +73,8 @@ class UsersContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All users</h3>
-                        <div  style={{display:  'flex'}}>
-                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search"/>
+                        <div  className = "add1" >
+                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search" style = {{ width: "20%", marginRight: "10px" }}/>
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

@@ -49,6 +49,7 @@ class RoomsContainer extends React.Component {
             roomName: '',
             roomFloor: '',
             roomDescription: '',
+
         })
     }
     onRoomNameChange (e) {
@@ -92,12 +93,14 @@ class RoomsContainer extends React.Component {
                 room.floor.toString().includes(this.state.searchValue)
         });
         return (
-            <Jumbotron>
+            <div>
+
+            <div>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
-                            <div  style={{display:  'flex'}}>
-                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room"/>
+                            <div  className="add1" >
+                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%", marginRight: "10px" }}/>
                                 <Button
                                     type="button"
                                     bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -151,7 +154,8 @@ class RoomsContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-            </Jumbotron>
+                </div>
+            </div>
         );
     }
 }

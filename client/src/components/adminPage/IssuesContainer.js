@@ -96,9 +96,9 @@ class IssuesContainer extends React.Component {
             <div>
                 { this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
-                        <h3>All issues</h3>
-                        <div  style={{display:  'flex'}}>
-                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search"/>
+                        {!this.props.roomID && <h3>All issues</h3>}
+                        <div  className = "add1" >
+                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "20%", marginRight: "10px" }}/>
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -107,7 +107,7 @@ class IssuesContainer extends React.Component {
                             </Button>
                         </div>
                         <div>
-                            <div style={{display:  'flex', justifyContent: 'space-around'}}>
+                            <div style={{display:  'flex', justifyContent: 'space-between'}}>
                                 <ControlLabel className="control-label" >Description</ControlLabel>
                                 { !this.props.roomID && <ControlLabel className="control-label" >Room name</ControlLabel>}
                                 { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" >Status</ControlLabel>}

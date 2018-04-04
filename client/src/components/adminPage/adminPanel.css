@@ -438,6 +438,7 @@
     color: #000000;
     /*background-color: #909090;*/
 }
+
 .nav > li.disabled > a {
     color: #ffffff;
 }
@@ -1774,10 +1775,10 @@ ol ol {
 }
 
 .jumbotron {
-    max-height: 65vh;
+    max-height: 70vh;
     padding-top: 30px;
     padding-bottom: 30px;
-    /*margin-bottom: 30px;*/
+    margin-bottom: 0 !important;
     color: inherit;
     background-color: #eee;
     overflow: auto;
@@ -1805,7 +1806,7 @@ ol ol {
 }
 @media screen and (min-width: 768px) {
     .jumbotron {
-        padding-top: 48px;
+        /*padding-top: 48px;*/
         padding-bottom: 48px;
     }
     .container .jumbotron,
@@ -1860,8 +1861,8 @@ ol ol {
 
 img {
     border: 0;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    /*margin-right: 20px;
+    margin-bottom: 20px;*/
 }
 
 img {
@@ -1945,21 +1946,32 @@ img {
     overflow: auto;
 }
 
+.label {
+    display: inline;
+    padding: 1.3em .3em .3em;
+    font-size: 78%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
 .label.label-danger {
+    min-width: 42px;
     border-radius: .25rem;
     background-color: green;
     color: white;
-    text-align: center;
-    margin-left: 10px;
     margin-right: 10px;
 }
 
 .label.label-success {
+    min-width: 42px;
     border-radius: .25rem;
     background-color: #B71C1C;
     color: white;
-    text-align: center;
-    margin-left: 10px;
     margin-right: 10px;
 }
 
@@ -1973,6 +1985,59 @@ img {
 
 label {
     margin-top: .5rem;
+}
+
+.control-label {
+    margin-right: 55px;
+}
+
+.admin {
+    /*padding-right: 40%;*/
+    display: inline-block;
+    position: absolute;
+    top: 20%;
+   left: 60%;
+   margin-right: -50%;
+   transform: translate(-50%, -50%);
+}
+
+.btn.btn-primary {
+    /*margin-left: 10px;*/
+    height: 38px;
+}
+
+.form-control {
+    margin-right: 10px;
+}
+
+.form-control:disabled {
+    margin-right: 10px;
+}
+
+.btn.btn-success {
+    margin-right: 10px;
+    height: 38px;
+}
+
+.btn.btn-warning {
+    height: 38px;
+}
+
+.btn.btn-danger {
+    height: 38px;
+}
+
+.add1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav.nav-tabs {
+    margin-bottom: 10px;
+}
+
+h3 {
+    border-bottom: 1px solid #cbcbcb;
 }
 
 

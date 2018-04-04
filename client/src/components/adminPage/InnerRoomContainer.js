@@ -14,10 +14,15 @@ class InnerRoomContainer extends React.Component {
     }
 
     render() {
-
         let roomID = this.props.match.params.roomID;
+        let roomName = this.props.rooms.map((room)=> {
+           if(room.id.toString() === roomID) {
+              return room.name
+           }
+        });
         return (
             <Jumbotron>
+                <h3>{roomName}</h3>
                 {this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                         <Tab eventKey={1} title="Events calendar">
@@ -42,10 +47,11 @@ class InnerRoomContainer extends React.Component {
         );
     }
 }
-function mapStateToProps ({issues, user}) {
+function mapStateToProps ({issues, user, rooms}) {
     return {
         issues,
-        user
+        user,
+        rooms
     }
 }
 
