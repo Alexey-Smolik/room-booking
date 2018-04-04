@@ -438,6 +438,7 @@
     color: #000000;
     /*background-color: #909090;*/
 }
+
 .nav > li.disabled > a {
     color: #ffffff;
 }
@@ -1805,7 +1806,7 @@ ol ol {
 }
 @media screen and (min-width: 768px) {
     .jumbotron {
-        padding-top: 48px;
+        /*padding-top: 48px;*/
         padding-bottom: 48px;
     }
     .container .jumbotron,
@@ -1945,19 +1946,32 @@ img {
     overflow: auto;
 }
 
+.label {
+    display: inline;
+    padding: 1.3em .3em .3em;
+    font-size: 78%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
 .label.label-danger {
+    min-width: 42px;
     border-radius: .25rem;
     background-color: green;
     color: white;
-    text-align: center;
     margin-right: 10px;
 }
 
 .label.label-success {
+    min-width: 42px;
     border-radius: .25rem;
     background-color: #B71C1C;
     color: white;
-    text-align: center;
     margin-right: 10px;
 }
 
@@ -2016,6 +2030,14 @@ label {
 .add1 {
     display: flex;
     justify-content: space-between;
+}
+
+.nav.nav-tabs {
+    margin-bottom: 10px;
+}
+
+h3 {
+    border-bottom: 1px solid #cbcbcb;
 }
 
 

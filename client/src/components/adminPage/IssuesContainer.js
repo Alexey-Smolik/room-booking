@@ -96,7 +96,7 @@ class IssuesContainer extends React.Component {
             <div>
                 { this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
-                        <h3>All issues</h3>
+                        {!this.props.roomID && <h3>All issues</h3>}
                         <div  className = "add1" >
                             <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "20%", marginRight: "10px" }}/>
                             <Button
