@@ -6,7 +6,7 @@ import {
     editUserDB,
 } from '../../actions/index'
 
-class CompanyItem extends React.Component {
+class UserItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -69,7 +69,7 @@ class CompanyItem extends React.Component {
                 <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing}/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeUserData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
-                    this.props.dispatch(deleteUserDB(this.props.id));
+                    this.props.dispatch(deleteUserDB(id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
@@ -88,4 +88,4 @@ function mapStateToProps ({user}) {
     }
 }
 
-export default connect(mapStateToProps)(CompanyItem);
+export default connect(mapStateToProps)(UserItem);

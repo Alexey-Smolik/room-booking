@@ -45,7 +45,7 @@ class CompanyItem extends React.Component {
         const issueData = {
             id: id,
             description: this.state.description,
-            roomName: this.state.roomName,
+            roomName: this.props.roomName,
         };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateIssue(id,issueData));
