@@ -1960,17 +1960,17 @@ img {
 }
 
 .label.label-danger {
-    min-width: 42px;
+    min-width: 45px;
     border-radius: .25rem;
-    background-color: green;
     color: white;
     margin-right: 10px;
+    background-color: #B71C1C;
 }
 
 .label.label-success {
-    min-width: 42px;
+    min-width: 45px;
     border-radius: .25rem;
-    background-color: #B71C1C;
+    background-color: green;
     color: white;
     margin-right: 10px;
 }
