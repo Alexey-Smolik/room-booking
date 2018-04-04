@@ -38,7 +38,11 @@ class RoomsContainer extends React.Component {
         this.props.dispatch(createRoom(roomData));
         this.props.dispatch(getRooms());
         this.toggleAddRoomField();
+        e.preventDefault()
+    }
+    toggleAddRoomField() {
         this.setState({
+            addFieldIsVisible : !this.state.addFieldIsVisible,
             searchValue: '',
             roomName: '',
             roomFloor: '',
@@ -142,7 +146,7 @@ class RoomsContainer extends React.Component {
                                             name={room.name}
                                             description={room.description}
                                             floor={room.floor}
-                                            companyName={this.state.roomCompanyName}
+                                            companyName={room.companyName}
                                             id={room.id}
                                             key={room.id}
                                         />

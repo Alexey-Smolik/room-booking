@@ -3,7 +3,11 @@ import {
     GET_ROOMS_BY_DATE,
     DELETE_ROOM,
     CREATE_ROOM,
+    EDIT_ROOM,
     GET_ROOM,
+    ADD_ROOM_TO_STATE,
+    DELETE_ROOM_FROM_STATE,
+    EDIT_ROOM_IN_STATE
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -21,10 +25,25 @@ export default function (state = [], action) {
     case CREATE_ROOM:
       return [action.payload, ...state] || false;
 
+    case EDIT_ROOM:
+      return [action.payload, ...state.filter(({ id }) => id !== action.payload.id)];
+
     case DELETE_ROOM:
       return [...state.filter(({ id }) => id !== action.payload)] || false;
 
+
+      ////////////////////////////////////////////////////////////////////////////
+
+    case ADD_ROOM_TO_STATE:
+        return [ ...state, action.payload] || false;
+
+    case DELETE_ROOM_FROM_STATE :
+        return [...state.filter( (index) =>  index.id !== action.payload)];
+
+    case EDIT_ROOM_IN_STATE:
+        return [...state.filter((index) => index.id !== action.payload.id), action.payload] || false;
+
     default:
-      return state;
+        return state;
   }
 }

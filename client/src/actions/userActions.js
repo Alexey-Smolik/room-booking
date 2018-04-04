@@ -14,7 +14,7 @@ export const getCurrentUser = () => async (dispatch) => {
 };
 
 export const userAuthForm = () => async (dispatch) => {
-    const res = await axios.post('/auth/local');
+    await axios.post('/auth/local');
     dispatch(getCurrentUser());
 };
 
@@ -43,7 +43,7 @@ export const deleteUserDB = (userID) => async (dispatch) => {
 
 export const editUserDB = (userID, user) => async (dispatch) => {
     await axios.put(`/api/users/${userID}`, user);
-    dispatch(getAllUsers());
+    dispatch({type: EDIT_USER_DB, payload: user})
 };
 
 

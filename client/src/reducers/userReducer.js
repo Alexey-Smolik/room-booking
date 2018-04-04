@@ -4,6 +4,7 @@ import {
     REMOVE_USER_FROM_STATE,
     ADD_USER_DB,
     DELETE_USER_DB,
+    EDIT_USER_DB,
 } from '../actions/types';
 
 export default function (state = {}, action) {
@@ -15,10 +16,12 @@ export default function (state = {}, action) {
       case DELETE_USER_DB:
           return { ...state, allUsers: state.allUsers.filter(({ id }) => id !== action.payload)};
 
+      case EDIT_USER_DB:
+          return { allUsers: [...state.allUsers.filter(({ id }) => id !== action.payload.id), action.payload], ...state};
 
       case GET_CURRENT_USER:
           console.log("Action");
-        return { ...state, currentUser: action.payload } || false;
+        return { ...state, currentUser: action.payload };
 
       case REMOVE_USER_FROM_STATE:
         return null || false;

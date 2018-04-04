@@ -8,7 +8,13 @@ import ImagesContainer from './ImagesContainer';
 
 
 class InnerRoomContainer extends React.Component {
+    constructor(props) {
+        super(props);
+
+    }
+
     render() {
+
         let roomID = this.props.match.params.roomID;
         return (
             <Jumbotron>
@@ -32,6 +38,7 @@ class InnerRoomContainer extends React.Component {
                     </div>
                 }
                 </Jumbotron>
+
         );
     }
 }

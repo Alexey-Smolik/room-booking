@@ -29,16 +29,14 @@ class UsersContainer extends React.Component {
         };
         this.props.dispatch(addUserDB(userData));
         this.toggleAddUserField();
-        this.setState({
-            username: '',
-            userPassword: '',
-            userRole: '',
-        });
         e.preventDefault();
     }
     toggleAddUserField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            username: '',
+            userPassword: '',
+            userRole: '',
         })
     }
     onUsernameChange (e) {
