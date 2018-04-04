@@ -2,11 +2,12 @@ import axios from "axios/index";
 import {
     CREATE_ROOM,
     DELETE_ROOM,
+    EDIT_ROOM,
     GET_ALL_ROOMS,
     GET_ROOMS_BY_DATE,
     ADD_ROOM_TO_STATE,
     DELETE_ROOM_FROM_STATE,
-    EDIT_ROOM_IN_STATE
+    EDIT_ROOM_IN_STATE,
 } from "./types";
 
 export const getRooms = () => async (dispatch) => {
@@ -20,12 +21,13 @@ export const getRoomsByDate = (start_date, end_date) => async (dispatch) => {
 
 export const createRoom = roomData => async (dispatch) => {
     const res = await axios.post('/api/rooms/', roomData);
-    dispatch({ type: CREATE_ROOM, payload: res.data });
+    dispatch({ type: CREATE_ROOM, payload: roomData });
 };
 
 export const updateRoom = (roomData, id) => async (dispatch) => {
-    await axios.put(`/api/rooms/${id}`, roomData);
-    dispatch(getRooms());
+    const res = await axios.put(`/api/rooms/${id}`, roomData);
+    res.data.companyName = roomData.companyName;
+    dispatch({ type: EDIT_ROOM, payload: res.data});
 };
 
 export const deleteRoom = roomID => async (dispatch) => {
@@ -34,16 +36,15 @@ export const deleteRoom = roomID => async (dispatch) => {
 };
 
 
-
 export const addRoomToState = roomData => async ( dispatch) => {
     dispatch({ type: ADD_ROOM_TO_STATE, payload: roomData})
-}
+};
 
 export const editRoomInState = roomData => async ( dispatch) => {
     dispatch({ type: EDIT_ROOM_IN_STATE, payload: roomData})
-}
+};
 
 export const deleteRoomFromState = roomId => async ( dispatch) => {
     dispatch({ type: DELETE_ROOM_FROM_STATE, payload: roomId})
-}
+};
 
