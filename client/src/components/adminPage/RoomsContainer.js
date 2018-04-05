@@ -49,7 +49,7 @@ class RoomsContainer extends React.Component {
             roomName: '',
             roomFloor: '',
             roomDescription: '',
-
+            roomCompanyName: '',
         })
     }
     onRoomNameChange (e) {

@@ -12,7 +12,7 @@ class UserItem extends React.Component {
         this.state = {
             btnText: 'Edit',
             username: this.props.name,
-            password: this.props.password,
+            password: this.props.password || '',
             role: this.props.role,
             isFieldEditing: false,
         };
@@ -60,12 +60,12 @@ class UserItem extends React.Component {
     };
 
     render() {
-        const {id} = this.props;
+        const {id, password} = this.props;
         const { isFieldEditing, btnText} = this.state;
         return (
             <div style={{display:  'flex', paddingBottom: '15px'}}>
                 <FormControl  type="text" value={this.state.username} onChange={(e) => this.onUsernameChange(e)}  disabled={!isFieldEditing}/>
-                <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !this.state.password}/>
+                <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !password}/>
                 <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing}/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeUserData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
