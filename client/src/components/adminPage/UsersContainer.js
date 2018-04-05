@@ -29,16 +29,14 @@ class UsersContainer extends React.Component {
         };
         this.props.dispatch(addUserDB(userData));
         this.toggleAddUserField();
-        this.setState({
-            username: '',
-            userPassword: '',
-            userRole: '',
-        });
         e.preventDefault();
     }
     toggleAddUserField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            username: '',
+            userPassword: '',
+            userRole: '',
         })
     }
     onUsernameChange (e) {
@@ -75,8 +73,8 @@ class UsersContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         <h3>All users</h3>
-                        <div  style={{display:  'flex'}}>
-                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search"/>
+                        <div  className = "add1" >
+                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search" style = {{ width: "20%", marginRight: "10px" }}/>
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

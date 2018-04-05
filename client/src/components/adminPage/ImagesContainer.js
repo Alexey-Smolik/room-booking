@@ -23,17 +23,21 @@ class ImagesContainer extends React.Component {
     render() {
         return (
             <div className="images_for_rooms">
-
                 { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
                         <Dropzone
+                            multiple={false}
                             onDrop={(images) =>{this.onDropImage(images[0])}}
                             accept="image/*"
-                            style={{height:"50px", width: "50px", backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")', backgroundSize: "cover",  float:"right", margin: "1px"}}
-                            acceptStyle={{backgroundColor:' red'}}
+                            style={{
+                                height:"35px",
+                                width: "35px",
+                                backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")',
+                                backgroundSize: "cover",
+                                float:"right",
+                                margin: "1px"
+                            }}
                         />
-                        <h3>Room images</h3>
-
                         {this.props.images.map((image, index) => {
                             return <ImageItem
                                 id={image.id}
@@ -43,7 +47,6 @@ class ImagesContainer extends React.Component {
                             />
                         }
                         )}
-
                     </div>
                     : <div>
                         <h3>Your haven't permission to view this page</h3>

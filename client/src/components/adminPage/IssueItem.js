@@ -11,7 +11,6 @@ class CompanyItem extends React.Component {
         super(props);
         this.state = {
             description: this.props.description,
-            roomName: this.props.roomName,
             active: this.props.active,
             isFieldEditing: false,
             btnText: 'Edit',
@@ -22,7 +21,13 @@ class CompanyItem extends React.Component {
         this.setState({
             active: !this.state.active
         });
-        this.props.dispatch(updateIssue(id, this.props.roomID, { active: !this.state.active}));
+        let issueData ={
+            id: id,
+            description: this.state.description,
+            roomName: this.props.roomName,
+            active: !this.state.active,
+        };
+        this.props.dispatch(updateIssue(id, issueData));
     };
 
     onIssueDescriptionChange (e) {
@@ -38,11 +43,12 @@ class CompanyItem extends React.Component {
             isFieldEditing: true,
         });
         const issueData = {
+            id: id,
             description: this.state.description,
-            roomName: this.state.roomName,
+            roomName: this.props.roomName,
         };
         if(this.state.btnText === 'Save') {
-            this.props.dispatch(updateIssue(id, this.props.roomID,issueData));
+            this.props.dispatch(updateIssue(id,issueData));
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
@@ -58,7 +64,7 @@ class CompanyItem extends React.Component {
             <div style={{display:  'flex', paddingBottom: '15px'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing}/>
                 { !roomID && <FormControl  type="text" value={roomName}   disabled/>}
-                <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "solved"}</Label>
+                <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "inactive"}</Label>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeIssueData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteIssue(id));

@@ -24,9 +24,11 @@ class RoomsContainer extends React.Component {
     }
     addRoom(e) {
         let companyId = null;
+        let companyName = '';
         this.props.companies.forEach((company) => {
             if(company.name === this.state.roomCompanyName ) {
                 companyId = company.id;
+                companyName = company.name;
             }
         });
         const roomData = {
@@ -34,22 +36,20 @@ class RoomsContainer extends React.Component {
             description: this.state.roomDescription,
             floor: this.state.roomFloor,
             companyId: companyId,
+            companyName: companyName
         };
         this.props.dispatch(createRoom(roomData));
-        this.props.dispatch(getRooms());
         this.toggleAddRoomField();
-        this.setState({
-            searchValue: '',
-            roomName: '',
-            roomFloor: '',
-            roomCompanyName: '',
-            roomDescription: '',
-        });
         e.preventDefault()
     }
     toggleAddRoomField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            searchValue: '',
+            roomName: '',
+            roomFloor: '',
+            roomDescription: '',
+            roomCompanyName: '',
         })
     }
     onRoomNameChange (e) {
@@ -93,14 +93,14 @@ class RoomsContainer extends React.Component {
                 room.floor.toString().includes(this.state.searchValue)
         });
         return (
+            <div>
 
-
-            <Jumbotron>
+            <div>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
-                            <div  style={{display:  'flex'}}>
-                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room"/>
+                            <div  className="add1" >
+                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%", marginRight: "10px" }}/>
                                 <Button
                                     type="button"
                                     bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -120,7 +120,7 @@ class RoomsContainer extends React.Component {
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomDescriptionChange(e)} value={this.state.roomDescription}  required />
                                     <FormControl className="form-control"   type="number" onChange={(e) => this.onRoomFloorChange(e)} value={this.state.roomFloor}  required />
                                     <FormControl componentClass="select"  onChange={(e) => this.onSelectChange(e)}  value={this.state.roomCompanyName} required>
-                                        {this.state.roomCompanyName === '' && <option  defaultValue/>}
+                                        <option  defaultValue/>
                                         {this.props.companies.map((company) => {
                                             return <option value={company.name} key={company.id}>{company.name}</option>
                                         })}
@@ -142,7 +142,7 @@ class RoomsContainer extends React.Component {
                                             name={room.name}
                                             description={room.description}
                                             floor={room.floor}
-                                            companyName={this.state.roomCompanyName}
+                                            companyName={room.companyName}
                                             id={room.id}
                                             key={room.id}
                                         />
@@ -154,7 +154,8 @@ class RoomsContainer extends React.Component {
                         <h3>Your haven't permission to view this page</h3>
                     </div>
                 }
-            </Jumbotron>
+                </div>
+            </div>
         );
     }
 }

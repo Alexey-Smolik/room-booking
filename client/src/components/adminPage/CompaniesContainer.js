@@ -26,15 +26,13 @@ class CompaniesContainer extends React.Component {
         };
         this.props.dispatch(createCompany(companyData));
         this.toggleAddCompanyField();
-        this.setState({
-            companyName: '',
-            companyAddress: '',
-        });
         e.preventDefault()
     }
     toggleAddCompanyField() {
         this.setState({
-            addFieldIsVisible : !this.state.addFieldIsVisible
+            addFieldIsVisible : !this.state.addFieldIsVisible,
+            companyName: '',
+            companyAddress: '',
         })
     }
     onCompanyAddressChange (e) {
@@ -65,8 +63,8 @@ class CompaniesContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All companies</h3>
-                            <div  style={{display:  'flex'}}>
-                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search company"/>
+                            <div  className="add1" >
+                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search company" style = {{ width: "20%", marginRight: "10px" }}/>
                                     <Button
                                         type="button"
                                         bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

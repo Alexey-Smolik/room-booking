@@ -20,8 +20,6 @@ class ImageItem extends React.Component {
             isMouseEnter: false
         };
     }
-
-
     render() {
         let {photoIndex, isLightboxOpen, isMouseEnter} = this.state;
         let imagesUrl = [];
@@ -29,32 +27,34 @@ class ImageItem extends React.Component {
             imagesUrl.push(`http://localhost:3000/${image.url}`)
         });
         return (
-            <div  style={{ display: "inline-block"}}>
-
-                { isMouseEnter && <Button bsStyle="danger" style={{position:"absolute"}} onMouseEnter={() => this.setState({isMouseEnter: true})} onMouseLeave={() => this.setState({isMouseEnter: false})} onClick={() => {this.props.dispatch(deleteRoomImage(this.props.id))}}>X</Button>}
-                <img onClick={()=>{this.setState({isLightboxOpen: true})}}  onMouseEnter={() => this.setState({isMouseEnter: true})} onMouseLeave={() => this.setState({isMouseEnter: false})} style={{width:"200px", height: "200px"}} src={`http://localhost:3000/${this.props.url}`} thumbnail />
-
-
-
+            <div  style={{display: "inline-block", marginRight: "20px", marginBottom: "20px"}}>
+                { isMouseEnter &&
+                <Button
+                    bsStyle="danger"
+                    style={{position:"absolute"}}
+                    onMouseEnter={() => this.setState({isMouseEnter: true})}
+                    onMouseLeave={() => this.setState({isMouseEnter: false})}
+                    onClick={() => {this.props.dispatch(deleteRoomImage(this.props.id))}}>X
+                </Button>
+                }
+                <img
+                    onClick={()=>{this.setState({isLightboxOpen: true})}}
+                    onMouseEnter={() => this.setState({isMouseEnter: true})}
+                    onMouseLeave={() => this.setState({isMouseEnter: false})}
+                    style={{width:"200px", height: "200px"}}
+                    src={`http://localhost:3000/${this.props.url}`}
+                />
                 {isLightboxOpen &&
                 <Lightbox
                     mainSrc={imagesUrl[photoIndex]}
                     nextSrc={imagesUrl[(photoIndex + 1) % imagesUrl.length]}
                     prevSrc={imagesUrl[(photoIndex + imagesUrl.length - 1) % imagesUrl.length]}
-
                     onCloseRequest={() => this.setState({ isLightboxOpen: false })}
-                    onMovePrevRequest={() => this.setState({
-                        photoIndex: (photoIndex + imagesUrl.length - 1) % imagesUrl.length,
-                    })}
-                    onMoveNextRequest={() => this.setState({
-                        photoIndex: (photoIndex + 1) % imagesUrl.length,
-                    })}
+                    onMovePrevRequest={() => this.setState({photoIndex: (photoIndex + imagesUrl.length - 1) % imagesUrl.length})}
+                    onMoveNextRequest={() => this.setState({photoIndex: (photoIndex + 1) % imagesUrl.length})}
                 />
                 }
-                    </div>
-
-
-
+                </div>
         );
     }
 }

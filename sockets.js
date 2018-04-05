@@ -5,9 +5,10 @@ io.on('connection', socket => {
     let user = '';
     socket.emit('test', { message: 'test' });
     socket.on('connect user', data => {
-        if(data.user) {
-            user = data.user.username;
-            console.log(`User ${data.user.username} connected!`.blue);
+        console.log(data);
+        if(data) {
+            user = data.currentUser.username;
+            console.log(`User ${data.currentUser.username} connected!`.blue);
         }
     });
 

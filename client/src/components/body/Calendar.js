@@ -129,6 +129,7 @@ class Calendar extends React.Component {
   render() {
 
     let events = [];
+    let { roomID } = this.props.match.params;
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
           const end = new Date(event.date_to);
@@ -143,6 +144,7 @@ class Calendar extends React.Component {
           };
       }));
     }
+
 
 
     return (

@@ -59,6 +59,9 @@ routes.delete('/:id', (req, res) => {
 
 // --- GET CURRENT USER ---
 routes.get('/current', (req, res) => {
+    if(!Number.isInteger(req.user.id))
+        req.user = { username: req.user, role: 3 };
+
     req.user ? res.send(req.user) : res.send(401).send({ message: 'Unauthorized' });
 });
 

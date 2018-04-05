@@ -117,16 +117,12 @@ class RoomsInfo extends React.Component {
     };
 
     carouselRender() {
-      console.log(this.props);
-      if(this.props.selectedRoom.images.length) {
-        if(this.props.selectedRoom.images.length === 1) {
-          return <img className="room-image" alt="#" src={this.props.selectedRoom.images[0].url} />
-        } else {
-          return <ControlledCarousel images={this.props.selectedRoom.images}/>
-        }
-      } else {
-        return []
-      }
+      if(!this.props.selectedRoom.images.length)
+      	return [];
+      else if(this.props.selectedRoom.images.length === 1)
+      	return <img className="room-image" alt="#" src={this.props.selectedRoom.images[0].url} />;
+	  else
+	  	return <ControlledCarousel images={this.props.selectedRoom.images}/>
     }
 
     infoRender(){

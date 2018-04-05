@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import NavBar from './header/NavBar';
 import LeftNavBar from './body/LeftNavBar';
 import Calendar from './body/Calendar';
@@ -8,6 +8,7 @@ import HelloWindow from './body/HelloWindow';
 import AuthComponent from './body/AuthComponent';
 import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
+import HelloAdmin from './HelloAdmin';
 
 
 const App = () => (
@@ -20,9 +21,12 @@ const App = () => (
               <Route path="/room" component={LeftNavBar} />
               <Route exact path="/room" component={HelloWindow} />
               <Route path="/room/:roomID" component={Calendar} />
-              <Route path="/adminPanel" component={AdminPanel} />
+                <Switch>
+                    <Route path="/adminPanel" component={AdminPanel} />
+                    <Route  component={Footer} />
+              </Switch>
+              <Route exact path="/adminPanel" component={HelloAdmin} />
           </div>
-        <Footer />
       </div>
     </BrowserRouter>
   </div>

@@ -25,6 +25,7 @@ class CompanyItem extends React.Component {
             isFieldEditing: true,
         });
         const companyData = {
+            id: id,
             name: this.state.companyName,
             address: this.state.companyAddress,
         };

@@ -3,6 +3,7 @@ import {
     GET_ROOMS_BY_DATE,
     DELETE_ROOM,
     CREATE_ROOM,
+    EDIT_ROOM,
     GET_ROOM,
     ADD_ROOM_TO_STATE,
     DELETE_ROOM_FROM_STATE,
@@ -24,7 +25,11 @@ export default function (state = [], action) {
     case CREATE_ROOM:
       return [action.payload, ...state] || false;
 
-    case DELETE_ROOM:
+    case EDIT_ROOM:
+        state.map((issue,index) => {(issue.id === action.payload.id) ? state[index] = action.payload: null});
+        return state;
+
+      case DELETE_ROOM:
       return [...state.filter(({ id }) => id !== action.payload)] || false;
 
 
