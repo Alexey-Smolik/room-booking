@@ -46,15 +46,15 @@ class AuthComponent extends Component {
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
                       <div onSubmit={this.handleSubmit}>
                         <div className="input-group">
-                          <span className="input-group-addon"><span className="glyphicon glyphicon-user" /></span>
                           <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
                         </div>
                         <div className="input-group">
-                          <span className="input-group-addon"><span className="glyphicon glyphicon-lock" /></span>
-                          <input id="password" type="text" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                          <input id="password" type="password" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
                         <input className="login" type="submit" value="Sign in" />
-                          <a href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
+                          <div>
+                          <a className="anon_link" href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
+                          </div>
                       </div>
                     </div>
                   </div>

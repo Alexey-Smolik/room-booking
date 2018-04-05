@@ -145,7 +145,7 @@ class Calendar extends React.Component {
 
 
     return (
-          <div>
+          <div className="calendar-cont">
               <React.Fragment>
                   <BigCalendar
                       selectable
