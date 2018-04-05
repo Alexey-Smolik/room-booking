@@ -14,7 +14,7 @@ export const getEvents = roomID => async (dispatch) => {
 export const createEvent = newEvent => async (dispatch) => {
     const res = await axios.post('/api/events', newEvent);
     if (res.status === 201) {
-        dispatch({ type: ADD_EVENT, payload:  {newEvent: newEvent}});
+        dispatch({ type: ADD_EVENT, payload:  {newEvent: res.data}});
     } else {
         console.log('createEvent -> Error message:', res.body);
     }
@@ -35,6 +35,7 @@ export const deleteEvent = eventID => async (dispatch) => {
 
 
 export const addEventToState = (newEvent, currentRoomId ) => async ( dispatch) => {
+    console.log("new event", newEvent);
     dispatch({ type: ADD_EVENT, payload: { newEvent: newEvent, roomId: currentRoomId }})
 };
 
