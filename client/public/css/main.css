@@ -1,5 +1,5 @@
     /*Buttons for auth*/
-.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 10px;background: rgba(0,0,0,0.15);border-radius: 3px 0 0 3px;}
+.btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 10px;background: rgba(0,0,0,0.15); }
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
 .input-group { margin-bottom:10px; }
 .separator { border-right: 1px solid #dfdfe0; }
@@ -335,7 +335,7 @@ aside {
         max-height: 400px;
     }
 
-    .room-list li {
+    .room-list > li {
         background: white;
         padding: 10px;
         display: flex;
@@ -352,12 +352,12 @@ aside {
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(../images/down-arrow.png);
+        background-image: url(../images/down-arrow.png) ;
         -webkit-background-size: contain;
         background-size: contain;
-        background-repeat: no-repeat;
         transition: .1s ease-in-out;
         left: 18px;
+        background-repeat: no-repeat;
         background-position: 0 0;
         -webkit-transform: translateY(-50%) rotate(-90deg);
         -moz-transform: translateY(-50%) rotate(-90deg);
@@ -722,8 +722,13 @@ textarea {
 }
 
 .btn.btn-default {
-    border-radius: 0;
+    border-radius: 0 !important;
 }
+
+.btn {
+    border-radius: 0 !important;
+}
+
 
 #del_canc {
     margin-left: 20px;

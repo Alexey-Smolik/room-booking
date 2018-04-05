@@ -129,8 +129,18 @@ class LeftNavBar extends Component {
                 <nav>
 
                     <ul className="aside-menu">
+                        <li>
+                            <input type="checkbox" name ="sub-group-1" id="sub-group-1"/>
+                            <label for="sub-group-1">Office 1</label>
+                            <ul class="room-list">
                         {this.renderMenu()}
                         {this.infoRender()}
+                            </ul>
+                        </li>
+                        <li>
+                            <input type="checkbox" name ="sub-group-2" id="sub-group-2"/>
+                            <label for="sub-group-2">Office 2</label>
+                        </li>
                     </ul>
                 </nav>
             </aside>
