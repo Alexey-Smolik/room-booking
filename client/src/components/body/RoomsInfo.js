@@ -132,12 +132,14 @@ class RoomsInfo extends React.Component {
                 <div className="room-image">
 					       { this.carouselRender()}   	
                 </div>
+                <div className="room-desc-cont">
                 <div className="room-description">Description: {this.props.selectedRoom.description}</div>
                 
                 <div className="room-issues-container">
                 	<div className="room-issues">Issues: {this.props.issues.length ? this.issuesList(this.props.issues) : this.issuesList(this.props.selectedRoom.issues) } </div>
                 	{this.issueAdd()}
                 </div>
+				</div>
             </div>
         );
     };

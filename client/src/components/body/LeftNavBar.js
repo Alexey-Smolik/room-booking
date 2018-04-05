@@ -60,6 +60,12 @@ class LeftNavBar extends Component {
         this.props.dispatch(deleteRoomFromState(server));
     }
 
+    //
+    // connect(server){
+    //   console.log("Connect", server);
+    //     let { currentUser } = this.props.user;
+    //     { currentUser &&  socket.emit('connect user', {currentUser})}
+    // }
 
     connect(server){
         let { currentUser } = this.props.user;
@@ -116,10 +122,12 @@ class LeftNavBar extends Component {
     }
 
 
+
     render() {
         return (
             <aside>
                 <nav>
+
                     <ul className="aside-menu">
                         {this.renderMenu()}
                         {this.infoRender()}

@@ -120,6 +120,7 @@ class Popup extends Component {
 
             <div id="date_to">
               <DatePicker
+                readOnly
                 selected={this.state.startDate}
                 onChange={e => this.handleChangeDate(e, true)}
                 showTimeSelect
@@ -130,6 +131,7 @@ class Popup extends Component {
               />
             </div>
             <DatePicker
+              readOnly
               selected={this.state.endDate}
               onChange={e => this.handleChangeDate(e, false)}
               showTimeSelect
