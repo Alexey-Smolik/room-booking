@@ -424,6 +424,7 @@ aside {
 .rbc-event {
     background-color: rgba(162, 162, 166, 0.93) !important;
     border: 1px solid #000000 !important;
+    border-radius: 0 !important;
 }
 
 
@@ -589,7 +590,7 @@ aside {
 .panel.panel-primary {
     border: 1px solid black;
     background-color: #f0f0f0;
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 .col-xs-6.col-sm-6.col-md-6.login-box {
@@ -776,10 +777,12 @@ filter_btn:hover {
 
 #filter_date_from .react-datepicker-wrapper:before {
     content: 'Start:';
+    font-family: 'Tahoma';
 }
 
 #filter_date_to .react-datepicker-wrapper:before {
     content: 'End:';
+    font-family: 'Tahoma';
 }
 .react-datepicker-wrapper  {
     padding-right: 20px;
