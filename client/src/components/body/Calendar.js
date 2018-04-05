@@ -50,7 +50,7 @@ class Calendar extends React.Component {
     socketAddEvent(event) {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
-        this.props.dispatch(addEventToState(event, this.state.roomID));
+        this.props.dispatch(addEventToState(event, roomID));
 
     };
 
