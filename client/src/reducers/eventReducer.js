@@ -1,8 +1,8 @@
 import {
-  DELETE_EVENT,
-  EDIT_EVENT,
-  ADD_EVENT,
-  GET_EVENTS
+    DELETE_EVENT,
+    EDIT_EVENT,
+    ADD_EVENT,
+    GET_EVENTS
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -32,6 +32,6 @@ export default function (state = [], action) {
             }
 
         default:
-          return state;
+            return state;
     }
 }

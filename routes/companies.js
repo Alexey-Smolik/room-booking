@@ -1,10 +1,12 @@
 const routes = require('express').Router();
 const companies = require('../models').companies;
+const rooms = require('../models').rooms;
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL COMPANIES ---
 routes.get('/', (req, res) => {
     companies.findAll({
+        include: [rooms],
         order: [['id', 'DESC']]
     })
         .then(companies => {

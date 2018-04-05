@@ -35,6 +35,7 @@ export const deleteEvent = eventID => async (dispatch) => {
 
 
 export const addEventToState = (newEvent, currentRoomId ) => async ( dispatch) => {
+    console.log("new event", newEvent);
     dispatch({ type: ADD_EVENT, payload: { newEvent: newEvent, roomId: currentRoomId }})
 };
 
@@ -45,4 +46,3 @@ export const editEventInState = (editedEvent, currentRoomId) => async ( dispatch
 export const deleteEventFromState = (eventID) => async ( dispatch) => {
     dispatch({ type: DELETE_EVENT, payload: eventID})
 };
-

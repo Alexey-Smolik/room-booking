@@ -1,4 +1,4 @@
- const routes = require('express').Router();
+const routes = require('express').Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const VKontakteStrategy = require('passport-vkontakte').Strategy;
@@ -9,14 +9,24 @@ const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
 const users = require('../models').users;
 const config = require('../config/main');
+const bcrypt = require('bcryptjs');
 
 // Local Strategy for authorization
 passport.use(new LocalStrategy(
     (username, password, done) => {
-        users.find({ where: { username: username, password: password }})
+        users.find({ where: { username: username }})
             .then((user) => {
+                console.log(user);
                 if (!user) return done(null, false, { message: 'Неверные параметры входа' });
-                return done(null, user);
+                else {
+                    bcrypt.compare(password, user.dataValues.password, (err, success) => {
+                        if (success) {
+                            return done(null, user);
+                        } else {
+                            done(null, false, { message: 'Неверные параметры входа' });
+                        }
+                    });
+                }
             })
             .catch((err) => {
                 return done(err);
