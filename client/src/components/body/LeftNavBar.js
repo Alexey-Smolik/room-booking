@@ -68,7 +68,6 @@ class LeftNavBar extends Component {
     // }
 
     connect(server){
-      console.log("Connect", server);
         let { currentUser } = this.props.user;
         { currentUser &&  socket.emit('connect user', {currentUser})}
     }

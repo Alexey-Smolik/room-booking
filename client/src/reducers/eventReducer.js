@@ -16,7 +16,6 @@ export default function (state = [], action) {
             return [...state.filter( event =>  event.id != action.payload)];
 
         case ADD_EVENT:
-            console.log(action.payload);
             if( action.payload.newEvent.roomId == action.payload.roomId)
             {
                 return [...state.filter(event => event.id !== action.payload.newEvent.id), action.payload.newEvent];

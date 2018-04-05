@@ -28,7 +28,8 @@ class Calendar extends React.Component {
     state = {
         showPopup: false,
         editMode: false,
-        event: ''
+        event: '',
+        roomID: this.props.roomID || this.props.match.params.roomID
     };
 
     componentDidMount(){
@@ -38,11 +39,18 @@ class Calendar extends React.Component {
         socket.on('disconnect', this.disconnect);
     };
 
+    componentWillReceiveProps(){
+        this.setState({
+            roomID: this.props.roomID || this.props.match.params.roomID
+        })
+    };
+
+
 
     socketAddEvent(event) {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
-        this.props.dispatch(addEventToState(event, roomID));
+        this.props.dispatch(addEventToState(event, this.state.roomID));
 
     };
 
@@ -129,7 +137,8 @@ class Calendar extends React.Component {
   render() {
 
     let events = [];
-      let roomID = this.props.roomID  || this.props.match.params.roomID;
+    let { roomID } = this.props.match.params;
+
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
           const end = new Date(event.date_to);
@@ -190,6 +199,6 @@ let mapStateToProps = ({ events, user, rooms }) => {
         events
 
     };
-}
+};
 
 export default connect(mapStateToProps)(Calendar);
