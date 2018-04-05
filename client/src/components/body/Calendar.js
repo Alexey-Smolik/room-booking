@@ -6,8 +6,10 @@ import { getEvents, addEventToState, deleteEventFromState, editEventInState } fr
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 import io from 'socket.io-client';
 const socket = io('http://172.16.0.183:8000');
+
 BigCalendar.momentLocalizer(moment);
 
 
@@ -26,8 +28,7 @@ class Calendar extends React.Component {
     state = {
         showPopup: false,
         editMode: false,
-        event: '',
-        roomID: this.props.roomID || this.props.match.params.roomID
+        event: ''
     };
 
     componentDidMount(){
@@ -39,14 +40,16 @@ class Calendar extends React.Component {
 
 
     socketAddEvent(event) {
+        let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
-        this.props.dispatch(addEventToState(event, this.state.roomID));
+        this.props.dispatch(addEventToState(event, roomID));
 
     };
 
     socketEditEvent(event) {
+        let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test2", event);
-        this.props.dispatch(editEventInState(event,this.state.roomID));
+        this.props.dispatch(editEventInState(event,roomID));
     };
 
     socketDeleteEvent(eventID) {
@@ -57,7 +60,7 @@ class Calendar extends React.Component {
 
 
   componentWillMount() {
-    this.props.dispatch(getEvents(this.state.roomID));
+    this.props.dispatch(getEvents(this.props.roomID  || this.props.match.params.roomID));
 
     };
 
@@ -117,8 +120,7 @@ class Calendar extends React.Component {
     checkRole(){
         let {role} = this.props.user.currentUser;
         if(role === 1 || role === 2) {
-            console.log(role);
-            return true;
+           return true;
         }
         alert("You cannot get access");
         return false;
@@ -127,6 +129,7 @@ class Calendar extends React.Component {
   render() {
 
     let events = [];
+    let { roomID } = this.props.match.params;
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
           const end = new Date(event.date_to);
@@ -166,7 +169,7 @@ class Calendar extends React.Component {
                       user={this.props.user}
                       closePopup={this.closePopup}
                       editMode={this.state.editMode}
-                      roomID={this.state.roomID}
+                      roomID={this.props.roomID  || this.props.match.params.roomID}
                       dateFilter={this.dateFilter}/>}
           </div>
     );
@@ -187,6 +190,6 @@ let mapStateToProps = ({ events, user, rooms }) => {
         events
 
     };
-};
+}
 
 export default connect(mapStateToProps)(Calendar);

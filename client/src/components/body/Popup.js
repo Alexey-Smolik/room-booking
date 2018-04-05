@@ -36,8 +36,10 @@ class Popup extends Component {
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
     let { user } = this.props;
+      console.log(this.props.roomID);
 
-    if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
+
+      if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
       const event = {
         name: this.state.title,
         description: this.state.description,
@@ -56,6 +58,7 @@ class Popup extends Component {
       } else {
         this.props.dispatch(createEvent(event));
         this.props.closePopup();
+        console.log(event);
 
       }
     } else {
