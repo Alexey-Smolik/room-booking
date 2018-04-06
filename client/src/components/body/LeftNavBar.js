@@ -95,7 +95,7 @@ class LeftNavBar extends Component {
         }
         this.setState({
             activeButton: e.target
-        })
+        });
         e.target.className = "info-button black";
         this.handleMouseEvent(props);
     }
@@ -103,7 +103,7 @@ class LeftNavBar extends Component {
     handleMouseEvent(props) {
         this.setState({
             mouseEvent: props
-        })
+        });
 
         return this.state.mouseEvent
     }

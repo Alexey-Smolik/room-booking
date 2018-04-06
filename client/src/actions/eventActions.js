@@ -36,7 +36,7 @@ export const deleteEvent = eventID => async (dispatch) => {
 
 
 export const getAllEvents = () => async ( dispatch) => {
-    console.log("ACTIONS ALL EVENTS");
+    //console.log("ACTIONS ALL EVENTS");
     const res = await axios.get(`/api/events`);
     dispatch({ type: GET_EVENTS, payload: res.data });
 };

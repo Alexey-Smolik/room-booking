@@ -4,7 +4,6 @@ import moment from 'moment';
 import 'moment/locale/en-gb';
 import { getEvents, addEventToState, deleteEventFromState, editEventInState } from '../../actions';
 import { connect } from 'react-redux';
-import randomColor from 'randomcolor';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
