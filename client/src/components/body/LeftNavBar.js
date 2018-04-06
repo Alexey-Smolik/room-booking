@@ -170,7 +170,7 @@ class LeftNavBar extends Component {
             <aside>
                 <nav>
                     <ul className="aside-menu">
-                        <li ><a href="" className="all_events" onClick={(e) => this.getAllEvents(e)}>Show all events</a></li>
+
                         {this.renderMenu()}
                         {this.state.mouseEvent ?  <RoomsInfo
                             selectedRoom={this.state.mouseEvent}

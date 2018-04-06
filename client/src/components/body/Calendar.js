@@ -129,8 +129,9 @@ class Calendar extends React.Component {
 
     render() {
         let events = [];
-        let colors = randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 });
+        let colors = randomColor({ count: this.props.rooms.length, hue: '#000000',  alpha: 0.75 });
         let rooms = this.props.rooms.map(room => room.id);
+
 
         { this.props.events &&  (events = this.props.events.map((event) => {
               const start = new Date(event.date_from);
