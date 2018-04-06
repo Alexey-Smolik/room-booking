@@ -35,35 +35,29 @@ class Popup extends Component {
     start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
-    let { user } = this.props;
-
-
       if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
-      const event = {
-        name: this.state.title,
-        description: this.state.description,
-        date_from: start,
-        date_to: end,
-        id: this.props.event.id,
-        roomId: this.props.roomID,
-        userId: this.props.user.currentUser.id,
+        const event = {
+          name: this.state.title,
+          description: this.state.description,
+          date_from: start,
+          date_to: end,
+          id: this.props.event.id,
+          roomId: this.props.roomID,
+          userId: this.props.user.currentUser.id,
       };
-
 
       if (this.props.editMode) {
         this.props.dispatch(editEvent(this.props.event.id, event));
         this.props.closePopup();
 
       } else {
-
         this.props.dispatch(createEvent(event));
         this.props.closePopup();
-
       }
     } else {
       alert('There is event on this date');
     }
-  }
+  };
 
   handleChangeDate = (e, isFirstdataPicker) => {
     if (isFirstdataPicker) {
@@ -71,23 +65,23 @@ class Popup extends Component {
     } else {
       this.setState({ endDate: e });
     }
-  }
+  };
 
   handleChangeTitle = (e) => {
     e.preventDefault();
     this.setState({ title: e.target.value });
-  }
+  };
 
   handleChangeDesc = (e) => {
     e.preventDefault();
     this.setState({ description: e.target.value });
-  }
+  };
 
   deleteHandler = (e) => {
     e.preventDefault();
     this.props.dispatch(deleteEvent(this.props.event.id));
     this.props.closePopup();
-  }
+  };
 
   render() {
     return (
@@ -98,8 +92,7 @@ class Popup extends Component {
             <FormControl
               type="text"
               disabled
-              value={this.state.user.username}
-              onChange={this.handleChangeUsername}
+              value={this.props.user.currentUser.username}
               placeholder="Title"
             />
             <ControlLabel>Title</ControlLabel>
@@ -110,9 +103,7 @@ class Popup extends Component {
               placeholder="Title"
             />
             <ControlLabel>Description</ControlLabel>
-
             <textarea
-                                // type="text"
               value={this.state.description}
               onChange={this.handleChangeDesc}
               placeholder="Description"
