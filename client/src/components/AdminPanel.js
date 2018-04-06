@@ -27,7 +27,7 @@ class AdminPanel extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{ width: "100%" }}>
 
                 <Nav bsStyle="pills">
                     <LinkContainer to="/adminPanel/companies/">
