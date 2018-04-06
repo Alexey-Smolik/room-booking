@@ -29,7 +29,6 @@ class Calendar extends React.Component {
         showPopup: false,
         editMode: false,
         event: '',
-        roomID: this.props.roomID || this.props.match.params.roomID
     };
 
     componentDidMount(){
@@ -39,11 +38,6 @@ class Calendar extends React.Component {
         socket.on('disconnect', this.disconnect);
     };
 
-    componentWillReceiveProps(){
-        this.setState({
-            roomID: this.props.roomID || this.props.match.params.roomID
-        })
-    };
 
 
 
@@ -51,7 +45,6 @@ class Calendar extends React.Component {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
         this.props.dispatch(addEventToState(event, roomID));
-
     };
 
     socketEditEvent(event) {
@@ -69,7 +62,6 @@ class Calendar extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(getEvents(this.props.roomID  || this.props.match.params.roomID));
-
     };
 
     dateFilter = (event, eventID = -1) => {
@@ -97,7 +89,7 @@ class Calendar extends React.Component {
                 }
     }
     return !this.state.editMode;
-  }
+  };
     editEvent = (event) => {
     this.setState( (prevState) => ({
       showPopup: !prevState.showPopup,
