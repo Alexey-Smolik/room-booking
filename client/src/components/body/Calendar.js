@@ -29,7 +29,6 @@ class Calendar extends React.Component {
         showPopup: false,
         editMode: false,
         event: '',
-        roomID: this.props.roomID || this.props.match.params.roomID
     };
 
     componentDidMount(){
@@ -37,12 +36,6 @@ class Calendar extends React.Component {
         socket.on('edit event', this.socketEditEvent);
         socket.on('delete event', this.socketDeleteEvent);
         socket.on('disconnect', this.disconnect);
-    };
-
-    componentWillReceiveProps(){
-        this.setState({
-            roomID: this.props.roomID || this.props.match.params.roomID
-        })
     };
 
 
