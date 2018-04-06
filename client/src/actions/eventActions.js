@@ -53,4 +53,3 @@ export const editEventInState = (editedEvent, currentRoomId) => async ( dispatch
 export const deleteEventFromState = (eventID) => async ( dispatch) => {
     dispatch({ type: DELETE_EVENT, payload: eventID})
 };
-

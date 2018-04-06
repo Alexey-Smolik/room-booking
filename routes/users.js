@@ -1,5 +1,6 @@
 const routes = require('express').Router();
 const users = require('../models').users;
+const bcrypt = require('bcryptjs');
 
 // ----- HANDLERS FOR USERS -----
 // --- GET ALL USERS ---
@@ -18,13 +19,22 @@ routes.get('/', (req, res) => {
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
     req.body.role = req.body.role || 3;
-    users.create(req.body)
-        .then(user => {
-            res.status(201).send(user);
-        })
-        .catch(err => {
-            res.status(501).send({ message: err.message });
-        });
+
+    const salt = bcrypt.genSaltSync(10);
+    bcrypt.hash(req.body.password, salt, (err, hash) => {
+        if (err) {
+            res.status(409).send({ status: "error", message: "crypt error" });
+        } else {
+            req.body.password = hash;
+            users.create(req.body)
+                .then(user => {
+                    res.status(201).send(user);
+                })
+                .catch(err => {
+                    res.status(501).send({ message: err.message });
+                });
+        }
+    });
 });
 
 // --- EDIT USER ---
@@ -32,7 +42,17 @@ routes.put('/:id', (req, res) => {
     if(req.user.role === 1) {
         users.findOne({where: {id: req.params.id}})
             .then(user => {
-                if (user) return users.update(req.body, {where: {id: req.params.id}});
+                if (user){
+                    const salt = bcrypt.genSaltSync(10);
+                    bcrypt.hash(req.body.password, salt, (err, hash) => {
+                        if (err) {
+                            res.status(409).send({ status: "error", message: "crypt error" });
+                        } else {
+                            req.body.password = hash;
+                            return users.update(req.body, {where: {id: req.params.id}});
+                        }
+                    });
+                }
                 else res.status(500).send({message: 'Wrong id'});
             })
             .then(user => {
@@ -60,7 +80,7 @@ routes.delete('/:id', (req, res) => {
 // --- GET CURRENT USER ---
 routes.get('/current', (req, res) => {
     if(!Number.isInteger(req.user.id))
-        req.user = { username: req.user, role: 3 };
+        req.user = { username: 'Anonymous', role: 3 };
 
     req.user ? res.send(req.user) : res.send(401).send({ message: 'Unauthorized' });
 });
