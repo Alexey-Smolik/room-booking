@@ -1961,7 +1961,7 @@ img {
 
 .label.label-danger {
     min-width: 45px;
-    border-radius: .25rem;
+    border-radius: 0;
     color: white;
     margin-right: 10px;
     background-color: #B71C1C;
@@ -1969,7 +1969,7 @@ img {
 
 .label.label-success {
     min-width: 45px;
-    border-radius: .25rem;
+    border-radius: 0;
     background-color: green;
     color: white;
     margin-right: 10px;
@@ -2039,6 +2039,11 @@ label {
 h3 {
     border-bottom: 1px solid #cbcbcb;
 }
+
+.nav.nav-pills {
+    border-radius: 0 !important;
+}
+
 
 
 
