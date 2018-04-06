@@ -12,7 +12,7 @@ class UserItem extends React.Component {
         this.state = {
             btnText: 'Edit',
             username: this.props.name,
-            password: this.props.password || '',
+            password: this.props.password,
             role: this.props.role,
             isFieldEditing: false,
         };
