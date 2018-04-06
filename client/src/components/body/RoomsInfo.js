@@ -158,6 +158,8 @@ function mapStateToProps({ issues }) {
 }
 
 class ControlledCarousel extends React.Component {
+
+
   constructor(props, context) {
     super(props, context);
     this.handleSelect = this.handleSelect.bind(this);
@@ -194,8 +196,7 @@ class ControlledCarousel extends React.Component {
         direction={direction}
         onSelect={this.handleSelect}
       >
-
-        {this.renderItem()}        
+		{this.renderItem()}
       </Carousel>
     )
   }

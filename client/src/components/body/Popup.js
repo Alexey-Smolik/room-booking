@@ -46,13 +46,16 @@ class Popup extends Component {
           userId: this.props.user.currentUser.id,
       };
 
+
       if (this.props.editMode) {
         this.props.dispatch(editEvent(this.props.event.id, event));
         this.props.closePopup();
 
       } else {
+
         this.props.dispatch(createEvent(event));
         this.props.closePopup();
+
       }
     } else {
       alert('There is event on this date');

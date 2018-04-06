@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from "../../actions";
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
-import {getAllUsers, addEventToState , deleteEventFromState , editEventInState , getRooms , getCurrentUser, getEvents } from "../../actions";
+import {
+    getAllEvents,
+    getAllUsers,
+    addEventToState ,
+    deleteEventFromState ,
+    editEventInState ,
+    getRooms ,
+    getCurrentUser,
+    getEvents,
+    getCompanies
+} from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
 
@@ -35,6 +44,7 @@ class LeftNavBar extends Component {
     componentWillMount(){
         this.props.dispatch(getRooms());
         this.props.dispatch(getCurrentUser());
+        this.props.dispatch(getCompanies());
         //this.props.dispatch(getAllUsers());
     };
 
@@ -114,24 +124,41 @@ class LeftNavBar extends Component {
         this.props.dispatch(getEvents(id));
     }
 
+    getAllEvents(e){
+        e.preventDefault();
+        this.props.dispatch(getAllEvents());
+    }
+
     renderMenu(){
-        if(this.props.rooms) {
-            return this.props.rooms.map( (index, key) => {
+        if(this.props.companies) {
+            return this.props.companies.map( (company, key) => {
                 return (
+                    // Companies List
                     <li key={key}>
-                        <Link to={`/room/`+ index.id} onClick={() => this.getDataTable(index.id)}>
-                            {index.name}
-                        </Link>
-                        <div className="info-show">
-                            <button className="info-button" onClick={(e) => this.infoHandler(e, index)}>i</button>
-                        </div>
+                        <input type="checkbox" name={"sub-group-" + key} id={"sub-group-" + key}/>
+                        <label htmlFor={"sub-group-" + key}>{company.name}</label>
+
+                        {/*Rooms List*/}
+                        <ul className="room-list">
+                            {this.props.rooms.map( (room, roomKey) => {
+                                return (room.companyId == company.id) ? (
+                                    <li key={roomKey}>
+                                        <Link to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                        {room.name}
+                                        </Link>
+                                        <div className="info-show">
+                                            <button className="info-button" onClick={(e) => this.infoHandler(e, room)}>i</button>
+                                        </div>
+                                    </li>)
+                                    : null;
+                                }
+                            )}
+                        </ul>
                     </li>
                 );
             });
         }
-        return (
-            <li>Click me</li>
-        )
+        return (<li>Click me</li>);
     }
 
 
@@ -142,25 +169,13 @@ class LeftNavBar extends Component {
         return(
             <aside>
                 <nav>
-
                     <ul className="aside-menu">
-                        <li>
-                            <input type="checkbox" name ="sub-group-1" id="sub-group-1"/>
-                            <label htmlFor="sub-group-1">Office 1</label>
-                            <ul className="room-list">
-
-                                {this.renderMenu()}
-
-                                {this.state.mouseEvent ?  <RoomsInfo
-                                        selectedRoom={this.state.mouseEvent}
-                                        handleMouseEvent={this.handleMouseEvent}
-                                    /> : []}
-                            </ul>
-                        </li>
-                        <li>
-                            <input type="checkbox" name ="sub-group-2" id="sub-group-2"/>
-                            <label htmlFor="sub-group-2">Office 2</label>
-                        </li>
+                        <li><button onClick={(e) => this.getAllEvents(e)}>Show all events</button></li>
+                        {this.renderMenu()}
+                        {this.state.mouseEvent ?  <RoomsInfo
+                            selectedRoom={this.state.mouseEvent}
+                            handleMouseEvent={this.handleMouseEvent}
+                        /> : []}
                     </ul>
                 </nav>
             </aside>
@@ -171,9 +186,10 @@ class LeftNavBar extends Component {
     }
 }
 
-const mapStateToProps = ({ rooms,user}) => ({
+const mapStateToProps = ({ rooms, user, companies}) => ({
     rooms,
-    user
+    user,
+    companies
 });
 
 export default connect(mapStateToProps)(LeftNavBar);

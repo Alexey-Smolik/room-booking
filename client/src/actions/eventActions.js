@@ -3,7 +3,8 @@ import {
     ADD_EVENT,
     DELETE_EVENT,
     EDIT_EVENT,
-    GET_EVENTS
+    GET_EVENTS,
+    GET_ALL_EVENTS
 } from "./types";
 
 export const getEvents = roomID => async (dispatch) => {
@@ -32,6 +33,13 @@ export const deleteEvent = eventID => async (dispatch) => {
     dispatch({ type: DELETE_EVENT, payload: eventID });
 };
 
+
+
+export const getAllEvents = () => async ( dispatch) => {
+    console.log("ACTIONS ALL EVENTS");
+    const res = await axios.get(`/api/events`);
+    dispatch({ type: GET_EVENTS, payload: res.data });
+};
 
 
 export const addEventToState = (newEvent, currentRoomId ) => async ( dispatch) => {

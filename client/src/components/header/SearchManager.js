@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import {  getAllUsers, getRooms } from '../../actions';
+import { getAllUsers, getRooms, getRoomsByDate } from '../../actions';
 import LoginSection from './LoginSection';
 
 
@@ -42,7 +42,7 @@ class SearchEmptyRoom extends Component {
       start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
       end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes());
 
-      this.props.getRoomsByDate(start, end);
+      this.props.dispatch(getRoomsByDate(start, end));
   }
 
 
@@ -130,7 +130,7 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-              <button className="filter_btn" onClick={e => this.submitHandler(e)}>Search</button>
+              <button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>
               <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
             </div>
