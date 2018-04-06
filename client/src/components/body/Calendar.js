@@ -129,7 +129,7 @@ class Calendar extends React.Component {
 
     render() {
         let events = [];
-        let colors = randomColor({ count: this.props.rooms.length, luminosity: 'dark' });
+        let colors = randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 });
         let rooms = this.props.rooms.map(room => room.id);
 
         { this.props.events &&  (events = this.props.events.map((event) => {
@@ -164,8 +164,15 @@ class Calendar extends React.Component {
                           onSelectSlot={event => this.addEvent(event)}
                           eventPropGetter={
                               (event, start, end, isSelected) => {
-                                  console.log(rooms.indexOf(event.roomId));
-                                  return {}
+                                  let newStyle = {
+                                      backgroundColor: colors[rooms.indexOf(event.roomId)],
+                                      color: 'black'
+                                  };
+
+                                  return {
+                                      className: "",
+                                      style: newStyle
+                                  };
                               }
                           }
                         />

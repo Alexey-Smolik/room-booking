@@ -389,12 +389,12 @@ aside {
     }
 
 .all_events {
+    display: flex;
+    padding: 10px 10px 10px 50px;
     /*background-color: transparent;*/
     color: #383e41;
-    padding-left: 50px;
     font-family: 'Oswald';
     font-size: 16px;
-
 }
 
 .all_events:hover {
@@ -456,7 +456,7 @@ aside {
     }
 
 .rbc-event {
-    background-color: rgba(162, 162, 166, 0.93) !important;
+    /*background-color: rgba(162, 162, 166, 0.93) !important;*/
     border: 1px solid #000000 !important;
 }
 

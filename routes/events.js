@@ -55,6 +55,7 @@ routes.put('/:id', (req, res) => {
                 return events.findOne({where: {id: req.params.id}})
             })
             .then(event => {
+                event.dataValues.username = req.body.username;
                 io.emit('edit event', event.dataValues);
                 res.status(200).send(event);
             })
