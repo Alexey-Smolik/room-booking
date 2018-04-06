@@ -36,6 +36,9 @@ export const ADD_ROOM_IMAGE = 'add_room_image';
 export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
+export const GET_ALL_EVENTS = 'get-all-events';
+
+
 export const ADD_ROOM_TO_STATE = 'add-room-to-state';
 export const DELETE_ROOM_FROM_STATE = 'delete-room-from-state';
 export const EDIT_ROOM_IN_STATE = 'edit-room-in-state';
