@@ -387,6 +387,27 @@ aside {
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
+.all_events {
+    /*background-color: transparent;*/
+    color: #383e41;
+    padding-left: 50px;
+    font-family: 'Oswald';
+    font-size: 16px;
+
+}
+
+.all_events:hover {
+    border: none;
+    background-color: transparent;
+    color: #383e41;
+}
+
+/*.all_events:active {
+    border: none !important;
+
+}*/
+
     /*CALENDAR*/
 
 .rbc-calendar {
@@ -952,7 +973,7 @@ filter_btn:hover {
     }
 }
 
-@media all and (max-height: 700px) {
+@media all and (max-height: 780px) {
     #footer {
         display: none;
     }
