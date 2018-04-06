@@ -36,7 +36,6 @@ class Popup extends Component {
     end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
     let { user } = this.props;
-      console.log(this.props.roomID);
 
 
       if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id)) {
@@ -56,9 +55,9 @@ class Popup extends Component {
         this.props.closePopup();
 
       } else {
+
         this.props.dispatch(createEvent(event));
         this.props.closePopup();
-        console.log(event);
 
       }
     } else {
@@ -121,6 +120,7 @@ class Popup extends Component {
 
             <div id="date_to">
               <DatePicker
+                readOnly
                 selected={this.state.startDate}
                 onChange={e => this.handleChangeDate(e, true)}
                 showTimeSelect
@@ -131,6 +131,7 @@ class Popup extends Component {
               />
             </div>
             <DatePicker
+              readOnly
               selected={this.state.endDate}
               onChange={e => this.handleChangeDate(e, false)}
               showTimeSelect

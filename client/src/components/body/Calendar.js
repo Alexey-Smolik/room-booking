@@ -28,7 +28,8 @@ class Calendar extends React.Component {
     state = {
         showPopup: false,
         editMode: false,
-        event: ''
+        event: '',
+        roomID: this.props.roomID || this.props.match.params.roomID
     };
 
     componentDidMount(){
@@ -37,6 +38,13 @@ class Calendar extends React.Component {
         socket.on('delete event', this.socketDeleteEvent);
         socket.on('disconnect', this.disconnect);
     };
+
+    componentWillReceiveProps(){
+        this.setState({
+            roomID: this.props.roomID || this.props.match.params.roomID
+        })
+    };
+
 
 
     socketAddEvent(event) {
@@ -81,10 +89,10 @@ class Calendar extends React.Component {
                     (eventID > -1 && eventID === eventsArray[i].id)) {
           return true;
         }
-      } else if( (((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
+      } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
                         ((event.start >= start)  && (event.end <= end)))  ||
                     ((event.start <= start)  && (event.end >= end))   ||
-                    ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end))    ) {
+                    ((event.start > start)  && (event.end > end)  &&   (event.start < end))    ) {
                     return false;
                 }
     }
@@ -129,7 +137,7 @@ class Calendar extends React.Component {
   render() {
 
     let events = [];
-    let { roomID } = this.props.match.params;
+
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
           const end = new Date(event.date_to);
@@ -148,7 +156,7 @@ class Calendar extends React.Component {
 
 
     return (
-          <div>
+          <div className="calendar-cont">
               <React.Fragment>
                   <BigCalendar
                       selectable
@@ -190,6 +198,6 @@ let mapStateToProps = ({ events, user, rooms }) => {
         events
 
     };
-}
+};
 
 export default connect(mapStateToProps)(Calendar);
