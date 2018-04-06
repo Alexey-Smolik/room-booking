@@ -5,7 +5,6 @@ io.on('connection', socket => {
     let user = '';
     socket.emit('test', { message: 'test' });
     socket.on('connect user', data => {
-        console.log(data);
         if(data) {
             user = data.currentUser.username;
             console.log(`User ${data.currentUser.username} connected!`.blue);

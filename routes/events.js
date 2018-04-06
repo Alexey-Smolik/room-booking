@@ -33,6 +33,7 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.create(req.body)
             .then(event => {
+                event.dataValues.username = req.body.username;
                 io.emit('add event', event.dataValues);
                 res.status(201).send(event);
             })

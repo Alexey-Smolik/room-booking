@@ -16,14 +16,14 @@ passport.use(new LocalStrategy(
     (username, password, done) => {
         users.find({ where: { username: username }})
             .then((user) => {
-                console.log(user);
-                if (!user) return done(null, false, { message: 'Неверные параметры входа' });
-                else {
-                    bcrypt.compare(password, user.dataValues.password, (err, success) => {
+                if (!user){
+                    return done(null, false, { message: 'Wrong username' });
+                } else {
+                    bcrypt.compare(password, user.password, (err, success) => {
                         if (success) {
-                            return done(null, user);
+                            return done(null, user.dataValues);
                         } else {
-                            done(null, false, { message: 'Неверные параметры входа' });
+                            return done(null, false, { message: 'Wrong password' });
                         }
                     });
                 }
@@ -122,19 +122,19 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser((user, done) => {
-    done(null, user[Object.keys(user)[0]]);
+    done(null, user);
 });
 
-passport.deserializeUser((id, done) => {
-    if(!Number.isInteger(id)) return done(null, id);
+passport.deserializeUser((user, done) => {
+    done(null, user);
 
-    users.find({where: { id: id }})
+    /*users.find({where: { id: id }})
         .then(user => {
             done(null, user.dataValues);
         })
         .catch(err => {
             done(err, null);
-        })
+        })*/
 });
 
 routes.post('/login', (req, res) => {
@@ -164,8 +164,7 @@ routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
-    console.log('logout');
-    req.session.destroy();
+    req.logout();
     res.redirect('/');
 });
 

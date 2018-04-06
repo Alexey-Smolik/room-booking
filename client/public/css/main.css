@@ -433,7 +433,7 @@ aside {
 .rbc-event {
     background-color: rgba(162, 162, 166, 0.93) !important;
     border: 1px solid #000000 !important;
-    border-radius: 0 !important;
+    /*border-radius: 0 !important;*/
 }
 
 

@@ -4,6 +4,7 @@ import moment from 'moment';
 import 'moment/locale/en-gb';
 import { getEvents, addEventToState, deleteEventFromState, editEventInState } from '../../actions';
 import { connect } from 'react-redux';
+import randomColor from 'randomcolor';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -134,54 +135,60 @@ class Calendar extends React.Component {
         return false;
     }
 
-  render() {
+    render() {
+        let events = [];
+        let colors = randomColor({ count: this.props.rooms.length, luminosity: 'dark' });
+        let rooms = this.props.rooms.map(room => room.id);
 
-    let events = [];
+        { this.props.events &&  (events = this.props.events.map((event) => {
+              const start = new Date(event.date_from);
+              const end = new Date(event.date_to);
+              start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+              end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
-    { this.props.events &&  (events = this.props.events.map((event) => {
-          const start = new Date(event.date_from);
-          const end = new Date(event.date_to);
-          start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
-          end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+              return {
+                    id: event.id,
+                    roomId: event.roomId,
+                    description: event.description,
+                    title: event.name,
+                    start, end,
+              };
+          }));
+        }
 
-          return {
-            id: event.id,
-            description: event.description,
-            title: event.name,
-            start, end,
-          };
-      }));
+        return (
+              <div className="calendar-cont">
+                  <React.Fragment>
+                      <BigCalendar
+                          selectable
+                          events={events}
+                          defaultView="week"
+                          min={moment('2018-02-23 08:00:00').toDate()}
+                          max={moment('2018-02-23 19:00:00').toDate()}
+                          scrollToTime={new Date(1970, 1, 1, 6)}
+                          defaultDate={new Date(2018, 2, 1)}
+                          culture="en-GB"
+                          onSelectEvent={event => this.editEvent(event)}
+                          onSelectSlot={event => this.addEvent(event)}
+                          eventPropGetter={
+                              (event, start, end, isSelected) => {
+                                  console.log(rooms.indexOf(event.roomId));
+                                  return {}
+                              }
+                          }
+                        />
+                    </React.Fragment>
+
+                  {(this.state.showPopup && this.checkRole()) &&  <Popup
+                          event={this.state.event}
+                          user={this.props.user}
+                          closePopup={this.closePopup}
+                          editMode={this.state.editMode}
+                          roomID={this.props.roomID  || this.props.match.params.roomID}
+                          dateFilter={this.dateFilter}/>}
+              </div>
+        );
     }
-
-
-
-    return (
-          <div className="calendar-cont">
-              <React.Fragment>
-                  <BigCalendar
-                      selectable
-                      events={events}
-                      defaultView="week"
-                      min={moment('2018-02-23 08:00:00').toDate()}
-                      max={moment('2018-02-23 19:00:00').toDate()}
-                      scrollToTime={new Date(1970, 1, 1, 6)}
-                      defaultDate={new Date(2018, 2, 1)}
-                      culture="en-GB"
-                      onSelectEvent={event => this.editEvent(event)}
-                      onSelectSlot={event => this.addEvent(event)}
-                    />
-                </React.Fragment>
-
-              {(this.state.showPopup && this.checkRole()) &&  <Popup
-                      event={this.state.event}
-                      user={this.props.user}
-                      closePopup={this.closePopup}
-                      editMode={this.state.editMode}
-                      roomID={this.props.roomID  || this.props.match.params.roomID}
-                      dateFilter={this.dateFilter}/>}
-          </div>
-    );
-  }
 }
 
 Calendar.defaultProps = {

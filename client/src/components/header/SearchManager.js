@@ -130,7 +130,7 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-              <button className="filter_btn" onClick={e => this.submitHandler}>Search</button>
+              <button className="filter_btn" onClick={e => this.submitHandler(e)}>Search</button>
               <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
             </div>

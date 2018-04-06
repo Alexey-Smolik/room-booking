@@ -6,7 +6,6 @@ const rooms = require('../models').rooms;
 // --- GET ALL COMPANIES ---
 routes.get('/', (req, res) => {
     companies.findAll({
-        include: [rooms],
         order: [['id', 'DESC']]
     })
         .then(companies => {
