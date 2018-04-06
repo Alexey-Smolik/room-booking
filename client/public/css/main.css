@@ -389,9 +389,9 @@ aside {
     }
 
 .all_events {
-    /*background-color: transparent;*/
+    display: flex;
+    padding: 10px 10px 10px 50px;
     color: #383e41;
-    padding-left: 50px;
     font-family: 'Oswald';
     font-size: 16px;
 
@@ -403,10 +403,6 @@ aside {
     color: #383e41;
 }
 
-/*.all_events:active {
-    border: none !important;
-
-}*/
 
     /*CALENDAR*/
 
