@@ -124,8 +124,7 @@ class LeftNavBar extends Component {
         this.props.dispatch(getEvents(id));
     }
 
-    getAllEvents(e){
-        e.preventDefault();
+    getAllEvents(){
         this.props.dispatch(getAllEvents());
     }
 
@@ -170,7 +169,9 @@ class LeftNavBar extends Component {
             <aside>
                 <nav>
                     <ul className="aside-menu">
-
+                        <Link to={'/room/all'} onClick={() => this.getAllEvents()}>
+                            Show all events
+                        </Link>
                         {this.renderMenu()}
                         {this.state.mouseEvent ?  <RoomsInfo
                             selectedRoom={this.state.mouseEvent}
