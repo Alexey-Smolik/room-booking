@@ -89,10 +89,10 @@ class Calendar extends React.Component {
                     (eventID > -1 && eventID === eventsArray[i].id)) {
           return true;
         }
-      } else if( (((event.start <= start)  && (event.end <= end)  &&  (event.end >= start))  ||
+      } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
                         ((event.start >= start)  && (event.end <= end)))  ||
                     ((event.start <= start)  && (event.end >= end))   ||
-                    ((event.start >= start)  && (event.end >= end)  &&   (event.start <= end))    ) {
+                    ((event.start > start)  && (event.end > end)  &&   (event.start < end))    ) {
                     return false;
                 }
     }
@@ -137,7 +137,6 @@ class Calendar extends React.Component {
   render() {
 
     let events = [];
-    let { roomID } = this.props.match.params;
 
     { this.props.events &&  (events = this.props.events.map((event) => {
           const start = new Date(event.date_from);
