@@ -21,6 +21,7 @@ const App = () => (
               <Route path="/room" component={LeftNavBar} />
               <Route exact path="/room" component={HelloWindow} />
               <Route path="/room/:roomID" component={Calendar} />
+              <Route path="/allevents" component={Calendar} />
                 <Switch>
                     <Route path="/adminPanel" component={AdminPanel} />
                     <Route  component={Footer} />

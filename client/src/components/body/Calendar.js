@@ -6,6 +6,7 @@ import { getEvents, addEventToState, deleteEventFromState, editEventInState } fr
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import randomColor from 'randomcolor';
 
 import io from 'socket.io-client';
 const socket = io('http://172.16.0.183:8000');
