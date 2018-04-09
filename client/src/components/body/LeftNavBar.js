@@ -169,7 +169,7 @@ class LeftNavBar extends Component {
             <aside>
                 <nav>
                     <ul className="aside-menu">
-                        <Link to={'/room/all'} onClick={() => this.getAllEvents()}>
+                        <Link className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
                             Show all events
                         </Link>
                         {this.renderMenu()}
