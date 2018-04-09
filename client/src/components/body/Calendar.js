@@ -37,7 +37,7 @@ class Calendar extends React.Component {
         socket.on('disconnect', this.disconnect);
     };
     componentWillReceiveProps(nextProps) {
-        if(nextProps.events !== this.props.events) {
+        if(nextProps.events.length !== this.props.events.length) {
             this.setState({
                 colors : randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 })
             })

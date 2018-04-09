@@ -214,7 +214,8 @@ routes.delete('/images/:id', (req, res) => {
 // ----- ROUTES FOR ROOMS ISSUES -----
 // --- GET ISSUES BY RoomId ---
 routes.get('/:id/issues', (req, res) => {
-    issues.findAll({ where: { roomId: req.params.id }, order: [['id', 'DESC']] })
+    let where = req.query.active ? { roomId: req.params.id, active: req.query.active } : { roomId: req.params.id };
+    issues.findAll({ where: where, order: [['id', 'DESC']] })
         .then(issues => {
             res.send(issues);
         })
