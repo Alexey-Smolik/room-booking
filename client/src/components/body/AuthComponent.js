@@ -49,15 +49,13 @@ class AuthComponent extends Component {
                         <input className="login" type="submit" value="Sign in" />
 
                           <a className="anon_link" href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
-
-
                                   <div className="login_with"><p>Login with: </p></div>
                                   <div className="icons">
-                                      <a href="/auth/vk"><img src={"/images/vk.png"} alt="Login with vkontakte" /></a>
-                                      <a href="/auth/google"><img src={"/images/google-plus.png"} alt="Login with google" /></a>
-                                      <a href="/auth/fb"><img src={"/images/facebook.png"} alt="Login with facebook" /></a>
-                                      <a href="auth/twitter"><img src={"/images/twitter.png"} alt="Login with twitter" /></a>
-                                      <a href="/auth/microsoft"><img src={"/images/skype.png"} alt="Login with microsoft" /></a>
+                                      <a href="/auth/vk" title="Login with VK"><img src={"/images/vk.png"} alt="Login with vkontakte" /></a>
+                                      <a href="/auth/google" title="Login with Google"><img src={"/images/google-plus.png"} alt="Login with google" /></a>
+                                      <a href="/auth/fb" title="Login with Facebook"><img src={"/images/facebook.png"} alt="Login with facebook" /></a>
+                                      <a href="auth/twitter" title="Login with Twitter"><img src={"/images/twitter.png"} alt="Login with twitter" /></a>
+                                      <a href="/auth/microsoft" title="Login with Microsoft"><img src={"/images/skype.png"} alt="Login with microsoft" /></a>
                                   </div>
                       </div>
                     </div>
