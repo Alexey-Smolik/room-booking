@@ -175,11 +175,11 @@ button {
 
 }
 
-button:hover {
+/*button:hover {
     text-decoration: none;
     background:  #bd362f;
     color: white;
-}
+}*/
 
 
 #heading {
@@ -272,7 +272,6 @@ header {
 blockquote {
     margin: 0;
     background-color: #c1c1c1;
-    font-family: 'Oswald', sans-serif;
     font-weight: 300;
 }
 
@@ -609,6 +608,9 @@ aside {
     bottom: 25%;
     right: 25%;*/
     /*margin-top: 15%;*/
+    /*position: fixed;*/
+    padding: 0 !important;
+    /*border: 1px solid #000000;*/
     top: 15vh;
     min-width: 200px;
     z-index: 2;
@@ -620,7 +622,9 @@ aside {
     background-color: #383e41;
     border-bottom: 1px solid black;
     color: white;
-    font-family: 'Oswald', sans-serif;
+    /*font-family: 'Oswald', sans-serif;*/
+    font-family: 'Tahoma';
+
     text-align: center;
 }
 
@@ -631,13 +635,13 @@ aside {
 }
 
 .col-xs-6.col-sm-6.col-md-6.login-box {
-    padding: 10px;
+    padding: 10px 0 10px 0;
 }
 
-.col-xs-6.col-sm-6.col-md-6.separator.social-login-box {
+/*.col-xs-6.col-sm-6.col-md-6.separator.social-login-box {
     padding: 10px 10px 30px 10px;
     width: 100%;
-}
+}*/
 
 .btn-block {
     font-size: 14px;
@@ -667,7 +671,6 @@ aside {
     border: 1px solid #b6b6b6;
     text-transform: uppercase;
     font-size: 14px;
-    /*background-color: #B71C1C;*/
     border-radius: 0;
     height: 32px;
     text-align: center;
@@ -701,6 +704,20 @@ aside {
     display: flex;
     justify-content: center;
 }
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login_with {
+    margin-top: 15px;
+    font-family: 'Tahoma';
+    font-size: 16px;
+    font-weight: bold;
+
+}
+
 
 
 /* EVENT SELECTED */
@@ -983,7 +1000,32 @@ filter_btn:hover {
     }
 }
 
-.rooms-colors {
+/*.rooms-colors {
     background-color: white;
     height: 5%;
+    border: 1px solid #cbcbcb;
+}*/
+
+.block_colors {
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    margin-top: 5px;
 }
+
+.color_pick {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+}
+
+/*@media all and (max-width: 1006px) {
+    .rooms-colors {
+        height: 10%;
+    }
+}*/
+
+
+

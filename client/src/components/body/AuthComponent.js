@@ -38,19 +38,8 @@ class AuthComponent extends Component {
                 </div>
                 <div className="panel-body">
                   <div className="row">
-                    <div className="col-xs-6 col-sm-6 col-md-6 separator social-login-box">
-                       <a href="/auth/vk" className="btn vk btn-block" role="button">Login with Vkontakte</a>
-                       <a href="/auth/fb" className="btn facebook btn-block" role="button">Login with Facebook</a>
-                       <a href="/auth/twitter" className="btn twitter btn-block" role="button">Login with Twitter</a>
-                       <a href="/auth/google" className="btn google btn-block" role="button">Login with Google</a>
-                        <a href="/auth/microsoft" className="btn microsoft btn-block" role="button">Login with Microsoft</a>
-
-
-
-
-                    </div>
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                      <div onSubmit={this.handleSubmit}>
+                      <div className="cell" onSubmit={this.handleSubmit}>
                         <div className="input-group">
                           <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
                         </div>
@@ -58,9 +47,20 @@ class AuthComponent extends Component {
                           <input id="password" type="password" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
                         <input className="login" type="submit" value="Sign in" />
-                          <div>
+
                           <a className="anon_link" href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
-                          </div>
+
+
+                                  <div className="login_with"><p>Login with: </p></div>
+                                  <div className="icons">
+                                <a href="/auth/fb"><img className="social_icons" src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/facebook-32.png"} alt="Login with facebook" /></a>
+                                <a href="auth/twitter"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/twitter-32.png"} alt="Login with twitter" /></a>
+                                <a href="/auth/google"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/google-32.png"} alt="Login with google" /></a>
+                                <a href="/auth/microsoft"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/skype-32.png"} alt="Login with microsoft" /></a>
+                                <a href="/auth/vk"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/vk-32.png"} alt="Login with vkontakte" /></a>
+                                  </div>
+
+
                       </div>
                     </div>
                   </div>

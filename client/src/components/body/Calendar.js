@@ -175,7 +175,7 @@ class Calendar extends React.Component {
                     editMode={this.state.editMode}
                     roomID={this.props.roomID  || this.props.match.params.roomID}
                     dateFilter={this.dateFilter}/>}
-                {(this.props.match.params.roomID === 'all') &&
+                {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                     <RoomsColorMatching colors={this.state.colors}/>
                 }
             </div>
