@@ -1,6 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from "../../actions/index";
+import {
+	getRoomActiveIssues,
+    createIssue,
+} from "../../actions/";
 import Carousel from 'react-bootstrap/lib/Carousel';
 
 class RoomsInfo extends React.Component {
@@ -30,9 +33,6 @@ class RoomsInfo extends React.Component {
  		window.addEventListener('click', this.sideClick);
  	};
 
- 	componentWillUnmount() {
- 		window.removeEventListener('click', this.sideClick);
- 	};
 
  	componentWillReceiveProps() {
  		this.setState({
@@ -44,6 +44,9 @@ class RoomsInfo extends React.Component {
  			input.value = "";
  		}
  	};
+    componentWillUnmount() {
+        window.removeEventListener('click', this.sideClick);
+    };
 
 
 
@@ -89,23 +92,14 @@ class RoomsInfo extends React.Component {
     				active: true,
     				roomId: this.props.selectedRoom.id
     			};
-    			this.props.createIssue(data);
-    			this.props.getRoomIssues(this.props.selectedRoom.id);
+    			this.props.dispatch(createIssue(data));
+    			this.props.dispatch(getRoomActiveIssues(this.props.selectedRoom.id));
 	    		e.target.previousSibling.value = "";
 	    		this.setState({
 	    			inputValue: ""
 	    		});
     		}
     	}
-    };
-
-    issueAdd() {
-  		return(
-    		<div className="room-issues-form"> 
-        		<textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
-				<button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
-        	</div>
-    	);
     };
 
     issuesList(props) {
@@ -124,38 +118,32 @@ class RoomsInfo extends React.Component {
 	  else
 	  	return <ControlledCarousel images={this.props.selectedRoom.images}/>
     }
-
-    infoRender(){
-        return(
-            <div className="room-info">
-                <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
-                <div className="room-image">
-					       { this.carouselRender()}   	
-                </div>
-                <div className="room-desc-cont">
-                <div className="room-description">Description: {this.props.selectedRoom.description}</div>
-                
-                <div className="room-issues-container">
-                	<div className="room-issues">Issues: {this.props.issues.length ? this.issuesList(this.props.issues) : this.issuesList(this.props.selectedRoom.issues) } </div>
-                	{this.issueAdd()}
-                </div>
-				</div>
-            </div>
-        );
-    };
-
 	render() {		
 		return (				
-			<div className="overlay">{this.infoRender()}</div>
+			<div className="overlay">
+                <div className="room-info">
+                    <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
+                    <div className="room-image">
+                        { this.carouselRender()}
+                    </div>
+                    <div className="room-desc-cont">
+                        <div className="room-description">Description: {this.props.selectedRoom.description}</div>
+
+                        <div className="room-issues-container">
+                            <div className="room-issues">Issues: { this.issuesList(this.props.issues) } </div>
+                            <div className="room-issues-form">
+                                <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
+                                <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
 		);
 	};
 }
 
-function mapStateToProps({ issues }) {
-    return {
-        issues: issues
-    };
-}
+
 
 class ControlledCarousel extends React.Component {
 
@@ -202,4 +190,4 @@ class ControlledCarousel extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, actions)(RoomsInfo);
+export default connect()(RoomsInfo);

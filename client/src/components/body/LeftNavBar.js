@@ -5,7 +5,7 @@ import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
 import {
     getAllEvents,
-    getAllUsers,
+    getRoomActiveIssues,
     addEventToState ,
     deleteEventFromState ,
     editEventInState ,
@@ -28,7 +28,7 @@ class LeftNavBar extends Component {
         this.state = {
             activeButton: '',
             mouseEvent: ''
-        }
+        };
 
         this.infoHandler = this.infoHandler.bind(this);
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
@@ -45,7 +45,6 @@ class LeftNavBar extends Component {
         this.props.dispatch(getRooms());
         this.props.dispatch(getCurrentUser());
         this.props.dispatch(getCompanies());
-        //this.props.dispatch(getAllUsers());
     };
 
     componentDidMount() {
@@ -115,11 +114,6 @@ class LeftNavBar extends Component {
         }
     }
 
-    componentDidMount() {
-        this.props.dispatch(getRooms());
-        this.props.dispatch(getCurrentUser());
-    }
-
     getDataTable(id){
         this.props.dispatch(getEvents(id));
     }
@@ -146,7 +140,7 @@ class LeftNavBar extends Component {
                                         {room.name}
                                         </Link>
                                         <div className="info-show">
-                                            <button className="info-button" onClick={(e) => this.infoHandler(e, room)}>i</button>
+                                            <button className="info-button" onClick={(e) => {this.infoHandler(e, room); this.props.dispatch(getRoomActiveIssues(room.id))}}>i</button>
                                         </div>
                                     </li>)
                                     : null;
@@ -176,6 +170,7 @@ class LeftNavBar extends Component {
                         {this.state.mouseEvent ?  <RoomsInfo
                             selectedRoom={this.state.mouseEvent}
                             handleMouseEvent={this.handleMouseEvent}
+                            issues = {this.props.issues}
                         /> : []}
                     </ul>
                 </nav>
@@ -187,10 +182,11 @@ class LeftNavBar extends Component {
     }
 }
 
-const mapStateToProps = ({ rooms, user, companies}) => ({
+const mapStateToProps = ({ rooms, user, companies, issues}) => ({
     rooms,
     user,
-    companies
+    companies,
+    issues
 });
 
 export default connect(mapStateToProps)(LeftNavBar);

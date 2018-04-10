@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import { getAllUsers, getRooms, getRoomsByDate } from '../../actions';
-import LoginSection from './LoginSection';
-
-
-import "react-select/dist/react-select.css";
-import "react-virtualized/styles.css";
-import "react-virtualized-select/styles.css";
-import Select from "react-virtualized-select";
-
+import {  getRooms, getRoomsByDate } from '../../actions';
 
 
 // Imports in Header.js, changing rooms state and change it back.
@@ -20,8 +12,8 @@ class SearchEmptyRoom extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: moment(),
-      endDate: moment(),
+      startDate: '',
+      endDate: '',
       pmUsers: '',
       stateChange: true
     };
@@ -37,11 +29,12 @@ class SearchEmptyRoom extends Component {
       e.preventDefault();
 
       let start = new Date(this.state.startDate._d);
-      let end = new Date(this.state.endDate._d);
+      let end = this.state.endDate ?  new Date(this.state.endDate._d) : start;
 
       start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
-      end = new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes());
-
+      end = this.state.endDate ?
+          new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
+          new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
       this.props.dispatch(getRoomsByDate(start, end));
   }
 
@@ -97,7 +90,6 @@ class SearchEmptyRoom extends Component {
   }
 
   render() {
-    const { user } = this.props;
     return (
       <div className="dates_filter">
           <div className='dates_picker_cont'>
@@ -140,18 +132,6 @@ class SearchEmptyRoom extends Component {
   }
 }
 
-SearchEmptyRoom.defaultProps = {
-  user: 'undefined',
-};
 
-SearchEmptyRoom.propTypes = {
-  user: PropTypes.object,
-};
 
-let mapStateToProps = ({ rooms }) => {
-    return {
-        rooms
-    };
-}
-
-export default connect(mapStateToProps)(SearchEmptyRoom);
+export default connect()(SearchEmptyRoom);

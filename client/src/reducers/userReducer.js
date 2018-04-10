@@ -5,6 +5,7 @@ import {
     ADD_USER_DB,
     DELETE_USER_DB,
     EDIT_USER_DB,
+    GET_MANAGERS
 } from '../actions/types';
 
 export default function (state = {}, action) {
@@ -20,7 +21,6 @@ export default function (state = {}, action) {
           return { allUsers: [...state.allUsers.filter(({ id }) => id !== action.payload.id), action.payload], ...state};
 
       case GET_CURRENT_USER:
-          console.log("Action");
         return { ...state, currentUser: action.payload };
 
       case REMOVE_USER_FROM_STATE:
@@ -28,6 +28,10 @@ export default function (state = {}, action) {
 
       case GET_ALL_USERS:
         return { ...state, allUsers: action.payload };
+
+
+      case GET_MANAGERS:
+          return { ...state, managers: action.payload };
 
       default:
         return state;

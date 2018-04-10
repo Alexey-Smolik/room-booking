@@ -27,6 +27,7 @@ export const REMOVE_USER_FROM_STATE = 'remove-user-from-state';
 
 export const GET_ALL_ISSUES = 'get-all-issues';
 export const GET_ROOM_ISSUES = 'get-room-issues';
+export const GET_ROOM_ACTIVE_ISSUES = 'get-room-active-issues';
 export const CREATE_ISSUE = 'create-issue';
 export const EDIT_ISSUE = 'edit-issue';
 export const DELETE_ISSUE = 'delete-issue';
@@ -37,6 +38,8 @@ export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
 export const GET_ALL_EVENTS = 'get-all-events';
+export const GET_MANAGERS = 'get-managers';
+export const FILTER_PM = 'filter-pm';
 
 
 export const ADD_ROOM_TO_STATE = 'add-room-to-state';
