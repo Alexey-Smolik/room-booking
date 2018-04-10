@@ -7,7 +7,8 @@ import {
     GET_ROOMS_BY_DATE,
     ADD_ROOM_TO_STATE,
     DELETE_ROOM_FROM_STATE,
-    EDIT_ROOM_IN_STATE,
+    EDIT_ROOM_IN_STATE, EDIT_USER_DB,
+    FILTER_PM
 } from "./types";
 
 export const getRooms = () => async (dispatch) => {
@@ -47,4 +48,13 @@ export const editRoomInState = roomData => async ( dispatch) => {
 export const deleteRoomFromState = roomId => async ( dispatch) => {
     dispatch({ type: DELETE_ROOM_FROM_STATE, payload: roomId})
 };
+
+
+
+export const SearhRoomsByPM = (userID) => async (dispatch) => {
+    const res = await axios.get(`/api/rooms/events/${userID}`);
+    console.log("Filter_by_pm");
+    dispatch({type: FILTER_PM, payload: res.data});
+};
+
 

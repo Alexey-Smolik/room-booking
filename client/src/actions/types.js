@@ -37,6 +37,7 @@ export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
 export const GET_ALL_EVENTS = 'get-all-events';
+export const FILTER_PM = 'filter-pm';
 
 
 export const ADD_ROOM_TO_STATE = 'add-room-to-state';

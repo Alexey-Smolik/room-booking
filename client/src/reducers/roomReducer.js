@@ -7,7 +7,8 @@ import {
     GET_ROOM,
     ADD_ROOM_TO_STATE,
     DELETE_ROOM_FROM_STATE,
-    EDIT_ROOM_IN_STATE
+    EDIT_ROOM_IN_STATE,
+    FILTER_PM
 } from '../actions/types';
 
 export default function (state = [], action) {
@@ -36,6 +37,7 @@ export default function (state = [], action) {
       ////////////////////////////////////////////////////////////////////////////
 
     case ADD_ROOM_TO_STATE:
+        console.log(action.payload);
         return [ ...state, action.payload] || false;
 
     case DELETE_ROOM_FROM_STATE :
@@ -43,6 +45,9 @@ export default function (state = [], action) {
 
     case EDIT_ROOM_IN_STATE:
         return [...state.filter((index) => index.id !== action.payload.id), action.payload] || false;
+
+      case FILTER_PM:
+      return [...action.payload] || false;
 
     default:
         return state;
