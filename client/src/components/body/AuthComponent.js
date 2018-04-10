@@ -3,6 +3,7 @@ import { userAuthForm } from '../../actions/index';
 import { connect } from 'react-redux';
 
 
+
 class AuthComponent extends Component {
   constructor(props) {
     super(props);
@@ -38,11 +39,15 @@ class AuthComponent extends Component {
                 <div className="panel-body">
                   <div className="row">
                     <div className="col-xs-6 col-sm-6 col-md-6 separator social-login-box">
-                      <a href="/auth/vk" className="btn vk btn-block" role="button">Login with Vkontakte</a>
-                      <a href="/auth/fb" className="btn facebook btn-block" role="button">Login with Facebook</a>
-                      <a href="/auth/twitter" className="btn twitter btn-block" role="button">Login with Twitter</a>
-                      <a href="/auth/google" className="btn google btn-block" role="button">Login with Google</a>
+                       <a href="/auth/vk" className="btn vk btn-block" role="button">Login with Vkontakte</a>
+                       <a href="/auth/fb" className="btn facebook btn-block" role="button">Login with Facebook</a>
+                       <a href="/auth/twitter" className="btn twitter btn-block" role="button">Login with Twitter</a>
+                       <a href="/auth/google" className="btn google btn-block" role="button">Login with Google</a>
                         <a href="/auth/microsoft" className="btn microsoft btn-block" role="button">Login with Microsoft</a>
+
+
+
+
                     </div>
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
                       <div onSubmit={this.handleSubmit}>

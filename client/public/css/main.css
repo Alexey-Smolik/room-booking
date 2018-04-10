@@ -9,7 +9,14 @@
 .google { background-color:#DD4B39;color:#fff; }
 .twitter { background-color:#55ACEE;color:#fff; }
 .microsoft {background-color: #2672EC; color:#fff; }
-.facebook:hover, .twitter:hover, .vk:hover, .google:hover { color: #383e41; }
+.facebook:hover, .twitter:hover, .vk:hover, .google:hover, .microsoft:hover { color: #383e41; }
+
+
+
+
+
+
+
 
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
