@@ -27,6 +27,7 @@ export const REMOVE_USER_FROM_STATE = 'remove-user-from-state';
 
 export const GET_ALL_ISSUES = 'get-all-issues';
 export const GET_ROOM_ISSUES = 'get-room-issues';
+export const GET_ROOM_ACTIVE_ISSUES = 'get-room-active-issues';
 export const CREATE_ISSUE = 'create-issue';
 export const EDIT_ISSUE = 'edit-issue';
 export const DELETE_ISSUE = 'delete-issue';

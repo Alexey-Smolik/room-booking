@@ -4,6 +4,7 @@ import {
     DELETE_ISSUE,
     CREATE_ISSUE,
     EDIT_ISSUE,
+    GET_ROOM_ACTIVE_ISSUES,
 } from '../actions/types';
 
 export default function ( state = [], action) {
@@ -13,6 +14,9 @@ export default function ( state = [], action) {
             return  action.payload;
 
         case GET_ROOM_ISSUES:
+            return  action.payload;
+
+        case GET_ROOM_ACTIVE_ISSUES:
             return  action.payload;
 
         case CREATE_ISSUE:
