@@ -21,7 +21,7 @@ class CompanyItem extends React.Component {
 
     changeCompanyData = (e,id) => {
         this.setState({
-            btnText: 'Save',
+            btnText: 'Cancel',
             isFieldEditing: true,
         });
         const companyData = {
@@ -35,6 +35,11 @@ class CompanyItem extends React.Component {
                 btnText: 'Edit',
                 isFieldEditing: false,
             });
+        } else if(this.state.btnText === 'Cancel') {
+            this.setState({
+                btnText: 'Edit',
+                isFieldEditing: false,
+            });
         }
         e.preventDefault()
     };
@@ -42,12 +47,15 @@ class CompanyItem extends React.Component {
     onCompanyAddressChange (e) {
         this.setState({
             companyAddress: e.target.value,
+            btnText: 'Save'
+
         });
         e.preventDefault();
     };
     onCompanyNameChange (e) {
         this.setState({
             companyName: e.target.value,
+            btnText: 'Save'
         });
         e.preventDefault();
     };
@@ -57,8 +65,8 @@ class CompanyItem extends React.Component {
         const { isFieldEditing, btnText} = this.state;
         return (
             <div style={{display:  'flex', paddingBottom: '15px'}}>
-                <FormControl  type="text" value={this.state.companyName} onChange={(e) => this.onCompanyNameChange(e)}  disabled={!isFieldEditing}/>
-                <FormControl  type="text" value={this.state.companyAddress} onChange={(e) => this.onCompanyAddressChange(e)}   disabled={!isFieldEditing}/>
+                <FormControl  type="text" value={this.state.companyName} onChange={(e) => this.onCompanyNameChange(e)}  disabled={!isFieldEditing} required/>
+                <FormControl  type="text" value={this.state.companyAddress} onChange={(e) => this.onCompanyAddressChange(e)}   disabled={!isFieldEditing} required/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeCompanyData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteCompany(this.props.id));
