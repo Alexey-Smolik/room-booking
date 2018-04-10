@@ -72,21 +72,20 @@ class CompanyItem extends React.Component {
         const {id,roomName, roomID} = this.props;
         const { description, active, isFieldEditing, btnText} = this.state;
         return (
-            <div style={{display:  'flex', paddingBottom: '15px'}}>
-                <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing}/>
-                { !roomID && <FormControl  type="text" value={roomName}   disabled/>}
+            <form onSubmit={(e)=> {this.changeIssueData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+                <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing} required/>
+                { !roomID && <FormControl  type="text" value={roomName}  disabled/>}
                 <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "inactive"}</Label>
-                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeIssueData(e,id)}} >{btnText}</Button>
+                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'}>{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteIssue(id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
                     ;}}
-                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">
-                    <span aria-hidden="true">&times;</span>
+                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">Delete
                 </Button>
-            </div>
+            </form>
 
         );
     }
