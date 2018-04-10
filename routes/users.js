@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 // --- GET ALL USERS ---
 routes.get('/', (req, res) => {
     if(req.user.role === 1){
-        users.findAll({order: [['id', 'DESC']]})
+        users.findAll({order: [['id', 'DESC']], attributes: { exclude: 'password' }})
             .then(users => {
                 res.status(200).send(users);
             })

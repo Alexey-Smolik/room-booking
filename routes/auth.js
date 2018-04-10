@@ -4,6 +4,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const VKontakteStrategy = require('passport-vkontakte').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
+const MicrosoftStrategy = require('passport-microsoft').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
@@ -121,20 +122,34 @@ passport.use(new GoogleStrategy({
     }
 ));
 
+//bssUKO90+!xmcsUOIQ649?(
+passport.use(new MicrosoftStrategy({
+        clientID: 'd0ebcad6-dcb2-4be3-af26-38875f47d51e',
+        clientSecret: 'bssUKO90+!xmcsUOIQ649?(',
+        scope: 'api://d0ebcad6-dcb2-4be3-af26-38875f47d51e/access_as_user',
+        callbackURL: "http://localhost:3000/auth/microsoft/callback"
+    },
+    function(accessToken, refreshToken, profile, done) {
+        users.findOrCreate({
+            where: { provider: profile.provider, personal_id: profile.id },
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id, role: 3 }
+        })
+            .then(user => {
+                if (!user) return done(null, false);
+                return done(null, user[0].dataValues);
+            })
+            .catch(err => {
+                return done(err);
+            });
+    }
+));
+
 passport.serializeUser((user, done) => {
     done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
     done(null, user);
-
-    /*users.find({where: { id: id }})
-        .then(user => {
-            done(null, user.dataValues);
-        })
-        .catch(err => {
-            done(err, null);
-        })*/
 });
 
 routes.post('/login', (req, res) => {
@@ -162,6 +177,9 @@ routes.get('/twitter/callback', passport.authenticate('twitter', { successRedire
 
 routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
+
+routes.get('/microsoft', passport.authenticate('microsoft', { scope: ['https://graph.microsoft.com/user.read'] }));
+routes.get('/microsoft/callback', passport.authenticate('microsoft', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/logout', (req, res) => {
     req.logout();
