@@ -37,6 +37,7 @@ export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
 export const GET_ALL_EVENTS = 'get-all-events';
+export const GET_MANAGERS = 'get-managers';
 export const FILTER_PM = 'filter-pm';
 
 

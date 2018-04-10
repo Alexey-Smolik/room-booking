@@ -6,27 +6,29 @@ import LoginSection from './LoginSection';
 import SearchManager from './SearchManager';
 import SearchUser from './SearchUser';
 import Header from './Header';
-import {deleteCurrentUser, getAllUsers} from "../../actions";
+import {deleteCurrentUser, getManagers} from "../../actions";
 
 
 class NavBar extends React.Component {
 
     componentWillMount(){
-        this.props.dispatch(getAllUsers());
+        this.props.dispatch(getManagers());
     }
 
 
     render() {
         let user =  this.props.user || null;
-        let {allUsers, currentUser} = this.props.user || null;
-
-        console.log(allUsers);
+        let {managers, currentUser} = this.props.user || null;
+        let role = this.props.role;
+        console.log(role);
         return (
             <div className="reactHeader">
-                {currentUser && <SearchManager user={currentUser}/>}
-                {currentUser && <LoginSection user={currentUser}
-                                              logout={() => this.props.dispatch(deleteCurrentUser())}/>}
-                <SearchUser users={allUsers} />
+                {(role < 3 ) ?
+                    currentUser && <SearchManager user={currentUser}/>
+                    :
+                    currentUser && <SearchUser users={managers} />
+                }
+                {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
                 <Header/>
             </div>
         );
@@ -36,6 +38,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = ({ user }) => ({
     user,
+    role: user.currentUser && user.currentUser.role
 });
 
 export default connect(mapStateToProps)(NavBar);

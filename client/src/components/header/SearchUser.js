@@ -27,7 +27,7 @@ class SearchUser extends React.Component {
     };
 
     getOptions = () => {
-        let options = this.props.users && this.props.users.filter( (user) => user.role < 3);
+        let options = this.props.users;
         return options && options.map( (user) => {
             return {
                 label: user.username,
@@ -42,7 +42,6 @@ class SearchUser extends React.Component {
         const {selectedOption} = this.state;
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
-
         return (
             <div className="pm-search" style={{width: "500px", margin: "15px"}}>
                 {options && <Select
