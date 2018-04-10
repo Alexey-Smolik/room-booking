@@ -34,14 +34,13 @@ routes.post('/', (req, res) => {
     users.findOne({where: { username: req.body.username }})
         .then(user => {
             if(user){
-                res.status(500).send({ message: "User with that name is already exist" });
+                return Promise.reject('User with that name is already exist');
             }
             else {
                 return bcrypt.genSalt(10);
             }
         })
         .then(salt => {
-            console.log(111111);
             return bcrypt.hash(req.body.password, salt);
         })
         .then(hash => {
@@ -52,7 +51,7 @@ routes.post('/', (req, res) => {
             res.status(201).send(user);
         })
         .catch(err => {
-            res.status(501).send({ message: err.message });
+            res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
         });
 });
 
@@ -63,33 +62,29 @@ routes.put('/:id', (req, res) => {
             .then(user => {
                 if (user){
                     if(user.dataValues.provider) return users.update({ username: req.body.username, role: req.body.role}, {where: {id: req.params.id}});
-                    //else if(!req.body.password)
-                        //else return getUserWithCryptPass(req.body);
+                    else if(!req.body.password) return Promise.reject('Password cannot be empty');
+                    else return getUserWithCryptPass(req.body, req.params.id);
                 }
-                else res.status(500).send({message: 'Wrong id'});
+                return Promise.reject('Wrong id');
             })
-
             .then(user => {
                 res.status(200).send(user);
             })
             .catch(err => {
-                res.status(500).send({message: err.message});
+                res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
             });
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-function getUserWithCryptPass(user) {
+function getUserWithCryptPass(user, userId) {
     bcrypt.genSalt(10)
         .then(salt => {
-            return bcrypt.hash(req.body.password, salt);
+            return bcrypt.hash(user.password, salt);
         })
         .then(hash => {
-            req.body.password = hash;
-            return users.update(req.body, {where: {id: req.params.id}});
+            user.password = hash;
+            return users.update(user, {where: {id: userId}});
         })
-        .catch(err => {
-            res.status(500).send({message: err.message});
-        });
 }
 
 // --- DELETE USER ---
