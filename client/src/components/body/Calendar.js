@@ -2,7 +2,13 @@ import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
 import 'moment/locale/en-gb';
-import { getEvents, addEventToState, deleteEventFromState, editEventInState } from '../../actions';
+import {
+    getEvents,
+    addEventToState,
+    deleteEventFromState,
+    editEventInState,
+    getAllEvents
+} from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
 import RoomsColorMatching from './RoomsColorMatching';
@@ -32,10 +38,10 @@ class Calendar extends React.Component {
         this.setState({
             colors : randomColor({ count: 8, luminosity: 'light', format: 'rgba', alpha: 0.75 })
         });
-        this.props.dispatch(getEvents(this.props.roomID  || this.props.match.params.roomID));
+        (!this.props.roomID && this.props.match.params.roomID !== 'all') ? this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID)):
+            this.props.dispatch(getAllEvents())
     };
     componentDidMount(){
-        console.log( 'componentDidMount');
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
         socket.on('delete event', this.socketDeleteEvent);
