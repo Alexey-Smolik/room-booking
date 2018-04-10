@@ -5,7 +5,8 @@ import {
     REMOVE_USER_FROM_STATE,
     DELETE_USER_DB,
     ADD_USER_DB,
-    EDIT_USER_DB
+    EDIT_USER_DB,
+    GET_MANAGERS
 } from "./types";
 
 export const getCurrentUser = () => async (dispatch) => {
@@ -24,8 +25,13 @@ export const deleteCurrentUser = () => async (dispatch) => {
 };
 
 export const getAllUsers = () => async (dispatch) => {
-    const res = await axios.get('/api/users/');
+    const res = await axios.get('/api/users');
     dispatch({ type: GET_ALL_USERS, payload: res.data });
+};
+
+export const getManagers = () => async (dispatch) => {
+    const res = await axios.get('/api/users/managers');
+    dispatch({ type: GET_MANAGERS, payload: res.data });
 };
 
 

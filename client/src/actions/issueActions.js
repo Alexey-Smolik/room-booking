@@ -5,6 +5,7 @@ import {
     CREATE_ISSUE,
     DELETE_ISSUE,
     EDIT_ISSUE,
+    GET_ROOM_ACTIVE_ISSUES,
 } from './types';
 
 export const getAllIssues = () => async dispatch => {
@@ -14,6 +15,10 @@ export const getAllIssues = () => async dispatch => {
 export const getRoomIssues = (roomID) => async dispatch => {
     const res = await axios.get(`/api/rooms/${roomID}/issues`);
     dispatch({type: GET_ROOM_ISSUES, payload: res.data});
+};
+export const getRoomActiveIssues = (roomID) => async dispatch => {
+    const res = await axios.get(`/api/rooms/${roomID}/issues?active=true`);
+    dispatch({type: GET_ROOM_ACTIVE_ISSUES, payload: res.data});
 };
 export const updateIssue = (issueID, issueData) => async dispatch => {
      await axios.put(`/api/issues/${issueID}`, issueData);

@@ -4,17 +4,30 @@ import PropTypes from 'prop-types';
 
 import LoginSection from './LoginSection';
 import SearchManager from './SearchManager';
+import SearchUser from './SearchUser';
 import Header from './Header';
-import {deleteCurrentUser} from "../../actions";
+import {deleteCurrentUser, getManagers} from "../../actions";
 
 
 class NavBar extends React.Component {
+
+    componentWillMount(){
+        this.props.dispatch(getManagers());
+    }
+
+
     render() {
         let user =  this.props.user || null;
-        let currentUser = this.props.user.currentUser || null;
+        let {managers, currentUser} = this.props.user || null;
+        let role = this.props.role;
+        console.log(role);
         return (
             <div className="reactHeader">
-                {currentUser && <SearchManager user={currentUser}/>}
+                {(role < 3 ) ?
+                    currentUser && <SearchManager user={currentUser}/>
+                    :
+                    currentUser && <SearchUser users={managers} />
+                }
                 {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
                 <Header/>
             </div>
@@ -25,6 +38,7 @@ class NavBar extends React.Component {
 
 const mapStateToProps = ({ user }) => ({
     user,
+    role: user.currentUser && user.currentUser.role
 });
 
 export default connect(mapStateToProps)(NavBar);

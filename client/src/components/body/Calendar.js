@@ -29,18 +29,23 @@ class Calendar extends React.Component {
         this.socketDeleteEvent = this.socketDeleteEvent.bind(this);
     }
     componentWillMount() {
+        this.setState({
+            colors : randomColor({ count: 8, luminosity: 'light', format: 'rgba', alpha: 0.75 })
+        });
         this.props.dispatch(getEvents(this.props.roomID  || this.props.match.params.roomID));
     };
     componentDidMount(){
+        console.log( 'componentDidMount');
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
         socket.on('delete event', this.socketDeleteEvent);
         socket.on('disconnect', this.disconnect);
     };
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.events.length !== this.props.events.length) {
+
+    componentWillUpdate(nextProps, nextState) {
+        if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
             this.setState({
-                colors : randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 })
+                colors : nextState.colors
             })
         }
     }
@@ -141,7 +146,6 @@ class Calendar extends React.Component {
             };
         }));
         }
-
         return (
             <div className="calendar-cont">
                 <React.Fragment>
@@ -176,7 +180,7 @@ class Calendar extends React.Component {
                     roomID={this.props.roomID  || this.props.match.params.roomID}
                     dateFilter={this.dateFilter}/>}
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
-                    <RoomsColorMatching colors={this.state.colors}/>
+                    <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
             </div>
         );
