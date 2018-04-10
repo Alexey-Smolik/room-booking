@@ -24,7 +24,7 @@ class EventItem extends React.Component {
     }
     changeEventData = (e,id) => {
         this.setState({
-            btnText: 'Save',
+            btnText: 'Cancel',
             isFieldEditing: true,
         });
         let start = new Date(this.props.dateFrom),
@@ -47,18 +47,26 @@ class EventItem extends React.Component {
                 btnText: 'Edit',
                 isFieldEditing: false,
             });
+        } else if(this.state.btnText === 'Cancel') {
+            this.setState({
+                btnText: 'Edit',
+                isFieldEditing: false,
+            });
         }
+
         e.preventDefault()
     };
     onEventNameChange (e) {
         this.setState({
             eventName: e.target.value,
+            btnText: 'Save',
         });
         e.preventDefault();
     };
     onEventDescriptionChange (e) {
         this.setState({
             eventDescription: e.target.value,
+            btnText: 'Save',
         });
         e.preventDefault();
     };

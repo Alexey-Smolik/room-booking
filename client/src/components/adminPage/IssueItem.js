@@ -21,6 +21,11 @@ class CompanyItem extends React.Component {
         this.setState({
             active: !this.state.active
         });
+        if(this.state.isFieldEditing)  {
+            this.setState({
+                btnText: 'Save'
+            })
+        }
         let issueData ={
             id: id,
             description: this.state.description,
@@ -33,13 +38,14 @@ class CompanyItem extends React.Component {
     onIssueDescriptionChange (e) {
         this.setState({
             description: e.target.value,
+            btnText: 'Save'
         });
         e.preventDefault();
     };
 
     changeIssueData (e,id) {
         this.setState({
-            btnText: 'Save',
+            btnText: 'Cancel',
             isFieldEditing: true,
         });
         const issueData = {
@@ -49,6 +55,11 @@ class CompanyItem extends React.Component {
         };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateIssue(id,issueData));
+            this.setState({
+                btnText: 'Edit',
+                isFieldEditing: false,
+            });
+        } else if(this.state.btnText === 'Cancel') {
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,

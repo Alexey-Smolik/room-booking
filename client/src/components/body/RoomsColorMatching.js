@@ -6,7 +6,7 @@ class RoomsColorMatching extends Component {
         return (
             <div className='rooms-colors'>
                 {this.props.rooms && this.props.rooms.map((room, index) => {
-                    return <div >{room.name} <div style={{ backgroundColor: this.props.colors[index], height: '20px', width: '20px' }}></div> </div>
+                    return <div className="block_colors">{room.name} <div className="color_pick" style={{ backgroundColor: this.props.colors[index] }}></div> </div>
                 })}
             </div>
         );

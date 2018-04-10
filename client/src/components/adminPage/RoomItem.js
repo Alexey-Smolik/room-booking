@@ -19,9 +19,9 @@ class RoomItem extends React.Component {
         };
     }
 
-    changeCompanyData = (e,id) => {
+    changeRoomData = (e,id) => {
         this.setState({
-            btnText: 'Save',
+            btnText: 'Cancel',
             isFieldEditing: true,
         });
         const roomData = {
@@ -37,24 +37,32 @@ class RoomItem extends React.Component {
                 btnText: 'Edit',
                 isFieldEditing: false,
             });
+        } else if(this.state.btnText === 'Cancel') {
+            this.setState({
+                btnText: 'Edit',
+                isFieldEditing: false,
+            });
         }
         e.preventDefault()
     };
     onRoomNameChange (e) {
         this.setState({
             roomName: e.target.value,
+            btnText: 'Save'
         });
         e.preventDefault();
     };
     onRoomDescriptionChange (e) {
         this.setState({
             roomDescription: e.target.value,
+            btnText: 'Save'
         });
         e.preventDefault();
     };
     onRoomFloorChange (e) {
         this.setState({
             roomFloor: e.target.value,
+            btnText: 'Save'
         });
         e.preventDefault();
     };
@@ -68,7 +76,7 @@ class RoomItem extends React.Component {
                 <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing}/>
                 <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing}/>
                 <FormControl  type="text" value={this.props.companyName}  disabled />
-                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeCompanyData(e,id)}} >{btnText}</Button>
+                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeRoomData(e,id)}} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteRoom(id));
                     this.setState({

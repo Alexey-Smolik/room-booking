@@ -53,14 +53,12 @@ class AuthComponent extends Component {
 
                                   <div className="login_with"><p>Login with: </p></div>
                                   <div className="icons">
-                                <a href="/auth/fb"><img className="social_icons" src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/facebook-32.png"} alt="Login with facebook" /></a>
-                                <a href="auth/twitter"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/twitter-32.png"} alt="Login with twitter" /></a>
-                                <a href="/auth/google"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/google-32.png"} alt="Login with google" /></a>
-                                <a href="/auth/microsoft"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/skype-32.png"} alt="Login with microsoft" /></a>
-                                <a href="/auth/vk"><img src={"https://cdn2.iconfinder.com/data/icons/capsocial-square-flat-3/500/vk-32.png"} alt="Login with vkontakte" /></a>
+                                      <a href="/auth/vk"><img src={"/images/vk.png"} alt="Login with vkontakte" /></a>
+                                      <a href="/auth/google"><img src={"/images/google-plus.png"} alt="Login with google" /></a>
+                                      <a href="/auth/fb"><img src={"/images/facebook.png"} alt="Login with facebook" /></a>
+                                      <a href="auth/twitter"><img src={"/images/twitter.png"} alt="Login with twitter" /></a>
+                                      <a href="/auth/microsoft"><img src={"/images/skype.png"} alt="Login with microsoft" /></a>
                                   </div>
-
-
                       </div>
                     </div>
                   </div>
