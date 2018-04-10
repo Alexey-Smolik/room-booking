@@ -143,10 +143,6 @@ passport.use(new MicrosoftStrategy({
             });
     }
 ));
-//
-//
-
-
 
 passport.serializeUser((user, done) => {
     done(null, user);
@@ -154,14 +150,6 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
     done(null, user);
-
-    /*users.find({where: { id: id }})
-        .then(user => {
-            done(null, user.dataValues);
-        })
-        .catch(err => {
-            done(err, null);
-        })*/
 });
 
 routes.post('/login', (req, res) => {

@@ -5,6 +5,7 @@ import 'moment/locale/en-gb';
 import { getEvents, addEventToState, deleteEventFromState, editEventInState } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
+import RoomsColorMatching from './RoomsColorMatching';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import randomColor from 'randomcolor';
 import io from 'socket.io-client';
@@ -174,6 +175,9 @@ class Calendar extends React.Component {
                     editMode={this.state.editMode}
                     roomID={this.props.roomID  || this.props.match.params.roomID}
                     dateFilter={this.dateFilter}/>}
+                {(this.props.match.params.roomID === 'all') &&
+                    <RoomsColorMatching colors={this.state.colors}/>
+                }
             </div>
         );
     }
@@ -191,7 +195,6 @@ let mapStateToProps = ({ events, user, rooms }) => {
         rooms,
         user,
         events
-
     };
 };
 

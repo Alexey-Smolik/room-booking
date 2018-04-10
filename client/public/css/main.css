@@ -983,3 +983,7 @@ filter_btn:hover {
     }
 }
 
+.rooms-colors {
+    background-color: white;
+    height: 5%;
+}
