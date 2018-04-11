@@ -2,13 +2,14 @@ const routes = require('express').Router();
 const events = require('../models').events;
 const rooms = require('../models').rooms;
 const companies = require('../models').companies;
+const users = require('../models').users;
 const io = require('../sockets');
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL EVENTS ---
 
 routes.get('/', (req, res) => {
-    events.findAll({ include: [ { model: rooms, include: companies } ] })
+    events.findAll({ include: [ { model: rooms, include: companies }, { model: users, attributes: ['username'] } ] })
         .then(events => {
             res.status(200).send(events);
         })

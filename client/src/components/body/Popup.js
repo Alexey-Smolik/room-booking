@@ -19,12 +19,13 @@ class Popup extends Component {
 
   componentWillMount() {
     this.setState({
-      room: this.props.room,
-      startDate: moment(this.props.event.start),
-      endDate: moment(this.props.event.end),
-      title: this.props.event.title,
-      description: this.props.event.description,
-      user: this.props.user,
+        room: this.props.room,
+        startDate: moment(this.props.event.start),
+        endDate: moment(this.props.event.end),
+        title: this.props.event.title,
+        description: this.props.event.description,
+        user: this.props.user,
+        username: this.props.event.user
     });
   };
 
@@ -88,6 +89,7 @@ class Popup extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
@@ -96,7 +98,7 @@ class Popup extends Component {
             <FormControl
               type="text"
               disabled
-              value={this.props.user.currentUser.username}
+              value= { this.props.editMode ? this.state.username : this.props.user.currentUser.username }
               placeholder="Title"
             />
             <ControlLabel>Title</ControlLabel>
