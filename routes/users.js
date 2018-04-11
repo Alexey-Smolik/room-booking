@@ -1,12 +1,12 @@
 const routes = require('express').Router();
 const users = require('../models').users;
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt-as-promised');
 
 // ----- HANDLERS FOR USERS -----
 // --- GET ALL USERS ---
 routes.get('/', (req, res) => {
     if(req.user.role === 1){
-        users.findAll({order: [['id', 'DESC']], attributes: { exclude: 'password' }})
+        users.findAll({order: [['id', 'DESC']]})
             .then(users => {
                 res.status(200).send(users);
             })
@@ -16,25 +16,43 @@ routes.get('/', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
+// --- GET ALL MANAGERS ---
+routes.get('/managers', (req, res) => {
+    users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+        .then(users => {
+            res.status(200).send(users);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
     req.body.role = req.body.role || 3;
 
-    const salt = bcrypt.genSaltSync(10);
-    bcrypt.hash(req.body.password, salt, (err, hash) => {
-        if (err) {
-            res.status(409).send({ status: "error", message: "crypt error" });
-        } else {
+    users.findOne({where: { username: req.body.username }})
+        .then(user => {
+            if(user){
+                return Promise.reject('User with that name is already exist');
+            }
+            else {
+                return bcrypt.genSalt(10);
+            }
+        })
+        .then(salt => {
+            return bcrypt.hash(req.body.password, salt);
+        })
+        .then(hash => {
             req.body.password = hash;
-            users.create(req.body)
-                .then(user => {
-                    res.status(201).send(user);
-                })
-                .catch(err => {
-                    res.status(501).send({ message: err.message });
-                });
-        }
-    });
+            return users.create(req.body);
+        })
+        .then(user => {
+            res.status(201).send(user);
+        })
+        .catch(err => {
+            res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
+        });
 });
 
 // --- EDIT USER ---
@@ -43,26 +61,31 @@ routes.put('/:id', (req, res) => {
         users.findOne({where: {id: req.params.id}})
             .then(user => {
                 if (user){
-                    const salt = bcrypt.genSaltSync(10);
-                    bcrypt.hash(req.body.password, salt, (err, hash) => {
-                        if (err) {
-                            res.status(409).send({ status: "error", message: "crypt error" });
-                        } else {
-                            req.body.password = hash;
-                            return users.update(req.body, {where: {id: req.params.id}});
-                        }
-                    });
+                    if(user.dataValues.provider) return users.update({ username: req.body.username, role: req.body.role}, {where: {id: req.params.id}});
+                    else if(!req.body.password) return Promise.reject('Password cannot be empty');
+                    else return getUserWithCryptPass(req.body, req.params.id);
                 }
-                else res.status(500).send({message: 'Wrong id'});
+                return Promise.reject('Wrong id');
             })
             .then(user => {
                 res.status(200).send(user);
             })
             .catch(err => {
-                res.status(500).send({message: err.message});
+                res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
             });
     } else res.status(500).send({ message: 'You have no rights' });
 });
+
+function getUserWithCryptPass(user, userId) {
+    bcrypt.genSalt(10)
+        .then(salt => {
+            return bcrypt.hash(user.password, salt);
+        })
+        .then(hash => {
+            user.password = hash;
+            return users.update(user, {where: {id: userId}});
+        })
+}
 
 // --- DELETE USER ---
 routes.delete('/:id', (req, res) => {

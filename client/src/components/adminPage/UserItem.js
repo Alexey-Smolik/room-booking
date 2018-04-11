@@ -20,19 +20,22 @@ class UserItem extends React.Component {
 
     changeUserData = (e,id) => {
         this.setState({
-            btnText: 'Save',
+            btnText: 'Cancel',
             isFieldEditing: true,
         });
-
-        const userData = {
-            id: id,
-            username: this.state.username,
-            password: this.state.password,
-            role: this.state.role,
-        };
-
+        let userData  = {
+                id: id,
+                username: this.state.username,
+                password: this.state.password,
+                role: this.state.role
+            };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(editUserDB(id,userData));
+            this.setState({
+                btnText: 'Edit',
+                isFieldEditing: false,
+            });
+        } else if(this.state.btnText === 'Cancel') {
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
@@ -43,18 +46,21 @@ class UserItem extends React.Component {
     onUsernameChange (e) {
         this.setState({
             username: e.target.value,
+            btnText: 'Save',
         });
         e.preventDefault();
     };
     onUserPasswordChange (e) {
         this.setState({
             password: e.target.value,
+            btnText: 'Save',
         });
         e.preventDefault();
     };
     onUserRoleChange (e) {
         this.setState({
             role: e.target.value,
+            btnText: 'Save',
         });
         e.preventDefault();
     };
@@ -63,21 +69,20 @@ class UserItem extends React.Component {
         const {id, password} = this.props;
         const { isFieldEditing, btnText} = this.state;
         return (
-            <div style={{display:  'flex', paddingBottom: '15px'}}>
-                <FormControl  type="text" value={this.state.username} onChange={(e) => this.onUsernameChange(e)}  disabled={!isFieldEditing}/>
-                <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !password}/>
-                <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing}/>
-                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeUserData(e,id)}} >{btnText}</Button>
+            <form onSubmit={(e)=> {this.changeUserData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+                <FormControl  type="text" value={this.state.username} onChange={(e) => this.onUsernameChange(e)}  disabled={!isFieldEditing} required/>
+                <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !password} required/>
+                <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing} required/>
+                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteUserDB(id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
                     ;}}
-                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">
-                    <span aria-hidden="true">&times;</span>
+                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">Delete
                 </Button>
-            </div>
+            </form>
 
         );
     }

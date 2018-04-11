@@ -75,23 +75,22 @@ class EventItem extends React.Component {
         const { id, dateFrom, dateTo, username } = this.props;
         const { isFieldEditing, btnText } = this.state;
         return (
-            <div style={{display:  'flex', paddingBottom: '15px'}}>
-                <FormControl  type="text" value={this.state.eventName} onChange={(e) => this.onEventNameChange(e)} disabled={!isFieldEditing} />
-                <FormControl  type="text" value={this.state.eventDescription} onChange={(e) => this.onEventDescriptionChange(e)} disabled={!isFieldEditing} />
+            <form onSubmit={(e)=> {this.changeEventData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+                <FormControl  type="text" value={this.state.eventName} onChange={(e) => this.onEventNameChange(e)} disabled={!isFieldEditing} required/>
+                <FormControl  type="text" value={this.state.eventDescription} onChange={(e) => this.onEventDescriptionChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={dateFrom} disabled />
                 <FormControl  type="text" value={dateTo} disabled/>
                 <FormControl  type="text" value={username}  disabled />
-                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeEventData(e,id)}}>{btnText}</Button>
+                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'}>{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteEvent(id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
                     ;}}
-                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">
-                    <span aria-hidden="true">&times;</span>
+                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">Delete
                 </Button>
-            </div>
+            </form>
 
         );
     }

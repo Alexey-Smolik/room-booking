@@ -78,7 +78,7 @@ class CompaniesContainer extends React.Component {
                                 <ControlLabel className="control-label" >Address</ControlLabel>
                                 </div>
                                 <form onSubmit={(e) => {this.addCompany(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
-                                    <FormControl className="form-control"   type="text" onChange={(e) => this.onCompanyNameChange(e)} value={this.state.companyName}  required />
+                                    <FormControl className="form-control" type="text" onChange={(e) => this.onCompanyNameChange(e)} value={this.state.companyName}  required />
                                     <FormControl className="form-control" type="text" onChange={(e) => this.onCompanyAddressChange(e)} value={this.state.companyAddress} required/>
                                     <Button type="submit"  bsStyle="success" >Save</Button>
                                 </form>

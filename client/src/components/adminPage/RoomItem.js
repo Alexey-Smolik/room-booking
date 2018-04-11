@@ -71,22 +71,21 @@ class RoomItem extends React.Component {
         const { id } = this.props;
         const { isFieldEditing, btnText } = this.state;
         return (
-            <div style={{display:  'flex', paddingBottom: '15px'}}>
-                <FormControl  type="text" value={this.state.roomName} onChange={(e) => this.onRoomNameChange(e)} disabled={!isFieldEditing}/>
-                <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing}/>
-                <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing}/>
+            <form onSubmit={(e)=> {this.changeRoomData(e,id)}}  style={{display:  'flex', paddingBottom: '15px'}}>
+                <FormControl  type="text" value={this.state.roomName} onChange={(e) => this.onRoomNameChange(e)} disabled={!isFieldEditing} required/>
+                <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing} required/>
+                <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.props.companyName}  disabled />
-                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} onClick={(e)=> {this.changeRoomData(e,id)}} >{btnText}</Button>
+                <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteRoom(id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
                     ;}}
-                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">
-                    <span aria-hidden="true">&times;</span>
+                        style={!isFieldEditing ? {display: "none"} : {}}  aria-label="Delete">Delete
                 </Button>
-            </div>
+            </form>
 
         );
     }
