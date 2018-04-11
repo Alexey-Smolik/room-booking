@@ -197,7 +197,7 @@ button {
 .bodyWrapper {
     display: flex;
     justify-content: space-between;
-    height: 74vh;
+    /*height: 74vh;*/
 }
 
     .bodyWrapper .calendar-cont {
@@ -278,9 +278,8 @@ blockquote {
 
 blockquote p {
     color: #ffffff;
-    /*font-family: 'Oswald', sans-serif;*/
-    font-family: 'Noto Sans', sans-serif;
-    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    /*font-family: 'Noto Sans', sans-serif;*/
     font-size: 33px;
     margin: 0;
 }
@@ -419,7 +418,7 @@ aside {
 .rbc-calendar {
     background-color: #ffffff;
     border: 1px solid #cbcbcb;
-    height: 74vh !important;
+    height: 78vh !important;
     position: relative;
 }
 
@@ -1024,11 +1023,18 @@ filter_btn:hover {
     margin-right: 5px;
 }
 
-/*@media all and (max-width: 1006px) {
-    .rooms-colors {
-        height: 10%;
+    .icons {
+        display: flex;
+        justify-content: space-between;
     }
-}*/
+    .icons img {
+        width: 32px;
+        height: 32px;
+    }
+    .icons a{
+        transition: .1s ease-in-out;
+    }
 
-
-
+    .icons a:hover {
+        opacity: .8;
+    }

@@ -95,6 +95,7 @@ class SearchEmptyRoom extends Component {
           <div className='dates_picker_cont'>
             <div id="filter_date_from">
               <DatePicker
+                  readOnly
                 selected={this.state.startDate}
                 selectsStart
                 dateFormat="LLL"
@@ -109,6 +110,7 @@ class SearchEmptyRoom extends Component {
             </div>
             <div id="filter_date_to">
               <DatePicker
+                  readOnly
                 selected={this.state.endDate}
                 selectsEnd
                 dateFormat="LLL"

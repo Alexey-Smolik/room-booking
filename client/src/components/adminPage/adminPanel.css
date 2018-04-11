@@ -1960,6 +1960,7 @@ img {
 }
 
 .label.label-danger {
+    height: 38px;
     min-width: 45px;
     border-radius: 0;
     color: white;
@@ -1968,6 +1969,7 @@ img {
 }
 
 .label.label-success {
+    height: 38px;
     min-width: 45px;
     border-radius: 0;
     background-color: green;

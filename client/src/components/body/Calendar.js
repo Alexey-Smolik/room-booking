@@ -40,8 +40,13 @@ class Calendar extends React.Component {
         this.setState({
             colors : randomColor({ count: 8, luminosity: 'light', format: 'rgba', alpha: 0.75 })
         });
-        (!this.props.roomID && this.props.match.params.roomID !== 'all') ? this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID)):
-            this.props.dispatch(getAllEvents())
+        if(!this.props.roomID) {
+            if(this.props.match.params.roomID !== 'all') {
+                this.props.dispatch(getEvents(this.props.match.params.roomID));
+            } else {
+                this.props.dispatch(getAllEvents());
+            }
+        }
     };
     componentDidMount(){
         socket.on('add event', this.socketAddEvent);
@@ -176,16 +181,16 @@ class Calendar extends React.Component {
                         scrollToTime={new Date(1970, 1, 1, 6)}
                         defaultDate={new Date()}
                         culture="en-GB"
-                        onSelectEvent={event => this.editEvent(event) }
-                        onSelectSlot={event => { this.createNotification(); this.addEvent(event); }}
+                        onSelectEvent={event => this.editEvent(event)}
+                        onSelectSlot={event => this.addEvent(event)}
                         eventPropGetter={(event) => {
-                                return {
-                                    style: {
-                                        backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
-                                        color: 'black'
-                                    }
-                                };
-                            }
+                            return {
+                                style: {
+                                    backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
+                                    color: 'black'
+                                }
+                            };
+                        }
                         }
                     />
                 </React.Fragment>
@@ -198,7 +203,7 @@ class Calendar extends React.Component {
                     roomID={this.props.roomID  || this.props.match.params.roomID}
                     dateFilter={this.dateFilter}/>}
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
-                    <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
+                <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
 
                 <button
