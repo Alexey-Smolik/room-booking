@@ -149,7 +149,7 @@ class Calendar extends React.Component {
                 description: event.description,
                 title: event.name,
                 start, end,
-                user: event.user.username
+                user: event.user ? event.user.username : event.username
             };
         }));
         }
