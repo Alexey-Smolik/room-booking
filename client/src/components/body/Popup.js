@@ -112,7 +112,6 @@ class Popup extends Component {
             <textarea
               value={this.state.description}
               onChange={this.handleChangeDesc}
-              placeholder="Description"
             />
 
             <div id="date_to">
