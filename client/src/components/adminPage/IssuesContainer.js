@@ -82,14 +82,15 @@ class IssuesContainer extends React.Component {
     };
     render() {
         let filteredIssues = this.props.issues && this.props.issues.filter((issue) => {
-         if(issue.room) {
-             return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                 issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                 issue.active.toString().includes(this.state.searchValue)
-         } else {
-             return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                 issue.active.toString().includes(this.state.searchValue)
-         }
+            issue.active ? issue.status = 'active' : issue.status = 'inactive';
+            if(issue.room) {
+                return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    issue.room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    !issue.status.toLowerCase().indexOf(this.state.searchValue.toLowerCase())
+            } else {
+                return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    !issue.status.toLowerCase().indexOf(this.state.searchValue.toLowerCase())
+            }
         });
         return (
             <div>
