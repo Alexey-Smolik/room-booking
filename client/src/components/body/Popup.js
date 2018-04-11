@@ -5,6 +5,8 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { createEvent, deleteEvent , editEvent } from "../../actions/index";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 
 class Popup extends Component {
   constructor(props) {
@@ -51,18 +53,39 @@ class Popup extends Component {
 
       if (this.props.editMode) {
         this.props.dispatch(editEvent(this.props.event.id, event));
+        (this.createNotification('edit event')());
         this.props.closePopup();
 
       } else {
 
         this.props.dispatch(createEvent(event));
+        (this.createNotification('add event')());
         this.props.closePopup();
-
       }
     } else {
-      alert('There is event on this date');
+        (this.createNotification('date')());
     }
   };
+
+  createNotification = (type) => {
+      return () => {
+          switch (type) {
+              case 'date':
+                  NotificationManager.warning('There is event on this date!', 'Date', 3000);
+                  break;
+              case 'add event':
+                  NotificationManager.success('You successfully added event!', 'Event', 3000);
+                  break;
+              case 'edit event':
+                  NotificationManager.success('You successfully edited event!', 'Event', 3000);
+                  break;
+              case 'delete event':
+                  NotificationManager.success('You successfully deleted event!', 'Event', 3000);
+                  break;
+          }
+      };
+  };
+
 
   handleChangeDate = (e, isFirstdataPicker) => {
     if (isFirstdataPicker) {
@@ -85,11 +108,11 @@ class Popup extends Component {
   deleteHandler = (e) => {
     e.preventDefault();
     this.props.dispatch(deleteEvent(this.props.event.id));
+    (this.createNotification('delete event')());
     this.props.closePopup();
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
@@ -146,6 +169,8 @@ class Popup extends Component {
           </FormGroup>
 
         </form>
+
+          <NotificationContainer/>
       </div>
 
     );

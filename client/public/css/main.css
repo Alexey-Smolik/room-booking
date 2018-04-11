@@ -1038,3 +1038,7 @@ filter_btn:hover {
     .icons a:hover {
         opacity: .8;
     }
+
+    .rbc-time-header > .rbc-row:nth-of-type(2) {
+        display: none !important;
+    }

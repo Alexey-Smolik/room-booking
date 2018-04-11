@@ -120,7 +120,7 @@ class Calendar extends React.Component {
                 event,
             }))
         } else {
-            alert('There is event on your date');
+            (this.createNotification('date')());
         }
     };
     closePopup = () => {
@@ -138,14 +138,20 @@ class Calendar extends React.Component {
         }
 
         this.closePopup();
-        this.createNotification();
+        (this.createNotification('role')());
         return false;
     };
 
-    createNotification = () => {
-        alert('111');
+    createNotification = (type) => {
         return () => {
-            NotificationManager.success('Error message', 'Click me!', 3000);
+            switch (type) {
+                case 'role':
+                    NotificationManager.error('You do not have the rights!', 'Role', 3000);
+                    break;
+                case 'date':
+                    NotificationManager.error('There is event on this date!', 'Date', 3000);
+                    break;
+            }
         };
     };
 
@@ -205,10 +211,6 @@ class Calendar extends React.Component {
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                 <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
-
-                <button
-                    onClick={this.createNotification()}>Error
-                </button>
 
                 <NotificationContainer/>
             </div>
