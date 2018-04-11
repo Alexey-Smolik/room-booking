@@ -472,6 +472,10 @@ a:hover {
 }
 
 
+    .rbc-time-header > .rbc-row:nth-of-type(2) {
+        display: none !important;
+    }
+
 
 /* border-bug*/
 .rbc-time-header.rbc-overflowing {
