@@ -38,8 +38,13 @@ class Calendar extends React.Component {
         this.setState({
             colors : randomColor({ count: 8, luminosity: 'light', format: 'rgba', alpha: 0.75 })
         });
-        (!this.props.roomID && this.props.match.params.roomID !== 'all') ? this.props.dispatch(getEvents(this.props.roomID || this.props.match.params.roomID)):
-            this.props.dispatch(getAllEvents())
+        if(!this.props.roomID) {
+            if(this.props.match.params.roomID !== 'all') {
+                this.props.dispatch(getEvents(this.props.match.params.roomID));
+            } else {
+                this.props.dispatch(getAllEvents());
+            }
+        }
     };
     componentDidMount(){
         socket.on('add event', this.socketAddEvent);
@@ -129,6 +134,7 @@ class Calendar extends React.Component {
         if(role === 1 || role === 2) {
             return true;
         }
+        this.closePopup();
         alert("You cannot get access");
         return false;
     }
@@ -149,7 +155,7 @@ class Calendar extends React.Component {
                 description: event.description,
                 title: event.name,
                 start, end,
-                user: event.user.username
+                user: event.user ? event.user.username : event.username
             };
         }));
         }
@@ -168,13 +174,13 @@ class Calendar extends React.Component {
                         onSelectEvent={event => this.editEvent(event)}
                         onSelectSlot={event => this.addEvent(event)}
                         eventPropGetter={(event) => {
-                                return {
-                                    style: {
-                                        backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
-                                        color: 'black'
-                                    }
-                                };
-                            }
+                            return {
+                                style: {
+                                    backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
+                                    color: 'black'
+                                }
+                            };
+                        }
                         }
                     />
                 </React.Fragment>
@@ -187,7 +193,7 @@ class Calendar extends React.Component {
                     roomID={this.props.roomID  || this.props.match.params.roomID}
                     dateFilter={this.dateFilter}/>}
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
-                    <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
+                <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
             </div>
         );
