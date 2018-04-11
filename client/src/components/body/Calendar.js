@@ -15,6 +15,8 @@ import RoomsColorMatching from './RoomsColorMatching';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import randomColor from 'randomcolor';
 import io from 'socket.io-client';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 const socket = io('http://172.16.0.183:8000');
 
 BigCalendar.momentLocalizer(moment);
@@ -54,12 +56,19 @@ class Calendar extends React.Component {
     };
 
     componentWillUpdate(nextProps, nextState) {
-        if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
+        if(this.props.rooms.length) {
+            if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
+                this.setState({
+                    colors : nextState.colors
+                })
+            }
+        } else if (nextProps.rooms.length) {
             this.setState({
-                colors : nextState.colors
-            })
+                colors : randomColor({ count:nextProps.rooms.length , luminosity: 'light', format: 'rgba', alpha: 0.75 })
+            });
         }
     }
+
     socketAddEvent(event) {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
@@ -118,7 +127,7 @@ class Calendar extends React.Component {
                 event,
             }))
         } else {
-            alert('There is event on your date');
+            (this.createNotification('date')());
         }
     };
     closePopup = () => {
@@ -134,10 +143,24 @@ class Calendar extends React.Component {
         if(role === 1 || role === 2) {
             return true;
         }
+
         this.closePopup();
-        alert("You cannot get access");
+        (this.createNotification('role')());
         return false;
-    }
+    };
+
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'role':
+                    NotificationManager.error('You do not have the rights!', 'Role', 3000);
+                    break;
+                case 'date':
+                    NotificationManager.error('There is event on this date!', 'Date', 3000);
+                    break;
+            }
+        };
+    };
 
     render() {
         let events = [];
@@ -169,7 +192,7 @@ class Calendar extends React.Component {
                         min={moment('2018-02-23 08:00:00').toDate()}
                         max={moment('2018-02-23 19:00:00').toDate()}
                         scrollToTime={new Date(1970, 1, 1, 6)}
-                        defaultDate={new Date(2018, 2, 1)}
+                        defaultDate={new Date()}
                         culture="en-GB"
                         onSelectEvent={event => this.editEvent(event)}
                         onSelectSlot={event => this.addEvent(event)}
@@ -195,6 +218,8 @@ class Calendar extends React.Component {
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                 <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
+
+                <NotificationContainer/>
             </div>
         );
     }

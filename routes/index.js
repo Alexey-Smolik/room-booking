@@ -19,5 +19,6 @@ routes.use('/api/rooms', rooms); // rooms handler
 routes.use('/api/companies', companies); // companies handler
 routes.use('/api/events', events); // events handler
 routes.use('/api/issues', issues); // issues handler
+routes.use('/', (req, res) => { res.send('test'); });
 
 module.exports = routes;

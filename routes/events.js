@@ -32,7 +32,6 @@ routes.get('/:id', (req, res) => {
 // --- ADD NEW EVENT ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
-        console.log(req.body);
         events.create(req.body)
             .then(event => {
                 event.dataValues.username = req.body.username;
