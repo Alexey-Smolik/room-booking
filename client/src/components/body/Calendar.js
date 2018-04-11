@@ -56,12 +56,19 @@ class Calendar extends React.Component {
     };
 
     componentWillUpdate(nextProps, nextState) {
-        if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
+        if(this.props.rooms.length) {
+            if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
+                this.setState({
+                    colors : nextState.colors
+                })
+            }
+        } else if (nextProps.rooms.length) {
             this.setState({
-                colors : nextState.colors
-            })
+                colors : randomColor({ count:nextProps.rooms.length , luminosity: 'light', format: 'rgba', alpha: 0.75 })
+            });
         }
     }
+
     socketAddEvent(event) {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
         console.log("Test1", event );
@@ -120,7 +127,8 @@ class Calendar extends React.Component {
                 event,
             }))
         } else {
-            alert('There is event on your date');
+           return () => {this.createNotification()
+           };
         }
     };
     closePopup = () => {
@@ -143,7 +151,6 @@ class Calendar extends React.Component {
     };
 
     createNotification = () => {
-        alert('111');
         return () => {
             NotificationManager.success('Error message', 'Click me!', 3000);
         };
