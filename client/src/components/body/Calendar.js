@@ -15,6 +15,8 @@ import RoomsColorMatching from './RoomsColorMatching';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import randomColor from 'randomcolor';
 import io from 'socket.io-client';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 const socket = io('http://172.16.0.183:8000');
 
 BigCalendar.momentLocalizer(moment);
@@ -129,9 +131,18 @@ class Calendar extends React.Component {
         if(role === 1 || role === 2) {
             return true;
         }
-        alert("You cannot get access");
+
+        this.closePopup();
+        this.createNotification();
         return false;
-    }
+    };
+
+    createNotification = () => {
+        alert('111');
+        return () => {
+            NotificationManager.success('Error message', 'Click me!', 3000);
+        };
+    };
 
     render() {
         let events = [];
@@ -163,10 +174,10 @@ class Calendar extends React.Component {
                         min={moment('2018-02-23 08:00:00').toDate()}
                         max={moment('2018-02-23 19:00:00').toDate()}
                         scrollToTime={new Date(1970, 1, 1, 6)}
-                        defaultDate={new Date(2018, 2, 1)}
+                        defaultDate={new Date()}
                         culture="en-GB"
-                        onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => this.addEvent(event)}
+                        onSelectEvent={event => this.editEvent(event) }
+                        onSelectSlot={event => { this.createNotification(); this.addEvent(event); }}
                         eventPropGetter={(event) => {
                                 return {
                                     style: {
@@ -189,6 +200,12 @@ class Calendar extends React.Component {
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                     <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
+
+                <button
+                    onClick={this.createNotification()}>Error
+                </button>
+
+                <NotificationContainer/>
             </div>
         );
     }
