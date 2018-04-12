@@ -114,7 +114,7 @@ class RoomsInfo extends React.Component {
       if(!this.props.selectedRoom.images.length)
       	return [];
       else if(this.props.selectedRoom.images.length === 1)
-      	return <img className="room-image" alt="#" src={this.props.selectedRoom.images[0].url} />;
+      	return <img className="room-image" alt="image" src={this.props.selectedRoom.images[0].url} />;
 	  else
 	  	return <ControlledCarousel images={this.props.selectedRoom.images}/>
     }
