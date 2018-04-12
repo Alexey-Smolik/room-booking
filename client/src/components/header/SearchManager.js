@@ -28,9 +28,6 @@ class SearchEmptyRoom extends Component {
     this.createNotification = this.createNotification.bind(this);
   }
 
-
-
-
     createNotification = (type) => {
         return () => {
             switch (type) {
