@@ -47,7 +47,7 @@ passport.use(new VKontakteStrategy({
     function(accessToken, refreshToken, params, profile, done) {
         users.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id.toString() },
-            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString(), role: 3 }
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id.toString(), role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
