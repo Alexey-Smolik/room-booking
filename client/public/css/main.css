@@ -1115,6 +1115,8 @@ textarea {
         }
     }
 
-    @media all and (max-width: 1024px){
-        .
-    }
+    /*@media all and (min-width: 1024px){
+        .container {
+            max-width: 920px;
+        }
+    }*/
