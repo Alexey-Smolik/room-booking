@@ -7,6 +7,7 @@ import SearchManager from './SearchManager';
 import SearchUser from './SearchUser';
 import Header from './Header';
 import {deleteCurrentUser, getManagers} from "../../actions";
+import {NotificationManager} from "react-notifications";
 
 
 class NavBar extends React.Component {
@@ -14,6 +15,8 @@ class NavBar extends React.Component {
     componentWillMount(){
         this.props.dispatch(getManagers());
     }
+
+
 
 
     render() {

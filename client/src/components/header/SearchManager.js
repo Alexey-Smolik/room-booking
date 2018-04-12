@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import {  getRooms, getRoomsByDate } from '../../actions';
+import {getCompanies, getRooms, getRoomsByDate} from '../../actions';
+import {NotificationManager} from 'react-notifications';
+import {Link} from 'react-router-dom';
 
 
 // Imports in Header.js, changing rooms state and change it back.
@@ -23,19 +25,45 @@ class SearchEmptyRoom extends Component {
     this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.selectValue = this.selectValue.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
+    this.createNotification = this.createNotification.bind(this);
   }
 
+
+
+
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+
+                case 'empty date':
+                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
+                    break;
+
+                default:
+                    NotificationManager.warning('Smth wrong with server!', 'Event', 3000);
+
+            }
+        };
+    };
+
+
   submitHandler(e) {
-      e.preventDefault();
+      // e.preventDefault();
+      console.log(this.state.startDate);
+      if(this.state.startDate) {
+          let start = new Date(this.state.startDate._d);
+          let end = this.state.endDate ? new Date(this.state.endDate._d) : start;
 
-      let start = new Date(this.state.startDate._d);
-      let end = this.state.endDate ?  new Date(this.state.endDate._d) : start;
+          start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
+          end = this.state.endDate ?
+              new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
+              new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
+          this.props.dispatch(getRoomsByDate(start, end));
+          this.props.dispatch(getCompanies());
 
-      start = new Date(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes());
-      end = this.state.endDate ?
-          new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
-          new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
-      this.props.dispatch(getRoomsByDate(start, end));
+      } else {
+          this.createNotification('empty date')()
+      }
   }
 
 
@@ -124,7 +152,8 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-              <button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>
+                <Link to={'/room/'} onClick={(e) => this.submitHandler(e)}>Search</Link>
+              {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
               <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
             </div>
