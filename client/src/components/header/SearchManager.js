@@ -152,7 +152,7 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-                <Link to={'/room/'} onClick={(e) => this.submitHandler(e)}>Search</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={(e) => this.submitHandler(e)}>Search</Link>
               {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
               <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
 
