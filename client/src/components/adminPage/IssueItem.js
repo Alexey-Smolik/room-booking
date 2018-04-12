@@ -6,11 +6,12 @@ import {
     deleteIssue,
 } from '../../actions/index'
 
-class CompanyItem extends React.Component {
+class IssueItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             description: this.props.description,
+            roomName: this.props.roomName,
             active: this.props.active,
             isFieldEditing: false,
             btnText: 'Edit',
@@ -32,7 +33,9 @@ class CompanyItem extends React.Component {
             roomName: this.props.roomName,
             active: !this.state.active,
         };
-        this.props.dispatch(updateIssue(id, issueData));
+        if(this.state.btnText === 'Edit') {
+            this.props.dispatch(updateIssue(id, issueData));
+        }
     };
 
     onIssueDescriptionChange (e) {
@@ -52,6 +55,7 @@ class CompanyItem extends React.Component {
             id: id,
             description: this.state.description,
             roomName: this.props.roomName,
+            active: this.state.active,
         };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateIssue(id,issueData));
@@ -69,8 +73,8 @@ class CompanyItem extends React.Component {
     }
 
     render() {
-        const {id, roomName, roomID} = this.props;
-        const { description, active, isFieldEditing, btnText} = this.state;
+        const {id, roomID} = this.props;
+        const { description, roomName, active, isFieldEditing, btnText} = this.state;
         return (
             <form onSubmit={(e)=> {this.changeIssueData(e,id)}} style={{display:  'flex'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing} required/>
@@ -91,4 +95,4 @@ class CompanyItem extends React.Component {
     }
 }
 
-export default connect(null)(CompanyItem);
+export default connect(null)(IssueItem);
