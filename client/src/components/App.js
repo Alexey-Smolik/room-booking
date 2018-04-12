@@ -14,9 +14,7 @@ import HelloAdmin from './HelloAdmin';
 
 const App = () => (
     <div className="App">
-
         <BrowserRouter>
-
             <div>
                 <NavBar />
                 <Route exact path="/" component={AuthComponent} />
@@ -31,14 +29,8 @@ const App = () => (
                     </Switch>
                     <Route exact path="/adminPanel" component={HelloAdmin} />
                 </div>
-
             </div>
-
-
-
         </BrowserRouter>
-
-
     </div>
 );
 
