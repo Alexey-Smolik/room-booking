@@ -89,6 +89,7 @@ class IssuesContainer extends React.Component {
                     !issue.status.toLowerCase().indexOf(this.state.searchValue.toLowerCase())
             } else {
                 return issue.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    issue.roomName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     !issue.status.toLowerCase().indexOf(this.state.searchValue.toLowerCase())
             }
         });
@@ -97,8 +98,8 @@ class IssuesContainer extends React.Component {
                 { this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                     <div>
                         {!this.props.roomID && <h3>All issues</h3>}
-                        <div  className = "add1" >
-                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "20%", marginRight: "10px" }}/>
+                        <div  className = "add1" style={!this.props.issues.length ? {justifyContent: "flex-end"}: {}}>
+                            {!!this.props.issues.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "20%"}}/>}
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -107,11 +108,11 @@ class IssuesContainer extends React.Component {
                             </Button>
                         </div>
                         <div>
-                            <div style={{display:  'flex', justifyContent: 'space-between'}}>
+                            {(!!this.props.issues.length || this.state.addFieldIsVisible) && <div style={{display:  'flex', justifyContent: 'space-between'}}>
                                 <ControlLabel className="control-label" >Description</ControlLabel>
                                 { !this.props.roomID && <ControlLabel className="control-label" >Room name</ControlLabel>}
                                 { !this.state.addFieldIsVisible  && <ControlLabel className="control-label" >Status</ControlLabel>}
-                            </div>
+                            </div>}
                             <form onSubmit={(e) => {this.addIssue(e)}} style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onDescriptionChange(e)} value={this.state.description}  required />
                                 { !this.props.roomID && <FormControl componentClass="select"  onChange={(e) => this.onRoomNameChange(e)}  value={this.state.roomName} required>
@@ -129,6 +130,7 @@ class IssuesContainer extends React.Component {
                                         roomName={issue.room.name}
                                         roomID = {this.props.roomID}
                                         active={issue.active}
+                                        rooms={this.props.rooms}
                                         key={issue.id}
                                         id={issue.id}
                                     />
@@ -138,6 +140,7 @@ class IssuesContainer extends React.Component {
                                         roomName={issue.roomName}
                                         roomID = {this.props.roomID}
                                         active={issue.active}
+                                        rooms={this.props.rooms}
                                         key={issue.id}
                                         id={issue.id}
                                     />

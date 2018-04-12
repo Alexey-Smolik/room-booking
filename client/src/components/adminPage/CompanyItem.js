@@ -1,11 +1,10 @@
 import React from 'react';
-import { Button, FormGroup , ControlLabel , FormControl,Jumbotron } from 'react-bootstrap';
+import { Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import {
     updateCompany,
     deleteCompany,
-    getCompanies
 } from '../../actions/index'
 
 class CompanyItem extends React.Component {
