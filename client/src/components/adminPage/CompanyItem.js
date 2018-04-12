@@ -64,7 +64,7 @@ class CompanyItem extends React.Component {
         const {id} = this.props;
         const { isFieldEditing, btnText} = this.state;
         return (
-            <form onSubmit={(e)=> {this.changeCompanyData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+            <form onSubmit={(e)=> {this.changeCompanyData(e,id)}} style={{display:  'flex'}}>
                 <FormControl type="text" onChange={(e) => this.onCompanyNameChange(e)} value={this.state.companyName} disabled={!isFieldEditing} required/>
                 <FormControl type="text" onChange={(e) => this.onCompanyAddressChange(e)} value={this.state.companyAddress} disabled={!isFieldEditing} required/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'}>{btnText}</Button>
