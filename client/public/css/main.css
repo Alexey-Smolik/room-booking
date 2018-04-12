@@ -72,7 +72,6 @@ h1 {
     width: 80%;
     display: inline-block;
     font-family: 'Noto Sans', sans-serif;
-
     font-weight: bold;
     text-align: center;
     padding-right: 20%;
@@ -171,7 +170,7 @@ h1 {
     /*hello-form */
 
 #username_hello{
-    color: #727272 !important;
+    color: #393939 !important;
     font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     margin-right: 10px;
@@ -347,7 +346,7 @@ aside {
 
             aside nav li {
                 list-style-position: inside;
-                font: 14px 'Noto Sans', sans-serif;
+                /*font: 14px 'Noto Sans';*/
                 font-weight: 300;
                 list-style-type: none;
                 border-top: 1px solid #e7e7e7;
@@ -355,6 +354,7 @@ aside {
             }
 
             aside nav a {
+                font: 14px 'Tahoma';
                 text-decoration: none;
                 color: #616161;
                 padding-left: 15px;
@@ -499,6 +499,7 @@ a:hover {
     .rbc-toolbar button {
         font-family: 'Oswald', Sans-Serif;
         line-height: 14px!important;
+        border-radius: 0 !important;
     }
 
     .rbc-toolbar .rbc-toolbar-label {
