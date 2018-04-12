@@ -51,9 +51,8 @@ export const deleteRoomFromState = roomId => async ( dispatch) => {
 
 
 
-export const SearhRoomsByPM = (userID) => async (dispatch) => {
+export const getRoomsByPM = (userID) => async (dispatch) => {
     const res = await axios.get(`/api/rooms/events/${userID}`);
-    console.log("Filter_by_pm");
     dispatch({type: FILTER_PM, payload: res.data});
 };
 

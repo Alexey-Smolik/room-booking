@@ -4,5 +4,6 @@ export * from './userActions';
 export * from './compActions';
 export * from './issueActions';
 export * from './imageActions';
+export * from './modeActions';
 
 
