@@ -131,6 +131,7 @@ class LeftNavBar extends Component {
         if(this.props.companies) {
             return this.props.companies.map( (company, key) => {
                 return (
+
                     // Companies List
                     <li key={key}>
                         <input type="checkbox" name={"sub-group-" + key} id={"sub-group-" + key}/>
