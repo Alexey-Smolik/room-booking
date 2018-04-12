@@ -71,7 +71,7 @@ class RoomItem extends React.Component {
         const { id } = this.props;
         const { isFieldEditing, btnText } = this.state;
         return (
-            <form onSubmit={(e)=> {this.changeRoomData(e,id)}}  style={{display:  'flex', paddingBottom: '15px'}}>
+            <form onSubmit={(e)=> {this.changeRoomData(e,id)}}  style={{display:  'flex'}}>
                 <FormControl  type="text" value={this.state.roomName} onChange={(e) => this.onRoomNameChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing} required/>

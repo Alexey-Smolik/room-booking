@@ -69,10 +69,10 @@ class CompanyItem extends React.Component {
     }
 
     render() {
-        const {id,roomName, roomID} = this.props;
+        const {id, roomName, roomID} = this.props;
         const { description, active, isFieldEditing, btnText} = this.state;
         return (
-            <form onSubmit={(e)=> {this.changeIssueData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+            <form onSubmit={(e)=> {this.changeIssueData(e,id)}} style={{display:  'flex'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing} required/>
                 { !roomID && <FormControl  type="text" value={roomName}  disabled/>}
                 <Label bsStyle={!active ? "danger" : "success"}   onClick={(e)=> {this.changeIssueStatus(e,id)}}>{active ? "active" : "inactive"}</Label>

@@ -4,13 +4,22 @@ import {
     DELETE_EVENT,
     EDIT_EVENT,
     GET_EVENTS,
-    GET_ALL_EVENTS
+    GET_EVENTS_BY_PM
 } from "./types";
 
 export const getEvents = roomID => async (dispatch) => {
     const res = await axios.get(`/api/rooms/${roomID}/events`);
     dispatch({ type: GET_EVENTS, payload: res.data });
 };
+
+
+export const getEventsByPM = (roomID, pmID ) => async (dispatch) => {
+    const res = await axios.get(`/api/rooms/${roomID}/events?userId=${pmID}`);
+    console.log("Filter_by_pm");
+    dispatch({type: GET_EVENTS, payload: res.data});
+};
+
+
 
 export const createEvent = newEvent => async (dispatch) => {
     const res = await axios.post('/api/events', newEvent);
@@ -53,3 +62,6 @@ export const editEventInState = (editedEvent, currentRoomId) => async ( dispatch
 export const deleteEventFromState = (eventID) => async ( dispatch) => {
     dispatch({ type: DELETE_EVENT, payload: eventID})
 };
+
+
+

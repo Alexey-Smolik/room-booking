@@ -5,6 +5,7 @@ import userReducer from './userReducer';
 import companiesReducer from './companiesReducer';
 import issuesReducer from './issuesReducer';
 import imagesReducer from './imageReducer';
+import modeReducer from './modeReducer';
 
 export default combineReducers({
   rooms: roomReducer,
@@ -13,5 +14,5 @@ export default combineReducers({
   companies: companiesReducer,
   issues: issuesReducer,
   images: imagesReducer,
-
+  mode: modeReducer,
 });

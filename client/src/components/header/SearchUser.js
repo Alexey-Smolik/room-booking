@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import { getAllUsers, SearhRoomsByPM } from '../../actions';
+import { changeMode, getRoomsByPM, getEventsByPM, addPMId } from '../../actions';
 
 
 import "react-select/dist/react-select.css";
@@ -21,9 +21,17 @@ class SearchUser extends React.Component {
         this.setState({selectedOption});
     };
 
+    changeMode = () => {
+        this.props.dispatch(changeMode());
+    };
+
+
     handleSelect = (e) => {
         e.preventDefault();
-        this.props.dispatch(SearhRoomsByPM(this.state.selectedOption.value));
+        this.props.dispatch(changeMode("PM_SEARCH"));
+        this.props.dispatch(addPMId(this.state.selectedOption.value));
+        this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
+        //this.props.dispatch(getEventsByPM(this.state.selectedOption.value));
     };
 
     getOptions = () => {
@@ -52,6 +60,7 @@ class SearchUser extends React.Component {
                     options={options}
                 />}
                 <button onClick={this.handleSelect} style={{float: 'right'}}>Ok</button>
+                <button onClick={this.changeMode} style={{float: 'right'}}>Cancel</button>
             </div>
 
         );
