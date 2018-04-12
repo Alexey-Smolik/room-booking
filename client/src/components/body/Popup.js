@@ -139,6 +139,18 @@ class Popup extends Component {
     this.props.closePopup();
   };
 
+  userHaveAccess = () => {
+      if (this.props.user.currentUser.role === 1) {
+          return true
+      } else if (this.props.user.currentUser.role === 2) {
+          if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
+              return true
+          }
+      } else {
+          return false
+      }
+  };
+
   render() {
     return (
       <div className="overlay">
@@ -149,18 +161,18 @@ class Popup extends Component {
               type="text"
               disabled
               value= { this.props.editMode ? this.state.username : this.props.user.currentUser.username }
-              placeholder="Title"
             />
             <ControlLabel>Title</ControlLabel>
             <FormControl
               type="text"
               value={this.state.title}
+              disabled = {!this.userHaveAccess()}
               onChange={this.handleChangeTitle}
-              placeholder="Title"
             />
             <ControlLabel>Description</ControlLabel>
             <textarea
               value={this.state.description}
+              disabled = {!this.userHaveAccess()}
               onChange={this.handleChangeDesc}
             />
 
@@ -168,6 +180,7 @@ class Popup extends Component {
               <DatePicker
                 readOnly
                 selected={this.state.startDate}
+                disabled = {!this.userHaveAccess()}
                 onChange={e => this.handleChangeDate(e, true)}
                 showTimeSelect
                 timeFormat="HH:mm"
@@ -179,6 +192,7 @@ class Popup extends Component {
             <DatePicker
               readOnly
               selected={this.state.endDate}
+              disabled = {!this.userHaveAccess()}
               onChange={e => this.handleChangeDate(e, false)}
               showTimeSelect
               timeFormat="HH:mm"
@@ -188,9 +202,9 @@ class Popup extends Component {
             />
 
             <div id="form_button">
-              <Button id="del_canc" type="submit">Confirm</Button>
-              { this.props.editMode ? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
-              <Button id="del_canc"  onClick={this.props.closePopup}>Cancel</Button>
+                {this.userHaveAccess() && <Button id="del_canc" type="submit">Confirm</Button>}
+                { (this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
+                <Button id="del_canc"  onClick={this.props.closePopup}>{this.userHaveAccess() ? 'Cancel' : 'Close'}</Button>
             </div>
           </FormGroup>
 
