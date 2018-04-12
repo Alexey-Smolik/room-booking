@@ -111,6 +111,7 @@ class Calendar extends React.Component {
         }
         return !this.state.editMode;
     };
+
     editEvent = (event) => {
         this.setState( (prevState) => ({
             showPopup: !prevState.showPopup,
@@ -119,7 +120,6 @@ class Calendar extends React.Component {
         }))
     };
 
-
     addEvent = (event) => {
         if (this.dateFilter(event)) {
             this.setState( (prevState) => ({
@@ -127,9 +127,10 @@ class Calendar extends React.Component {
                 event,
             }))
         } else {
-            (this.createNotification('date')());
+            this.createNotification('date')();
         }
     };
+
     closePopup = () => {
         this.setState((prevState) => ({
             showPopup: !prevState.showPopup,
@@ -145,7 +146,7 @@ class Calendar extends React.Component {
         }
 
         this.closePopup();
-        (this.createNotification('role')());
+        this.createNotification('role')();
         return false;
     };
 
@@ -157,6 +158,9 @@ class Calendar extends React.Component {
                     break;
                 case 'date':
                     NotificationManager.error('There is event on this date!', 'Date', 3000);
+                    break;
+                case 'all events':
+                    NotificationManager.error('You can not add event while "all events" is open', 'Events', 3000);
                     break;
             }
         };
@@ -195,7 +199,7 @@ class Calendar extends React.Component {
                         defaultDate={new Date()}
                         culture="en-GB"
                         onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => this.addEvent(event)}
+                        onSelectSlot={event => { this.props.match.params.roomID === 'all' ? this.createNotification('all events')() : this.addEvent(event); }}
                         eventPropGetter={(event) => {
                             return {
                                 style: {
@@ -207,7 +211,6 @@ class Calendar extends React.Component {
                         }
                     />
                 </React.Fragment>
-
                 {(this.state.showPopup && this.checkRole()) &&  <Popup
                     event={this.state.event}
                     user={this.props.user}

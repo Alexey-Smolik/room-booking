@@ -35,7 +35,7 @@ routes.get('/', (req, res) => {
                         return self.indexOf(value) === index;
                     });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues, {model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues, {model: companies, attributes : ['name', 'address']}], order: [['id', 'DESC']]});
                 })
                 .then(rooms => {
                     res.send(rooms);
@@ -45,7 +45,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images, issues, {model: companies, attributes : ['name']}],order: [['id', 'DESC']]})
+            rooms.findAll({include: [images, issues, {model: companies, attributes : ['name', 'address']}],order: [['id', 'DESC']]})
                 .then(rooms => {
                     res.send(rooms);
                 })
@@ -225,7 +225,7 @@ routes.get('/:id/issues', (req, res) => {
 });
 
 // ----- ROUTES FOR ROOMS EVENTS -----
-// --- GET EVENTS BY RoomId ---
+// --- GET EVENTS BY RoomId with UserId---
 routes.get('/:id/events', (req, res) => {
     let where = req.query.userId ? { roomId: req.params.id, userId: req.query.userId } : { roomId: req.params.id };
     events.findAll({ where: where, include: [ { model: users, attributes: ['username'] }] })
