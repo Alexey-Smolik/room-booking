@@ -27,4 +27,4 @@ yarn-error.log*
 .env
 
 # tokens
-.constant/tokens.js
+.constants/tokens.js
