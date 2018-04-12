@@ -9,7 +9,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
 const users = require('../models').users;
-const config = require('../config/main');
+const config = require('../constants/tokens');
 const bcrypt = require('bcryptjs');
 
 // Local Strategy for authorization
