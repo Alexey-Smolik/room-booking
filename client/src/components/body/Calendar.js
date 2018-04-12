@@ -38,7 +38,7 @@ class Calendar extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            colors : randomColor({ count: 8, luminosity: 'light', format: 'rgba', alpha: 0.75 })
+            colors : randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 })
         });
         if(!this.props.roomID) {
             if(this.props.match.params.roomID !== 'all') {

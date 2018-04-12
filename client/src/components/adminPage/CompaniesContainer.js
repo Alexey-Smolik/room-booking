@@ -63,8 +63,8 @@ class CompaniesContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All companies</h3>
-                            <div  className="add1" >
-                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search company" style = {{ width: "20%", marginRight: "10px" }}/>
+                            <div  className="add1" style={!this.props.companies.length ? {justifyContent: "flex-end"}: {}} >
+                                {!!this.props.companies.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search company" style = {{ width: "20%" }}/>}
                                     <Button
                                         type="button"
                                         bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -73,10 +73,10 @@ class CompaniesContainer extends React.Component {
                                     </Button>
                             </div>
                             <div>
-                                <div style={{display:  'flex', justifyContent: 'space-around'}}>
-                                <ControlLabel className="control-label" >Name</ControlLabel>
-                                <ControlLabel className="control-label" >Address</ControlLabel>
-                                </div>
+                                {(!!this.props.companies.length || this.state.addFieldIsVisible) && <div style={{display:  'flex', justifyContent: 'space-around'}}>
+                                    <ControlLabel className="control-label" >Name</ControlLabel>
+                                    <ControlLabel className="control-label" >Address</ControlLabel>
+                                </div>}
                                 <form onSubmit={(e) => {this.addCompany(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                     <FormControl className="form-control" type="text" onChange={(e) => this.onCompanyNameChange(e)} value={this.state.companyName}  required />
                                     <FormControl className="form-control" type="text" onChange={(e) => this.onCompanyAddressChange(e)} value={this.state.companyAddress} required/>

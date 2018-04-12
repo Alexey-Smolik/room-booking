@@ -37,7 +37,7 @@ export const ADD_ROOM_IMAGE = 'add_room_image';
 export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
-export const GET_ALL_EVENTS = 'get-all-events';
+export const GET_EVENTS_BY_PM = 'get-events-by-pm';
 export const GET_MANAGERS = 'get-managers';
 export const FILTER_PM = 'filter-pm';
 
@@ -45,6 +45,16 @@ export const FILTER_PM = 'filter-pm';
 export const ADD_ROOM_TO_STATE = 'add-room-to-state';
 export const DELETE_ROOM_FROM_STATE = 'delete-room-from-state';
 export const EDIT_ROOM_IN_STATE = 'edit-room-in-state';
+
+
+
+export const ADD_PM_ID = 'add-pm-id';
+export const ADD_ROOM_ID = 'add-room-id';
+export const CHANGE_MODE = 'change-mode';
+
+
+
+
 
 
 

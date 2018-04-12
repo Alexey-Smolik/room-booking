@@ -86,11 +86,19 @@ class RoomsContainer extends React.Component {
     render() {
 
         let filteredRooms = this.props.rooms.filter((room) => {
-            return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                room.company.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                room.floor.toString().includes(this.state.searchValue)
+            if(room.company) {
+                return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.company.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.floor.toString().includes(this.state.searchValue)
+            } else {
+                return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.companyName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.floor.toString().includes(this.state.searchValue)
+            }
         });
         return (
             <Jumbotron>
@@ -98,8 +106,8 @@ class RoomsContainer extends React.Component {
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
                             <h3>All rooms</h3>
-                            <div  className="add1" >
-                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%", marginRight: "10px" }}/>
+                            <div  className="add1" style={!this.props.rooms.length ? {justifyContent: "flex-end"}: {}}>
+                                {!!this.props.rooms.length &&  <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%"}}/>}
                                 <Button
                                     type="button"
                                     bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
@@ -108,12 +116,12 @@ class RoomsContainer extends React.Component {
                                     </Button>
                             </div>
                             <div>
-                                <div style={{display:  'flex', justifyContent: 'space-around'}}>
+                                {(!!this.props.rooms.length || this.state.addFieldIsVisible) &&<div style={{display:  'flex', justifyContent: 'space-around'}}>
                                     <ControlLabel className="control-label" >Name</ControlLabel>
                                     <ControlLabel className="control-label" >Description</ControlLabel>
                                     <ControlLabel className="control-label" >Floor</ControlLabel>
                                     <ControlLabel className="control-label" >Company</ControlLabel>
-                                </div>
+                                </div>}
                                 <form onSubmit={(e) => {this.addRoom(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomNameChange(e)} value={this.state.roomName}  required />
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomDescriptionChange(e)} value={this.state.roomDescription}  required />

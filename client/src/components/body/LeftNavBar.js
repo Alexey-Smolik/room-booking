@@ -12,7 +12,8 @@ import {
     getRooms ,
     getCurrentUser,
     getEvents,
-    getCompanies
+    getCompanies,
+    getEventsByPM
 } from "../../actions";
 const socket = io('http://172.16.0.183:8000');
 
@@ -114,8 +115,12 @@ class LeftNavBar extends Component {
         }
     }
 
-    getDataTable(id){
-        this.props.dispatch(getEvents(id));
+    getDataTable(id) {
+        let {mode, pmId} = this.props.mode;
+        mode == undefined ?
+            this.props.dispatch(getEvents(id))
+            :
+            this.props.dispatch(getEventsByPM(id,pmId))
     }
 
     getAllEvents(){
@@ -136,11 +141,17 @@ class LeftNavBar extends Component {
                             {this.props.rooms.map( (room, roomKey) => {
                                 return (room.companyId == company.id) ? (
                                     <li key={roomKey}>
+
                                         <Link to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
                                         {room.name}
                                         </Link>
+
                                         <div className="info-show">
-                                            <button className="info-button" onClick={(e) => {this.infoHandler(e, room); this.props.dispatch(getRoomActiveIssues(room.id))}}>i</button>
+                                            <button className="info-button" onClick={(e) => {
+                                                this.infoHandler(e, room);
+                                                this.props.dispatch(getRoomActiveIssues(room.id))}}
+                                            >i</button>
+
                                         </div>
                                     </li>)
                                     : null;
@@ -158,7 +169,7 @@ class LeftNavBar extends Component {
 
     render() {
         this.infoCloseWatcher();
-
+        console.log(this.props.mode);
         return(
             <aside>
                 <nav>
@@ -182,11 +193,12 @@ class LeftNavBar extends Component {
     }
 }
 
-const mapStateToProps = ({ rooms, user, companies, issues}) => ({
+const mapStateToProps = ({ rooms, user, companies, issues, mode}) => ({
     rooms,
     user,
     companies,
-    issues
+    issues,
+    mode
 });
 
 export default connect(mapStateToProps)(LeftNavBar);
