@@ -69,7 +69,7 @@ class UserItem extends React.Component {
         const {id, password} = this.props;
         const { isFieldEditing, btnText} = this.state;
         return (
-            <form onSubmit={(e)=> {this.changeUserData(e,id)}} style={{display:  'flex', paddingBottom: '15px'}}>
+            <form onSubmit={(e)=> {this.changeUserData(e,id)}} style={{display:  'flex'}}>
                 <FormControl  type="text" value={this.state.username} onChange={(e) => this.onUsernameChange(e)}  disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !password} required/>
                 <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing} required/>
