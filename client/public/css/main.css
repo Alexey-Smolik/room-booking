@@ -566,6 +566,10 @@ a:hover {
 
 /* info-window & info-button */
 
+.the_issue {
+    font-size: 14px;
+}
+
 .company {
     margin-top: 20px;
 }

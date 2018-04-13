@@ -98,7 +98,7 @@ class Popup extends Component {
                   break;
 
               case 'start end date':
-                  NotificationManager.warning('Incorrect data value! Please correct it!', 'Event', 3000);
+                  NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                   break;
 
 

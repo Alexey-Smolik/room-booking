@@ -22,9 +22,8 @@ class ImageItem extends React.Component {
     }
     render() {
         let {photoIndex, isLightboxOpen, isMouseEnter} = this.state;
-        let imagesUrl = [];
-        this.props.images.map((image) => {
-            imagesUrl.push(`http://localhost:3000/${image.url}`)
+        let imagesUrl = this.props.images.forEach((image) => {
+            return image.url
         });
         return (
             <div  style={{display: "inline-block", marginRight: "20px", marginBottom: "20px"}}>
@@ -42,7 +41,7 @@ class ImageItem extends React.Component {
                     onMouseEnter={() => this.setState({isMouseEnter: true})}
                     onMouseLeave={() => this.setState({isMouseEnter: false})}
                     style={{width:"200px", height: "200px"}}
-                    src={`http://localhost:3000/${this.props.url}`}
+                    src={this.props.url}
                 />
                 {isLightboxOpen &&
                 <Lightbox
