@@ -140,8 +140,7 @@ class Popup extends Component {
   };
 
   userHaveAccess = () => {
-      console.log(this.props.roomID);
-      if(this.props.roomID == 'all') {
+      if(this.props.roomID === 'all') {
           return false;
       }else if (this.props.user.currentUser.role === 1) {
           return true
@@ -158,7 +157,7 @@ class Popup extends Component {
     return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
-            {(this.props.editMode && this.userHaveAccess()) || (!this.props.editMode && this.userHaveAccess()) ?
+            {this.userHaveAccess() ?
                     <FormGroup controlId="formBasicText">
                         <ControlLabel>Username</ControlLabel>
                         <FormControl

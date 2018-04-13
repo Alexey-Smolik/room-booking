@@ -161,7 +161,7 @@ class Calendar extends React.Component {
     };
 
     render() {
-        let { roomID } = this.props.match.params;
+
 
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
