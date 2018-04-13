@@ -122,7 +122,7 @@ class RoomsInfo extends React.Component {
 		return (				
 			<div className="overlay">
                 <div className="room-info">
-                    <div className="info-close" onClick={() => this.props.handleMouseEvent('')} >x</div>
+                    <div className="info-close" onClick={() => this.props.handleMouseEvent('')} ></div>
                     <div className="room-image">
                         { this.carouselRender()}
                     </div>
