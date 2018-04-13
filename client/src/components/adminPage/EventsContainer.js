@@ -54,17 +54,20 @@ class EventsContainer extends React.Component {
                 <div>
                     { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
-                            <div  style={{display:  'flex'}}>
-                                <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search event"/>
-                            </div>
+                            {!!this.props.events.length ?
+                                <div  style={{display:  'flex'}}>
+                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search event"/>
+                                </div>
+                                : <span>This room haven't any events. You can add event on Events Calendar</span>
+                            }
                             <div>
-                                <div style={{display:  'flex', justifyContent: 'space-around'}}>
+                                {!!this.props.events.length && <div style={{display:  'flex', justifyContent: 'space-around'}}>
                                     <ControlLabel className="control-label" >Name</ControlLabel>
                                     <ControlLabel className="control-label" >Description</ControlLabel>
                                     <ControlLabel className="control-label" >Date from</ControlLabel>
                                     <ControlLabel className="control-label" >Date to</ControlLabel>
                                     <ControlLabel className="control-label" >Username</ControlLabel>
-                                </div>
+                                </div>}
                                 {filteredEvents.map((event) => {
                                     const startDate = new Date(event.date_from);
                                     const endDate = new Date(event.date_to);

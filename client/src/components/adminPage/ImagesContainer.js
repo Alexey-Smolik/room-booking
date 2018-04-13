@@ -32,7 +32,7 @@ class ImagesContainer extends React.Component {
                             style={{
                                 height:"35px",
                                 width: "35px",
-                                backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")',
+                                backgroundImage: 'url("/images/upload.png")',
                                 backgroundSize: "cover",
                                 float:"right",
                                 margin: "1px",
