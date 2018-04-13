@@ -557,6 +557,10 @@ a:hover {
 
 /* info-window & info-button */
 
+.company {
+    margin-top: 20px;
+}
+
 .info-show {
     /*margin-right: 15px;*/
     cursor: pointer;
