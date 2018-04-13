@@ -133,6 +133,7 @@ class RoomsInfo extends React.Component {
                         <div className="room-issues-container">
                             <div className="room-issues"><span className="selection">Issues:</span> { this.issuesList(this.props.issues) } </div>
                             {this.props.userRole !== 3 &&<div className="room-issues-form">
+								<p className="the_issue">Please, describe the issue.</p>
                                 <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
                                 <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Add issue</button>
                             </div>}
