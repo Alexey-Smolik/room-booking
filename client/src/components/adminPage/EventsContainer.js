@@ -56,7 +56,7 @@ class EventsContainer extends React.Component {
                         <div>
                             {!!this.props.events.length ?
                                 <div  style={{display:  'flex'}}>
-                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search event"/>
+                                    <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search event" style = {{ width: "20%"}} />
                                 </div>
                                 : <span>This room haven't any events. You can add event on Events Calendar</span>
                             }

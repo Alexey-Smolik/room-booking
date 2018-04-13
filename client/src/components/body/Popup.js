@@ -98,7 +98,7 @@ class Popup extends Component {
                   break;
 
               case 'start end date':
-                  NotificationManager.warning('Start date cannot be more the end date!', 'Event', 3000);
+                  NotificationManager.warning('Start date cannot be more then end date!', 'Event', 3000);
                   break;
 
 
@@ -155,7 +155,7 @@ class Popup extends Component {
         <form className="popup_inner" onSubmit={this.submitHandler}>
             {this.userHaveAccess() ?
                     <FormGroup controlId="formBasicText">
-                        <ControlLabel>Username</ControlLabel>
+                        <ControlLabel>Creator</ControlLabel>
                         <FormControl
                             type="text"
                             disabled
@@ -207,14 +207,14 @@ class Popup extends Component {
                     </FormGroup>
                     :
                     <FormGroup controlId="formBasicText">
-                        <ControlLabel>Username</ControlLabel>
-                        <div>{ this.props.editMode ? this.state.username : this.props.user.currentUser.username }</div>
+                        <ControlLabel style={{ marginLeft: '40%' }}>Creator</ControlLabel>
+                        <div style={{ fontSize: '16px', marginBottom: '15px', textAlign: 'center' }} >{ this.props.editMode ? this.state.username : this.props.user.currentUser.username }</div>
 
-                        <ControlLabel>Title</ControlLabel>
-                        <div>{this.state.title}</div>
+                        <ControlLabel style={{ marginLeft: '45%' }}>Title</ControlLabel>
+                        <div style={{ fontSize: '16px', marginBottom: '15px', textAlign: 'center' }} >{this.state.title}</div>
 
-                        <ControlLabel>Description</ControlLabel>
-                        <div>{this.state.description}</div>
+                        <ControlLabel style={{ marginLeft: '37%' }}>Description</ControlLabel>
+                        <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center' }} >{this.state.description}</div>
 
                         <div id="date_to">
                             <DatePicker

@@ -151,7 +151,7 @@ class LeftNavBar extends Component {
                                         </Link>
 
                                         <div className="info-show">
-                                            <button className="info-button" onClick={(e) => {
+                                            <button className="info-button" title="Info about room" onClick={(e) => {
                                                 this.infoHandler(e, room);
                                                 this.props.dispatch(getRoomActiveIssues(room.id))}}
                                             >i</button>
@@ -170,7 +170,6 @@ class LeftNavBar extends Component {
     }
 
 
-
     render() {
         this.infoCloseWatcher();
         return(
@@ -187,16 +186,11 @@ class LeftNavBar extends Component {
                             handleMouseEvent={this.handleMouseEvent}
                             issues = {this.props.issues}
                         /> : []}
-
                     </ul>
-
                 </nav>
                 <Footer />
 
             </aside>
-
-
-
         );
     }
 }
