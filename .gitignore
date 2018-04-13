@@ -27,4 +27,4 @@ yarn-error.log*
 .env
 
 # tokens for strategies
-.constants/tokens.js
+/constants/tokens.js
