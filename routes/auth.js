@@ -9,7 +9,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
 const users = require('../models').users;
-const config = require('../config/main');
+const tokens = require('../constants/tokens');
 const bcrypt = require('bcryptjs');
 
 // Local Strategy for authorization
@@ -40,14 +40,14 @@ passport.use(new AnonymIdStrategy());
 
 // Vkontakte Strategy for authorization
 passport.use(new VKontakteStrategy({
-        clientID: config.vkStrategy.appId,
-        clientSecret: config.vkStrategy.secretKey,
+        clientID: tokens.vkStrategy.appId,
+        clientSecret: tokens.vkStrategy.secretKey,
         callbackURL:  `/auth/vkontakte/callback`
     },
     function(accessToken, refreshToken, params, profile, done) {
         users.findOrCreate({
             where: { provider: profile.provider, personal_id: profile.id.toString() },
-            defaults: { username: profile.username, provider: profile.provider, personal_id: profile.id.toString(), role: 3 }
+            defaults: { username: profile.displayName, provider: profile.provider, personal_id: profile.id.toString(), role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
@@ -61,8 +61,8 @@ passport.use(new VKontakteStrategy({
 
 // Facebook Strategy for authorization
 passport.use(new FacebookStrategy({
-        clientID: config.FacebookStrategy.appId,
-        clientSecret: config.FacebookStrategy.secretKey,
+        clientID: tokens.FacebookStrategy.appId,
+        clientSecret: tokens.FacebookStrategy.secretKey,
         callbackURL: `/auth/facebook/callback`
     },
     function(accessToken, refreshToken, params, profile, done) {
@@ -82,8 +82,8 @@ passport.use(new FacebookStrategy({
 
 // Twitter Strategy for authorization
 passport.use(new TwitterStrategy({
-        consumerKey: config.TwitterStrategy.consumerKey,
-        consumerSecret: config.TwitterStrategy.consumerSecret,
+        consumerKey: tokens.TwitterStrategy.consumerKey,
+        consumerSecret: tokens.TwitterStrategy.consumerSecret,
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, done) {
@@ -103,8 +103,8 @@ passport.use(new TwitterStrategy({
 
 // Google Strategy for authorization
 passport.use(new GoogleStrategy({
-        clientID: config.GoogleStrategy.clientID,
-        clientSecret: config.GoogleStrategy.clientSecret,
+        clientID: tokens.GoogleStrategy.clientID,
+        clientSecret: tokens.GoogleStrategy.clientSecret,
         callbackURL: '/auth/google/callback'
     },
     function(accessToken, refreshToken, profile, done) {

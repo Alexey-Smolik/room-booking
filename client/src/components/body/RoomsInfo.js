@@ -102,10 +102,10 @@ class RoomsInfo extends React.Component {
     	}
     };
 
-    issuesList(props) {
-		if(props) {
-			return props.map( (item, index) => {
-	    		return <div className="room-issue" key={index}> {item.description} </div>
+    issuesList(issues) {
+		if(issues) {
+			return issues.map( (issue) => {
+	    		return <div className="room-issue" key={issue.id}> {issue.description} </div>
 	    	});
 		}
     };
@@ -127,7 +127,9 @@ class RoomsInfo extends React.Component {
                         { this.carouselRender()}
                     </div>
                     <div className="room-desc-cont">
-                        <div className="room-description">Description: {this.props.selectedRoom.description}</div>
+                        <div className="room-description">Description: {this.props.selectedRoom.description}
+                        <p>Company address: {this.props.selectedRoom.company.address}</p>
+                        </div>
 
                         <div className="room-issues-container">
                             <div className="room-issues">Issues: { this.issuesList(this.props.issues) } </div>

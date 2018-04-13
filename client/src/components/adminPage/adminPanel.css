@@ -1579,6 +1579,7 @@ ol ol {
     line-height: 1.42857143;
     color: #333;
     white-space: nowrap;
+    font: 14px 'Tahoma';
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
@@ -1869,7 +1870,7 @@ img {
     page-break-inside: avoid;
 }
 img {
-    max-width: 100% !important;
+    /*max-width: 100% !important;*/
 }
 
 img {
@@ -1960,8 +1961,9 @@ img {
 }
 
 .label.label-danger {
+    font-family: 'Tahoma';
     height: 38px;
-    min-width: 45px;
+    min-width: 46px;
     border-radius: 0;
     color: white;
     margin-right: 10px;
@@ -1969,8 +1971,9 @@ img {
 }
 
 .label.label-success {
+    font-family: 'Tahoma';
     height: 38px;
-    min-width: 45px;
+    min-width: 46px;
     border-radius: 0;
     background-color: green;
     color: white;
@@ -1978,7 +1981,11 @@ img {
 }
 
 .label.label-danger:hover {
-    border-color: #122b40;
+    cursor: pointer;
+}
+
+.label.label-success:hover {
+    cursor: pointer;
 }
 
 #status {
@@ -1990,7 +1997,7 @@ label {
 }
 
 .control-label {
-    margin-right: 55px;
+    margin-right: 60px;
 }
 
 .admin {
@@ -2045,6 +2052,18 @@ h3 {
 .nav.nav-pills {
     border-radius: 0 !important;
 }
+
+.ril__image {
+
+}
+
+/*.ril-image-current.ril__image {
+    transform: none !important;
+}
+
+.ril-image-next.ril__imageNext.ril__image {
+    transform: none !important;
+}*/
 
 
 

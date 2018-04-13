@@ -22,3 +22,9 @@ yarn-error.log*
 
 .idea/
 .vscode/
+
+# dotenv environment variables file
+.env
+
+# tokens for strategies
+/constants/tokens.js

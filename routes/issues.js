@@ -33,7 +33,7 @@ routes.get('/:id', (req, res) => {
 
 // --- ADD NEW ISSUE ---
 routes.post('/', (req, res) => {
-    if(req.user.role === 1) {
+    if(req.user.role === 1 || req.user.role === 2) {
         issues.create(req.body)
             .then(issue => {
                 res.status(201).send(issue);
