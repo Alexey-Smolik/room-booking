@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { NotificationContainer } from 'react-notifications';
 import NavBar from './header/NavBar';
 import LeftNavBar from './body/LeftNavBar';
 import Calendar from './body/Calendar';
@@ -31,6 +32,8 @@ const App = () => (
                 </div>
             </div>
         </BrowserRouter>
+
+        <NotificationContainer/>
     </div>
 );
 

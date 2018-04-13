@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
-import { NotificationContainer } from 'react-notifications';
 import Footer from '../Footer/Footer';
 
 
@@ -193,7 +192,6 @@ class LeftNavBar extends Component {
 
                 </nav>
                 <Footer />
-                <NotificationContainer/>
 
             </aside>
 
