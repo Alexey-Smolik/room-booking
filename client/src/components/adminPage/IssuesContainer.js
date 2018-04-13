@@ -36,6 +36,11 @@ class IssuesContainer extends React.Component {
         let roomName = '';
         if(this.props.roomID) {
             roomID = this.props.roomID;
+            this.props.rooms.forEach((room) => {
+                if(room.id === Number(roomID) ) {
+                    roomName = room.name;
+                }
+            });
         } else {
             this.props.rooms.forEach((room) => {
                 if(room.name === this.state.roomName ) {
@@ -44,6 +49,7 @@ class IssuesContainer extends React.Component {
                 }
             });
         }
+
         const issueData = {
             description: this.state.description,
             active: true,
