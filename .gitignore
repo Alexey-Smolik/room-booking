@@ -26,5 +26,5 @@ yarn-error.log*
 # dotenv environment variables file
 .env
 
-# tokens
+# tokens for strategies
 .constants/tokens.js
