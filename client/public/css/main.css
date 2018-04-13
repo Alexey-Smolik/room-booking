@@ -568,6 +568,7 @@ a:hover {
 
 .the_issue {
     font-size: 14px;
+    color: #222;
 }
 
 .company {
@@ -688,6 +689,7 @@ a:hover {
 
 .room-issues-input {
     padding: 8px 0 0 10px;
+    margin-bottom: 20px;
 }
 
 .room-issues-input:focus {
