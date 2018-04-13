@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { createEvent, deleteEvent , editEvent } from "../../actions/index";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import {NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class Popup extends Component {
@@ -93,10 +93,6 @@ class Popup extends Component {
               case 'edit event':
                   NotificationManager.success('You successfully edited event!', 'Event', 3000);
                   break;
-              case 'delete event':
-                  NotificationManager.success('You successfully deleted event!', 'Event', 3000);
-                  break;
-
               case 'delete event':
                   NotificationManager.success('You successfully deleted event!', 'Event', 3000);
                   break;
