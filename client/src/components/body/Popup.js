@@ -158,7 +158,7 @@ class Popup extends Component {
     return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
-            {(this.props.editMode && this.userHaveAccess()) ?
+            {(this.props.editMode && this.userHaveAccess()) || (!this.props.editMode && this.userHaveAccess()) ?
                     <FormGroup controlId="formBasicText">
                         <ControlLabel>Username</ControlLabel>
                         <FormControl
