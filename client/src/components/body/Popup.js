@@ -85,7 +85,7 @@ class Popup extends Component {
       return () => {
           switch (type) {
               case 'date':
-                  NotificationManager.warning('There is event on this date!', 'Date', 3000);
+                  NotificationManager.warning('Sorry, this room is already booked for this date!', 'Date', 3000);
                   break;
               case 'add event':
                   NotificationManager.success('You successfully added event!', 'Event', 3000);
@@ -102,7 +102,7 @@ class Popup extends Component {
                   break;
 
               case 'start end date':
-                  NotificationManager.warning('Start date cannot be more then end date!', 'Event', 3000);
+                  NotificationManager.warning('Incorrect data value! Please select the start date before the end date!', 'Event', 3000);
                   break;
 
 
