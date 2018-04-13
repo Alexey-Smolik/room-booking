@@ -7,6 +7,7 @@ import {getCompanies, getRooms, getRoomsByDate} from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import {Link} from 'react-router-dom';
 
+
 // Imports in Header.js, changing rooms state and change it back.
 
 class SearchEmptyRoom extends Component {
@@ -27,9 +28,13 @@ class SearchEmptyRoom extends Component {
     this.createNotification = this.createNotification.bind(this);
   }
 
+
+
+
     createNotification = (type) => {
         return () => {
             switch (type) {
+
                 case 'empty date':
                     NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
                     break;
@@ -45,6 +50,8 @@ class SearchEmptyRoom extends Component {
 
 
   submitHandler(e) {
+      // e.preventDefault();
+      console.log(this.state.startDate);
       if(this.state.startDate) {
           let start = new Date(this.state.startDate._d);
           let end = this.state.endDate ? new Date(this.state.endDate._d) : start;
@@ -150,13 +157,10 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-                <button  className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>
-
-                {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
-                <Link className="link_search_to_btn" to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
+                <Link to={'/room/'} onClick={() => this.submitHandler()} style={{float: 'right'}}>Search</Link>
+                <Link to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
             </div>
           </div>
-
         </div>
     );
   }

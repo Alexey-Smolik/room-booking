@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeMode, getRoomsByPM, getEventsByPM, addPMId } from '../../actions';
+import moment from 'moment';
+import {Link} from 'react-router-dom';
+import { changeMode, getRoomsByPM, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 
 
@@ -20,11 +22,17 @@ class SearchUser extends React.Component {
         this.setState({selectedOption});
     };
 
-    changeMode = () => {
+    cancelSearch = () => {
         this.props.dispatch(changeMode());
+        this.props.dispatch(getRooms());
+        this.setState({ selectedOption: ''});
     };
 
     handleSelect = (e) => {
+        this.props.dispatch(changeMode("PM_SEARCH"));
+        this.props.dispatch(addPMId(this.state.selectedOption.value));
+        this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
+        //this.props.dispatch(getEventsByPM(this.state.selectedOption.value));
         e.preventDefault();
 
         if(typeof this.state.selectedOption === 'string') this.createNotification('empty pm')();
@@ -73,8 +81,9 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <button onClick={this.handleSelect} style={{float: 'right'}}>Search</button>
-                <button onClick={this.changeMode} style={{float: 'right'}}>Cancel</button>
+                <Link to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
+                <Link to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
+
             </div>
 
         );

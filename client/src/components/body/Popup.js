@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { createEvent, deleteEvent , editEvent } from "../../actions/index";
-import {NotificationManager} from 'react-notifications';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
 
 class Popup extends Component {
@@ -96,9 +96,16 @@ class Popup extends Component {
               case 'delete event':
                   NotificationManager.success('You successfully deleted event!', 'Event', 3000);
                   break;
-              case 'start end date':
-                  NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
+
+              case 'delete event':
+                  NotificationManager.success('You successfully deleted event!', 'Event', 3000);
                   break;
+
+              case 'start end date':
+                  NotificationManager.warning('Start date cannot be more the end date!', 'Event', 3000);
+                  break;
+
+
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
 
@@ -133,7 +140,10 @@ class Popup extends Component {
   };
 
   userHaveAccess = () => {
-      if (this.props.user.currentUser.role === 1) {
+      console.log(this.props.roomID);
+      if(this.props.roomID == 'all') {
+          return false;
+      }else if (this.props.user.currentUser.role === 1) {
           return true
       } else if (this.props.user.currentUser.role === 2) {
           if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
