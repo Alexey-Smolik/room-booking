@@ -183,6 +183,7 @@ class LeftNavBar extends Component {
                         </Link>
                         {this.renderMenu()}
                         {this.state.mouseEvent ?  <RoomsInfo
+                            userRole = {this.props.user.currentUser.role}
                             selectedRoom={this.state.mouseEvent}
                             handleMouseEvent={this.handleMouseEvent}
                             issues = {this.props.issues}

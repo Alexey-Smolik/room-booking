@@ -112,7 +112,7 @@ class RoomsInfo extends React.Component {
 
     carouselRender() {
       if(!this.props.selectedRoom.images.length)
-      	return [];
+      	return  <img className="room-image" alt="image" src='http://staging1.avenuemagazine.com/wp-content/themes/avenue-magazine-new/images/no-image-available.png'/>;
       else if(this.props.selectedRoom.images.length === 1)
       	return <img className="room-image" alt="image" src={this.props.selectedRoom.images[0].url} />;
 	  else
@@ -130,13 +130,12 @@ class RoomsInfo extends React.Component {
 						<div className="room-description"><span className="selection">Description:</span> {this.props.selectedRoom.description}
 							<p className="company"><span className="selection">Company address:</span> {this.props.selectedRoom.company.address}</p>
                         </div>
-
                         <div className="room-issues-container">
-							<div className="room-issues"><span className="selection">Issues:</span> { this.issuesList(this.props.issues) } </div>
-                            <div className="room-issues-form">
+                            <div className="room-issues"><span className="selection">Issues:</span> { this.issuesList(this.props.issues) } </div>
+                            {this.props.userRole !== 3 &&<div className="room-issues-form">
                                 <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
-                                <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
-                            </div>
+                                <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Add issue</button>
+                            </div>}
                         </div>
                     </div>
                 </div>
