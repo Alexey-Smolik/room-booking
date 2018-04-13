@@ -27,17 +27,17 @@ class SearchEmptyRoom extends Component {
     this.createNotification = this.createNotification.bind(this);
   }
 
-
-
-
     createNotification = (type) => {
         return () => {
             switch (type) {
                 case 'empty date':
-                    NotificationManager.error('Date cannot be empty!', 'Event', 3000);
+                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
                     break;
                 case 'search':
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
+                case 'start end date':
+                    NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
                     break;
             }
         };
@@ -45,8 +45,6 @@ class SearchEmptyRoom extends Component {
 
 
   submitHandler(e) {
-      // e.preventDefault();
-      console.log(this.state.startDate);
       if(this.state.startDate) {
           let start = new Date(this.state.startDate._d);
           let end = this.state.endDate ? new Date(this.state.endDate._d) : start;
@@ -56,12 +54,12 @@ class SearchEmptyRoom extends Component {
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
 
-          this.createNotification('search')();
-          this.props.dispatch(getRoomsByDate(start, end));
-          this.props.dispatch(getCompanies());
-
+          if(start < end) {
+              this.createNotification('search')();
+              this.props.dispatch(getRoomsByDate(start, end));
+              this.props.dispatch(getCompanies());
+          } else this.createNotification('start end date')();
       } else {
-          console.log(123);
           this.createNotification('empty date')()
       }
   }

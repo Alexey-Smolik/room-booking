@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import { changeMode, getRoomsByPM, getEventsByPM, addPMId } from '../../actions';
+import {NotificationManager} from 'react-notifications';
 
 
 import "react-select/dist/react-select.css";
@@ -28,10 +28,15 @@ class SearchUser extends React.Component {
 
     handleSelect = (e) => {
         e.preventDefault();
-        this.props.dispatch(changeMode("PM_SEARCH"));
-        this.props.dispatch(addPMId(this.state.selectedOption.value));
-        this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
-        //this.props.dispatch(getEventsByPM(this.state.selectedOption.value));
+
+        if(typeof this.state.selectedOption === 'string') this.createNotification('empty pm')();
+        else if(typeof this.state.selectedOption === 'object' && !this.state.selectedOption) this.createNotification('empty pm')();
+        else {
+            this.props.dispatch(changeMode("PM_SEARCH"));
+            this.props.dispatch(addPMId(this.state.selectedOption.value));
+            this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
+            this.createNotification('search')();
+        }
     };
 
     getOptions = () => {
@@ -44,7 +49,18 @@ class SearchUser extends React.Component {
         })
     };
 
-
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'search':
+                    NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
+                case 'empty pm':
+                    NotificationManager.warning('Manager cannot be empty!', 'Event', 3000);
+                    break;
+            }
+        };
+    };
 
     render() {
         const {selectedOption} = this.state;
@@ -59,7 +75,7 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <button onClick={this.handleSelect} style={{float: 'right'}}>Ok</button>
+                <button onClick={this.handleSelect} style={{float: 'right'}}>Search</button>
                 <button onClick={this.changeMode} style={{float: 'right'}}>Cancel</button>
             </div>
 

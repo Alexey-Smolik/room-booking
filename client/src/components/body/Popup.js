@@ -96,16 +96,9 @@ class Popup extends Component {
               case 'delete event':
                   NotificationManager.success('You successfully deleted event!', 'Event', 3000);
                   break;
-
-              case 'delete event':
-                  NotificationManager.success('You successfully deleted event!', 'Event', 3000);
-                  break;
-
               case 'start end date':
-                  NotificationManager.warning('Start date cannot be more the end date!', 'Event', 3000);
+                  NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
                   break;
-
-
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
 
