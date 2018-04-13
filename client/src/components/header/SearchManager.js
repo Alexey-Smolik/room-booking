@@ -36,13 +36,13 @@ class SearchEmptyRoom extends Component {
             switch (type) {
 
                 case 'empty date':
-                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
+                    NotificationManager.warning('Date cannot be empty!Please, fill the fields!', 'Event', 3000);
                     break;
                 case 'search':
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
                     break;
                 case 'start end date':
-                    NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
+                    NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                     break;
             }
         };
