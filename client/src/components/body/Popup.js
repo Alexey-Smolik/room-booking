@@ -102,7 +102,7 @@ class Popup extends Component {
                   NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                   break;
               case 'wrong values':
-                  NotificationManager.error('Please, fill in the fields!', 'Event', 3000);
+                  NotificationManager.error('Please, fill the fields!', 'Event', 3000);
                   break;
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);

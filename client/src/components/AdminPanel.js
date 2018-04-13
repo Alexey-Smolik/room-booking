@@ -16,6 +16,7 @@ import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
+import Header from './header/Header';
 import './adminPage/adminPanel.css';
 
 class AdminPanel extends React.Component {
@@ -27,7 +28,9 @@ class AdminPanel extends React.Component {
 
     render() {
         return (
+
             <div style={{ width: "100%" }}>
+                <Header />
 
                 <Nav bsStyle="pills">
                     <LinkContainer to="/adminPanel/companies/">

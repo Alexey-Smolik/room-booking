@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import LoginSection from './LoginSection';
 import SearchManager from './SearchManager';
 import SearchUser from './SearchUser';
-import Header from './Header';
 import {deleteCurrentUser, getManagers} from "../../actions";
 import {NotificationManager} from "react-notifications";
 
@@ -31,7 +30,6 @@ class NavBar extends React.Component {
                     currentUser && <SearchUser users={managers} />
                 }
                 {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
-                <Header/>
             </div>
         );
     }

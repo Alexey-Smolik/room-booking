@@ -10,6 +10,7 @@ import AuthComponent from './body/AuthComponent';
 import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
 import HelloAdmin from './HelloAdmin';
+import Header from './header/Header';
 
 
 
@@ -18,6 +19,7 @@ const App = () => (
         <BrowserRouter>
             <div>
                 <NavBar />
+                <Route exact path="/" component={Header} />
                 <Route exact path="/" component={AuthComponent} />
                 <div className="bodyWrapper">
                     <Route path="/room" component={LeftNavBar} />
