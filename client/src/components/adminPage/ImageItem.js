@@ -22,7 +22,7 @@ class ImageItem extends React.Component {
     }
     render() {
         let {photoIndex, isLightboxOpen, isMouseEnter} = this.state;
-        let imagesUrl = this.props.images.forEach((image) => {
+        let imagesUrl = this.props.images.map((image) => {
             return image.url
         });
         return (
