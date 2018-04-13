@@ -27,6 +27,9 @@ class SearchEmptyRoom extends Component {
     this.createNotification = this.createNotification.bind(this);
   }
 
+
+
+
     createNotification = (type) => {
         return () => {
             switch (type) {
@@ -149,10 +152,10 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-                <Link className="link_search_to_btn" to={'/room/'} onClick={(e) => this.submitHandler(e)}>Search</Link>
-              {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
-              <button className="filter_btn" onClick={() => this.props.dispatch(getRooms())}>Cancel</button>
+                <button  onClick={(e) => this.submitHandler(e)}>Search</button>
 
+                {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
+                <Link to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
             </div>
           </div>
 
