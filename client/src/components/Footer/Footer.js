@@ -3,7 +3,7 @@ import React from 'react';
 const Footer  = () => {
 
     return(
-        <div id="footer">
+        <div  className="footer_on_auth">
             <div className="footer_block">
                 <img className="img_logo" src={"/images/logo1.png"} alt={"logo"} />
             </div>

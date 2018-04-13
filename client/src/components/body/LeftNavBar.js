@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
 import { NotificationContainer } from 'react-notifications';
+import Footer from '../Footer/Footer';
 
 
 import {
@@ -187,10 +188,12 @@ class LeftNavBar extends Component {
                             handleMouseEvent={this.handleMouseEvent}
                             issues = {this.props.issues}
                         /> : []}
-                    </ul>
-                </nav>
-                <NotificationContainer/>
 
+                    </ul>
+
+                </nav>
+                <Footer />
+                <NotificationContainer/>
 
             </aside>
 

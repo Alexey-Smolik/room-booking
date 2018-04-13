@@ -25,8 +25,8 @@ const App = () => (
                     <Route path="/allevents" component={Calendar} />
                     <Switch>
                         <Route path="/adminPanel" component={AdminPanel} />
-                        <Route  component={Footer} />
                     </Switch>
+                    <Route exact path="/" component={Footer}  />
                     <Route exact path="/adminPanel" component={HelloAdmin} />
                 </div>
             </div>

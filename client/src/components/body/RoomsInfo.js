@@ -127,12 +127,12 @@ class RoomsInfo extends React.Component {
                         { this.carouselRender()}
                     </div>
                     <div className="room-desc-cont">
-                        <div className="room-description">Description: {this.props.selectedRoom.description}
-                        <p className="company">Company address: {this.props.selectedRoom.company.address}</p>
+						<div className="room-description"><span className="selection">Description:</span> {this.props.selectedRoom.description}
+							<p className="company"><span className="selection">Company address:</span> {this.props.selectedRoom.company.address}</p>
                         </div>
 
                         <div className="room-issues-container">
-                            <div className="room-issues">Issues: { this.issuesList(this.props.issues) } </div>
+							<div className="room-issues"><span className="selection">Issues:</span> { this.issuesList(this.props.issues) } </div>
                             <div className="room-issues-form">
                                 <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
                                 <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Ok</button>
