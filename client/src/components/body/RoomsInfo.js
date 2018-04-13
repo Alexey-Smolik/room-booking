@@ -112,7 +112,7 @@ class RoomsInfo extends React.Component {
 
     carouselRender() {
       if(!this.props.selectedRoom.images.length)
-      	return  <img className="room-image" alt="image" src='http://staging1.avenuemagazine.com/wp-content/themes/avenue-magazine-new/images/no-image-available.png'/>;
+      	return  <img className="room-image" alt="image" src='/images/no-image-available.png'/>;
       else if(this.props.selectedRoom.images.length === 1)
       	return <img className="room-image" alt="image" src={this.props.selectedRoom.images[0].url} />;
 	  else
