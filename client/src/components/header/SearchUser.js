@@ -12,7 +12,6 @@ import Select from 'react-select';
 
 
 class SearchUser extends React.Component {
-
     state = {
         selectedOption: '',
     };
@@ -24,7 +23,6 @@ class SearchUser extends React.Component {
     changeMode = () => {
         this.props.dispatch(changeMode());
     };
-
 
     handleSelect = (e) => {
         e.preventDefault();

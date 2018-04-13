@@ -181,6 +181,7 @@ class Calendar extends React.Component {
             };
         }));
         }
+
         return (
             <div className="calendar-cont">
                 <React.Fragment>

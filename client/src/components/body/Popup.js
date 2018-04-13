@@ -148,61 +148,100 @@ class Popup extends Component {
     return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
-          <FormGroup controlId="formBasicText">
-            <ControlLabel>Username</ControlLabel>
-            <FormControl
-              type="text"
-              disabled
-              value= { this.props.editMode ? this.state.username : this.props.user.currentUser.username }
-            />
-            <ControlLabel>Title</ControlLabel>
-            <FormControl
-              type="text"
-              value={this.state.title}
-              disabled = {!this.userHaveAccess()}
-              onChange={this.handleChangeTitle}
-            />
-            <ControlLabel>Description</ControlLabel>
-            <textarea
-              value={this.state.description}
-              disabled = {!this.userHaveAccess()}
-              onChange={this.handleChangeDesc}
-            />
+            {(this.props.editMode && this.userHaveAccess()) ?
+                    <FormGroup controlId="formBasicText">
+                        <ControlLabel>Username</ControlLabel>
+                        <FormControl
+                            type="text"
+                            disabled
+                            value= { this.props.editMode ? this.state.username : this.props.user.currentUser.username }
+                        />
 
-            <div id="date_to">
-              <DatePicker
-                readOnly
-                selected={this.state.startDate}
-                disabled = {!this.userHaveAccess()}
-                onChange={e => this.handleChangeDate(e, true)}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={30}
-                dateFormat="LLL"
-                timeCaption="time"
-              />
-            </div>
-            <DatePicker
-              readOnly
-              selected={this.state.endDate}
-              disabled = {!this.userHaveAccess()}
-              onChange={e => this.handleChangeDate(e, false)}
-              showTimeSelect
-              timeFormat="HH:mm"
-              timeIntervals={30}
-              dateFormat="LLL"
-              timeCaption="time"
-            />
+                        <ControlLabel>Title</ControlLabel>
+                        <FormControl
+                            type="text"
+                            value={this.state.title}
+                            onChange={this.handleChangeTitle}
+                        />
 
-            <div id="form_button">
-                {this.userHaveAccess() && <Button id="del_canc" type="submit">Confirm</Button>}
-                { (this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
-                <Button id="del_canc"  onClick={this.props.closePopup}>{this.userHaveAccess() }Close</Button>
-            </div>
-          </FormGroup>
+                        <ControlLabel>Description</ControlLabel>
+                        <textarea
+                            value={this.state.description}
+                            onChange={this.handleChangeDesc}
+                        />
 
+                        <div id="date_to">
+                            <DatePicker
+                                readOnly
+                                selected={this.state.startDate}
+                                onChange={e => this.handleChangeDate(e, true)}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={30}
+                                dateFormat="LLL"
+                                timeCaption="time"
+                            />
+                        </div>
+
+                        <DatePicker
+                            readOnly
+                            selected={this.state.endDate}
+                            onChange={e => this.handleChangeDate(e, false)}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={30}
+                            dateFormat="LLL"
+                            timeCaption="time"
+                        />
+
+                        <div id="form_button">
+                            {<Button id="del_canc" type="submit">Confirm</Button>}
+                            { <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> }
+                            <Button id="del_canc"  onClick={this.props.closePopup}>Close</Button>
+                        </div>
+                    </FormGroup>
+                    :
+                    <FormGroup controlId="formBasicText">
+                        <ControlLabel>Username</ControlLabel>
+                        <div>{ this.props.editMode ? this.state.username : this.props.user.currentUser.username }</div>
+
+                        <ControlLabel>Title</ControlLabel>
+                        <div>{this.state.title}</div>
+
+                        <ControlLabel>Description</ControlLabel>
+                        <div>{this.state.description}</div>
+
+                        <div id="date_to">
+                            <DatePicker
+                                disabled={true}
+                                readOnly
+                                selected={this.state.startDate}
+                                onChange={e => this.handleChangeDate(e, true)}
+                                showTimeSelect
+                                timeFormat="HH:mm"
+                                timeIntervals={30}
+                                dateFormat="LLL"
+                                timeCaption="time"
+                            />
+                        </div>
+
+                        <DatePicker
+                            disabled={true}
+                            readOnly
+                            selected={this.state.endDate}
+                            onChange={e => this.handleChangeDate(e, false)}
+                            showTimeSelect
+                            timeFormat="HH:mm"
+                            timeIntervals={30}
+                            dateFormat="LLL"
+                            timeCaption="time"
+                        />
+
+                        <div id="form_button">
+                            <Button id="del_canc"  onClick={this.props.closePopup}>Close</Button>
+                        </div>
+                    </FormGroup> }
         </form>
-
       </div>
 
     );
