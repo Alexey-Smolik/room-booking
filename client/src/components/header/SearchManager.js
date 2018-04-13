@@ -7,7 +7,6 @@ import {getCompanies, getRooms, getRoomsByDate} from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import {Link} from 'react-router-dom';
 
-
 // Imports in Header.js, changing rooms state and change it back.
 
 class SearchEmptyRoom extends Component {
@@ -31,14 +30,12 @@ class SearchEmptyRoom extends Component {
     createNotification = (type) => {
         return () => {
             switch (type) {
-
                 case 'empty date':
-                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
+                    NotificationManager.error('Date cannot be empty!', 'Event', 3000);
                     break;
-
-                default:
-                    NotificationManager.warning('Smth wrong with server!', 'Event', 3000);
-
+                case 'search':
+                    NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
             }
         };
     };
@@ -55,10 +52,13 @@ class SearchEmptyRoom extends Component {
           end = this.state.endDate ?
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
+
+          this.createNotification('search')();
           this.props.dispatch(getRoomsByDate(start, end));
           this.props.dispatch(getCompanies());
 
       } else {
+          console.log(123);
           this.createNotification('empty date')()
       }
   }
@@ -68,7 +68,7 @@ class SearchEmptyRoom extends Component {
     if(this.state.stateChange === true) {
        if(this.props.user.allUsers) {
 
-        var arr = this.props.user.allUsers.filter( (item) => {
+        let arr = this.props.user.allUsers.filter( (item) => {
           if(item.role < 3) {
             return item
           }
@@ -101,7 +101,7 @@ class SearchEmptyRoom extends Component {
   }
 
   handleSelect() {
-      console.log(this.state.stateChange)
+      console.log(this.state.stateChange);
       console.log(this.props)
   }
 
@@ -155,6 +155,7 @@ class SearchEmptyRoom extends Component {
 
             </div>
           </div>
+
         </div>
     );
   }

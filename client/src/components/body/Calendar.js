@@ -217,7 +217,6 @@ class Calendar extends React.Component {
                 <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
 
-                <NotificationContainer/>
             </div>
         );
     }
