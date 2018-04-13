@@ -81,8 +81,8 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <Link to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
-                <Link to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
 
             </div>
 

@@ -172,7 +172,7 @@ h1 {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Tahoma';
+    font-family: 'Noto Sans';
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
@@ -184,6 +184,10 @@ h1 {
     text-decoration: none;
     color: #ffffff;
     background: #D32F2F;
+}
+
+.Select.is-clearable.is-searchable.Select--single {
+    margin-right: 15px;
 }
 
     /*hello-form */
