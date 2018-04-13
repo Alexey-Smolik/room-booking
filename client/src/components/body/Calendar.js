@@ -148,13 +148,13 @@ class Calendar extends React.Component {
         return () => {
             switch (type) {
                 case 'role':
-                    NotificationManager.error('You do not have permission to create an event!', 'Role', 3000);
+                    NotificationManager.error('You do not have permissions to create an event!', 'Role', 3000);
                     break;
                 case 'date':
                     NotificationManager.error('Sorry, this room is already booked for this date', 'Date', 3000);
                     break;
                 case 'all events':
-                    NotificationManager.error('You can not add event while "all events" is open', 'Events', 3000);
+                    NotificationManager.error('You cannot add event while "all events" is open', 'Events', 3000);
                     break;
             }
         };
