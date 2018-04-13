@@ -11,7 +11,6 @@ class IssueItem extends React.Component {
         super(props);
         this.state = {
             description: this.props.description,
-            roomName: this.props.roomName,
             active: this.props.active,
             isFieldEditing: false,
             btnText: 'Edit',
@@ -73,8 +72,8 @@ class IssueItem extends React.Component {
     }
 
     render() {
-        const {id, roomID} = this.props;
-        const { description, roomName, active, isFieldEditing, btnText} = this.state;
+        const {id, roomID, roomName} = this.props;
+        const { description, active, isFieldEditing, btnText} = this.state;
         return (
             <form onSubmit={(e)=> {this.changeIssueData(e,id)}} style={{display:  'flex'}}>
                 <FormControl  type="text" value={description} onChange={(e) => this.onIssueDescriptionChange(e)} disabled={!isFieldEditing} required/>
