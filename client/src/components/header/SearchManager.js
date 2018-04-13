@@ -7,6 +7,7 @@ import {getCompanies, getRooms, getRoomsByDate} from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import {Link} from 'react-router-dom';
 
+
 // Imports in Header.js, changing rooms state and change it back.
 
 class SearchEmptyRoom extends Component {
@@ -33,11 +34,15 @@ class SearchEmptyRoom extends Component {
     createNotification = (type) => {
         return () => {
             switch (type) {
+
                 case 'empty date':
-                    NotificationManager.error('Date cannot be empty!', 'Event', 3000);
+                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
                     break;
                 case 'search':
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
+                case 'start end date':
+                    NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
                     break;
             }
         };
@@ -56,12 +61,12 @@ class SearchEmptyRoom extends Component {
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
 
-          this.createNotification('search')();
-          this.props.dispatch(getRoomsByDate(start, end));
-          this.props.dispatch(getCompanies());
-
+          if(start < end) {
+              this.createNotification('search')();
+              this.props.dispatch(getRoomsByDate(start, end));
+              this.props.dispatch(getCompanies());
+          } else this.createNotification('start end date')();
       } else {
-          console.log(123);
           this.createNotification('empty date')()
       }
   }
@@ -152,13 +157,10 @@ class SearchEmptyRoom extends Component {
               />
             </div>
             <div className="buttons_filter">
-                <button  className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>
-
-                {/*<button className="filter_btn" onClick={(e) => this.submitHandler(e)}>Search</button>*/}
-                <Link className="link_search_to_btn" to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
+                <Link to={'/room/'} onClick={() => this.submitHandler()} style={{float: 'right'}}>Search</Link>
+                <Link to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
             </div>
           </div>
-
         </div>
     );
   }

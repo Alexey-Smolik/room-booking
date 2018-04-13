@@ -23,7 +23,6 @@ class NavBar extends React.Component {
         let user =  this.props.user || null;
         let {managers, currentUser} = this.props.user || null;
         let role = this.props.role;
-        console.log(role);
         return (
             <div className="reactHeader">
                 {(role < 3 ) ?

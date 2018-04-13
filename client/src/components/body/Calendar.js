@@ -161,6 +161,8 @@ class Calendar extends React.Component {
     };
 
     render() {
+        let { roomID } = this.props.match.params;
+
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
 
@@ -181,6 +183,7 @@ class Calendar extends React.Component {
             };
         }));
         }
+
         return (
             <div className="calendar-cont">
                 <React.Fragment>
@@ -216,7 +219,6 @@ class Calendar extends React.Component {
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                 <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
-
             </div>
         );
     }

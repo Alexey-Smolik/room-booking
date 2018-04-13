@@ -87,9 +87,10 @@ passport.use(new TwitterStrategy({
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, done) {
+        console.log(profile);
         users.findOrCreate({
-            where: { provider: 'twitter', personal_id: profile.user_id },
-            defaults: { username: profile.screen_name, provider: 'twitter', personal_id: profile.user_id, role: 3 }
+            where: { provider: 'twitter', personal_id: profile.id },
+            defaults: { username: profile.displayName, provider: 'twitter', personal_id: profile.id, role: 3 }
         })
             .then(user => {
                 if (!user) return done(null, false);
@@ -122,7 +123,7 @@ passport.use(new GoogleStrategy({
     }
 ));
 
-//bssUKO90+!xmcsUOIQ649?(
+// Microsoft strategy for authorization
 passport.use(new MicrosoftStrategy({
         clientID: 'd0ebcad6-dcb2-4be3-af26-38875f47d51e',
         clientSecret: 'bssUKO90+!xmcsUOIQ649?(',
