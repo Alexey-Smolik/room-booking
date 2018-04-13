@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import {changeMode, getRoomsByPM, getEventsByPM, addPMId, getRooms} from '../../actions';
 import {Link} from 'react-router-dom';
+import { changeMode, getRoomsByPM, getEventsByPM, addPMId } from '../../actions';
+import {NotificationManager} from 'react-notifications';
 
 
 import "react-select/dist/react-select.css";
@@ -22,7 +24,7 @@ class SearchUser extends React.Component {
         this.setState({selectedOption});
     };
 
-    cancelSearch = () => {
+    changeMode = () => {
         this.props.dispatch(changeMode());
         this.props.dispatch(getRooms());
         this.setState({ selectedOption: ''});
@@ -34,6 +36,16 @@ class SearchUser extends React.Component {
         this.props.dispatch(addPMId(this.state.selectedOption.value));
         this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
         //this.props.dispatch(getEventsByPM(this.state.selectedOption.value));
+        e.preventDefault();
+
+        if(typeof this.state.selectedOption === 'string') this.createNotification('empty pm')();
+        else if(typeof this.state.selectedOption === 'object' && !this.state.selectedOption) this.createNotification('empty pm')();
+        else {
+            this.props.dispatch(changeMode("PM_SEARCH"));
+            this.props.dispatch(addPMId(this.state.selectedOption.value));
+            this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
+            this.createNotification('search')();
+        }
     };
 
     getOptions = () => {
@@ -46,7 +58,18 @@ class SearchUser extends React.Component {
         })
     };
 
-
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'search':
+                    NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
+                case 'empty pm':
+                    NotificationManager.warning('Manager cannot be empty!', 'Event', 3000);
+                    break;
+            }
+        };
+    };
 
     render() {
         const {selectedOption} = this.state;
@@ -55,7 +78,6 @@ class SearchUser extends React.Component {
         return (
             <div className="pm-search" style={{width: "500px", margin: "15px"}}>
                 {options && <Select
-                    clearable={false}
                     style={{width: "450px", float: "left"}}
                     name="form-field-name"
                     value={value}

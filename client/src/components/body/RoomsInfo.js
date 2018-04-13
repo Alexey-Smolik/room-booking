@@ -128,7 +128,7 @@ class RoomsInfo extends React.Component {
                     </div>
                     <div className="room-desc-cont">
                         <div className="room-description">Description: {this.props.selectedRoom.description}
-                        <p>Company address: {this.props.selectedRoom.company.address}</p>
+                        <p className="company">Company address: {this.props.selectedRoom.company.address}</p>
                         </div>
 
                         <div className="room-issues-container">

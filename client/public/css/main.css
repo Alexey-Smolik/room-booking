@@ -177,7 +177,6 @@ h1 {
     font-size: 14px;
     text-align: center;
     padding: 7px 5px 5px 5px;
-    margin-right: 15px;
 }
 
 .link_search_to_btn:hover {
@@ -556,6 +555,10 @@ a:hover {
 
 
 /* info-window & info-button */
+
+.company {
+    margin-top: 20px;
+}
 
 .info-show {
     /*margin-right: 15px;*/

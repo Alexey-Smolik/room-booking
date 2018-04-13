@@ -206,8 +206,8 @@ class Popup extends Component {
 
             <div id="form_button">
                 {this.userHaveAccess() && <Button id="del_canc" type="submit">Confirm</Button>}
-                {(this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
-                <Button id="del_canc"  onClick={this.props.closePopup}>{this.userHaveAccess() ? 'Cancel' : 'Close'}</Button>
+                { (this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
+                <Button id="del_canc"  onClick={this.props.closePopup}>{this.userHaveAccess() }Close</Button>
             </div>
           </FormGroup>
 

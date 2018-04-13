@@ -38,10 +38,12 @@ class SearchEmptyRoom extends Component {
                 case 'empty date':
                     NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
                     break;
-
-                default:
-                    NotificationManager.warning('Smth wrong with server!', 'Event', 3000);
-
+                case 'search':
+                    NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    break;
+                case 'start end date':
+                    NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
+                    break;
             }
         };
     };
@@ -58,9 +60,12 @@ class SearchEmptyRoom extends Component {
           end = this.state.endDate ?
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes()) :
               new Date(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), 30 + end.getMinutes());
-          this.props.dispatch(getRoomsByDate(start, end));
-          this.props.dispatch(getCompanies());
 
+          if(start < end) {
+              this.createNotification('search')();
+              this.props.dispatch(getRoomsByDate(start, end));
+              this.props.dispatch(getCompanies());
+          } else this.createNotification('start end date')();
       } else {
           this.createNotification('empty date')()
       }
@@ -71,7 +76,7 @@ class SearchEmptyRoom extends Component {
     if(this.state.stateChange === true) {
        if(this.props.user.allUsers) {
 
-        var arr = this.props.user.allUsers.filter( (item) => {
+        let arr = this.props.user.allUsers.filter( (item) => {
           if(item.role < 3) {
             return item
           }
@@ -104,7 +109,7 @@ class SearchEmptyRoom extends Component {
   }
 
   handleSelect() {
-      console.log(this.state.stateChange)
+      console.log(this.state.stateChange);
       console.log(this.props)
   }
 
