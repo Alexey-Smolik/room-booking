@@ -167,6 +167,7 @@ class ControlledCarousel extends React.Component {
 
   renderItem() {
   	return this.props.images.map( (item, index) => {
+  		console.log(item.url, 'url')
   		return(
   			<Carousel.Item key={item.id}>
 	          <img key={index+item.id} className="room-image" width={900} height={500} alt="900x500" src={item.url} />
