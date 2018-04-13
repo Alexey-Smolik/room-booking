@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import {changeMode, getRoomsByPM, getEventsByPM, addPMId, getRooms} from '../../actions';
 import {Link} from 'react-router-dom';
-import { changeMode, getRoomsByPM, getEventsByPM, addPMId } from '../../actions';
+import { changeMode, getRoomsByPM, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 
 
@@ -24,7 +23,7 @@ class SearchUser extends React.Component {
         this.setState({selectedOption});
     };
 
-    changeMode = () => {
+    cancelSearch = () => {
         this.props.dispatch(changeMode());
         this.props.dispatch(getRooms());
         this.setState({ selectedOption: ''});

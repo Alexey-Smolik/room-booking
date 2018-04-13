@@ -140,8 +140,8 @@ class Popup extends Component {
   };
 
   userHaveAccess = () => {
-      console.log(this.props.allEvents);
-      if(this.props.allEvents == 'all') {
+      console.log(this.props.roomID);
+      if(this.props.roomID == 'all') {
           return false;
       }else if (this.props.user.currentUser.role === 1) {
           return true
