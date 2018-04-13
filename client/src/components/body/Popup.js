@@ -42,33 +42,35 @@ class Popup extends Component {
         end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
        if(start < end) {
-
            if (this.props.dateFilter({
                start: this.state.startDate._d,
                end: this.state.endDate._d
            }, this.props.event.id)) {
-               const event = {
-                   name: this.state.title,
-                   description: this.state.description,
-                   date_from: start,
-                   date_to: end,
-                   id: this.props.event.id,
-                   roomId: this.props.roomID,
-                   userId: this.props.user.currentUser.id,
-                   username: this.props.user.currentUser.username
-               };
+               if(this.state.title){
+                   const event = {
+                       name: this.state.title,
+                       description: this.state.description,
+                       date_from: start,
+                       date_to: end,
+                       id: this.props.event.id,
+                       roomId: this.props.roomID,
+                       userId: this.props.user.currentUser.id,
+                       username: this.props.user.currentUser.username
+                   };
 
 
-               if (this.props.editMode) {
-                   this.props.dispatch(editEvent(this.props.event.id, event));
-                   this.createNotification('edit event')();
-                   this.props.closePopup();
+                   if (this.props.editMode) {
+                       this.props.dispatch(editEvent(this.props.event.id, event));
+                       this.createNotification('edit event')();
+                       this.props.closePopup();
 
-               } else {
-                   this.props.dispatch(createEvent(event));
-                   this.createNotification('add event')();
-                   this.props.closePopup();
+                   } else {
+                       this.props.dispatch(createEvent(event));
+                       this.createNotification('add event')();
+                       this.props.closePopup();
+                   }
                }
+               else this.createNotification('wrong values')();
            } else {
                (this.createNotification('date')());
            }
@@ -96,12 +98,12 @@ class Popup extends Component {
               case 'delete event':
                   NotificationManager.success('You successfully deleted event!', 'Event', 3000);
                   break;
-
               case 'start end date':
                   NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                   break;
-
-
+              case 'wrong values':
+                  NotificationManager.error('Please, fill in the fields!', 'Event', 3000);
+                  break;
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
 
