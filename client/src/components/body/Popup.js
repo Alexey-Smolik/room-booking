@@ -140,7 +140,10 @@ class Popup extends Component {
   };
 
   userHaveAccess = () => {
-      if (this.props.user.currentUser.role === 1) {
+      console.log(this.props.allEvents);
+      if(this.props.allEvents == 'all') {
+          return false;
+      }else if (this.props.user.currentUser.role === 1) {
           return true
       } else if (this.props.user.currentUser.role === 2) {
           if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
@@ -203,7 +206,7 @@ class Popup extends Component {
 
             <div id="form_button">
                 {this.userHaveAccess() && <Button id="del_canc" type="submit">Confirm</Button>}
-                { (this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
+                {(this.props.editMode && this.userHaveAccess())? <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> : null}
                 <Button id="del_canc"  onClick={this.props.closePopup}>{this.userHaveAccess() ? 'Cancel' : 'Close'}</Button>
             </div>
           </FormGroup>

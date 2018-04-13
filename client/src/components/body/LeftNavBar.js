@@ -173,7 +173,6 @@ class LeftNavBar extends Component {
 
     render() {
         this.infoCloseWatcher();
-        console.log(this.props.mode);
         return(
             <aside>
                 <nav>
