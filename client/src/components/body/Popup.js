@@ -202,8 +202,8 @@ class Popup extends Component {
                         />
 
                         <div id="form_button">
-                            {<Button id="del_canc" type="submit">Confirm</Button>}
-                            { <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> }
+                            <Button id="del_canc" type="submit">Confirm</Button>
+                            {this.props.editMode && <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> }
                             <Button id="del_canc"  onClick={this.props.closePopup}>Close</Button>
                         </div>
                     </FormGroup>
