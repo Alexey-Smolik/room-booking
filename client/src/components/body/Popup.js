@@ -140,7 +140,7 @@ class Popup extends Component {
   userHaveAccess = () => {
       if(this.props.roomID === 'all') {
           return false;
-      }else if (this.props.user.currentUser.role === 1) {
+      } else if (this.props.user.currentUser.role === 1) {
           return true
       } else if (this.props.user.currentUser.role === 2) {
           if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
@@ -183,6 +183,8 @@ class Popup extends Component {
                                 selected={this.state.startDate}
                                 onChange={e => this.handleChangeDate(e, true)}
                                 showTimeSelect
+                                minTime={moment().hours(8).minutes(0)}
+                                maxTime={moment().hours(19).minutes(0)}
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
                                 dateFormat="LLL"
@@ -195,6 +197,8 @@ class Popup extends Component {
                             selected={this.state.endDate}
                             onChange={e => this.handleChangeDate(e, false)}
                             showTimeSelect
+                            minTime={moment().hours(8).minutes(0)}
+                            maxTime={moment().hours(19).minutes(0)}
                             timeFormat="HH:mm"
                             timeIntervals={30}
                             dateFormat="LLL"
