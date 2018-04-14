@@ -102,7 +102,7 @@ class Popup extends Component {
                   NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                   break;
               case 'wrong values':
-                  NotificationManager.error('Please, fill in the fields!', 'Event', 3000);
+                  NotificationManager.error('Please, fill the fields!', 'Event', 3000);
                   break;
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
@@ -202,8 +202,8 @@ class Popup extends Component {
                         />
 
                         <div id="form_button">
-                            {<Button id="del_canc" type="submit">Confirm</Button>}
-                            { <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> }
+                            <Button id="del_canc" type="submit">Confirm</Button>
+                            {this.props.editMode && <Button id="del_canc"  onClick={this.deleteHandler} >Delete</Button> }
                             <Button id="del_canc"  onClick={this.props.closePopup}>Close</Button>
                         </div>
                     </FormGroup>
