@@ -62,7 +62,7 @@ class SearchUser extends React.Component {
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
                     break;
                 case 'empty pm':
-                    NotificationManager.warning('Manager cannot be empty!Please, fill the fields!', 'Event', 3000);
+                    NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Event', 3000);
                     break;
             }
         };

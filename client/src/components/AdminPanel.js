@@ -17,6 +17,8 @@ import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
 import Header from './header/Header';
+import HelloAdmin from './HelloAdmin';
+
 import './adminPage/adminPanel.css';
 
 class AdminPanel extends React.Component {
@@ -31,6 +33,7 @@ class AdminPanel extends React.Component {
 
             <div style={{ width: "100%" }}>
                 <Header />
+                <Route exact path="/adminPanel" component={HelloAdmin} />
 
                 <Nav bsStyle="pills">
                     <LinkContainer to="/adminPanel/companies/">
