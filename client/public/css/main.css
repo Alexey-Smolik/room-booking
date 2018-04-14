@@ -1137,6 +1137,9 @@ textarea {
     .footer_on_auth{
         display: none;
     }
+    .p_404 {
+        padding-left: 0 !important;
+    }
 }
 
     /*@media all and (max-width: 800px) {
@@ -1169,3 +1172,56 @@ textarea {
         }
     }
 
+/*page Not Found*/
+
+.body_404 {
+    width: 100%;
+}
+
+.container_for_404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p_404 {
+    /*display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;*/
+    font-size: 50px;
+    padding-right: 0;
+    padding-left: 20%;
+    color: #B71C1C;
+
+}
+
+.link_404 {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #B71C1C;
+    color: #ffffff;
+    font-family: 'Noto Sans';
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    margin-top: 30px;
+    /*position: absolute;
+    left: 48%;
+    margin-right: -48%;*/
+    margin-bottom: 20px;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+    .link_404:hover {
+        text-decoration: none;
+        color: #ffffff;
+        background: #D32F2F;
+    }
