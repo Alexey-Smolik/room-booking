@@ -40,8 +40,7 @@ class Popup extends Component {
             end = new Date(this.state.endDate._d);
         start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
         end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
-
-       if(start < end) {
+       if((start < end) && ((end-start <= 39600000))) {
            if (this.props.dateFilter({
                start: this.state.startDate._d,
                end: this.state.endDate._d
@@ -140,7 +139,7 @@ class Popup extends Component {
   userHaveAccess = () => {
       if(this.props.roomID === 'all') {
           return false;
-      }else if (this.props.user.currentUser.role === 1) {
+      } else if (this.props.user.currentUser.role === 1) {
           return true
       } else if (this.props.user.currentUser.role === 2) {
           if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
@@ -183,6 +182,8 @@ class Popup extends Component {
                                 selected={this.state.startDate}
                                 onChange={e => this.handleChangeDate(e, true)}
                                 showTimeSelect
+                                minTime={moment().hours(8).minutes(0)}
+                                maxTime={moment().hours(19).minutes(0)}
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
                                 dateFormat="LLL"
@@ -195,6 +196,8 @@ class Popup extends Component {
                             selected={this.state.endDate}
                             onChange={e => this.handleChangeDate(e, false)}
                             showTimeSelect
+                            minTime={moment().hours(8).minutes(0)}
+                            maxTime={moment().hours(19).minutes(0)}
                             timeFormat="HH:mm"
                             timeIntervals={30}
                             dateFormat="LLL"
