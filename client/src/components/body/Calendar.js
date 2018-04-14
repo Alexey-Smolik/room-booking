@@ -94,12 +94,12 @@ class Calendar extends React.Component {
             end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
             if (this.state.editMode) {
-                if (((((event.start <= start) && (event.end <= end) && (event.end >= start)) ||
-                        ((event.start >= start) && (event.end <= end))) ||
-                        ((event.start <= start) && (event.end >= end)) ||
-                        ((event.start >= start) && (event.end >= end) && (event.start <= end))) ||
-                    (eventID > -1 && eventID === eventsArray[i].id)) {
-                    return true;
+                if((eventID > -1 && eventID !== eventsArray[i].id) &&
+                    ((((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
+                        ((event.start >= start)  && (event.end <= end)))  ||
+                        ((event.start <= start)  && (event.end >= end))   ||
+                        ((event.start > start)  && (event.end > end)  &&   (event.start < end)))) {
+                        return false;
                 }
             } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
                     ((event.start >= start)  && (event.end <= end)))  ||
@@ -108,7 +108,7 @@ class Calendar extends React.Component {
                 return false;
             }
         }
-        return !this.state.editMode;
+        return true;
     };
 
     editEvent = (event) => {
