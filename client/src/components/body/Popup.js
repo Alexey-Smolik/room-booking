@@ -57,12 +57,10 @@ class Popup extends Component {
                             username: this.props.user.currentUser.username
                         };
 
-
                         if (this.props.editMode) {
                             this.props.dispatch(editEvent(this.props.event.id, event));
                             this.createNotification('edit event')();
                             this.props.closePopup();
-
                         } else {
                             this.props.dispatch(createEvent(event));
                             this.createNotification('add event')();
