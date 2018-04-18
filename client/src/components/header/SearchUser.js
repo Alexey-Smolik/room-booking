@@ -73,7 +73,7 @@ class SearchUser extends React.Component {
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
         return (
-            <div className="pm-search" style={{width: "500px", margin: "15px"}}>
+            <div className="pm-search" style={{width: "500px"}}>
                 {options && <Select
                     style={{width: "450px", float: "left"}}
                     name="form-field-name"
