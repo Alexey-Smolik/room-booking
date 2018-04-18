@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
@@ -146,9 +146,9 @@ class LeftNavBar extends Component {
                                 return (room.companyId == company.id) ? (
                                     <li key={roomKey}>
 
-                                        <Link to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                        <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
                                         {room.name}
-                                        </Link>
+                                        </NavLink>
 
                                         <div className="info-show">
                                             <button className="info-button" title="Info about room" onClick={(e) => {
@@ -176,11 +176,11 @@ class LeftNavBar extends Component {
             <aside>
                 <nav>
 
-                    <ul className="aside-menu">
-                        {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
-                        <Link className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
+                    <ul className="aside-menu" >
+                        {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
+                        <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
                             Show all events
-                        </Link>
+                        </NavLink>
                         {this.renderMenu()}
                         {this.state.mouseEvent ?  <RoomsInfo
                             userRole = {this.props.user.currentUser.role}
