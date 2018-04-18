@@ -185,7 +185,7 @@ class Calendar extends React.Component {
         }
 
         return (
-            <div className="calendar-cont">
+            <div className={!this.props.roomID && "calendar-cont"}>
                 <React.Fragment>
                     <BigCalendar
                         selectable
