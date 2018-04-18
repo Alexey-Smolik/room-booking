@@ -13,9 +13,6 @@ import HelloAdmin from './HelloAdmin';
 import Header from './header/Header';
 import NotFound from './NotFound';
 
-
-
-
 const App = () => (
     <div className="App">
         <BrowserRouter>
@@ -26,14 +23,14 @@ const App = () => (
 
                 <div className="bodyWrapper">
                     <Route path="/room" component={LeftNavBar} />
-                        <Switch>
-                    <Route exact path="/room" component={HelloWindow} />
-                    <Route path="/room/:roomID" component={Calendar} />
-                    <Route path="/allevents" component={Calendar} />
-                    <Route exact path="/" component={Footer}  />
-                            <Route path="/adminPanel" component={AdminPanel} />
-                    <Route path="*" component={NotFound} />
-                        </Switch>
+                    <Switch>
+                        <Route exact path="/room" component={HelloWindow} />
+                        <Route path="/room/:roomID" component={Calendar} />
+                        <Route path="/allevents" component={Calendar} />
+                        <Route exact path="/" component={Footer}  />
+                        <Route path="/adminPanel" component={AdminPanel} />
+                        <Route path="*" component={NotFound} />
+                    </Switch>
                 </div>
             </div>
         </BrowserRouter>
