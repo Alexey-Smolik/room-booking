@@ -33,52 +33,52 @@ class Popup extends Component {
 
   submitHandler = (e) => {
     e.preventDefault();
-
     if(this.state.startDate) {
+        if(!this.state.description || (this.state.description && this.state.description.length <= 150)){
+            let start = new Date(this.state.startDate._d),
+                end = new Date(this.state.endDate._d);
+            start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
+            end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
-        let start = new Date(this.state.startDate._d),
-            end = new Date(this.state.endDate._d);
-        start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
-        end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
-       if((start < end) && ((end-start <= 39600000))) {
-           if (this.props.dateFilter({
-               start: this.state.startDate._d,
-               end: this.state.endDate._d
-           }, this.props.event.id)) {
-               if(this.state.title){
-                   const event = {
-                       name: this.state.title,
-                       description: this.state.description,
-                       date_from: start,
-                       date_to: end,
-                       id: this.props.event.id,
-                       roomId: this.props.roomID,
-                       userId: this.props.user.currentUser.id,
-                       username: this.props.user.currentUser.username
-                   };
+            if(start < end) {
+                if (this.props.dateFilter({
+                        start: this.state.startDate._d,
+                        end: this.state.endDate._d
+                    }, this.props.event.id)) {
+                    if(this.state.title){
+                        const event = {
+                            name: this.state.title,
+                            description: this.state.description,
+                            date_from: start,
+                            date_to: end,
+                            id: this.props.event.id,
+                            roomId: this.props.roomID,
+                            userId: this.props.user.currentUser.id,
+                            username: this.props.user.currentUser.username
+                        };
 
 
-                   if (this.props.editMode) {
-                       this.props.dispatch(editEvent(this.props.event.id, event));
-                       this.createNotification('edit event')();
-                       this.props.closePopup();
+                        if (this.props.editMode) {
+                            this.props.dispatch(editEvent(this.props.event.id, event));
+                            this.createNotification('edit event')();
+                            this.props.closePopup();
 
-                   } else {
-                       this.props.dispatch(createEvent(event));
-                       this.createNotification('add event')();
-                       this.props.closePopup();
-                   }
-               }
-               else this.createNotification('wrong values')();
-           } else {
-               (this.createNotification('date')());
-           }
-       }else {
-           this.createNotification('start end date')();
-       }
+                        } else {
+                            this.props.dispatch(createEvent(event));
+                            this.createNotification('add event')();
+                            this.props.closePopup();
+                        }
+                    }
+                    else this.createNotification('wrong values')();
+                } else {
+                    (this.createNotification('date')());
+                }
+            }else {
+                this.createNotification('start end date')();
+            }
+        } else this.createNotification('desc size')();
     } else {
         this.createNotification('empty event')();
-
     }
   };
 
@@ -103,9 +103,11 @@ class Popup extends Component {
               case 'wrong values':
                   NotificationManager.error('Please, fill the fields!', 'Event', 3000);
                   break;
+              case 'desc size':
+                  NotificationManager.error('Character limit exceeded in the description field!', 'Event', 3000);
+                  break;
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
-
           }
       };
   };
@@ -139,7 +141,7 @@ class Popup extends Component {
   userHaveAccess = () => {
       if(this.props.roomID === 'all') {
           return false;
-      } else if (this.props.user.currentUser.role === 1) {
+      }else if (this.props.user.currentUser.role === 1) {
           return true
       } else if (this.props.user.currentUser.role === 2) {
           if (!this.props.editMode || (this.props.editMode && this.props.event.userId === this.props.user.currentUser.id)) {
@@ -172,6 +174,7 @@ class Popup extends Component {
 
                         <ControlLabel>Description</ControlLabel>
                         <textarea
+                            maxLength={150}
                             value={this.state.description}
                             onChange={this.handleChangeDesc}
                         />
@@ -182,8 +185,6 @@ class Popup extends Component {
                                 selected={this.state.startDate}
                                 onChange={e => this.handleChangeDate(e, true)}
                                 showTimeSelect
-                                minTime={moment().hours(8).minutes(0)}
-                                maxTime={moment().hours(19).minutes(0)}
                                 timeFormat="HH:mm"
                                 timeIntervals={30}
                                 dateFormat="LLL"
@@ -196,8 +197,6 @@ class Popup extends Component {
                             selected={this.state.endDate}
                             onChange={e => this.handleChangeDate(e, false)}
                             showTimeSelect
-                            minTime={moment().hours(8).minutes(0)}
-                            maxTime={moment().hours(19).minutes(0)}
                             timeFormat="HH:mm"
                             timeIntervals={30}
                             dateFormat="LLL"
