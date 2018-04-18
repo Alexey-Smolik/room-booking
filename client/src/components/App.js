@@ -9,7 +9,6 @@ import HelloWindow from './body/HelloWindow';
 import AuthComponent from './body/AuthComponent';
 import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
-import HelloAdmin from './HelloAdmin';
 import Header from './header/Header';
 import NotFound from './NotFound';
 

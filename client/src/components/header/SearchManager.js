@@ -137,6 +137,8 @@ class SearchEmptyRoom extends Component {
                 onChange={this.handleChangeStart}
                 showTimeSelect
                 timeFormat="HH:mm"
+                minTime={moment().hours(8).minutes(0)}
+                maxTime={moment().hours(19).minutes(0)}
                 timeIntervals={30}
                 timeCaption="time"
               />
@@ -152,6 +154,8 @@ class SearchEmptyRoom extends Component {
                 onChange={this.handleChangeEnd}
                 showTimeSelect
                 timeFormat="HH:mm"
+                minTime={moment().hours(8).minutes(0)}
+                maxTime={moment().hours(19).minutes(0)}
                 timeIntervals={30}
                 timeCaption="time"
               />
