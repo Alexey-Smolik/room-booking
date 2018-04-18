@@ -2,18 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from './header/Header';
 import {Link} from 'react-router-dom';
+import {
+    getCurrentUser,
+} from "../actions";
 
 class NotFound extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    componentWillMount() {
+        this.props.dispatch(getCurrentUser())
+    }
     render() {
         return (
 
             <div className="body_404">
                 <Header/>
-                {this.props.user    ?
+                {this.props.user && this.props.user.currentUser ?
                     <div>
                         <div>
                             <h1 className="p_404">404<br/>Incorrect URL address</h1>
