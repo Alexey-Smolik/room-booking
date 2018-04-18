@@ -216,10 +216,11 @@ class Popup extends Component {
                         <div style={{ fontSize: '16px', marginBottom: '15px', textAlign: 'center' }} >{ this.props.editMode ? this.state.username : this.props.user.currentUser.username }</div>
 
                         <ControlLabel style={{ marginLeft: '45%' }}>Title</ControlLabel>
-                        <div style={{ fontSize: '16px', marginBottom: '15px', textAlign: 'center' }} >{this.state.title}</div>
+                        <div style={{ fontSize: '16px', marginBottom: '15px', textAlign: 'center', wordBreak: 'break-word' }} >{this.state.title}</div>
 
                         <ControlLabel style={{ marginLeft: '37%' }}>Description</ControlLabel>
-                        <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center' }} >{this.state.description}</div>
+                        <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center', wordBreak: 'break-word' }} >{this.state.description}</div>
+
 
                         <div id="date_to">
                             <DatePicker
