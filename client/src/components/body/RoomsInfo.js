@@ -138,7 +138,7 @@ class RoomsInfo extends React.Component {
 							<p className="company"><span className="selection">Company address:</span> {this.props.selectedRoom.company.address}</p>
                         </div>
                         <div className="room-issues-container">
-							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden" onClick={this.handleClick}>{this.state.isOpen ? 'Hidden' : 'Open'}</button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
+							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden"  title={this.state.isOpen ? 'Hidden the issues' : 'Open the issues'} onClick={this.handleClick}> {this.state.isOpen ? 'Hidden' : 'Open'} </button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
                             {this.props.userRole !== 3 && <div className="room-issues-form">
 								<p className="the_issue">Please, describe the issue:</p>
                                 <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
