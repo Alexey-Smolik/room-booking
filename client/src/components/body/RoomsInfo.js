@@ -22,7 +22,8 @@ class RoomsInfo extends React.Component {
 			id: this.props.selectedRoom.id,
 			issues: this.props.selectedRoom.issues,
 			inputValue: '',
-			inputElem: ''
+			inputElem: '',
+			isOpen: false
 		};
 		this.clearInputValue = this.clearInputValue.bind(this);
 		this.handleIssueAdd = this.handleIssueAdd.bind(this);
@@ -110,6 +111,12 @@ class RoomsInfo extends React.Component {
 		}
     };
 
+    handleClick = () => {
+    	this.setState({
+			isOpen: !this.state.isOpen
+		})
+	};
+
     carouselRender() {
       if(!this.props.selectedRoom.images.length)
       	return  <img className="room-image" alt="image" src='/images/no-image-available.png'/>;
@@ -131,8 +138,8 @@ class RoomsInfo extends React.Component {
 							<p className="company"><span className="selection">Company address:</span> {this.props.selectedRoom.company.address}</p>
                         </div>
                         <div className="room-issues-container">
-							<div className="room-issues"><span className="selection">Issues:</span> { this.issuesList(this.props.issues) } </div>
-                            {this.props.userRole !== 3 &&<div className="room-issues-form">
+							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden" onClick={this.handleClick}>{this.state.isOpen ? 'Hidden' : 'Open'}</button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
+                            {this.props.userRole !== 3 && <div className="room-issues-form">
 								<p className="the_issue">Please, describe the issue:</p>
                                 <textarea className="room-issues-input" onChange={ (e) => this.inputHandler(e, 1)}></textarea>
                                 <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Add issue</button>
