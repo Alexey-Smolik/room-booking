@@ -490,6 +490,26 @@ a:hover {
     text-decoration: none;
 }
 
+.admin_link {
+    background-color: #f3f3f3;
+    display: flex;
+    color: #383e41;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    padding: 10px 0;
+    justify-content: center;
+    font-weight: 600;
+    transition: .3s ease-in-out;
+    border: 1px solid #e7e7e7;
+}
+
+.admin_link:hover {
+    border: none;
+    background-color: transparent;
+    color: #b71c1c;
+    text-decoration: none;
+}
+
 
     /*CALENDAR*/
 
@@ -658,9 +678,11 @@ a:hover {
 }
 
 .room-issues {
+    max-height: 140px;
     color: #222;
     font-size: 16px;
     padding: 15px;
+    overflow: auto;
 
 }
 
