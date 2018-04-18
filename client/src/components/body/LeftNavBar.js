@@ -137,8 +137,9 @@ class LeftNavBar extends Component {
 
                     // Companies List
                     <li key={key}>
-                        <input type="checkbox" name={"sub-group-" + key} id={"sub-group-" + key}/>
-                        <label htmlFor={"sub-group-" + key}>{company.name}</label>
+
+                        <input type="checkbox"  name={"sub-group-" + key} id={"sub-group-" + key} checked/>
+                        <label htmlFor={"qwe"}>{company.name}</label>
 
                         {/*Rooms List*/}
                         <ul className="room-list">
