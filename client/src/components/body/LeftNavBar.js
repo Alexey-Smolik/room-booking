@@ -175,6 +175,7 @@ class LeftNavBar extends Component {
         return(
             <aside>
                 <nav>
+                    {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  to='/adminPanel'>Admin panel</Link>}
                     <ul className="aside-menu">
                         <Link className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
                             Show all events
