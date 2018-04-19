@@ -56,7 +56,7 @@ html {
 body.default {
     color: #383e41;
     font: 13px 'Noto Sans', sans-serif;
-    background: #f8f8f8 url(../images/back.jpg) no-repeat center center fixed;
+    background: #f8f8f8 url(http://172.16.0.183:3000/images/back.jpg) no-repeat center center fixed;
     margin: 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -449,7 +449,7 @@ a:hover {
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(../images/down-arrow.png);
+        background-image: url(http://172.16.0.183:3000/images/down-arrow.png);
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
@@ -637,7 +637,7 @@ a:hover {
     cursor: pointer;
     transition: .3s ease-in-out;
     z-index: 1;
-    background:  url(../images/cross.svg) center no-repeat rgba(0, 0, 0, 0.4);
+    background:  url(http://172.16.0.183:3000/images/cross.svg) center no-repeat rgba(0, 0, 0, 0.4);
 }
 
     .info-close:hover {
@@ -914,7 +914,7 @@ a:hover {
 .popup_inner {
     width: 500px;
     height: 500px;
-    background: url(../images/popup.jpg);
+    background: url(http://172.16.0.183:3000/images/popup.jpg);
     align-items: center;
     display: flex;
     margin: 15% auto;

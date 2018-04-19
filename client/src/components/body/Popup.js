@@ -165,6 +165,7 @@ class Popup extends Component {
 
                         <ControlLabel>Title</ControlLabel>
                         <FormControl
+                            maxLength={100}
                             type="text"
                             value={this.state.title}
                             onChange={this.handleChangeTitle}
