@@ -19,8 +19,8 @@ import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
-import Header from './header/Header';
 import HelloAdmin from './HelloAdmin';
+
 
 import './adminPage/adminPanel.css';
 
@@ -38,7 +38,7 @@ componentWillMount() {
         <div style={{ width: "100%" }}>
             {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                 <div >
-                    <Header />
+
                     <Route exact path="/adminPanel" component={HelloAdmin} />
 
                     <Nav bsStyle="pills">
