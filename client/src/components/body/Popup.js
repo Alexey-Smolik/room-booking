@@ -185,6 +185,8 @@ class Popup extends Component {
                                 onChange={e => this.handleChangeDate(e, true)}
                                 showTimeSelect
                                 timeFormat="HH:mm"
+                                minTime={moment().hours(8).minutes(0)}
+                                maxTime={moment().hours(19).minutes(0)}
                                 timeIntervals={30}
                                 dateFormat="LLL"
                                 timeCaption="time"
@@ -197,6 +199,8 @@ class Popup extends Component {
                             onChange={e => this.handleChangeDate(e, false)}
                             showTimeSelect
                             timeFormat="HH:mm"
+                            minTime={moment().hours(8).minutes(0)}
+                            maxTime={moment().hours(19).minutes(0)}
                             timeIntervals={30}
                             dateFormat="LLL"
                             timeCaption="time"
