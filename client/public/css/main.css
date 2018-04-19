@@ -785,8 +785,8 @@ a:hover {
     display: block;
     padding-top: 7px;
     text-decoration: none;
-    color: #b6b6b6;
-    border: 1px solid #b6b6b6;
+    color: #000000;
+    border: 1px solid #000000;
     text-transform: uppercase;
     font-size: 14px;
     border-radius: 0;
@@ -797,7 +797,7 @@ a:hover {
 
 .anon_link:hover {
     text-decoration: none;
-    color: #000000;
+    color: #666666;
     border: 1px solid #000000;
     background: white;
 }
@@ -881,6 +881,7 @@ a:hover {
     align-items: center;
     overflow: auto;
 }
+
 .popup_inner {
     width: 500px;
     height: 500px;
@@ -961,7 +962,6 @@ textarea {
     justify-content: space-between;
 }
 
-
 .dates_picker_cont {
     display: flex;
     flex-grow: 1;
@@ -973,7 +973,6 @@ textarea {
     font-size: 14px;
     padding-top: 20px;
     margin-right: 7px;
-
 }
 
 #filter_date_from .react-datepicker-wrapper:before {
