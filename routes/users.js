@@ -27,6 +27,17 @@ routes.get('/managers', (req, res) => {
         });
 });
 
+// --- GET ALL SIMPLE USERS ---
+routes.get('/simple', (req, res) => {
+    users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+        .then(users => {
+            res.status(200).send(users);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
     req.body.role = req.body.role || 3;
