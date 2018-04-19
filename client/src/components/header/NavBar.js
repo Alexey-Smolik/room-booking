@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
 import LoginSection from './LoginSection';
 import SearchManager from './SearchManager';
 import SearchUser from './SearchUser';
@@ -24,11 +23,12 @@ class NavBar extends React.Component {
         let role = this.props.role;
         return (
             <div className="reactHeader">
-                {(role < 3 ) ?
+                {(role < 3 )  ?
                     currentUser && <SearchManager user={currentUser}/>
                     :
-                    currentUser && <SearchUser users={managers} />
+                    currentUser && <SearchUser users={managers}/>
                 }
+
                 {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
             </div>
         );

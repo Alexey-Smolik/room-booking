@@ -16,7 +16,7 @@ const App = () => (
     <div className="App">
         <BrowserRouter>
             <div>
-                <NavBar/>
+                    <NavBar/>
                 <Route exact path="/" component={Header} />
                 <Route exact path="/" component={AuthComponent} />
 
