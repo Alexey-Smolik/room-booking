@@ -40,7 +40,7 @@ class Popup extends Component {
             start.setTime(start.getTime() - start.getTimezoneOffset() * 60 * 1000);
             end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
-            if(start < end) {
+            if((start < end) && ((end-start <= 39600000))) {
                 if (this.props.dateFilter({
                         start: this.state.startDate._d,
                         end: this.state.endDate._d
