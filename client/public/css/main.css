@@ -139,8 +139,7 @@ h1 {
 }
 
 .Select-control {
-    /*width: 300px !important;*/
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
     overflow: auto;
 }
 
@@ -1011,6 +1010,10 @@ textarea {
 
 #filter_date_to .react-datepicker-wrapper:before {
     content: 'End:';
+}
+
+#date_to {
+    margin-top: 20px;
 }
 
 .block_colors {
