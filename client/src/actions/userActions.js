@@ -6,7 +6,8 @@ import {
     DELETE_USER_DB,
     ADD_USER_DB,
     EDIT_USER_DB,
-    GET_MANAGERS
+    GET_MANAGERS,
+    ADD_SIMPLE_USERS
 } from "./types";
 
 export const getCurrentUser = () => async (dispatch) => {
@@ -35,6 +36,10 @@ export const getManagers = () => async (dispatch) => {
 };
 
 
+export const simpleUsers = () => async (dispatch) => {
+    const res = await axios.get(`/api/users?role=1`);
+    dispatch({ type: ADD_SIMPLE_USERS, payload: res.data });
+};
 
 
 export const addUserDB = (user) => async (dispatch) => {

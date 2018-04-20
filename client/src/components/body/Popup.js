@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
-import { createEvent, deleteEvent , editEvent } from "../../actions/index";
+import { createEvent, deleteEvent , editEvent , simpleUsers} from "../../actions/index";
 import {NotificationManager} from 'react-notifications';
 import { SelectConnected } from 'react-select-multi';
 import 'react-notifications/lib/notifications.css';
@@ -23,6 +23,8 @@ class Popup extends Component {
     };
   }
 
+
+
   componentWillMount() {
     this.setState({
         room: this.props.room,
@@ -33,6 +35,7 @@ class Popup extends Component {
         user: this.props.user,
         username: this.props.event.user
     });
+    this.props.dispatch(simpleUsers());
   };
 
   submitHandler = (e) => {
