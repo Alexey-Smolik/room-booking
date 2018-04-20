@@ -164,8 +164,6 @@ class Calendar extends React.Component {
     };
 
     render() {
-        let { roomID } = this.props.match.params;
-
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
 
@@ -201,7 +199,11 @@ class Calendar extends React.Component {
                         defaultDate={new Date()}
                         culture="en-GB"
                         onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => { this.props.match.params.roomID === 'all' ? this.createNotification('all events')() : this.addEvent(event); }}
+                        onSelectSlot={event => {
+                            ((this.props.roomID && this.props.roomID === 'all') || (!this.props.roomID && this.props.match.params.roomID === 'all'))  ?
+                                this.createNotification('all events')()
+                                : this.addEvent(event);
+                        }}
                         eventPropGetter={(event) => {
                             return {
                                 style: {
