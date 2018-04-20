@@ -25,7 +25,6 @@ const App = () => (
                     <Switch>
                         <Route exact path="/room" component={HelloWindow} />
                         <Route path="/room/:roomID" component={Calendar} />
-
                         <Route exact path="/" component={Footer}  />
                         <Route path="/adminPanel" component={AdminPanel} />
                         <Route path="*" component={NotFound} />

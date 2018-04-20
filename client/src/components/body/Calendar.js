@@ -47,7 +47,7 @@ class Calendar extends React.Component {
                 this.props.dispatch(getAllEvents());
             }
         }
-        this.props.dispatch(getAllEvents());
+
 
     };
 
