@@ -48,7 +48,6 @@ class Calendar extends React.Component {
             }
         }
     };
-
     componentDidMount(){
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
@@ -86,6 +85,8 @@ class Calendar extends React.Component {
         console.log("Test3", eventID);
         this.props.dispatch(deleteEventFromState(eventID));
     };
+
+
     dateFilter = (event, eventID = -1) => {
         const eventsArray = this.props.events;
 
@@ -150,10 +151,10 @@ class Calendar extends React.Component {
         return () => {
             switch (type) {
                 case 'role':
-                    NotificationManager.error('You do not have permission to create an event!', 'Role', 3000);
+                    NotificationManager.error('You do not have the rights!', 'Role', 3000);
                     break;
                 case 'date':
-                    NotificationManager.error('Sorry, this room is already booked for this date', 'Date', 3000);
+                    NotificationManager.error('There is event on this date!', 'Date', 3000);
                     break;
                 case 'all events':
                     NotificationManager.error('You can not add event while "all events" is open', 'Events', 3000);
@@ -163,7 +164,7 @@ class Calendar extends React.Component {
     };
 
     render() {
-        console.log(this.props.user);
+        let { roomID } = this.props.match.params;
 
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
@@ -185,9 +186,8 @@ class Calendar extends React.Component {
             };
         }));
         }
-
         return (
-            <div className={!this.props.roomID && "calendar-cont"}>
+            <div className="calendar-cont">
                 <React.Fragment>
                     <BigCalendar
                         selectable
@@ -199,7 +199,7 @@ class Calendar extends React.Component {
                         defaultDate={new Date()}
                         culture="en-GB"
                         onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => { ((this.props.roomID && this.props.roomID === 'all') ||  (!this.props.roomID && this.props.match.params.roomID === 'all'))  ? this.createNotification('all events')() : this.addEvent(event); }}
+                        onSelectSlot={event => { this.props.match.params.roomID === 'all' ? this.createNotification('all events')() : this.addEvent(event); }}
                         eventPropGetter={(event) => {
                             return {
                                 style: {
@@ -214,7 +214,6 @@ class Calendar extends React.Component {
                 {this.state.showPopup &&  <Popup
                     event={this.state.event}
                     user={this.props.user}
-                    simpleUsers={this.props.simpleUsres}
                     closePopup={this.closePopup}
                     editMode={this.state.editMode}
                     roomID={this.props.roomID  || this.props.match.params.roomID}

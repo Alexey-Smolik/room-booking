@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
-import { createEvent, deleteEvent , editEvent } from "../../actions/index";
+import { createEvent, deleteEvent , editEvent , simpleUsers} from "../../actions/index";
 import {NotificationManager} from 'react-notifications';
 import { SelectConnected } from 'react-select-multi';
 import 'react-notifications/lib/notifications.css';
@@ -23,6 +23,8 @@ class Popup extends Component {
     };
   }
 
+
+
   componentWillMount() {
     this.setState({
         room: this.props.room,
@@ -33,10 +35,12 @@ class Popup extends Component {
         user: this.props.user,
         username: this.props.event.user
     });
+    this.props.dispatch(simpleUsers());
   };
 
   submitHandler = (e) => {
     e.preventDefault();
+
     if(this.state.startDate) {
         if(!this.state.description || (this.state.description && this.state.description.length <= 150)){
             let start = new Date(this.state.startDate._d),
@@ -81,6 +85,7 @@ class Popup extends Component {
         } else this.createNotification('desc size')();
     } else {
         this.createNotification('empty event')();
+
     }
   };
 
@@ -88,7 +93,7 @@ class Popup extends Component {
       return () => {
           switch (type) {
               case 'date':
-                  NotificationManager.warning('Sorry, this room is already booked for this date!', 'Date', 3000);
+                  NotificationManager.warning('There is event on this date!', 'Date', 3000);
                   break;
               case 'add event':
                   NotificationManager.success('You successfully added event!', 'Event', 3000);
@@ -108,8 +113,11 @@ class Popup extends Component {
               case 'desc size':
                   NotificationManager.error('Character limit exceeded in the description field!', 'Event', 3000);
                   break;
+
+
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
+
           }
       };
   };
@@ -286,6 +294,7 @@ class Popup extends Component {
                         </div>
                     </FormGroup> }
         </form>
+
       </div>
 
     );

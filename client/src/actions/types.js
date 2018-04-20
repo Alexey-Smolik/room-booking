@@ -38,6 +38,7 @@ export const DELETE_ROOM_IMAGE = 'delete-room';
 
 
 export const GET_EVENTS_BY_PM = 'get-events-by-pm';
+export const ADD_SIMPLE_USERS = 'add-simple-users';
 export const GET_MANAGERS = 'get-managers';
 export const FILTER_PM = 'filter-pm';
 
