@@ -3,7 +3,6 @@
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
 .input-group { margin-bottom:10px; }
 .separator { border-right: 1px solid #dfdfe0; }
-/*.facebook,.twitter, .vk, .google { min-width:160px; }*/
 .facebook { background-color:#3B5998;color:#fff; }
 .vk { background-color:#587EA3;color:#fff; }
 .google { background-color:#DD4B39;color:#fff; }
@@ -56,7 +55,7 @@ html {
 body.default {
     color: #383e41;
     font: 13px 'Noto Sans', sans-serif;
-    background: #f8f8f8 url(../images/back.jpg) no-repeat center center fixed;
+    background: #f8f8f8 url(http://172.16.0.183:3000/images/back.jpg) no-repeat center center fixed;
     margin: 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -172,17 +171,22 @@ h1 {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Tahoma';
+    font-family: 'Noto Sans';
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
     padding: 7px 5px 5px 5px;
+    margin-right: 20px;
 }
 
 .link_search_to_btn:hover {
     text-decoration: none;
     color: #ffffff;
     background: #D32F2F;
+}
+
+.Select.is-clearable.is-searchable.Select--single {
+    margin-right: 15px;
 }
 
     /*hello-form */
@@ -208,17 +212,12 @@ h1 {
     display: inline-block;
     padding: 0 5px;
     text-decoration: none;
-    /*background: transparent;*/
     font-weight: 500;
-    /*color: #b6b6b6;*/
-    /*border: 1px solid #b6b6b6;*/
     line-height: 30px;
     text-transform: uppercase;
     text-align: center;
     font-size: 14px;
     transition: .3s ease-in-out;
-    /*background: white;
-    color: #b6b6b6;*/
     color: black;
     text-decoration: none;
     border: 1px solid #000000;
@@ -243,9 +242,6 @@ button {
     transition: .3s ease-in-out;
 }
 
-/*button:hover {
-    text-decoration: none;
-}*/
 
 #heading {
     margin: 30px 0;
@@ -261,13 +257,14 @@ button {
 .bodyWrapper {
     display: flex;
     justify-content: space-between;
-    /*height: 74vh;*/
+    margin-top: 30px;
 }
 
     .bodyWrapper .calendar-cont {
         flex-basis: 78%;
         padding-left: 2%;
         flex-grow: 1;
+        margin-bottom: 10px;
     }
 
 header {
@@ -278,13 +275,11 @@ header {
     z-index: 12 !important;
 }
 
-
 .react-datepicker__navigation.react-datepicker__navigation--previous {
     margin-left: 20px !important;
     height: 15px;
     border-right-color: #757575;
 }
-
 
 .react-datepicker__navigation.react-datepicker__navigation--next.react-datepicker__navigation--next--with-time {
     margin-right: 20px !important;
@@ -307,7 +302,6 @@ header {
 .react-datepicker__header {
     height: 61px;
 }
-
 
 .control-label {
     color: #B71C1C;
@@ -351,10 +345,14 @@ aside {
     flex-basis: 20%;
     flex-grow: 1;
     max-width: 200px;
-    max-height: 70vh;
+    height: 83vh;
+    align-content: space-between;
+    flex-wrap: wrap;
 }
+
     aside nav {
         width: 100%;
+
     }
 
         aside nav ul {
@@ -364,7 +362,6 @@ aside {
 
             aside nav li {
                 list-style-position: inside;
-                /*font: 14px 'Noto Sans';*/
                 font-weight: 300;
                 list-style-type: none;
                 border-top: 1px solid #e7e7e7;
@@ -382,7 +379,6 @@ a:hover {
     text-decoration: none;
     color: #616161;
 }
-
 
 .aside-menu {
     background: #f3f3f3;
@@ -406,7 +402,7 @@ a:hover {
         margin: 0;
         padding: 10px 10px 10px 38px;
         background: #fcfcfc;
-        color: #727272;
+        color: #424242;
     }
     .aside-menu ul {
         display: none;
@@ -438,7 +434,7 @@ a:hover {
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(../images/down-arrow.png);
+        background-image: url(http://172.16.0.183:3000/images/down-arrow.png);
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
@@ -479,20 +475,39 @@ a:hover {
     text-decoration: none;
 }
 
+.admin_link {
+    background-color: #f3f3f3;
+    display: flex;
+    color: #383e41;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    padding: 10px 0;
+    justify-content: center;
+    font-weight: 600;
+    transition: .3s ease-in-out;
+    border: 1px solid #e7e7e7;
+}
+
+.admin_link:hover {
+    border: none;
+    background-color: transparent;
+    color: #b71c1c;
+    text-decoration: none;
+}
+
 
     /*CALENDAR*/
 
 .rbc-calendar {
     background-color: #ffffff;
     border: 1px solid #cbcbcb;
-    height: 74vh !important;
+    height: 80vh !important;
     position: relative;
     border: 0;
     -webkit-box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
     -moz-box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
     box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
 }
-
 
     .rbc-time-header > .rbc-row:nth-of-type(2) {
         display: none !important;
@@ -546,8 +561,6 @@ a:hover {
 .rbc-event {
     box-shadow: inset 0px -1px 0px 1px rgba(0,0,0,0.5);
     border: none!important;
-    /*border: 0.5px solid #616161;*/
-
     border-radius: 0!important;
     transition: .3s ease-in-out;
 }
@@ -556,12 +569,24 @@ a:hover {
 
 /* info-window & info-button */
 
+.open_hidden {
+    float: right;
+    background-color: #fbfbfb;
+    border: 1px solid #6a6a6a;
+    color: #6a6a6a;
+}
+
+
+.the_issue {
+    font-size: 14px;
+    color: #222;
+}
+
 .company {
     margin-top: 20px;
 }
 
 .info-show {
-    /*margin-right: 15px;*/
     cursor: pointer;
 }
 
@@ -589,15 +614,15 @@ a:hover {
     font-size: 20px;
     position: absolute;
     right: 0;
-    padding: 10px 15px;
+    padding: 20px 20px;
     cursor: pointer;
     transition: .3s ease-in-out;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background:  url(http://172.16.0.183:3000/images/cross.svg) center no-repeat rgba(0, 0, 0, 0.4);
 }
 
     .info-close:hover {
-        transform: scale(1.2) translate(-3px, 4px);
+        transform: scale(1.25) translate(-3px, 4px);
     }
 
 .room-info {
@@ -608,7 +633,7 @@ a:hover {
     z-index: 23;
     width: 50%;
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    height: 90%;
+    height: 92%;
 }
 
 .room-desc-cont {
@@ -645,7 +670,8 @@ a:hover {
     color: #222;
     font-size: 16px;
     padding: 15px;
-
+    overflow: auto;
+    word-wrap: break-word;
 }
 
 .room-issue {
@@ -665,10 +691,16 @@ a:hover {
 }
 
 
+.selection {
+    font-weight: bold;
+    color: #B71C1C;
+}
+
 /*Issues*/
 
 .room-issues-input {
     padding: 8px 0 0 10px;
+    margin-bottom: 20px;
 }
 
 .room-issues-input:focus {
@@ -700,9 +732,7 @@ a:hover {
 
 
 .col-xs-12.col-sm-12.col-lg-6 {
-    /*position: fixed;*/
     padding: 0 !important;
-    /*border: 1px solid #000000;*/
     top: 15vh;
     min-width: 200px;
     z-index: 2;
@@ -724,14 +754,9 @@ a:hover {
 }
 
 .col-xs-6.col-sm-6.col-md-6.login-box {
-    /*padding: 10px 0 10px 0;*/
     padding: 10px;
 }
 
-/*.col-xs-6.col-sm-6.col-md-6.separator.social-login-box {
-    padding: 10px 10px 30px 10px;
-    width: 100%;
-}*/
 
 .btn-block {
     font-size: 14px;
@@ -761,8 +786,8 @@ a:hover {
     display: block;
     padding-top: 7px;
     text-decoration: none;
-    color: #b6b6b6;
-    border: 1px solid #b6b6b6;
+    color: #000000;
+    border: 1px solid #000000;
     text-transform: uppercase;
     font-size: 14px;
     border-radius: 0;
@@ -773,7 +798,7 @@ a:hover {
 
 .anon_link:hover {
     text-decoration: none;
-    color: #000000;
+    color: #666666;
     border: 1px solid #000000;
     background: white;
 }
@@ -829,9 +854,7 @@ a:hover {
     font-family: 'Tahoma';
     font-size: 16px;
     font-weight: bold;
-
 }
-
 
 
 /* EVENT SELECTED */
@@ -859,10 +882,11 @@ a:hover {
     align-items: center;
     overflow: auto;
 }
+
 .popup_inner {
     width: 500px;
     height: 500px;
-    background: url(../images/popup.jpg);
+    background: url(http://172.16.0.183:3000/images/popup.jpg);
     align-items: center;
     display: flex;
     margin: 15% auto;
@@ -874,7 +898,6 @@ a:hover {
 }
 
 form input{
-    /*margin: 0 auto;*/
     margin-bottom: 20px;
     width: 100%;
     text-align: center;
@@ -940,7 +963,6 @@ textarea {
     justify-content: space-between;
 }
 
-
 .dates_picker_cont {
     display: flex;
     flex-grow: 1;
@@ -950,11 +972,8 @@ textarea {
 .react-datepicker-wrapper:before {
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
-    /*position: absolute;*/
-    /*margin-left: -18px;*/
     padding-top: 20px;
     margin-right: 7px;
-
 }
 
 #filter_date_from .react-datepicker-wrapper:before {
@@ -970,8 +989,6 @@ textarea {
     float: left;
     margin-right: 20px;
     margin-top: 5px;
-    /*text-shadow:4px 4px 7px #1f1f1f;*/
-
 }
 
 .color_pick {
@@ -989,22 +1006,21 @@ textarea {
     float: left;
     font-size: 14px;
     margin-bottom: 23px;
-    /*display: inline-block;*/
-    /*margin-top: 40px;
-    margin-left: 20px;*/
+}
 
-}
-#footer {
-    position: absolute;
-    bottom: 0;
-    /* height: 8%;
-     width: 80%;*/
-}
+    .footer_on_auth {
+        position: absolute;
+        bottom: 0;
+    }
+
+    aside .footer_on_auth {
+        position: relative;
+        margin-top: 30px;
+    }
 
 .img_logo {
     object-fit: contain;
     width: 180px;
-    /*height: 64px;*/
     margin-bottom: 10px;
 }
 
@@ -1018,6 +1034,7 @@ textarea {
     text-decoration: none;
     color: #B71C1C;
 }
+
 
     /*MEDIA*/
 @media all and (max-width:1024px) {
@@ -1110,44 +1127,76 @@ textarea {
     .rbc-calendar {
         height: auto!important;
     }
-}
 
-    @media all and (max-width: 800px) {
-        #footer {
-            display: none;
-        }
+    .footer_on_auth{
+        display: none;
     }
-
-    @media all and (max-height: 767px) {
-        #footer {
-            display: none;
-        }
-    }
-
-
-@media all and (max-width: 575px) {
-    .col-xs-6.col-sm-6.col-md-6.login-box {
-        max-width: 50%;
-    }
-    .container {
-        max-width: 540px;
+    .p_404 {
+        padding-left: 0 !important;
     }
 }
 
-    @media all and (max-width: 768px){
-        .container {
-            max-width: 540px;
+    @media all and (max-height: 170px){
+        .footer_on_auth {
+            display: none;
         }
+
     }
+
 
     @media all and (max-width: 992px){
         .container {
             max-width: 540px;
         }
+        .col-xs-6.col-sm-6.col-md-6.login-box {
+            max-width: 50%;
+        }
     }
 
-    /*@media all and (min-width: 1024px){
-        .container {
-            max-width: 920px;
-        }
-    }*/
+/*page Not Found*/
+
+.body_404 {
+    width: 100%;
+}
+
+.container_for_404 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.p_404 {
+    font-size: 50px;
+    padding-right: 0;
+    padding-left: 20%;
+    color: #B71C1C;
+
+}
+
+.link_404 {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #B71C1C;
+    color: #ffffff;
+    font-family: 'Noto Sans';
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+    .link_404:hover {
+        text-decoration: none;
+        color: #ffffff;
+        background: #D32F2F;
+    }

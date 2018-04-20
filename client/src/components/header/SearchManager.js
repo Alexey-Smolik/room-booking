@@ -36,13 +36,13 @@ class SearchEmptyRoom extends Component {
             switch (type) {
 
                 case 'empty date':
-                    NotificationManager.warning('Date cannot be empty!', 'Event', 3000);
+                    NotificationManager.warning('Date cannot be empty!Please, fill the fields!', 'Event', 3000);
                     break;
                 case 'search':
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
                     break;
                 case 'start end date':
-                    NotificationManager.warning('Start date cannot be more than end date!', 'Event', 3000);
+                    NotificationManager.warning('Incorrect data value! Please, correct it!', 'Event', 3000);
                     break;
             }
         };
@@ -137,6 +137,8 @@ class SearchEmptyRoom extends Component {
                 onChange={this.handleChangeStart}
                 showTimeSelect
                 timeFormat="HH:mm"
+                minTime={moment().hours(8).minutes(0)}
+                maxTime={moment().hours(19).minutes(0)}
                 timeIntervals={30}
                 timeCaption="time"
               />
@@ -152,13 +154,15 @@ class SearchEmptyRoom extends Component {
                 onChange={this.handleChangeEnd}
                 showTimeSelect
                 timeFormat="HH:mm"
+                minTime={moment().hours(8).minutes(0)}
+                maxTime={moment().hours(19).minutes(0)}
                 timeIntervals={30}
                 timeCaption="time"
               />
             </div>
             <div className="buttons_filter">
-                <Link to={'/room/'} onClick={() => this.submitHandler()} style={{float: 'right'}}>Search</Link>
-                <Link to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={() => this.submitHandler()} style={{float: 'right'}}>Search</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={() => this.props.dispatch(getRooms())}>Cancel</Link>
             </div>
           </div>
         </div>

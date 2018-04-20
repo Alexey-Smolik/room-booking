@@ -35,6 +35,7 @@ class Calendar extends React.Component {
         this.socketEditEvent = this.socketEditEvent.bind(this);
         this.socketDeleteEvent = this.socketDeleteEvent.bind(this);
     }
+
     componentWillMount() {
         this.setState({
             colors : randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 })
@@ -96,13 +97,12 @@ class Calendar extends React.Component {
             end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
             if (this.state.editMode) {
-                console.log("start", event.start);
-                console.log("end", event.end);
-                if ((((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
-                    ((event.start >= start)  && (event.end <= end)))  ||
-                    ((event.start <= start)  && (event.end >= end))   ||
-                    ((event.start > start)  && (event.end > end)  &&   (event.start < end))  ) {
-                    return true;
+                if((eventID > -1 && eventID !== eventsArray[i].id) &&
+                    ((((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
+                        ((event.start >= start)  && (event.end <= end)))  ||
+                        ((event.start <= start)  && (event.end >= end))   ||
+                        ((event.start > start)  && (event.end > end)  &&   (event.start < end)))) {
+                        return false;
                 }
             } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
                     ((event.start >= start)  && (event.end <= end)))  ||
@@ -111,7 +111,7 @@ class Calendar extends React.Component {
                 return false;
             }
         }
-        return !this.state.editMode;
+        return true;
     };
 
     editEvent = (event) => {

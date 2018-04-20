@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
-import { NotificationContainer } from 'react-notifications';
+import Footer from '../Footer/Footer';
 
 
 import {
@@ -137,7 +137,8 @@ class LeftNavBar extends Component {
 
                     // Companies List
                     <li key={key}>
-                        <input type="checkbox" name={"sub-group-" + key} id={"sub-group-" + key}/>
+
+                        <input type="checkbox"  name={"sub-group-" + key} id={"sub-group-" + key} defaultChecked/>
                         <label htmlFor={"sub-group-" + key}>{company.name}</label>
 
                         {/*Rooms List*/}
@@ -146,12 +147,12 @@ class LeftNavBar extends Component {
                                 return (room.companyId == company.id) ? (
                                     <li key={roomKey}>
 
-                                        <Link to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                        <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
                                         {room.name}
-                                        </Link>
+                                        </NavLink>
 
                                         <div className="info-show">
-                                            <button className="info-button" onClick={(e) => {
+                                            <button className="info-button" title="Info about room" onClick={(e) => {
                                                 this.infoHandler(e, room);
                                                 this.props.dispatch(getRoomActiveIssues(room.id))}}
                                             >i</button>
@@ -170,31 +171,29 @@ class LeftNavBar extends Component {
     }
 
 
-
     render() {
         this.infoCloseWatcher();
         return(
             <aside>
                 <nav>
-                    <ul className="aside-menu">
-                        <Link className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
+
+                    <ul className="aside-menu" >
+                        {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
+                        <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
                             Show all events
-                        </Link>
+                        </NavLink>
                         {this.renderMenu()}
                         {this.state.mouseEvent ?  <RoomsInfo
+                            userRole = {this.props.user.currentUser.role}
                             selectedRoom={this.state.mouseEvent}
                             handleMouseEvent={this.handleMouseEvent}
                             issues = {this.props.issues}
                         /> : []}
                     </ul>
                 </nav>
-                <NotificationContainer/>
-
+                <Footer />
 
             </aside>
-
-
-
         );
     }
 }

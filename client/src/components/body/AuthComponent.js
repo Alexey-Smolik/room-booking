@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 
 
+
 class AuthComponent extends Component {
   constructor(props) {
     super(props);
@@ -66,6 +67,7 @@ class AuthComponent extends Component {
             </div>
           </div>
         </form>
+
       </div>
     );
   }

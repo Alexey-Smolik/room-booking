@@ -25,17 +25,18 @@ class ImagesContainer extends React.Component {
             <div className="images_for_rooms">
                 { this.props.user && this.props.user.currentUser.role === 1 ?
                     <div>
-                        <Dropzone
+                        <Dropzone title = "Image upload"
                             multiple={false}
                             onDrop={(images) =>{this.onDropImage(images[0])}}
                             accept="image/*"
                             style={{
                                 height:"35px",
                                 width: "35px",
-                                backgroundImage: 'url("https://cdn0.iconfinder.com/data/icons/snow_sabre_silver/512/folder_web_upload.png")',
+                                backgroundImage: 'url("/images/upload.png")',
                                 backgroundSize: "cover",
                                 float:"right",
-                                margin: "1px"
+                                margin: "1px",
+                                cursor: 'pointer'
                             }}
                         />
                         {this.props.images.map((image, index) => {

@@ -14,7 +14,6 @@ import Select from 'react-select';
 
 
 class SearchUser extends React.Component {
-
     state = {
         selectedOption: '',
     };
@@ -28,7 +27,6 @@ class SearchUser extends React.Component {
         this.props.dispatch(getRooms());
         this.setState({ selectedOption: ''});
     };
-
 
     handleSelect = (e) => {
         this.props.dispatch(changeMode("PM_SEARCH"));
@@ -64,7 +62,7 @@ class SearchUser extends React.Component {
                     NotificationManager.success('Search successfully conducted', 'Event', 3000);
                     break;
                 case 'empty pm':
-                    NotificationManager.warning('Manager cannot be empty!', 'Event', 3000);
+                    NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Event', 3000);
                     break;
             }
         };
@@ -74,8 +72,9 @@ class SearchUser extends React.Component {
         const {selectedOption} = this.state;
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
+        console.log(options);
         return (
-            <div className="pm-search" style={{width: "500px", margin: "15px"}}>
+            <div className="pm-search" style={{width: "500px"}}>
                 {options && <Select
                     style={{width: "450px", float: "left"}}
                     name="form-field-name"
@@ -83,8 +82,8 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <Link to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
-                <Link to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
 
             </div>
 
