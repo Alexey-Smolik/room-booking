@@ -5,7 +5,8 @@ import {
     ADD_USER_DB,
     DELETE_USER_DB,
     EDIT_USER_DB,
-    GET_MANAGERS
+    GET_MANAGERS,
+    ADD_SIMPLE_USERS
 } from '../actions/types';
 
 export default function (state = {}, action) {
@@ -13,6 +14,11 @@ export default function (state = {}, action) {
 
       case ADD_USER_DB:
           return { ...state, allUsers: [action.payload, ...state.allUsers]};
+
+
+      case ADD_SIMPLE_USERS:{
+          return { ...state, simpleUsers: action.payload};
+      }
 
       case DELETE_USER_DB:
           return { ...state, allUsers: state.allUsers.filter(({ id }) => id !== action.payload)};

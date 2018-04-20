@@ -22,6 +22,7 @@ yarn-error.log*
 
 .idea/
 .vscode/
+.public/
 
 # dotenv environment variables file
 .env
