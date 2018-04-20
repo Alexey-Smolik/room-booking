@@ -42,11 +42,8 @@ class Popup extends Component {
         end.setTime(end.getTime() - end.getTimezoneOffset() * 60 * 1000);
 
        if(start < end) {
-
-           if (this.props.dateFilter({
-               start: this.state.startDate._d,
-               end: this.state.endDate._d
-           }, this.props.event.id)) {
+           if (this.props.dateFilter({ start: this.state.startDate._d, end: this.state.endDate._d }, this.props.event.id))
+           {
                const event = {
                    name: this.state.title,
                    description: this.state.description,
@@ -56,7 +53,7 @@ class Popup extends Component {
                    roomId: this.props.roomID,
                    userId: this.props.user.currentUser.id,
                    username: this.props.user.currentUser.username
-               };
+           };
 
 
                if (this.props.editMode) {
@@ -140,7 +137,6 @@ class Popup extends Component {
   };
 
   userHaveAccess = () => {
-      console.log(this.props.roomID);
       if(this.props.roomID == 'all') {
           return false;
       }else if (this.props.user.currentUser.role === 1) {

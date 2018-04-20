@@ -84,6 +84,8 @@ class Calendar extends React.Component {
         console.log("Test3", eventID);
         this.props.dispatch(deleteEventFromState(eventID));
     };
+
+
     dateFilter = (event, eventID = -1) => {
         const eventsArray = this.props.events;
 
@@ -94,11 +96,12 @@ class Calendar extends React.Component {
             end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
             if (this.state.editMode) {
-                if (((((event.start <= start) && (event.end <= end) && (event.end >= start)) ||
-                        ((event.start >= start) && (event.end <= end))) ||
-                        ((event.start <= start) && (event.end >= end)) ||
-                        ((event.start >= start) && (event.end >= end) && (event.start <= end))) ||
-                    (eventID > -1 && eventID === eventsArray[i].id)) {
+                console.log("start", event.start);
+                console.log("end", event.end);
+                if ((((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
+                    ((event.start >= start)  && (event.end <= end)))  ||
+                    ((event.start <= start)  && (event.end >= end))   ||
+                    ((event.start > start)  && (event.end > end)  &&   (event.start < end))  ) {
                     return true;
                 }
             } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
