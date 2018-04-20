@@ -16,28 +16,28 @@ routes.get('/', (req, res) => {
             });
     } else res.status(500).send({ message: 'You have no rights' });
 });
-//
-// // --- GET ALL MANAGERS ---
-// routes.get('/managers', (req, res) => {
-//     users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
-//         .then(users => {
-//             res.status(200).send(users);
-//         })
-//         .catch(err => {
-//             res.status(500).send({ message: err.message });
-//         });
-// });
-//
-// // --- GET ALL SIMPLE USERS ---
-// routes.get('/simple', (req, res) => {
-//     users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
-//         .then(users => {
-//             res.status(200).send(users);
-//         })
-//         .catch(err => {
-//             res.status(500).send({ message: err.message });
-//         });
-// });
+
+// --- GET ALL MANAGERS ---
+routes.get('/managers', (req, res) => {
+    users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+        .then(users => {
+            res.status(200).send(users);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
+// --- GET ALL SIMPLE USERS ---
+routes.get('/simple', (req, res) => {
+    users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+        .then(users => {
+            res.status(200).send(users);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
 
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
