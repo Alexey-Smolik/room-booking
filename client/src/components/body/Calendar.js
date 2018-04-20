@@ -35,6 +35,7 @@ class Calendar extends React.Component {
         this.socketEditEvent = this.socketEditEvent.bind(this);
         this.socketDeleteEvent = this.socketDeleteEvent.bind(this);
     }
+
     componentWillMount() {
         this.setState({
             colors : randomColor({ count: this.props.rooms.length, luminosity: 'light', format: 'rgba', alpha: 0.75 })
@@ -46,7 +47,10 @@ class Calendar extends React.Component {
                 this.props.dispatch(getAllEvents());
             }
         }
+        this.props.dispatch(getAllEvents());
+
     };
+
     componentDidMount(){
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
@@ -161,7 +165,7 @@ class Calendar extends React.Component {
     };
 
     render() {
-
+        console.log(this.props.user);
 
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
@@ -212,6 +216,7 @@ class Calendar extends React.Component {
                 {this.state.showPopup &&  <Popup
                     event={this.state.event}
                     user={this.props.user}
+                    simpleUsers={this.props.simpleUsres}
                     closePopup={this.closePopup}
                     editMode={this.state.editMode}
                     roomID={this.props.roomID  || this.props.match.params.roomID}

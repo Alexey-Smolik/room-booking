@@ -6,7 +6,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { createEvent, deleteEvent , editEvent } from "../../actions/index";
 import {NotificationManager} from 'react-notifications';
+import { SelectConnected } from 'react-select-multi';
 import 'react-notifications/lib/notifications.css';
+
+import Select from 'react-select';
 
 class Popup extends Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class Popup extends Component {
     this.state = {
       title: '',
       description: '',
+        users: [],
       startDate: moment(),
       endDate: moment(),
     };
@@ -150,8 +154,22 @@ class Popup extends Component {
       }
   };
 
+  onUsersChange = (user) => {
+      this.setState({users: user});
+  };
+
   render() {
-    return (
+      let options = [
+          { label: 'Chocolate', value: 'chocolate' },
+          { label: 'Vanilla', value: 'vanilla' },
+          { label: 'Strawberry', value: 'strawberry' },
+          { label: 'Caramel', value: 'caramel' },
+          { label: 'Cookies and Cream', value: 'cookiescream' },
+          { label: 'Peppermint', value: 'peppermint' },
+      ];
+
+
+      return (
       <div className="overlay">
         <form className="popup_inner" onSubmit={this.submitHandler}>
             {this.userHaveAccess() ?
@@ -176,6 +194,19 @@ class Popup extends Component {
                             maxLength={150}
                             value={this.state.description}
                             onChange={this.handleChangeDesc}
+                        />
+
+                        <ControlLabel>Users</ControlLabel>
+                        <Select
+                            closeOnSelect={false}
+                            disabled={false}
+                            multi
+                            onChange={this.onUsersChange}
+                            options={options}
+                            placeholder="Select users"
+                            removeSelected={true}
+                            rtl={false}
+                            value={this.state.users}
                         />
 
                         <div id="date_to">

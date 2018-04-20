@@ -6,7 +6,8 @@ const bcrypt = require('bcrypt-as-promised');
 // --- GET ALL USERS ---
 routes.get('/', (req, res) => {
     if(req.user.role === 1){
-        users.findAll({order: [['id', 'DESC']]})
+        let where = req.query.role ? {role: req.query.role} : '';
+        users.findAll({where: where, order: [['id', 'DESC']]})
             .then(users => {
                 res.status(200).send(users);
             })
@@ -15,17 +16,28 @@ routes.get('/', (req, res) => {
             });
     } else res.status(500).send({ message: 'You have no rights' });
 });
-
-// --- GET ALL MANAGERS ---
-routes.get('/managers', (req, res) => {
-    users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
-        .then(users => {
-            res.status(200).send(users);
-        })
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        });
-});
+//
+// // --- GET ALL MANAGERS ---
+// routes.get('/managers', (req, res) => {
+//     users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+//         .then(users => {
+//             res.status(200).send(users);
+//         })
+//         .catch(err => {
+//             res.status(500).send({ message: err.message });
+//         });
+// });
+//
+// // --- GET ALL SIMPLE USERS ---
+// routes.get('/simple', (req, res) => {
+//     users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+//         .then(users => {
+//             res.status(200).send(users);
+//         })
+//         .catch(err => {
+//             res.status(500).send({ message: err.message });
+//         });
+// });
 
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
