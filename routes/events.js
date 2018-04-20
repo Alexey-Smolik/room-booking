@@ -3,6 +3,7 @@ const events = require('../models').events;
 const rooms = require('../models').rooms;
 const companies = require('../models').companies;
 const users = require('../models').users;
+const invitations = require('../models').invitations;
 const io = require('../sockets');
 
 // ----- HANDLERS FOR ISSUES -----
@@ -34,9 +35,29 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
         events.create(req.body)
             .then(event => {
+                let invitationUsers = req.body.invitations ? req.body.invitations.map(user => {
+                    return {
+                        eventId: event.dataValues.id,
+                        userId: user
+                    }
+                }) : [];
+
                 event.dataValues.username = req.body.username;
-                io.emit('add event', event.dataValues);
-                res.status(201).send(event);
+                return Promise.all([invitations.bulkCreate(invitationUsers), event.dataValues]);
+            })
+            .then(invites => {
+                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username'] } }), invites[1]]);
+            })
+            .then(invites => {
+                invites[1].invitations = invites[0].map(invite => {
+                    return {
+                        id: invite.dataValues.userId,
+                        user: { username: invite.dataValues.user.username }
+                    }
+                });
+
+                io.emit('add event', invites[1]);
+                res.send(invites[1]);
             })
             .catch(err => {
                 res.status(501).send({message: err.message});
@@ -57,8 +78,31 @@ routes.put('/:id', (req, res) => {
             })
             .then(event => {
                 event.dataValues.username = req.body.username;
-                io.emit('edit event', event.dataValues);
-                res.status(200).send(event);
+                return Promise.all([invitations.destroy({where: {eventId: req.params.id}}), event.dataValues]);
+            })
+            .then(invites => {
+                let invitationUsers = req.body.invitations.map(user => {
+                    return {
+                        eventId: req.params.id,
+                        userId: user
+                    }
+                });
+
+                return Promise.all([invitations.bulkCreate(invitationUsers), invites[1]]);
+            })
+            .then(invites => {
+                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username'] } }), invites[1]]);
+            })
+            .then(invites => {
+                invites[1].invitations = invites[0].map(invite => {
+                    return {
+                        id: invite.dataValues.userId,
+                        user: { username: invite.dataValues.user.username }
+                    }
+                });
+
+                io.emit('edit event', invites[1]);
+                res.send(invites[1]);
             })
             .catch(err => {
                 res.status(500).send({message: err.message});

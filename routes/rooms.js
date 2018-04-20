@@ -5,6 +5,7 @@ const users = require('../models').users;
 const images = require('../models').images;
 const companies = require('../models').companies;
 const issues = require('../models').issues;
+const invitations = require('../models').invitations;
 const multer  = require('multer');
 const config = require('../config/main');
 const moment = require('moment');
@@ -76,7 +77,7 @@ routes.get('/events/:userId', (req, res) => {
             });
         })
         .then(roomsId => {
-            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, {model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
         })
         .then(rooms => {
             res.send(rooms);
@@ -215,7 +216,7 @@ routes.delete('/images/:id', (req, res) => {
 // --- GET ISSUES BY RoomId ---
 routes.get('/:id/issues', (req, res) => {
     let where = req.query.active ? { roomId: req.params.id, active: req.query.active } : { roomId: req.params.id };
-    issues.findAll({ where: where, order: [['id', 'DESC']] })
+    issues.findAll({ where: where, order: [['id', 'DESC']], include: [{model: rooms, attributes : ['name']}] })
         .then(issues => {
             res.send(issues);
         })
@@ -228,7 +229,7 @@ routes.get('/:id/issues', (req, res) => {
 // --- GET EVENTS BY RoomId with UserId---
 routes.get('/:id/events', (req, res) => {
     let where = req.query.userId ? { roomId: req.params.id, userId: req.query.userId } : { roomId: req.params.id };
-    events.findAll({ where: where, include: [ { model: users, attributes: ['username'] }] })
+    events.findAll({ where: where, include: [ { model: users, attributes: ['username'] }, { model: invitations, attributes: ['id'], include: [{ model: users, attributes: ['id', 'username'] }] }] })
         .then(events => {
             res.send(events);
         })
