@@ -87,7 +87,6 @@ passport.use(new TwitterStrategy({
         callbackURL: `/auth/twitter/callback`
     },
     function(accessToken, refreshToken, profile, done) {
-        console.log(profile);
         users.findOrCreate({
             where: { provider: 'twitter', personal_id: profile.id },
             defaults: { username: profile.displayName, provider: 'twitter', personal_id: profile.id, role: 3 }
@@ -153,17 +152,22 @@ passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-routes.post('/login', (req, res) => {
-    users.create(req.body)
-        .then(user => {
-            res.status(201).redirect('/');
-        })
-        .catch(err => {
-            res.status(501).send({ message: err.message });
+//routes.post('/local', passport.authenticate('local', { successRedirect: '/room', failureRedirect: '/' }));
+
+
+routes.post('/local', function(req, res, next) {
+    passport.authenticate('local', function(err, user, info) {
+        if (err) { return next(err) }
+        if (!user) {
+            return res.status(401).redirect('/');
+        }
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            return res.redirect('/room');
         });
+    })(req, res, next);
 });
 
-routes.post('/local', passport.authenticate('local', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room', failureRedirect: '/' }));
 

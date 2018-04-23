@@ -9,15 +9,20 @@ import Footer from '../Footer/Footer';
 import {
     getAllEvents,
     getRoomActiveIssues,
-    addEventToState ,
-    deleteEventFromState ,
-    editEventInState ,
-    getRooms ,
+    addEventToState,
+    deleteEventFromState,
+    editEventInState,
+    getRooms,
     getCurrentUser,
     getEvents,
     getCompanies,
-    getEventsByPM
+    getEventsByPM, getAllIssues, getRoomImages, getAllUsers, getRoomIssues
 } from "../../actions";
+import UsersContainer from "../adminPage/UsersContainer";
+import RoomsContainer from "../adminPage/RoomsContainer";
+import InnerRoomContainer from "../adminPage/InnerRoomContainer";
+import CompaniesContainer from "../adminPage/CompaniesContainer";
+import HelloAdmin from "../HelloAdmin";
 const socket = io('http://172.16.0.183:8000');
 
 
@@ -173,27 +178,36 @@ class LeftNavBar extends Component {
 
     render() {
         this.infoCloseWatcher();
-        return(
-            <aside>
-                <nav>
 
-                    <ul className="aside-menu" >
-                        {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
-                        <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
-                            Show all events
-                        </NavLink>
-                        {this.renderMenu()}
-                        {this.state.mouseEvent ?  <RoomsInfo
-                            userRole = {this.props.user.currentUser.role}
-                            selectedRoom={this.state.mouseEvent}
-                            handleMouseEvent={this.handleMouseEvent}
-                            issues = {this.props.issues}
-                        /> : []}
-                    </ul>
-                </nav>
-                <Footer />
+        return (
+            <div>
+                {this.props.user && this.props.user.currentUser ?
+                    <aside>
+                        <nav>
+                            <ul className="aside-menu" >
+                                {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
+                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
+                                    Show all events
+                                </NavLink>
+                                {this.renderMenu()}
+                                {this.state.mouseEvent ?  <RoomsInfo
+                                    userRole = {this.props.user.currentUser.role}
+                                    selectedRoom={this.state.mouseEvent}
+                                    handleMouseEvent={this.handleMouseEvent}
+                                    issues = {this.props.issues}
+                                /> : []}
+                            </ul>
+                        </nav>
+                        <Footer />
 
-            </aside>
+                    </aside>
+                    : <div>
+                        <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
+                        <div className="container_for_404">
+                            <Link className="link_404" to={'/'} title="Go home">Home</Link>
+                        </div>
+                    </div>}
+            </div>
         );
     }
 }

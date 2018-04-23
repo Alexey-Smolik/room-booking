@@ -270,7 +270,7 @@ class Popup extends Component {
 
                         <ControlLabel style={{ marginLeft: '37%' }}>Invitations</ControlLabel>
                         {this.state.invitations && this.state.invitations.map(invite => {
-                            return <li>{invite.label}</li>
+                            return <div>{invite.label}</div>
                         })}
 
                         <div id="date_to">
