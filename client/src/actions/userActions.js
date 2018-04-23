@@ -31,7 +31,7 @@ export const getAllUsers = () => async (dispatch) => {
 };
 
 export const getManagers = () => async (dispatch) => {
-    const res = await axios.get('/api/users/managers');
+    const res = await axios.get('/api/users/?role=2');
     dispatch({ type: GET_MANAGERS, payload: res.data });
 };
 

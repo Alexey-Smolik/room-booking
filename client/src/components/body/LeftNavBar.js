@@ -42,33 +42,38 @@ class LeftNavBar extends Component {
         this.infoHandler = this.infoHandler.bind(this);
         this.handleMouseEvent = this.handleMouseEvent.bind(this);
 
-
-
-        //this.connect = this.connect.bind(this);
+        this.connect = this.connect.bind(this);
         this.socketAddRoom = this.socketAddRoom.bind(this);
         this.socketEditRoom = this.socketEditRoom.bind(this);
         this.socketDeleteRoom = this.socketDeleteRoom.bind(this);
     }
 
-    componentWillMount(){
+    async componentWillMount(){
         this.props.dispatch(getRooms());
-        this.props.dispatch(getCurrentUser());
+        await this.props.dispatch(getCurrentUser());
         this.props.dispatch(getCompanies());
     };
 
-    componentDidMount() {
+    async componentDidMount() {
+        await this.props.dispatch(getCurrentUser());
         socket.on('add room', this.socketAddRoom);
         socket.on('edit room', this.socketEditRoom);
         socket.on('delete room', this.socketDeleteRoom);
-        //socket.on('disconnect', this.disconnect);
-        //socket.emit('connect user', this.connect());
+        socket.on('disconnect', this.disconnect);
+        await socket.emit('connect user', this.props.user.currentUser);
     };
 
+    connect(){
+        console.log(this.props);
+        let { currentUser } = this.props.user;
+        { currentUser &&  socket.emit('connect user', {currentUser})}
+    }
 
-    // componentWillReceiveProps(){
-    //     let { currentUser } = this.props.user;
-    //     { currentUser &&  socket.emit('connect user', {currentUser})}
-    // };
+
+    componentWillReceiveProps(){
+
+    }
+
 
 
     socketAddRoom(server) {
