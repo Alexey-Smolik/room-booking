@@ -19,7 +19,7 @@ class NavBar extends React.Component {
         return (
             <div className="reactHeader">
                 {location.pathname.includes("/adminPanel") ?
-                    <Link to="/room">Home</Link>
+                    <Link className="link_search_to_btn" to="/room" style={{ width: '100px' }}>Home</Link>
                     :
                     (role < 3 )  ?
                         currentUser && <SearchManager user={currentUser}/>
