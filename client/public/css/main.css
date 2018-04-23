@@ -74,7 +74,7 @@ h1 {
     font-weight: bold;
     text-align: center;
     padding-right: 20%;
-    margin-top: 250px;
+    margin-top: 300px;
     -webkit-animation-name: bounce;
     animation-name: bounce;
     -webkit-transform-origin: center bottom;
@@ -139,8 +139,33 @@ h1 {
 }
 
 .Select-control {
-    width: 300px !important;
+    /*margin-bottom: 20px;*/
+    overflow: auto;
 }
+
+.Select-value {
+    background: #e7e7e7 !important;
+    border-radius: 0 !important;
+    border: 1px solid #9d9d9d !important;
+    color: #000000 !important;
+}
+
+    .Select--multi .Select-value-icon {
+        border-right: 1px solid #9d9d9d !important;
+    }
+
+    .Select--multi .Select-value-icon:hover {
+        color: #B71C1C !important;
+    }
+
+    .Select--multi .Select-multi-value-wrapper {
+        max-height: 110px !important;
+        overflow: auto !important;
+    }
+
+    .Select-placeholder {
+        display: none;
+    }
 
 .select-cont {
     width: 100%;
@@ -221,7 +246,6 @@ h1 {
     color: black;
     text-decoration: none;
     border: 1px solid #000000;
-
 }
 
 .link_log:hover {
@@ -626,7 +650,11 @@ a:hover {
     }
 
 .room-info {
-    display: flex;
+    /*display: flex;*/
+    /*top: 25%;
+    left: 25%;
+    margin-right: -25%;
+    transform: translate(-25%, -25%);*/
     flex-wrap: wrap;
     background: white;
     position: absolute;
@@ -884,12 +912,12 @@ a:hover {
 }
 
 .popup_inner {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 660px;
     background: url(http://172.16.0.183:3000/images/popup.jpg);
     align-items: center;
     display: flex;
-    margin: 15% auto;
+    margin: 10% auto;
 }
 
 .form-group {
@@ -908,7 +936,7 @@ textarea {
     width: 100%;
     min-height: 70px;
     max-height: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     border: 1px solid #ced4da;
 }
   .popup_inner  .react-datepicker__input-container, .popup_inner .react-datepicker-wrapper {
@@ -982,6 +1010,10 @@ textarea {
 
 #filter_date_to .react-datepicker-wrapper:before {
     content: 'End:';
+}
+
+#date_to {
+    margin-top: 20px;
 }
 
 .block_colors {
@@ -1152,6 +1184,12 @@ textarea {
             max-width: 50%;
         }
     }
+
+    /*@media all and (max-height: 640px){
+        .room-info .room-image {
+            height: 55vh !important;
+        }
+    }*/
 
 /*page Not Found*/
 

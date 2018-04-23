@@ -13,29 +13,37 @@ import Select from 'react-select';
 
 class Popup extends Component {
   constructor(props) {
-    super(props);
-    this.state = {
-      title: '',
-      description: '',
-        users: [],
-      startDate: moment(),
-      endDate: moment(),
-    };
+      super(props);
+      this.state = {
+          title: '',
+          description: '',
+          invitations: [],
+          startDate: moment(),
+          endDate: moment(),
+      };
   }
 
+  async componentWillMount() {
+      await this.props.dispatch(simpleUsers());
 
+      let invitations = this.props.event.invitations ? this.props.event.invitations.map(invite => {
+          return {
+              label: invite.user.username,
+              value: invite.user.id
+          }
+      }) : [];
 
-  componentWillMount() {
-    this.setState({
-        room: this.props.room,
-        startDate: moment(this.props.event.start),
-        endDate: moment(this.props.event.end),
-        title: this.props.event.title,
-        description: this.props.event.description,
-        user: this.props.user,
-        username: this.props.event.user
-    });
-    this.props.dispatch(simpleUsers());
+      this.setState({
+          room: this.props.room,
+          startDate: moment(this.props.event.start),
+          endDate: moment(this.props.event.end),
+          title: this.props.event.title,
+          description: this.props.event.description,
+          user: this.props.user,
+          username: this.props.event.user,
+          simpleUsers: this.props.user.simpleUsers,
+          invitations: invitations
+      });
   };
 
   submitHandler = (e) => {
@@ -62,7 +70,8 @@ class Popup extends Component {
                             id: this.props.event.id,
                             roomId: this.props.roomID,
                             userId: this.props.user.currentUser.id,
-                            username: this.props.user.currentUser.username
+                            username: this.props.user.currentUser.username,
+                            invitations: this.state.invitations
                         };
 
                         if (this.props.editMode) {
@@ -162,20 +171,17 @@ class Popup extends Component {
       }
   };
 
-  onUsersChange = (user) => {
-      this.setState({users: user});
+  onUsersChange = (users) => {
+      this.setState({ invitations: users.map(user => user.value) });
   };
 
   render() {
-      let options = [
-          { label: 'Chocolate', value: 'chocolate' },
-          { label: 'Vanilla', value: 'vanilla' },
-          { label: 'Strawberry', value: 'strawberry' },
-          { label: 'Caramel', value: 'caramel' },
-          { label: 'Cookies and Cream', value: 'cookiescream' },
-          { label: 'Peppermint', value: 'peppermint' },
-      ];
-
+      let simpleUsers = this.state.simpleUsers ? this.state.simpleUsers.map(user => {
+          return {
+              label: user.username,
+              value: user.id
+          }
+      }) : [];
 
       return (
       <div className="overlay">
@@ -210,11 +216,11 @@ class Popup extends Component {
                             disabled={false}
                             multi
                             onChange={this.onUsersChange}
-                            options={options}
+                            options={simpleUsers}
                             placeholder="Select users"
                             removeSelected={true}
                             rtl={false}
-                            value={this.state.users}
+                            value={this.state.invitations}
                         />
 
                         <div id="date_to">
@@ -262,6 +268,10 @@ class Popup extends Component {
                         <ControlLabel style={{ marginLeft: '37%' }}>Description</ControlLabel>
                         <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center', wordBreak: 'break-word' }} >{this.state.description}</div>
 
+                        <ControlLabel style={{ marginLeft: '37%' }}>Invitations</ControlLabel>
+                        {this.state.invitations && this.state.invitations.map(invite => {
+                            return <li>{invite.label}</li>
+                        })}
 
                         <div id="date_to">
                             <DatePicker
