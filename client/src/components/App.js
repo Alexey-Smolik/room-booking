@@ -19,7 +19,6 @@ const App = () => (
                 <Route  path="/room" component={NavBar} />
                 <Route exact path="/" component={Header} />
                 <Route exact path="/" component={AuthComponent} />
-
                 <div className="bodyWrapper">
                     <Route path="/room" component={LeftNavBar} />
                     <Switch>
