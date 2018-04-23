@@ -26,7 +26,6 @@ class Popup extends Component {
   async componentWillMount() {
       await this.props.dispatch(simpleUsers());
 
-      console.log(this.props.event);
       let invitations = this.props.event.invitations ? this.props.event.invitations.map(invite => {
           return {
               label: invite.user.username,
@@ -182,7 +181,7 @@ class Popup extends Component {
               label: user.username,
               value: user.id
           }
-      }) : '';
+      }) : [];
 
       return (
       <div className="overlay">
@@ -269,6 +268,10 @@ class Popup extends Component {
                         <ControlLabel style={{ marginLeft: '37%' }}>Description</ControlLabel>
                         <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center', wordBreak: 'break-word' }} >{this.state.description}</div>
 
+                        <ControlLabel style={{ marginLeft: '37%' }}>Invitations</ControlLabel>
+                        {this.state.invitations && this.state.invitations.map(invite => {
+                            return <li>{invite.label}</li>
+                        })}
 
                         <div id="date_to">
                             <DatePicker
