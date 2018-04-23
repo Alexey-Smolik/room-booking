@@ -164,11 +164,8 @@ class Calendar extends React.Component {
     };
 
     render() {
-        let { roomID } = this.props.match.params;
-
         let events = [];
         let rooms = this.props.rooms.map(({id}) => id);
-
 
         { this.props.events &&  (events = this.props.events.map((event) => {
             const start = new Date(event.date_from);
@@ -189,7 +186,7 @@ class Calendar extends React.Component {
         }));
         }
         return (
-            <div className="calendar-cont">
+            <div className= {this.props.roomID ? "" : "calendar-cont"}>
                 <React.Fragment>
                     <BigCalendar
                         selectable
@@ -201,7 +198,11 @@ class Calendar extends React.Component {
                         defaultDate={new Date()}
                         culture="en-GB"
                         onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => { this.props.match.params.roomID === 'all' ? this.createNotification('all events')() : this.addEvent(event); }}
+                        onSelectSlot={event => {
+                            ((this.props.roomID && this.props.roomID === 'all') || (!this.props.roomID && this.props.match.params.roomID === 'all'))  ?
+                                this.createNotification('all events')()
+                                : this.addEvent(event);
+                        }}
                         eventPropGetter={(event) => {
                             return {
                                 style: {

@@ -30,7 +30,7 @@ class ImageItem extends React.Component {
                 { isMouseEnter &&
                 <Button
                     bsStyle="danger"
-                    style={{position:"absolute"}}
+                    style={{position:"absolute", marginLeft: '164px' }}
                     onMouseEnter={() => this.setState({isMouseEnter: true})}
                     onMouseLeave={() => this.setState({isMouseEnter: false})}
                     onClick={() => {this.props.dispatch(deleteRoomImage(this.props.id))}}>X

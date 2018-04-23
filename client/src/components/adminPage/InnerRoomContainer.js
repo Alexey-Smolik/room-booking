@@ -28,7 +28,7 @@ class InnerRoomContainer extends React.Component {
                     <h3>{roomName}</h3>
                     <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
                         <Tab eventKey={1} title="Events calendar">
-                            <Calendar roomID = {roomID}/>
+                            <Calendar roomID = {roomID} />
                         </Tab>
                         <Tab eventKey={2} title="Photos">
                             <ImagesContainer  roomID={roomID}/>
