@@ -1,5 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const HelloWindow = () => <h1>Select a room</h1>;
+class HelloWindow extends Component {
+    render() {
+        return (
+            <div className={'hello-window'}>
+                {this.props.user && this.props.user.currentUser ?
+                    <h1>Select a room</h1>
+                    : ''}
+                    </div>
+        )
+    }
+}
 
-export default HelloWindow;
+const mapStateToProps = ({ user }) => ({
+    user
+});
+
+export default connect(mapStateToProps)(HelloWindow);
+

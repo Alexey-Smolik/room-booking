@@ -16,7 +16,7 @@ const App = () => (
     <div className="App">
         <BrowserRouter>
             <div>
-                    <NavBar/>
+                <Route  path="/room" component={NavBar} />
                 <Route exact path="/" component={Header} />
                 <Route exact path="/" component={AuthComponent} />
 
@@ -32,7 +32,6 @@ const App = () => (
                 </div>
             </div>
         </BrowserRouter>
-
         <NotificationContainer/>
     </div>
 );
