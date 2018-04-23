@@ -31,13 +31,13 @@ export const getAllUsers = () => async (dispatch) => {
 };
 
 export const getManagers = () => async (dispatch) => {
-    const res = await axios.get('/api/users/managers');
+    const res = await axios.get('/api/users/?role=2');
     dispatch({ type: GET_MANAGERS, payload: res.data });
 };
 
 
 export const simpleUsers = () => async (dispatch) => {
-    const res = await axios.get(`/api/users?role=1`);
+    const res = await axios.get(`/api/users?role=3`);
     dispatch({ type: ADD_SIMPLE_USERS, payload: res.data });
 };
 
