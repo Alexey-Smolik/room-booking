@@ -11,6 +11,7 @@ import {
     getRoomImages,
     getRoomIssues,
     getEvents,
+    deleteCurrentUser,
 } from "../actions";
 import 'react-datepicker/dist/react-datepicker.css';
 import {connect} from "react-redux";
@@ -19,6 +20,7 @@ import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
+import LoginSection from './header/LoginSection';
 import HelloAdmin from './HelloAdmin';
 
 
@@ -34,9 +36,12 @@ componentWillMount() {
     this.props.dispatch(getRooms());
 }
     render() {
+        let {user, issues, rooms} = this.props;
         return (
         <div style={{ width: "100%" }}>
-            {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
+            {<Link to="/room">Home</Link>}
+            {user.currentUser && <LoginSection user={user.currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
+            {user && user.currentUser && user.currentUser.role === 1 ?
                 <div >
 
                     <Route exact path="/adminPanel" component={HelloAdmin} />
@@ -50,7 +55,7 @@ componentWillMount() {
                                 <MenuItem eventKey={1.0}>All rooms</MenuItem>
                             </LinkContainer>
                             <MenuItem divider />
-                            { this.props.rooms.map((room, index) => {
+                            { rooms.map((room, index) => {
                                 return <LinkContainer to={"/adminPanel/rooms/" + room.id} onClick={()=> {
                                     this.props.dispatch(getEvents(room.id));
                                     this.props.dispatch(getRoomIssues(room.id));
@@ -72,7 +77,7 @@ componentWillMount() {
                     <Route exact path="/adminPanel/rooms/" component={RoomsContainer}/>
                     <Route path="/adminPanel/rooms/:roomID" component={InnerRoomContainer}/>
                     <Route path="/adminPanel/users/" component={UsersContainer}/>
-                    <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {this.props.issues} /></Jumbotron>}/>
+                    <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {issues} /></Jumbotron>}/>
                 </div>
                 : <div>
                     <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
