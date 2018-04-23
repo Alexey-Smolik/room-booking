@@ -22,6 +22,8 @@ import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
 import LoginSection from './header/LoginSection';
 import HelloAdmin from './HelloAdmin';
+import LoginForAdmin from './header/LoginForAdmin';
+
 
 
 import './adminPage/adminPanel.css';
@@ -39,8 +41,9 @@ componentWillMount() {
         let {user, issues, rooms} = this.props;
         return (
         <div style={{ width: "100%" }}>
-            {<Link to="/room">Home</Link>}
-            {user.currentUser && <LoginSection user={user.currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
+
+            {user.currentUser && <LoginForAdmin user={user.currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
+
             {user && user.currentUser && user.currentUser.role === 1 ?
                 <div >
 
@@ -82,7 +85,7 @@ componentWillMount() {
                 : <div>
                     <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
                     <div className="container_for_404">
-                        <Link className="link_404" to={'/room/'} title="Go home">Home</Link>
+                        <Link className="link_404" to={'/room/'} title="Go auth">Auth</Link>
                     </div>
                 </div>}
         </div>
