@@ -20,7 +20,6 @@ import CompaniesContainer from "./adminPage/CompaniesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
-import LoginSection from './header/LoginSection';
 import HelloAdmin from './HelloAdmin';
 import LoginForAdmin from './header/LoginForAdmin';
 
