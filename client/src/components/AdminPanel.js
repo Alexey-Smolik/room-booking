@@ -32,7 +32,7 @@ class AdminPanel extends React.Component {
         super(props);
     }
 
-componentWillMount() {
+componentDidMount() {
     this.props.dispatch(getCurrentUser());
     this.props.dispatch(getRooms());
 }
@@ -45,7 +45,6 @@ componentWillMount() {
 
             {user && user.currentUser && user.currentUser.role === 1 ?
                 <div >
-
                     <Route exact path="/adminPanel" component={HelloAdmin} />
 
                     <Nav bsStyle="pills">
@@ -81,10 +80,10 @@ componentWillMount() {
                     <Route path="/adminPanel/users/" component={UsersContainer}/>
                     <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {issues} /></Jumbotron>}/>
                 </div>
-                : <div>
+                :  user.isLoaded && <div>
                     <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
                     <div className="container_for_404">
-                        <Link className="link_404" to={'/room/'} title="Go auth">Auth</Link>
+                        <Link className="link_404" to={'/room/'} title="Go home">Home</Link>
                     </div>
                 </div>}
         </div>

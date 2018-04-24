@@ -48,13 +48,9 @@ class LeftNavBar extends Component {
         this.socketDeleteRoom = this.socketDeleteRoom.bind(this);
     }
 
-    async componentWillMount(){
-        this.props.dispatch(getRooms());
-        await this.props.dispatch(getCurrentUser());
-        this.props.dispatch(getCompanies());
-    };
-
     async componentDidMount() {
+        this.props.dispatch(getRooms());
+        this.props.dispatch(getCompanies());
         await this.props.dispatch(getCurrentUser());
         socket.on('add room', this.socketAddRoom);
         socket.on('edit room', this.socketEditRoom);
@@ -68,13 +64,6 @@ class LeftNavBar extends Component {
         let { currentUser } = this.props.user;
         { currentUser &&  socket.emit('connect user', {currentUser})}
     }
-
-
-    componentWillReceiveProps(){
-
-    }
-
-
 
     socketAddRoom(server) {
         this.props.dispatch(addEventToState(server));
@@ -130,14 +119,10 @@ class LeftNavBar extends Component {
 
     getDataTable(id) {
         let {mode, pmId} = this.props.mode;
-        mode == undefined ?
+        mode === undefined ?
             this.props.dispatch(getEvents(id))
             :
             this.props.dispatch(getEventsByPM(id,pmId))
-    }
-
-    getAllEvents(){
-        this.props.dispatch(getAllEvents());
     }
 
     renderMenu(){
@@ -154,7 +139,7 @@ class LeftNavBar extends Component {
                         {/*Rooms List*/}
                         <ul className="room-list">
                             {this.props.rooms.map( (room, roomKey) => {
-                                return (room.companyId == company.id) ? (
+                                return (room.companyId === company.id) ? (
                                     <li key={roomKey}>
 
                                         <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
@@ -186,12 +171,12 @@ class LeftNavBar extends Component {
 
         return (
             <aside>
-                {this.props.user && this.props.user.currentUser ?
+                {!this.props.user.hasError ?
                     <aside>
                         <nav>
                             <ul className="aside-menu" >
                                 {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
-                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() => this.getAllEvents()}>
+                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() =>  this.props.dispatch(getAllEvents())}>
                                     Show all events
                                 </NavLink>
                                 {this.renderMenu()}
@@ -207,9 +192,9 @@ class LeftNavBar extends Component {
 
                     </aside>
                     : <div>
-                        <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
+                        <h1 className="p_404">Sorry, you must log in first</h1>
                         <div className="container_for_404">
-                            <Link className="link_404" to={'/'} title="Go home">Home</Link>
+                            <Link className="link_404" to={'/'} title="Sign in">Sign in</Link>
                         </div>
                     </div>}
             </aside>
