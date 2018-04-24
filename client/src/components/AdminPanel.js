@@ -84,7 +84,7 @@ componentWillMount() {
                 : <div>
                     <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
                     <div className="container_for_404">
-                        <Link className="link_404" to={'/room/'} title="Go auth">Auth</Link>
+                        <Link className="link_404" to={'/'} title="Go auth">Auth</Link>
                     </div>
                 </div>}
         </div>

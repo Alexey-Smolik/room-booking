@@ -1127,6 +1127,9 @@ textarea {
         margin: 10px 0;
     }
 
+    .p_404_1{
+        padding-left: 10%;
+    }
 }
 
 @media all and (max-width:768px) {
@@ -1154,6 +1157,7 @@ textarea {
     }
 
     aside {
+        height: auto;
         max-width: none;
         max-height: none;
     }
@@ -1166,6 +1170,12 @@ textarea {
     }
     .p_404 {
         padding-left: 0 !important;
+    }
+    .link_log {
+        margin-right: 10px;
+    }
+    .dates_picker_cont {
+        margin-left: 10px;
     }
 }
 
@@ -1186,11 +1196,12 @@ textarea {
         }
     }
 
-    /*@media all and (max-height: 640px){
-        .room-info .room-image {
-            height: 55vh !important;
+    @media all and (max-width: 592px){
+        .buttons_filter {
+            margin-top: 10px;
         }
-    }*/
+    }
+
 
 /*page Not Found*/
 
@@ -1202,6 +1213,10 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container_for_404_1 < h1{
+
 }
 
 .p_404 {
@@ -1239,3 +1254,11 @@ textarea {
         color: #ffffff;
         background: #D32F2F;
     }
+
+
+.p_404_1 {
+    position: absolute;
+    font-size: 50px !important;
+    padding-right: 0;
+    color: #B71C1C;
+}

@@ -207,7 +207,9 @@ class LeftNavBar extends Component {
 
                     </aside>
                     : <div>
-                        <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
+                        <h1 className="p_404_1">Sorry, your haven't permission to view this page<br/>Go Auth
+
+                        </h1>
                         <div className="container_for_404">
                             <Link className="link_404" to={'/'} title="Go home">Home</Link>
                         </div>
