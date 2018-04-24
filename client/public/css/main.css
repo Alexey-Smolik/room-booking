@@ -458,7 +458,7 @@ a:hover {
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(http://172.16.0.183:3000/images/down-arrow.png);
+        background-image: url(http://172.16.0.183:5000/images/down-arrow.png);
         -webkit-background-size: contain;
         background-size: contain;
         background-repeat: no-repeat;
@@ -642,7 +642,7 @@ a:hover {
     cursor: pointer;
     transition: .3s ease-in-out;
     z-index: 1;
-    background:  url(http://172.16.0.183:3000/images/cross.svg) center no-repeat rgba(0, 0, 0, 0.4);
+    background:  url(http://172.16.0.183:5000/images/cross.svg) center no-repeat rgba(0, 0, 0, 0.4);
 }
 
     .info-close:hover {
@@ -915,7 +915,7 @@ a:hover {
 .popup_inner {
     width: 550px;
     height: 660px;
-    background: url(http://172.16.0.183:3000/images/popup.jpg);
+    background: url(http://172.16.0.183:5000/images/popup.jpg);
     align-items: center;
     display: flex;
     margin: 10% auto;
@@ -1127,6 +1127,9 @@ textarea {
         margin: 10px 0;
     }
 
+    .p_404_1{
+        padding-left: 10%;
+    }
 }
 
 @media all and (max-width:768px) {
@@ -1154,6 +1157,7 @@ textarea {
     }
 
     aside {
+        height: auto;
         max-width: none;
         max-height: none;
     }
@@ -1166,6 +1170,15 @@ textarea {
     }
     .p_404 {
         padding-left: 0 !important;
+    }
+    .link_log {
+        margin-right: 10px;
+    }
+    .dates_picker_cont {
+        margin-left: 10px;
+    }
+    .admin {
+        margin-top: 250px;
     }
 }
 
@@ -1186,11 +1199,12 @@ textarea {
         }
     }
 
-    /*@media all and (max-height: 640px){
-        .room-info .room-image {
-            height: 55vh !important;
+    @media all and (max-width: 592px){
+        .buttons_filter {
+            margin-top: 10px;
         }
-    }*/
+    }
+
 
 /*page Not Found*/
 
@@ -1205,11 +1219,11 @@ textarea {
 }
 
 .p_404 {
+    margin-top: 250px;
     font-size: 50px;
     padding-right: 0;
     padding-left: 20%;
     color: #B71C1C;
-
 }
 
 .link_404 {
@@ -1239,3 +1253,5 @@ textarea {
         color: #ffffff;
         background: #D32F2F;
     }
+
+

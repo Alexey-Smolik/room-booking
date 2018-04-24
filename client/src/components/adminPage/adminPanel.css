@@ -2001,10 +2001,9 @@ label {
 }
 
 .admin {
-    /*padding-right: 40%;*/
+
     display: inline-block;
     position: absolute;
-    top: 20%;
    left: 20%;
    margin-right: -50%;
    transform: translate(-50%, -50%);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class HelloWindow extends Component {
     render() {
@@ -7,8 +8,11 @@ class HelloWindow extends Component {
             <h1>
                 {this.props.user && this.props.user.currentUser ?
                     <p>Select a room</p>
-                    : ''}
-                    </h1>
+                    : <div>
+                        <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
+                            <Link className="link_404" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
+                      </div> }
+            </h1>
         )
     }
 }

@@ -16,7 +16,9 @@ export const DELETE_EVENT = 'delete-event';
 export const EDIT_EVENT = 'edit-event';
 export const GET_EVENTS = 'get-event';
 
-export const GET_CURRENT_USER = 'get-current-user';
+export const GET_CURRENT_USER_ERROR = 'get-current-user-error';
+export const GET_CURRENT_USER_LOADED = 'get-current-user-loaded';
+export const GET_CURRENT_USER_SUCCESS = 'get-current-user-success';
 export const ADD_USER_DB = 'add-user-db';
 export const DELETE_USER_DB = 'delete-user-db';
 export const EDIT_USER_DB = 'dit-user-db';
