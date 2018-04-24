@@ -1,5 +1,7 @@
 import {
-    GET_CURRENT_USER,
+    GET_CURRENT_USER_SUCCESS,
+    GET_CURRENT_USER_ERROR,
+    GET_CURRENT_USER_LOADED,
     GET_ALL_USERS,
     REMOVE_USER_FROM_STATE,
     ADD_USER_DB,
@@ -26,8 +28,14 @@ export default function (state = {}, action) {
       case EDIT_USER_DB:
           return { allUsers: [...state.allUsers.filter(({ id }) => id !== action.payload.id), action.payload], ...state};
 
-      case GET_CURRENT_USER:
-        return { ...state, currentUser: action.payload };
+      case GET_CURRENT_USER_LOADED:
+        return { ...state, isLoaded: action.isLoaded };
+
+      case GET_CURRENT_USER_ERROR:
+          return { ...state, hasError: action.hasError };
+
+      case GET_CURRENT_USER_SUCCESS:
+          return { ...state, currentUser: action.user };
 
       case REMOVE_USER_FROM_STATE:
         return null || false;
