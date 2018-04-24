@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { userAuthForm } from '../../actions/index';
 import { connect } from 'react-redux';
 import {NotificationManager} from 'react-notifications';
-
+import axios from 'axios';
+import { Route, Redirect } from 'react-router'
 
 
 class AuthComponent extends Component {
@@ -11,6 +12,8 @@ class AuthComponent extends Component {
     this.state = {
       username: '',
       password: '',
+      res: '',
+        req: ''
     };
   }
 
@@ -19,20 +22,31 @@ class AuthComponent extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    let {username, password} = this.state;
-    { username && password &&  this.props.dispatch(userAuthForm()) }
-  };
 
-  handleInput = (event) => {
-      //event.preventDefault();
 
-      if(!this.state.username && !this.state.password) { event.preventDefault(); this.createNotification('null fields')(); }
-      else if(!this.state.username) { event.preventDefault(); this.createNotification('null username')(); }
-      else if(!this.state.password) { event.preventDefault(); this.createNotification('null password')(); }
+    handleSubmit = (event) => {
+        const  { username, password } = this.state;
 
-  };
+
+        if(!username && !password) {
+          event.preventDefault();
+          this.createNotification('null fields')();
+        }
+        else if(!username) {
+          event.preventDefault();
+          this.createNotification('null username')();
+        }
+        else if(!password) {
+          event.preventDefault();
+          this.createNotification('null password')();
+        } else {
+            event.preventDefault();
+
+            axios.post('/auth/local', { username, password } ).then( (req,res) => {
+              this.props.history.push("/room");
+            }).catch( () =>  this.createNotification('incorrect auth')())
+        };
+    };
 
     createNotification = (type) => {
         return () => {
@@ -46,14 +60,20 @@ class AuthComponent extends Component {
                 case 'null password':
                     NotificationManager.error('Fill in the password field!', 'Authorization', 3000);
                     break;
+                case 'incorrect auth':
+                    NotificationManager.error('Incorrect username and/or password', 'Authorization', 3000);
+                    break;
             }
         };
     };
 
   render() {
+      console.log(this.state.res);
+      console.log(this.state.req);
     return (
       <div className="reactAuth">
-        <form method="post" action="/auth/local" id="authForm">
+        {/*<form method="post" action="/auth/local" id="authForm">*/}
+        <form  id="authForm">
           <div className="container">
             <div className="row">
               <div className="col-xs-12 col-sm-12 col-lg-6" >
@@ -64,14 +84,14 @@ class AuthComponent extends Component {
                 <div className="panel-body">
                   <div className="row">
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                      <form className="cell" onSubmit={this.handleSubmit}>
+                      <div className="cell">
                         <div className="input-group">
                           <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
                         </div>
                         <div className="input-group">
                           <input id="password" type="password" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
                         </div>
-                          <button className="login" type="submit" value="Sign in" onClick={this.handleInput}>Sign in</button>
+                          <button className="login" type="submit" value="Sign in" onClick={this.handleSubmit}>Sign in</button>
 
                           <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
                                 <div className="login_with"><p>Login with: </p></div>
@@ -82,7 +102,7 @@ class AuthComponent extends Component {
                                     <a href="auth/twitter" title="Login with Twitter"><img src={"/images/twitter.svg"} alt="Login with twitter" /></a>
                                     <a href="/auth/microsoft" title="Login with Microsoft"><img src={"/images/skype.svg"} alt="Login with microsoft" /></a>
                                 </div>
-                      </form>
+                      </div>
                     </div>
                   </div>
                 </div>
