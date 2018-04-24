@@ -139,22 +139,22 @@ class LeftNavBar extends Component {
                         {/*Rooms List*/}
                         <ul className="room-list">
                             {this.props.rooms.map( (room, roomKey) => {
-                                return (room.companyId === company.id) ? (
-                                    <li key={roomKey}>
+                                    return (room.companyId === company.id) ? (
+                                            <li key={roomKey}>
 
-                                        <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
-                                        {room.name}
-                                        </NavLink>
+                                                <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                                    {room.name}
+                                                </NavLink>
 
-                                        <div className="info-show">
-                                            <button className="info-button" title="Info about room" onClick={(e) => {
-                                                this.infoHandler(e, room);
-                                                this.props.dispatch(getRoomActiveIssues(room.id))}}
-                                            >i</button>
+                                                <div className="info-show">
+                                                    <button className="info-button" title="Info about room" onClick={(e) => {
+                                                        this.infoHandler(e, room);
+                                                        this.props.dispatch(getRoomActiveIssues(room.id))}}
+                                                    >i</button>
 
-                                        </div>
-                                    </li>)
-                                    : null;
+                                                </div>
+                                            </li>)
+                                        : null;
                                 }
                             )}
                         </ul>
@@ -189,14 +189,8 @@ class LeftNavBar extends Component {
                             </ul>
                         </nav>
                         <Footer />
-
                     </aside>
-                    : <div>
-                        <h1 className="p_404">Sorry, you must log in first</h1>
-                        <div className="container_for_404">
-                            <Link className="link_404" to={'/'} title="Sign in">Sign in</Link>
-                        </div>
-                    </div>}
+                    : null}
             </aside>
         );
     }
