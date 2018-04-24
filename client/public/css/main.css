@@ -55,7 +55,7 @@ html {
 body.default {
     color: #383e41;
     font: 13px 'Noto Sans', sans-serif;
-    background: #f8f8f8 url(http://172.16.0.183:3000/images/back.jpg) no-repeat center center fixed;
+    background: #f8f8f8 url(http://172.16.0.183:5000/images/back.jpg) no-repeat center center fixed;
     margin: 0;
     -webkit-background-size: cover;
     -moz-background-size: cover;
