@@ -6,7 +6,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { connect } from 'react-redux';
 import { createEvent, deleteEvent , editEvent , simpleUsers} from "../../actions/index";
 import {NotificationManager} from 'react-notifications';
-import { SelectConnected } from 'react-select-multi';
 import 'react-notifications/lib/notifications.css';
 
 import Select from 'react-select';

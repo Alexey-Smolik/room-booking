@@ -47,7 +47,7 @@ class AuthComponent extends Component {
                 <div className="panel-body">
                   <div className="row">
                     <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                      <div className="cell" onSubmit={this.handleSubmit}>
+                      <form className="cell" onSubmit={this.handleSubmit}>
                         <div className="input-group">
                           <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
                         </div>
@@ -56,7 +56,7 @@ class AuthComponent extends Component {
                         </div>
                           <button className="login" type="submit" value="Sign in" onClick={this.handleInput}>Sign in</button>
 
-                          <a className="anon_link" href='http://localhost:3000/auth/anonymus'>Anonymus log in</a>
+                          <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
                                 <div className="login_with"><p>Login with: </p></div>
                                 <div className="icons">
                                     <a href="/auth/vk" title="Login with VK"><img src={"/images/vk.svg"} alt="Login with vkontakte" /></a>
@@ -65,7 +65,7 @@ class AuthComponent extends Component {
                                     <a href="auth/twitter" title="Login with Twitter"><img src={"/images/twitter.svg"} alt="Login with twitter" /></a>
                                     <a href="/auth/microsoft" title="Login with Microsoft"><img src={"/images/skype.svg"} alt="Login with microsoft" /></a>
                                 </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
