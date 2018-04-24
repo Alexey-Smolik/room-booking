@@ -791,6 +791,7 @@ a:hover {
 }
 
 .login {
+    width: 100%;
     border: 0;
     text-transform: uppercase;
     font-size: 14px;

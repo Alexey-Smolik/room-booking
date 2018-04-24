@@ -185,7 +185,7 @@ class LeftNavBar extends Component {
         this.infoCloseWatcher();
 
         return (
-            <div>
+            <aside>
                 {this.props.user && this.props.user.currentUser ?
                     <aside>
                         <nav>
@@ -212,7 +212,7 @@ class LeftNavBar extends Component {
                             <Link className="link_404" to={'/'} title="Go home">Home</Link>
                         </div>
                     </div>}
-            </div>
+            </aside>
         );
     }
 }
