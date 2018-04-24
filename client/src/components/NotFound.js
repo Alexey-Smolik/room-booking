@@ -10,7 +10,7 @@ class NotFound extends React.Component {
     constructor(props) {
         super(props);
     }
-    componentWillMount() {
+    componentDidMount() {
         this.props.dispatch(getCurrentUser())
     }
     render() {
@@ -26,8 +26,9 @@ class NotFound extends React.Component {
                         <div className="container_for_404">
                             <Link className="link_404" to={'/room/'} title="Go home">Home</Link>
                         </div>
-                    </div> :
-                    <div>
+                    </div>
+                    :
+                    this.props.user.hasError && <div>
                         <div>
                             <h1 className="p_404">404<br/>Go to auth</h1>
                         </div>

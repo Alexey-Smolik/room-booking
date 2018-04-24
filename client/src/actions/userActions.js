@@ -1,7 +1,9 @@
 import axios from "axios/index";
 import {
     GET_ALL_USERS,
-    GET_CURRENT_USER,
+    GET_CURRENT_USER_SUCCESS,
+    GET_CURRENT_USER_ERROR,
+    GET_CURRENT_USER_LOADED,
     REMOVE_USER_FROM_STATE,
     DELETE_USER_DB,
     ADD_USER_DB,
@@ -10,9 +12,33 @@ import {
     ADD_SIMPLE_USERS
 } from "./types";
 
+export  const getCurrentUserHasError = (bool) => {
+    return {
+        type: GET_CURRENT_USER_ERROR,
+        hasError: bool
+    }
+};
+export  const getCurrentUserIsLoaded = (bool) => {
+    return {
+        type: GET_CURRENT_USER_LOADED,
+        isLoaded: bool
+    }
+};
+export  const getCurrentUserSuccess = (user) => {
+    return {
+        type: GET_CURRENT_USER_SUCCESS,
+        user
+    }
+};
 export const getCurrentUser = () => async (dispatch) => {
-    const res = await axios.get('/api/users/current');
-    dispatch({ type: GET_CURRENT_USER, payload: res.data });
+    dispatch(getCurrentUserIsLoaded(false));
+    try {
+        const res = await axios.get('/api/users/current');
+        dispatch(getCurrentUserSuccess(res.data));
+        dispatch( getCurrentUserIsLoaded(true))
+    } catch (e) {
+        dispatch(getCurrentUserHasError(true))
+    }
 };
 
 export const userAuthForm = () => async (dispatch) => {
