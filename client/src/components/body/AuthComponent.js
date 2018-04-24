@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { userAuthForm } from '../../actions/index';
 import { connect } from 'react-redux';
-
+import {NotificationManager} from 'react-notifications';
 
 
 
@@ -26,12 +26,29 @@ class AuthComponent extends Component {
   };
 
   handleInput = (event) => {
-      event.preventDefault();
-      const { username, password } = this.state;
-      { username && password && console.log("Cool") }
+      //event.preventDefault();
+
+      if(!this.state.username && !this.state.password) { event.preventDefault(); this.createNotification('null fields')(); }
+      else if(!this.state.username) { event.preventDefault(); this.createNotification('null username')(); }
+      else if(!this.state.password) { event.preventDefault(); this.createNotification('null password')(); }
+
   };
 
-
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'null fields':
+                    NotificationManager.error('Fill in the fields!', 'Authorization', 3000);
+                    break;
+                case 'null username':
+                    NotificationManager.error('Fill in the username field!', 'Authorization', 3000);
+                    break;
+                case 'null password':
+                    NotificationManager.error('Fill in the password field!', 'Authorization', 3000);
+                    break;
+            }
+        };
+    };
 
   render() {
     return (
