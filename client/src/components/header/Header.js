@@ -1,5 +1,7 @@
+//import react component from 'react'
 import React from 'react';
 
+//create const component Header
 const Header = () => (
   <div id="heading">
     <blockquote>
