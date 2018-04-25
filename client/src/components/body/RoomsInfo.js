@@ -5,6 +5,7 @@ import {
     createIssue,
 } from "../../actions/";
 import Carousel from 'react-bootstrap/lib/Carousel';
+import {NotificationManager} from 'react-notifications';
 
 class RoomsInfo extends React.Component {
 
@@ -101,6 +102,20 @@ class RoomsInfo extends React.Component {
 	    		});
     		}
     	}
+
+    	if (!this.state.inputValue) {
+            this.createNotification('null fields')();
+		}
+    };
+
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'null fields':
+                    NotificationManager.error('Please, Fill the field "Issue"!', 'Warning', 3000);
+                    break;
+            }
+        };
     };
 
     issuesList(issues) {
