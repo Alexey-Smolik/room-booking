@@ -2,10 +2,11 @@
     float: left;
 }
 .nav-pills > li > a {
-   /* border-radius: 4px;*/
     background-color: #B71C1C;
     color: #ffffff;
-    border: 1px solid #333;
+    border: none;
+    font-family: 'Noto Sans';
+    text-transform: uppercase;
 }
 .nav-pills > li + li {
     margin-left: 2px;
@@ -2050,6 +2051,7 @@ h3 {
 
 .nav.nav-pills {
     border-radius: 0 !important;
+    border: none !important;
 }
 
 
