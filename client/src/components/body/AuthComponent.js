@@ -52,13 +52,13 @@ class AuthComponent extends Component {
         return () => {
             switch (type) {
                 case 'null fields':
-                    NotificationManager.error('Fill in the fields!', 'Authorization', 3000);
+                    NotificationManager.error('Fill the fields!', 'Authorization', 3000);
                     break;
                 case 'null username':
-                    NotificationManager.error('Fill in the username field!', 'Authorization', 3000);
+                    NotificationManager.error('Fill the username field!', 'Authorization', 3000);
                     break;
                 case 'null password':
-                    NotificationManager.error('Fill in the password field!', 'Authorization', 3000);
+                    NotificationManager.error('Fill the password field!', 'Authorization', 3000);
                     break;
                 case 'incorrect auth':
                     NotificationManager.error('Incorrect username and/or password', 'Authorization', 3000);

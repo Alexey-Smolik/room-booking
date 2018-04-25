@@ -1,11 +1,14 @@
+/*Bootstrap styles for adminPanel (buttons, forms, labels, lists) */
+
 .nav-pills > li {
     float: left;
 }
 .nav-pills > li > a {
-   /* border-radius: 4px;*/
     background-color: #B71C1C;
     color: #ffffff;
-    border: 1px solid #333;
+    border: none;
+    font-family: 'Noto Sans';
+    text-transform: uppercase;
 }
 .nav-pills > li + li {
     margin-left: 2px;
@@ -40,8 +43,6 @@
     cursor: default;
     color: #B71C1C;
     background-color: #B71C1C;
-
-
 }
 .nav-tabs.nav-justified {
     width: 100%;
@@ -71,11 +72,7 @@
     margin-right: 0;
     border-radius: 4px;
 }
-/*.nav-tabs.nav-justified > .active > a,
-.nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs.nav-justified > .active > a:focus {
-    border: 1px solid #ddd;
-}*/
+
 @media (min-width: 768px) {
     .nav-tabs.nav-justified > li > a {
         border-bottom: 1px solid #ddd;
@@ -2050,6 +2047,7 @@ h3 {
 
 .nav.nav-pills {
     border-radius: 0 !important;
+    border: none !important;
 }
 
 

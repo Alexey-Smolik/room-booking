@@ -10,6 +10,7 @@
 .microsoft {background-color: #2672EC; color:#fff; }
 .facebook:hover, .twitter:hover, .vk:hover, .google:hover, .microsoft:hover { color: #383e41; }
 
+/*Animation*/
 
 @keyframes bounce {
     from,
@@ -44,6 +45,7 @@
     }
 }
 
+/*FOnt*/
 
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
@@ -139,7 +141,6 @@ h1 {
 }
 
 .Select-control {
-    /*margin-bottom: 20px;*/
     overflow: auto;
 }
 
@@ -200,7 +201,7 @@ h1 {
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
-    padding: 7px 5px 5px 5px;
+    padding: 7px 5px 7px 5px;
     margin-right: 20px;
 }
 
@@ -266,6 +267,7 @@ button {
     transition: .3s ease-in-out;
 }
 
+/*General red button style is ending*/
 
 #heading {
     margin: 30px 0;
@@ -345,7 +347,7 @@ header {
     flex-grow: 1;
 }
 
-/* ROOM BOOKING header*/
+/* ROOM BOOKING header-name*/
 
 blockquote {
     margin: 0;
@@ -590,7 +592,6 @@ a:hover {
 }
 
 
-
 /* info-window & info-button */
 
 .open_hidden {
@@ -650,11 +651,6 @@ a:hover {
     }
 
 .room-info {
-    /*display: flex;*/
-    /*top: 25%;
-    left: 25%;
-    margin-right: -25%;
-    transform: translate(-25%, -25%);*/
     flex-wrap: wrap;
     background: white;
     position: absolute;
@@ -717,7 +713,6 @@ a:hover {
 .room-button {
     min-width: 70px;
 }
-
 
 .selection {
     font-weight: bold;
@@ -784,7 +779,6 @@ a:hover {
 .col-xs-6.col-sm-6.col-md-6.login-box {
     padding: 10px;
 }
-
 
 .btn-block {
     font-size: 14px;
@@ -887,6 +881,7 @@ a:hover {
 
 
 /* EVENT SELECTED */
+
 .rbc-calendar .rbc-event {
    z-index: 11;
 }
@@ -1017,6 +1012,8 @@ textarea {
     margin-top: 20px;
 }
 
+/*random colors - legend*/
+
 .block_colors {
     display: inline-block;
     float: left;
@@ -1068,8 +1065,8 @@ textarea {
     color: #B71C1C;
 }
 
-
     /*MEDIA*/
+
 @media all and (max-width:1024px) {
     #wrapper {
         max-width: 94%;
@@ -1180,6 +1177,9 @@ textarea {
     .admin {
         margin-top: 250px;
     }
+    .rbc-month-view {
+        display: block !important;
+    }
 }
 
     @media all and (max-height: 170px){
@@ -1199,7 +1199,7 @@ textarea {
         }
     }
 
-    @media all and (max-width: 592px){
+    @media all and (max-width: 602px){
         .buttons_filter {
             margin-top: 10px;
         }
@@ -1254,4 +1254,23 @@ textarea {
         background: #D32F2F;
     }
 
+.link_404_1 {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #B71C1C;
+    color: #ffffff;
+    font-family: 'Noto Sans';
+    text-transform: uppercase;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 20px 10px 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+    .link_404_1:hover {
+        text-decoration: none;
+        color: #ffffff;
+        background: #D32F2F;
+    }
 

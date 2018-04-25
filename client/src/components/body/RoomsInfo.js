@@ -5,6 +5,7 @@ import {
     createIssue,
 } from "../../actions/";
 import Carousel from 'react-bootstrap/lib/Carousel';
+import {NotificationManager} from 'react-notifications';
 
 class RoomsInfo extends React.Component {
 
@@ -93,14 +94,29 @@ class RoomsInfo extends React.Component {
     				active: true,
     				roomId: this.props.selectedRoom.id
     			};
+
     			this.props.dispatch(createIssue(data));
     			this.props.dispatch(getRoomActiveIssues(this.props.selectedRoom.id));
 	    		e.target.previousSibling.value = "";
 	    		this.setState({
-	    			inputValue: ""
+	    			inputValue: "",
+					isOpen: true
 	    		});
-    		}
+    		} else {
+                this.createNotification('null fields')();
     	}
+
+		}
+    };
+
+    createNotification = (type) => {
+        return () => {
+            switch (type) {
+                case 'null fields':
+                    NotificationManager.error('Please, Fill the field "Issue"!', 'Warning', 3000);
+                    break;
+            }
+        };
     };
 
     issuesList(issues) {
@@ -138,7 +154,7 @@ class RoomsInfo extends React.Component {
 							<p className="company"><span className="selection">Company address:</span> {this.props.selectedRoom.company.address}</p>
                         </div>
                         <div className="room-issues-container">
-							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden"  title={this.state.isOpen ? 'Hidden the issues' : 'Open the issues'} onClick={this.handleClick}> {this.state.isOpen ? 'Hide' : 'Show'} </button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
+							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden"  title={this.state.isOpen ? 'Hide the issues' : 'Show the issues'} onClick={this.handleClick}> {this.state.isOpen ? 'Hide' : 'Show'} </button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
                             {this.props.userRole !== 3 && <div className="room-issues-form">
 								<p className="the_issue">Please, describe the issue:</p>
                                 <textarea className="room-issues-input" maxLength={150} onChange={ (e) => this.inputHandler(e, 1)}></textarea>
