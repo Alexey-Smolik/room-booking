@@ -80,7 +80,7 @@ componentDidMount() {
                     <Route path="/adminPanel/users/" component={UsersContainer}/>
                     <Route path="/adminPanel/issues/" render={()=><Jumbotron><IssuesContainer issues = {issues} /></Jumbotron>}/>
                 </div>
-                :  user.isLoaded && <div>
+                :  (user.isLoaded || user.hasError) && <div>
                     <h1 className="p_404">Sorry, your haven't permission to view this page</h1>
                     <div className="container_for_404">
                         <Link className="link_404" to={'/'} title="Go auth">Auth</Link>
