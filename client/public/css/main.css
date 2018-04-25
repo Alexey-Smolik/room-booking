@@ -1065,8 +1065,8 @@ textarea {
     color: #B71C1C;
 }
 
-
     /*MEDIA*/
+
 @media all and (max-width:1024px) {
     #wrapper {
         max-width: 94%;

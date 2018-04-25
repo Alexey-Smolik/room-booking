@@ -94,17 +94,18 @@ class RoomsInfo extends React.Component {
     				active: true,
     				roomId: this.props.selectedRoom.id
     			};
+
     			this.props.dispatch(createIssue(data));
     			this.props.dispatch(getRoomActiveIssues(this.props.selectedRoom.id));
 	    		e.target.previousSibling.value = "";
 	    		this.setState({
-	    			inputValue: ""
+	    			inputValue: "",
+					isOpen: true
 	    		});
-    		}
+    		} else {
+                this.createNotification('null fields')();
     	}
 
-    	if (!this.state.inputValue) {
-            this.createNotification('null fields')();
 		}
     };
 
