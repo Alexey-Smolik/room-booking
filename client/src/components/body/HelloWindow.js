@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 
 class HelloWindow extends Component {
     render() {
+        const {user} = this.props;
         return (
             <h1>
-                {this.props.user && this.props.user.currentUser ?
+                {user && user.currentUser ?
                     <p>Select a room</p>
-                    : <div>
+                    : (user.isLoaded || user.hasError) && <div>
                         <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
                             <Link className="link_404" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
                       </div> }
