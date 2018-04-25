@@ -51,8 +51,7 @@ routes.post('/', (req, res) => {
             .then(invites => {
                 invites[1].invitations = invites[0].map(invite => {
                     return {
-                        id: invite.dataValues.userId,
-                        user: { username: invite.dataValues.user.username }
+                        user: { username: invite.dataValues.user.username, id: invite.dataValues.userId }
                     }
                 });
 
@@ -91,13 +90,12 @@ routes.put('/:id', (req, res) => {
                 return Promise.all([invitations.bulkCreate(invitationUsers), invites[1]]);
             })
             .then(invites => {
-                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username'] } }), invites[1]]);
+                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['id', 'username'] } }), invites[1]]);
             })
             .then(invites => {
                 invites[1].invitations = invites[0].map(invite => {
                     return {
-                        id: invite.dataValues.userId,
-                        user: { username: invite.dataValues.user.username }
+                        user: { username: invite.dataValues.user.username, id: invite.dataValues.userId }
                     }
                 });
 
