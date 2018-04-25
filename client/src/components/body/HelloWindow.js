@@ -11,7 +11,7 @@ class HelloWindow extends Component {
                     <p>Select a room</p>
                     : (user.isLoaded || user.hasError) && <div>
                         <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
-                            <Link className="link_404" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
+                            <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
                       </div> }
             </h1>
         )
