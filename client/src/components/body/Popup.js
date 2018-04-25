@@ -25,12 +25,7 @@ class Popup extends Component {
   async componentWillMount() {
       await this.props.dispatch(simpleUsers());
 
-      let invitations = this.props.event.invitations ? this.props.event.invitations.map(invite => {
-          return {
-              label: invite.user.username,
-              value: invite.user.id
-          }
-      }) : [];
+      console.log(this.props.event.invitations);
 
       this.setState({
           room: this.props.room,
@@ -41,7 +36,12 @@ class Popup extends Component {
           user: this.props.user,
           username: this.props.event.user,
           simpleUsers: this.props.user.simpleUsers,
-          invitations: invitations
+          invitations: this.props.event.invitations ? this.props.event.invitations.map(invite => {
+              return {
+                  label: invite.user.username,
+                  value: invite.user.id
+              }
+          }) : []
       });
   };
 
@@ -70,7 +70,7 @@ class Popup extends Component {
                             roomId: this.props.roomID,
                             userId: this.props.user.currentUser.id,
                             username: this.props.user.currentUser.username,
-                            invitations: this.state.invitations
+                            invitations: this.state.invitations.map(invite => invite.value)
                         };
 
                         if (this.props.editMode) {
@@ -121,8 +121,6 @@ class Popup extends Component {
               case 'desc size':
                   NotificationManager.error('Character limit exceeded in the description field!', 'Event', 3000);
                   break;
-
-
               default:
                   NotificationManager.success('Smth wrong with server!', 'Event', 3000);
 
@@ -171,7 +169,7 @@ class Popup extends Component {
   };
 
   onUsersChange = (users) => {
-      this.setState({ invitations: users.map(user => user.value) });
+      this.setState({ invitations: users });
   };
 
   render() {
