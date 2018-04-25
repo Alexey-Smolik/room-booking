@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Header from './header/Header';
 import {Link} from 'react-router-dom';
 import {
     getCurrentUser,
@@ -17,7 +16,6 @@ class NotFound extends React.Component {
         return (
 
             <div className="body_404">
-                <Header/>
                 {this.props.user && this.props.user.currentUser ?
                     <div>
                         <div>
