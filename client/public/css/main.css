@@ -45,11 +45,8 @@
     }
 }
 
-/*FOnt*/
-
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
-
     /*main page*/
+
 html {
     height: 100%;
 }
@@ -386,9 +383,8 @@ aside {
         }
 
             aside nav li {
-                list-style-position: inside;
+                list-style: inside none;
                 font-weight: 300;
-                list-style-type: none;
                 border-top: 1px solid #e7e7e7;
                 flex-basis: 100%;
             }
@@ -459,13 +455,11 @@ a:hover {
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(http://172.16.0.183:5000/images/down-arrow.png);
+        background: url(http://172.16.0.183:5000/images/down-arrow.png) no-repeat 0 0 ;
         -webkit-background-size: contain;
         background-size: contain;
-        background-repeat: no-repeat;
         transition: .1s ease-in-out;
         left: 18px;
-        background-position: 0 0;
         -webkit-transform: translateY(-50%) rotate(-90deg);
         -moz-transform: translateY(-50%) rotate(-90deg);
         -ms-transform: translateY(-50%) rotate(-90deg);
