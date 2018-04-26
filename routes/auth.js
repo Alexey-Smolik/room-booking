@@ -169,7 +169,6 @@ routes.post('/local', function(req, res, next) {
     })(req, res, next);
 });
 
-
 routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));

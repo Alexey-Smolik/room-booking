@@ -22,11 +22,7 @@ class Popup extends Component {
       };
   }
 
-  async componentWillMount() {
-      await this.props.dispatch(simpleUsers());
-
-      console.log(this.props.event.invitations);
-
+  componentWillMount() {
       this.setState({
           room: this.props.room,
           startDate: moment(this.props.event.start),
