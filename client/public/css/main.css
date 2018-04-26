@@ -1,4 +1,5 @@
-    /*Buttons for auth*/
+/*Buttons for auth*/
+
 .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 10px;background: rgba(0,0,0,0.15);}
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
 .input-group { margin-bottom:10px; }
@@ -45,7 +46,7 @@
     }
 }
 
-    /*main page*/
+/*Main page*/
 
 html {
     height: 100%;
@@ -88,7 +89,7 @@ h1 {
     border-radius: 0!important;
 }
 
-    /* SCROLL */
+/* SCROLL */
 
 ::-webkit-scrollbar-button {
     background: #f3f3f3;
@@ -113,7 +114,8 @@ h1 {
     width: 0;
 }
 
-    /*HEADER*/
+/*HEADER*/
+
 .reactHeader {
     display: flex;
     flex-wrap: wrap;
@@ -124,7 +126,8 @@ h1 {
 .reactHeader .react-datepicker-wrapper  {
     padding-right: 20px;
 }
-    /*SEARCH*/
+
+/*SEARCH*/
 
 .pm-search {
     display: flex;
@@ -213,7 +216,7 @@ h1 {
     margin-right: 15px;
 }
 
-    /*hello-form */
+/*Hello-form */
 
 #username_hello{
     color: #393939 !important;
@@ -250,7 +253,7 @@ h1 {
     background: white;
 }
 
-    /*General red button style*/
+/*General red button style*/
 
 button {
     cursor: pointer;
@@ -337,7 +340,6 @@ header {
     display: inline-block;
 }
 
-
 .buttons_filter {
     display: flex;
     flex-grow: 1;
@@ -360,7 +362,7 @@ blockquote p {
     color: #B71C1C;
 }
 
-    /*ASIDE MENU*/
+/*ASIDE MENU*/
 
 aside {
     display: inline-flex;
@@ -446,9 +448,9 @@ a:hover {
         flex-basis: 100%;
     }
 
+/* icons */
 
     .aside-menu label::before {
-        /* icons */
         content: '';
         display: inline-block;
         width: 14px;
@@ -467,14 +469,17 @@ a:hover {
         transform: translateY(-50%) rotate(-90deg);
     }
 
+/* rotate arrow */
+
     .aside-menu input[type=checkbox]:checked + label::before {
-        /* rotate arrow */
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
+/*Links in aside*/
 
 .all_events {
     display: flex;
@@ -514,7 +519,7 @@ a:hover {
     text-decoration: none;
 }
 
-    /*CALENDAR*/
+/*CALENDAR*/
 
 .rbc-calendar {
     background-color: #ffffff;
@@ -530,8 +535,8 @@ a:hover {
         display: none !important;
     }
 
+/* Border-bug*/
 
-/* border-bug*/
 .rbc-time-header.rbc-overflowing {
     border-right: 0!important;
 }
@@ -1002,7 +1007,7 @@ textarea {
     margin-top: 20px;
 }
 
-/*random colors - legend*/
+/*Random colors - legend*/
 
 .block_colors {
     display: inline-block;
@@ -1020,7 +1025,7 @@ textarea {
     box-shadow: 1px 3px 1px grey;
 }
 
-/*footer*/
+/*Footer*/
 
 .firm_name {
     float: left;
@@ -1055,7 +1060,7 @@ textarea {
     color: #B71C1C;
 }
 
-    /*MEDIA*/
+/*MEDIA*/
 
 @media all and (max-width:1024px) {
     #wrapper {
@@ -1195,7 +1200,7 @@ textarea {
         }
     }
 
-/*page Not Found*/
+/*Page Not Found*/
 
 .body_404 {
     width: 100%;
