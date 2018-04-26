@@ -7,7 +7,7 @@ import {
     addEventToState,
     deleteEventFromState,
     editEventInState,
-    getAllEvents
+    getAllEvents, simpleUsers
 } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
@@ -49,6 +49,7 @@ class Calendar extends React.Component {
         }
     };
     componentDidMount(){
+        this.props.dispatch(simpleUsers());
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
         socket.on('delete event', this.socketDeleteEvent);

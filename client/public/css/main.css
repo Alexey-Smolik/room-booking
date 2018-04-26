@@ -1,5 +1,4 @@
-/*Buttons for auth*/
-
+    /*Buttons for auth*/
 .btn-label {position: relative;left: -12px;display: inline-block;padding: 6px 10px;background: rgba(0,0,0,0.15);}
 .btn-labeled {padding-top: 0;padding-bottom: 0;}
 .input-group { margin-bottom:10px; }
@@ -48,6 +47,9 @@
 
 /*Main page*/
 
+@import url('fonts-noto-sans.css');
+
+    /*main page*/
 html {
     height: 100%;
 }
@@ -362,7 +364,7 @@ blockquote p {
     color: #B71C1C;
 }
 
-/*ASIDE MENU*/
+    /*ASIDE MENU*/
 
 aside {
     display: inline-flex;
@@ -385,7 +387,7 @@ aside {
         }
 
             aside nav li {
-                list-style: inside none;
+                list-style-position: inside;
                 font-weight: 300;
                 border-top: 1px solid #e7e7e7;
                 flex-basis: 100%;
@@ -874,6 +876,7 @@ a:hover {
     font-size: 16px;
     font-weight: bold;
 }
+
 
 /* EVENT SELECTED */
 
