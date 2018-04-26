@@ -7,7 +7,7 @@
     background-color: #B71C1C;
     color: #ffffff;
     border: none;
-    font-family: 'Noto Sans';
+    font-family: "Noto Sans", sans-serif;
     text-transform: uppercase;
 }
 .nav-pills > li + li {
@@ -433,7 +433,6 @@
 .nav > li > a:focus {
     text-decoration: none;
     color: #000000;
-    /*background-color: #909090;*/
 }
 
 .nav > li.disabled > a {
@@ -799,10 +798,7 @@
 }
 .navbar-form {
     padding: 10px 15px;
-    margin-top: 8px;
-    margin-right: -15px;
-    margin-bottom: 8px;
-    margin-left: -15px;
+    margin: 8px -15px 8px -15px;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);
@@ -883,13 +879,7 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
-.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
-    margin-bottom: 0;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-}
+
 .navbar-btn {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -1553,7 +1543,6 @@ ol ol {
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, .15);
     border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
     box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -1644,7 +1633,7 @@ ol ol {
     content: "";
     border-top: 0;
     border-bottom: 4px dashed;
-    border-bottom: 4px solid \9;
+    border-bottom: 4px solid;
 }
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
@@ -1859,20 +1848,10 @@ ol ol {
 
 img {
     border: 0;
-    /*margin-right: 20px;
-    margin-bottom: 20px;*/
-}
-
-img {
     page-break-inside: avoid;
-}
-img {
-    /*max-width: 100% !important;*/
-}
-
-img {
     vertical-align: middle;
 }
+
 .img-responsive,
 .thumbnail > img,
 .thumbnail a > img,
@@ -1958,7 +1937,7 @@ img {
 }
 
 .label.label-danger {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma',sans-serif;
     height: 38px;
     min-width: 46px;
     border-radius: 0;
@@ -1968,7 +1947,7 @@ img {
 }
 
 .label.label-success {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma',sans-serif;
     height: 38px;
     min-width: 46px;
     border-radius: 0;
@@ -1998,16 +1977,14 @@ label {
 }
 
 .admin {
-
     display: inline-block;
     position: absolute;
-   left: 20%;
-   margin-right: -50%;
-   transform: translate(-50%, -50%);
+    left: 20%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 .btn.btn-primary {
-    /*margin-left: 10px;*/
     height: 38px;
 }
 

@@ -45,7 +45,7 @@
     }
 }
 
-/*FOnt*/
+/*Main page*/
 
 @import url('fonts-noto-sans.css');
 
@@ -91,7 +91,8 @@ h1 {
     border-radius: 0!important;
 }
 
-    /* SCROLL */
+/* SCROLL */
+
 ::-webkit-scrollbar-button {
     background: #f3f3f3;
     width:5px;
@@ -115,7 +116,8 @@ h1 {
     width: 0;
 }
 
-    /*HEADER*/
+/*HEADER*/
+
 .reactHeader {
     display: flex;
     flex-wrap: wrap;
@@ -126,7 +128,8 @@ h1 {
 .reactHeader .react-datepicker-wrapper  {
     padding-right: 20px;
 }
-    /*SEARCH*/
+
+/*SEARCH*/
 
 .pm-search {
     display: flex;
@@ -197,7 +200,7 @@ h1 {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
@@ -215,7 +218,7 @@ h1 {
     margin-right: 15px;
 }
 
-    /*hello-form */
+/*Hello-form */
 
 #username_hello{
     color: #393939 !important;
@@ -250,10 +253,9 @@ h1 {
 
 .link_log:hover {
     background: white;
-
 }
 
-    /*General red button style*/
+/*General red button style*/
 
 button {
     cursor: pointer;
@@ -340,7 +342,6 @@ header {
     display: inline-block;
 }
 
-
 .buttons_filter {
     display: flex;
     flex-grow: 1;
@@ -388,7 +389,6 @@ aside {
             aside nav li {
                 list-style-position: inside;
                 font-weight: 300;
-                list-style-type: none;
                 border-top: 1px solid #e7e7e7;
                 flex-basis: 100%;
             }
@@ -450,22 +450,20 @@ a:hover {
         flex-basis: 100%;
     }
 
+/* icons */
 
     .aside-menu label::before {
-        /* icons */
         content: '';
         display: inline-block;
         width: 14px;
         height: 16px;
         position: absolute;
         top: 50%;
-        background-image: url(http://172.16.0.183:5000/images/down-arrow.png);
+        background: url(http://172.16.0.183:5000/images/down-arrow.png) no-repeat 0 0 ;
         -webkit-background-size: contain;
         background-size: contain;
-        background-repeat: no-repeat;
         transition: .1s ease-in-out;
         left: 18px;
-        background-position: 0 0;
         -webkit-transform: translateY(-50%) rotate(-90deg);
         -moz-transform: translateY(-50%) rotate(-90deg);
         -ms-transform: translateY(-50%) rotate(-90deg);
@@ -473,14 +471,17 @@ a:hover {
         transform: translateY(-50%) rotate(-90deg);
     }
 
+/* rotate arrow */
+
     .aside-menu input[type=checkbox]:checked + label::before {
-        /* rotate arrow */
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
         -ms-transform: translateY(-50%);
         -o-transform: translateY(-50%);
         transform: translateY(-50%);
     }
+
+/*Links in aside*/
 
 .all_events {
     display: flex;
@@ -520,8 +521,7 @@ a:hover {
     text-decoration: none;
 }
 
-
-    /*CALENDAR*/
+/*CALENDAR*/
 
 .rbc-calendar {
     background-color: #ffffff;
@@ -537,8 +537,8 @@ a:hover {
         display: none !important;
     }
 
+/* Border-bug*/
 
-/* border-bug*/
 .rbc-time-header.rbc-overflowing {
     border-right: 0!important;
 }
@@ -554,7 +554,7 @@ a:hover {
     }
 
     .rbc-toolbar button {
-        font-family: 'Oswald', Sans-Serif;
+        font-family: 'Oswald', sans-serif;
         line-height: 14px!important;
         border-radius: 0 !important;
     }
@@ -737,7 +737,7 @@ a:hover {
     cursor: pointer;
     min-width: 70px;
     text-transform: uppercase;
-    font-family: 'Noto Sans', 'Tahoma', Sans-Serif;
+    font-family: 'Noto Sans', 'Tahoma', sans-serif;
 }
     .room-issues-button:hover {
         background: #D32F2F;
@@ -872,7 +872,7 @@ a:hover {
 
 .login_with {
     margin-top: 15px;
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
@@ -967,7 +967,7 @@ textarea {
 }
 
 .filter_btn {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
 }
@@ -1010,7 +1010,7 @@ textarea {
     margin-top: 20px;
 }
 
-/*random colors - legend*/
+/*Random colors - legend*/
 
 .block_colors {
     display: inline-block;
@@ -1028,7 +1028,7 @@ textarea {
     box-shadow: 1px 3px 1px grey;
 }
 
-/*footer*/
+/*Footer*/
 
 .firm_name {
     float: left;
@@ -1063,7 +1063,7 @@ textarea {
     color: #B71C1C;
 }
 
-    /*MEDIA*/
+/*MEDIA*/
 
 @media all and (max-width:1024px) {
     #wrapper {
@@ -1203,8 +1203,7 @@ textarea {
         }
     }
 
-
-/*page Not Found*/
+/*Page Not Found*/
 
 .body_404 {
     width: 100%;
@@ -1229,7 +1228,7 @@ textarea {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
@@ -1257,7 +1256,7 @@ textarea {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
