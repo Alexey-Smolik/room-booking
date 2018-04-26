@@ -92,6 +92,7 @@ h1 {
 }
 
     /* SCROLL */
+
 ::-webkit-scrollbar-button {
     background: #f3f3f3;
     width:5px;
@@ -197,7 +198,7 @@ h1 {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
@@ -245,13 +246,11 @@ h1 {
     font-size: 14px;
     transition: .3s ease-in-out;
     color: black;
-    text-decoration: none;
     border: 1px solid #000000;
 }
 
 .link_log:hover {
     background: white;
-
 }
 
     /*General red button style*/
@@ -521,18 +520,16 @@ a:hover {
     text-decoration: none;
 }
 
-
     /*CALENDAR*/
 
 .rbc-calendar {
     background-color: #ffffff;
-    border: 1px solid #cbcbcb;
     height: 80vh !important;
     position: relative;
     border: 0;
-    -webkit-box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
-    box-shadow: 0px 5px 6px -2px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 0 5px 6px -2px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0 5px 6px -2px rgba(0,0,0,0.4);
+    box-shadow: 0 5px 6px -2px rgba(0,0,0,0.4);
 }
 
     .rbc-time-header > .rbc-row:nth-of-type(2) {
@@ -556,7 +553,7 @@ a:hover {
     }
 
     .rbc-toolbar button {
-        font-family: 'Oswald', Sans-Serif;
+        font-family: 'Oswald', sans-serif;
         line-height: 14px!important;
         border-radius: 0 !important;
     }
@@ -585,7 +582,7 @@ a:hover {
     }
 
 .rbc-event {
-    box-shadow: inset 0px -1px 0px 1px rgba(0,0,0,0.5);
+    box-shadow: inset 0 -1px 0 1px rgba(0,0,0,0.5);
     border: none!important;
     border-radius: 0!important;
     transition: .3s ease-in-out;
@@ -739,7 +736,7 @@ a:hover {
     cursor: pointer;
     min-width: 70px;
     text-transform: uppercase;
-    font-family: 'Noto Sans', 'Tahoma', Sans-Serif;
+    font-family: 'Noto Sans', 'Tahoma', sans-serif;
 }
     .room-issues-button:hover {
         background: #D32F2F;
@@ -874,11 +871,10 @@ a:hover {
 
 .login_with {
     margin-top: 15px;
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', sans-serif;
     font-size: 16px;
     font-weight: bold;
 }
-
 
 /* EVENT SELECTED */
 
@@ -969,7 +965,7 @@ textarea {
 }
 
 .filter_btn {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
 }
@@ -1132,7 +1128,7 @@ textarea {
 @media all and (max-width:768px) {
     h1 {
         width: 100%;
-        padding-right: 0px;
+        padding-right: 0;
         margin-top: 50px;
     }
 
@@ -1205,7 +1201,6 @@ textarea {
         }
     }
 
-
 /*page Not Found*/
 
 .body_404 {
@@ -1231,7 +1226,7 @@ textarea {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
@@ -1259,7 +1254,7 @@ textarea {
     text-decoration: none;
     background-color: #B71C1C;
     color: #ffffff;
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     text-transform: uppercase;
     font-size: 14px;
     text-align: center;
