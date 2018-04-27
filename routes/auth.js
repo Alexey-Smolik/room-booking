@@ -157,7 +157,6 @@ passport.deserializeUser((user, done) => {
 
 routes.post('/local', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-        console.log(user);
         if (err) { return next(err) }
         if (!user) {
             return res.status(401).send('lol');

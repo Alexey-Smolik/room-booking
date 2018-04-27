@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import {Link} from 'react-router-dom';
-import { changeMode, getRoomsByPM, addPMId, getRooms } from '../../actions';
+import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 
 
@@ -30,19 +30,10 @@ class SearchUser extends React.Component {
 
     handleSelect = (e) => {
         this.props.dispatch(changeMode("PM_SEARCH"));
-        this.props.dispatch(addPMId(this.state.selectedOption.value));
-        this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
-        //this.props.dispatch(getEventsByPM(this.state.selectedOption.value));
         e.preventDefault();
 
-        if(typeof this.state.selectedOption === 'string') this.createNotification('empty pm')();
-        else if(typeof this.state.selectedOption === 'object' && !this.state.selectedOption) this.createNotification('empty pm')();
-        else {
-            this.props.dispatch(changeMode("PM_SEARCH"));
-            this.props.dispatch(addPMId(this.state.selectedOption.value));
-            this.props.dispatch(getRoomsByPM(this.state.selectedOption.value));
-            this.createNotification('search')();
-        }
+        this.props.dispatch(getRoomsByCurrentUser(this.props.user.currentUser.id));
+        this.createNotification('search')();
     };
 
     getOptions = () => {
@@ -82,9 +73,8 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <Link className="link_search_to_btn" to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>Search</Link>
+                <Link className="link_search_to_btn" to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>My invitations</Link>
                 <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
-
             </div>
 
         );
@@ -95,9 +85,9 @@ SearchUser.propTypes = {
     users: PropTypes.object,
 };
 
+const mapStateToProps = ({ user }) => ({
+    user,
+    role: user.currentUser && user.currentUser.role
+});
 
-export default connect()(SearchUser);
-
-
-
-
+export default connect(mapStateToProps)(SearchUser);

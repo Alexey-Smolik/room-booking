@@ -16,7 +16,7 @@ import {
     getCurrentUser,
     getEvents,
     getCompanies,
-    getEventsByPM, getAllIssues, getRoomImages, getAllUsers, getRoomIssues
+    getEventsByInvitationUser, getAllIssues, getRoomImages, getAllUsers, getRoomIssues
 } from "../../actions";
 import UsersContainer from "../adminPage/UsersContainer";
 import RoomsContainer from "../adminPage/RoomsContainer";
@@ -118,11 +118,11 @@ class LeftNavBar extends Component {
     }
 
     getDataTable(id) {
-        let {mode, pmId} = this.props.mode;
+        let {mode} = this.props.mode;
         mode === undefined ?
             this.props.dispatch(getEvents(id))
             :
-            this.props.dispatch(getEventsByPM(id,pmId))
+            this.props.dispatch(getEventsByInvitationUser(id, this.props.user.currentUser.id))
     }
 
     renderMenu(){
@@ -176,7 +176,7 @@ class LeftNavBar extends Component {
                         <nav>
                             <ul className="aside-menu" >
                                 {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
-                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() =>  this.props.dispatch(getAllEvents())}>
+                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() =>  this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null))}>
                                     Show all events
                                 </NavLink>
                                 {this.renderMenu()}

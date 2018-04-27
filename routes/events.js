@@ -10,14 +10,29 @@ const io = require('../sockets');
 // --- GET ALL EVENTS ---
 
 routes.get('/', (req, res) => {
-    events.findAll({ include: [ { model: rooms, include: companies }, { model: users, attributes: ['username'] } ] })
+    getEvents(req.query.userId)
         .then(events => {
-            res.status(200).send(events);
+            res.send(events);
         })
         .catch(err => {
             res.status(500).send({ status: 'error', message: err.message });
         })
 });
+
+const getEvents = (userId) => {
+    if(userId) return (getInvitesId(userId)); else return events.findAll({ include: [ { model: rooms, include: companies }, { model: users, attributes: ['username'] } ] });
+};
+
+const getInvitesId = userId => {
+    return invitations.findAll({ where: { userId: userId } })
+       .then(invites => {
+           let invitesId = invites.map(invite => invite.dataValues.eventId);
+           return events.findAll({ where: { id: { $in: invitesId }} });
+       })
+       .catch(err => {
+           return err.message;
+       });
+};
 
 // --- GET EVENT BY Id---
 routes.get('/:id', (req, res) => {

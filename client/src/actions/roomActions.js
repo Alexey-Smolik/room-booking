@@ -49,10 +49,8 @@ export const deleteRoomFromState = roomId => async ( dispatch) => {
     dispatch({ type: DELETE_ROOM_FROM_STATE, payload: roomId})
 };
 
-
-
-export const getRoomsByPM = (userID) => async (dispatch) => {
-    const res = await axios.get(`/api/rooms/events/${userID}`);
+export const getRoomsByCurrentUser = (userID) => async (dispatch) => {
+    const res = await axios.get(`/api/rooms/invitations/${userID}`);
     dispatch({type: FILTER_PM, payload: res.data});
 };
 
