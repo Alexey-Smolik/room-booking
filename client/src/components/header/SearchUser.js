@@ -72,7 +72,6 @@ class SearchUser extends React.Component {
         const {selectedOption} = this.state;
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
-        console.log(options);
         return (
             <div className="pm-search" style={{width: "500px"}}>
                 {options && <Select
@@ -97,7 +96,3 @@ SearchUser.propTypes = {
 
 
 export default connect()(SearchUser);
-
-
-
-
