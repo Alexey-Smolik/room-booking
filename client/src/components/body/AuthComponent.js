@@ -68,8 +68,6 @@ class AuthComponent extends Component {
     };
 
   render() {
-      console.log(this.state.res);
-      console.log(this.state.req);
     return (
       <div className="reactAuth">
         {/*<form method="post" action="/auth/local" id="authForm">*/}
