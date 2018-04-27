@@ -70,6 +70,7 @@
     top: auto;
     left: auto;
 }
+
 @media (min-width: 768px) {
     .nav-tabs.nav-justified > li {
         display: table-cell;
