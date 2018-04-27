@@ -87,6 +87,40 @@ routes.get('/events/:userId', (req, res) => {
         });
 });
 
+// --- GET ROOMS BY INVITATION UserId ---
+routes.get('/invitations/:userId', (req, res) => {
+    invitations.findAll({ where: { userId: req.params.userId } })
+        .then(invites => {
+            let invitesId = invites.map(invite => invite.dataValues.eventId);
+            return events.findAll({ where: { id: { $in: invitesId } } });
+        })
+        .then(events => {
+            let roomsId = events.map(event => event.dataValues.roomId);
+            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+        })
+        .then(rooms => {
+            res.send(rooms);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
+// --- GET EVENTS BY Invitation UserId---
+routes.get('/:id/eventsByInviteUser/:userId', (req, res) => {
+    invitations.findAll({ where: { userId: req.params.userId } })
+        .then(invites => {
+            let invitesId = invites.map(invite => invite.dataValues.eventId);
+            return events.findAll({ where: { id: { $in: invitesId }, roomId: req.params.id } });
+        })
+        .then(events => {
+            res.send(events);
+        })
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        });
+});
+
 // --- ADD NEW ROOM ---
 routes.post('/', (req, res) => {
     if(req.user.role === 1) {

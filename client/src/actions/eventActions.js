@@ -13,8 +13,8 @@ export const getEvents = roomID => async (dispatch) => {
 };
 
 
-export const getEventsByPM = (roomID, pmID ) => async (dispatch) => {
-    const res = await axios.get(`/api/rooms/${roomID}/events?userId=${pmID}`);
+export const getEventsByInvitationUser = (roomID, userId ) => async (dispatch) => {
+    const res = await axios.get(`/api/rooms/${roomID}/eventsByInviteUser/${userId}`);
     console.log("Filter_by_pm");
     dispatch({type: GET_EVENTS, payload: res.data});
 };
@@ -42,9 +42,8 @@ export const deleteEvent = eventID => async (dispatch) => {
 
 
 
-export const getAllEvents = () => async ( dispatch) => {
-    //console.log("ACTIONS ALL EVENTS");
-    const res = await axios.get(`/api/events`);
+export const getAllEvents = (userId) => async (dispatch) => {
+    const res = await axios.get(userId ? `/api/events?userId=${userId}` : '/api/events');
     dispatch({ type: GET_EVENTS, payload: res.data });
 };
 

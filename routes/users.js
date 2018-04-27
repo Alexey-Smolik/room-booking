@@ -93,8 +93,8 @@ routes.put('/:id', (req, res) => {
     } else res.status(500).send({ message: 'You have no rights' });
 });
 
-function getUserWithCryptPass(user, userId) {
-    bcrypt.genSalt(10)
+const getUserWithCryptPass = (user, userId) => {
+    return bcrypt.genSalt(10)
         .then(salt => {
             return bcrypt.hash(user.password, salt);
         })
@@ -102,7 +102,13 @@ function getUserWithCryptPass(user, userId) {
             user.password = hash;
             return users.update(user, {where: {id: userId}});
         })
-}
+        .then(user => {
+            return users.findOne({where: {id: userId}});
+        })
+        .catch(err => {
+            return err.message;
+        })
+};
 
 // --- DELETE USER ---
 routes.delete('/:id', (req, res) => {
