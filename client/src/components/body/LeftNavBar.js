@@ -138,7 +138,7 @@ class LeftNavBar extends Component {
                         {/*Rooms List*/}
                         <ul className="room-list">
                             {this.props.rooms.map( (room, roomKey) => {
-                                    return (room.companyId === company.id) ? (
+                                    return (room.officeId === company.id) ? (
                                             <li key={roomKey}>
 
                                                 <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>

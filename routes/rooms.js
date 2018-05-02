@@ -3,7 +3,7 @@ const rooms = require('../models').rooms;
 const events = require('../models').events;
 const users = require('../models').users;
 const images = require('../models').images;
-const companies = require('../models').companies;
+const offices = require('../models').offices;
 const issues = require('../models').issues;
 const invitations = require('../models').invitations;
 const multer  = require('multer');
@@ -36,7 +36,7 @@ routes.get('/', (req, res) => {
                         return self.indexOf(value) === index;
                     });
 
-                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues, {model: companies, attributes : ['name', 'address']}], order: [['id', 'DESC']]});
+                    return rooms.findAll({ where: { id: { $notIn: roomsId } }, include: [images, issues, {model: offices, attributes : ['name', 'address']}], order: [['id', 'DESC']]});
                 })
                 .then(rooms => {
                     res.send(rooms);
@@ -46,7 +46,7 @@ routes.get('/', (req, res) => {
                 });
         }
         else {
-            rooms.findAll({include: [images, issues, {model: companies, attributes : ['name', 'address']}],order: [['id', 'DESC']]})
+            rooms.findAll({include: [images, issues, {model: offices, attributes : ['name', 'address']}],order: [['id', 'DESC']]})
                 .then(rooms => {
                     res.send(rooms);
                 })
@@ -77,7 +77,7 @@ routes.get('/events/:userId', (req, res) => {
             });
         })
         .then(roomsId => {
-            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: offices, attributes : ['name']}], order: [['id', 'DESC']]});
         })
         .then(rooms => {
             res.send(rooms);
@@ -96,7 +96,7 @@ routes.get('/invitations/:userId', (req, res) => {
         })
         .then(events => {
             let roomsId = events.map(event => event.dataValues.roomId);
-            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: companies, attributes : ['name']}], order: [['id', 'DESC']]});
+            return rooms.findAll({ where: { id: { $in: roomsId } }, include: [images, issues, { model: offices, attributes : ['name']}], order: [['id', 'DESC']]});
         })
         .then(rooms => {
             res.send(rooms);
@@ -199,12 +199,12 @@ routes.get('/:id/images', (req, res) => {
 
 // --- ADD NEW IMAGE ---
 routes.post('/:id/images', (req, res) => {
-    rooms.findOne({ where: { id: req.params.id }, include: [companies] })
+    rooms.findOne({ where: { id: req.params.id }, include: [offices] })
         .then(room => {
             if(room){
                 return multer.diskStorage({
                     destination: config.imagesDestination +
-                    room.dataValues.company.dataValues.id + '_' + room.dataValues.company.dataValues.name + '/' +
+                    room.dataValues.office.dataValues.id + '_' + room.dataValues.office.dataValues.name + '/' +
                     req.params.id + '_' + room.dataValues.name,
                     filename: function (req, file, cb) {
                         cb(null, file.originalname);

@@ -3,7 +3,7 @@ const routes = express.Router({mergeParams: true});
 const auth = require('./auth');
 const users = require('./users');
 const rooms = require('./rooms');
-const companies = require('./companies');
+const offices = require('./offices');
 const events = require('./events');
 const issues = require('./issues');
 const path = require('path');
@@ -16,7 +16,7 @@ routes.use(authHelpers); // middleware for user authentification
 
 routes.use('/api/users', users); // users handler
 routes.use('/api/rooms', rooms); // rooms handler
-routes.use('/api/companies', companies); // companies handler
+routes.use('/api/offices', offices); // offices handler
 routes.use('/api/events', events); // events handler
 routes.use('/api/issues', issues); // issues handler
 

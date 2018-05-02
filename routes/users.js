@@ -85,7 +85,7 @@ routes.put('/:id', (req, res) => {
                 return Promise.reject('Wrong id');
             })
             .then(user => {
-                res).send(user);
+                res.send(user);
             })
             .catch(err => {
                 res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });

@@ -35,7 +35,7 @@ class RoomsContainer extends React.Component {
             name: this.state.roomName,
             description: this.state.roomDescription,
             floor: this.state.roomFloor,
-            companyId: companyId,
+            officeId: companyId,
             companyName: companyName
         };
         this.props.dispatch(createRoom(roomData));

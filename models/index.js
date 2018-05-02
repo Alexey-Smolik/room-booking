@@ -22,9 +22,9 @@ Object.keys(db).forEach(function(modelName) {
 });
 
 // ----- SEQUELIZE ASSOCIATIONS -----
-// --- COMPANIES WITH ROOMS ---
-db.companies.hasMany(db.rooms, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
-db.rooms.belongsTo(db.companies);
+// --- OFFICES WITH ROOMS ---
+db.offices.hasMany(db.rooms, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
+db.rooms.belongsTo(db.offices);
 
 // --- ROOMS WITH EVENTS ---
 db.rooms.hasMany(db.events, { foreignKey: { allowNull: false }, onDelete: 'cascade' });
