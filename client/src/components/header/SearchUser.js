@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {Link, NavLink} from 'react-router-dom';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import ToggleButton from 'react-toggle-button';
@@ -14,7 +13,7 @@ import "react-virtualized/styles.css";
 import "react-virtualized-select/styles.css";
 import Select from 'react-select';
 
-
+const borderRadiusStyle = { borderRadius: 0 }
 class SearchUser extends React.Component {
     state = {
         selectedOption: '',
@@ -81,9 +80,12 @@ class SearchUser extends React.Component {
                     options={options}
                 />}
 
+                 {/*Toggle btn for users*/}
                 <p className="invitations">My invitations:</p>
                 <ToggleButton
                     value={ this.state.isClicked}
+                    thumbStyle={borderRadiusStyle}
+                    trackStyle={borderRadiusStyle}
                     onToggle={(value) => {
                         this.setState({
                             isClicked: !value,
