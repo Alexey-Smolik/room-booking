@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
+import ToggleSwitch from '../header/ToggleSwitch';
 
 
 import "react-select/dist/react-select.css";
@@ -16,6 +17,7 @@ import Select from 'react-select';
 class SearchUser extends React.Component {
     state = {
         selectedOption: '',
+        isClick: false
     };
 
     handleChange = (selectedOption) => {
@@ -25,7 +27,8 @@ class SearchUser extends React.Component {
     cancelSearch = () => {
         this.props.dispatch(changeMode());
         this.props.dispatch(getRooms());
-        this.setState({ selectedOption: ''});
+        this.createNotification('cancel')();
+        this.setState({ selectedOption: '', isClick: false });
     };
 
     handleSelect = (e) => {
@@ -34,6 +37,9 @@ class SearchUser extends React.Component {
 
         this.props.dispatch(getRoomsByCurrentUser(this.props.user.currentUser.id));
         this.createNotification('search')();
+        this.setState({
+            isClick: true
+        })
     };
 
     getOptions = () => {
@@ -50,10 +56,13 @@ class SearchUser extends React.Component {
         return () => {
             switch (type) {
                 case 'search':
-                    NotificationManager.success('Search successfully conducted', 'Event', 3000);
+                    NotificationManager.success('My invitations mod is ON', 'Events', 3000);
+                    break;
+                case 'cancel':
+                    NotificationManager.success('My invitations mod is OFF', 'Events', 3000);
                     break;
                 case 'empty pm':
-                    NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Event', 3000);
+                    NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Events', 3000);
                     break;
             }
         };
@@ -72,7 +81,8 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
-                <Link className="link_search_to_btn" to={'/room/'} onClick={this.handleSelect} style={{float: 'right'}}>My invitations</Link>
+                <p className="invitations">My invitations:</p>
+                <Link className="link_search_to_btn_mod" to={'/room/'}  onClick={this.handleSelect} style={{float: 'right'}}>{this.state.isClick ? 'ON' : 'OFF'}</Link>
                 <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
             </div>
 
