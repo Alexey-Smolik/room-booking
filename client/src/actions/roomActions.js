@@ -22,7 +22,7 @@ export const getRoomsByDate = (start_date, end_date) => async (dispatch) => {
 
 export const createRoom = roomData => async (dispatch) => {
     const res = await axios.post('/api/rooms/', roomData);
-    res.data.companyName = roomData.companyName;
+    res.data.officeName = roomData.officeName;
     dispatch({ type: CREATE_ROOM, payload: res.data });
 };
 

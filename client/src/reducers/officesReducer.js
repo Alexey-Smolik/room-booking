@@ -1,28 +1,28 @@
 import {
-  GET_ALL_COMPANIES,
-  GET_COMPANY,
-  CREATE_COMPANY,
-  DELETE_COMPANY,
-  EDIT_COMPANY,
+  GET_ALL_OFFICES,
+  GET_OFFICE,
+  CREATE_OFFICE,
+  DELETE_OFFICE,
+  EDIT_OFFICE,
 } from '../actions/types';
 
 export default function (state = [], action) {
 
   switch (action.type) {
-    case GET_ALL_COMPANIES:
+    case GET_ALL_OFFICES:
       return action.payload;
 
-    case GET_COMPANY:
+    case GET_OFFICE:
       return action.payload;
 
-    case CREATE_COMPANY:
+    case CREATE_OFFICE:
       return [action.payload, ...state];
 
-    case EDIT_COMPANY:
+    case EDIT_OFFICE:
         state.map((issue,index) => {(issue.id === action.payload.id) ? state[index] = action.payload: null});
         return state;
 
-      case DELETE_COMPANY:
+      case DELETE_OFFICE:
       return [...state.filter(({ id }) => id !== action.payload)];
 
     default:

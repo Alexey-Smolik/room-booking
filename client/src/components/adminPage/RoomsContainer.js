@@ -5,7 +5,7 @@ import RoomItem from './RoomItem'
 import {
     createRoom,
     getRooms,
-    getCompanies,
+    getOffices,
 } from '../../actions/index';
 
 class RoomsContainer extends React.Component {
@@ -15,28 +15,28 @@ class RoomsContainer extends React.Component {
             roomName: '',
             roomFloor: '',
             roomDescription: '',
-            roomCompanyName: '',
+            roomOfficeName: '',
             addFieldIsVisible: false,
             searchValue: '',
         };
         this.props.dispatch(getRooms());
-        this.props.dispatch(getCompanies());
+        this.props.dispatch(getOffices());
     }
     addRoom(e) {
-        let companyId = null;
-        let companyName = '';
-        this.props.companies.forEach((company) => {
-            if(company.name === this.state.roomCompanyName ) {
-                companyId = company.id;
-                companyName = company.name;
+        let officeId = null;
+        let officeName = '';
+        this.props.offices.forEach((office) => {
+            if(office.name === this.state.roomOfficeName ) {
+                officeId = office.id;
+                officeName = office.name;
             }
         });
         const roomData = {
             name: this.state.roomName,
             description: this.state.roomDescription,
             floor: this.state.roomFloor,
-            officeId: companyId,
-            companyName: companyName
+            officeId: officeId,
+            officeName: officeName
         };
         this.props.dispatch(createRoom(roomData));
         this.toggleAddRoomField();
@@ -49,7 +49,7 @@ class RoomsContainer extends React.Component {
             roomName: '',
             roomFloor: '',
             roomDescription: '',
-            roomCompanyName: '',
+            roomOfficeName: '',
         })
     }
     onRoomNameChange (e) {
@@ -79,24 +79,24 @@ class RoomsContainer extends React.Component {
     };
     onSelectChange (e) {
         this.setState({
-            roomCompanyName: e.target.value,
+            roomOfficeName: e.target.value,
         });
         e.preventDefault();
     };
     render() {
 
         let filteredRooms = this.props.rooms.filter((room) => {
-            if(room.company) {
+            if(room.office) {
                 return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.company.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.office.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.floor.toString().includes(this.state.searchValue)
             } else {
                 return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.companyName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
+                    room.officeName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.floor.toString().includes(this.state.searchValue)
             }
         });
@@ -120,27 +120,27 @@ class RoomsContainer extends React.Component {
                                     <ControlLabel className="control-label" >Name</ControlLabel>
                                     <ControlLabel className="control-label" >Description</ControlLabel>
                                     <ControlLabel className="control-label" >Floor</ControlLabel>
-                                    <ControlLabel className="control-label" >Company</ControlLabel>
+                                    <ControlLabel className="control-label" >Office</ControlLabel>
                                 </div>}
                                 <form onSubmit={(e) => {this.addRoom(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomNameChange(e)} value={this.state.roomName}  required />
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomDescriptionChange(e)} value={this.state.roomDescription}  required />
                                     <FormControl className="form-control"   type="number" onChange={(e) => this.onRoomFloorChange(e)} value={this.state.roomFloor}  required />
-                                    <FormControl componentClass="select"  onChange={(e) => this.onSelectChange(e)}  value={this.state.roomCompanyName} required>
+                                    <FormControl componentClass="select"  onChange={(e) => this.onSelectChange(e)}  value={this.state.roomOfficeName} required>
                                         <option  defaultValue/>
-                                        {this.props.companies.map((company) => {
-                                            return <option value={company.name} key={company.id}>{company.name}</option>
+                                        {this.props.offices.map((office) => {
+                                            return <option value={office.name} key={office.id}>{office.name}</option>
                                         })}
                                         </FormControl>
                                     <Button type="submit"  bsStyle="success" >Save</Button>
                                 </form>
                                 {filteredRooms.map( (room) => {
-                                    if(room.company) {
+                                    if(room.office) {
                                         return <RoomItem
                                             name={room.name}
                                             description={room.description}
                                             floor={room.floor}
-                                            companyName={room.company.name}
+                                            officeName={room.office.name}
                                             id={room.id}
                                             key={room.id}
                                         />
@@ -149,7 +149,7 @@ class RoomsContainer extends React.Component {
                                             name={room.name}
                                             description={room.description}
                                             floor={room.floor}
-                                            companyName={room.companyName}
+                                            officeName={room.officeName}
                                             id={room.id}
                                             key={room.id}
                                         />
@@ -165,11 +165,11 @@ class RoomsContainer extends React.Component {
         );
     }
 }
-function mapStateToProps ({user, rooms, companies}) {
+function mapStateToProps ({user, rooms, offices}) {
     return {
-        user: user,
-        rooms: rooms,
-        companies: companies,
+        user,
+        rooms,
+        offices
     }
 }
 

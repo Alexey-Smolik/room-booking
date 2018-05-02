@@ -5,11 +5,11 @@ export const DELETE_ROOM = 'delete-room';
 export const EDIT_ROOM = 'edit-room';
 export const CREATE_ROOM = 'create-room';
 
-export const GET_COMPANY = 'get-company';
-export const GET_ALL_COMPANIES = 'get-companies';
-export const DELETE_COMPANY = 'delete-company';
-export const CREATE_COMPANY = 'create-company';
-export const EDIT_COMPANY = 'edit_company';
+export const GET_OFFICE = 'get-office';
+export const GET_ALL_OFFICES = 'get-all-offices';
+export const DELETE_OFFICE = 'delete-office';
+export const CREATE_OFFICE = 'create-office';
+export const EDIT_OFFICE = 'edit_office';
 
 export const ADD_EVENT = 'add-event';
 export const DELETE_EVENT = 'delete-event';

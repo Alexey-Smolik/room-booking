@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import {  Route, Link } from 'react-router-dom';
 import {
     getRooms,
-    getCompanies,
+    getOffices,
     getCurrentUser,
     getAllUsers,
     getAllIssues,
@@ -16,7 +16,7 @@ import {
 import 'react-datepicker/dist/react-datepicker.css';
 import {connect} from "react-redux";
 import RoomsContainer from "./adminPage/RoomsContainer";
-import CompaniesContainer from "./adminPage/CompaniesContainer";
+import OfficesContainer from "./adminPage/OfficesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
@@ -48,8 +48,8 @@ componentDidMount() {
                     <Route exact path="/adminPanel" component={HelloAdmin} />
 
                     <Nav bsStyle="pills">
-                        <LinkContainer to="/adminPanel/companies/">
-                            <NavItem eventKey={1} onClick={() => {this.props.dispatch(getCompanies())}}>Offices</NavItem>
+                        <LinkContainer to="/adminPanel/offices/">
+                            <NavItem eventKey={1} onClick={() => {this.props.dispatch(getOffices())}}>Offices</NavItem>
                         </LinkContainer>
                         <NavDropdown eventKey={1} title="Select room" id="nav-dropdown">
                             <LinkContainer to={"/adminPanel/rooms/"} exact >
@@ -74,7 +74,7 @@ componentDidMount() {
                         </LinkContainer>
                     </Nav>
 
-                    <Route path="/adminPanel/companies/"  component={CompaniesContainer}/>
+                    <Route path="/adminPanel/offices/"  component={OfficesContainer}/>
                     <Route exact path="/adminPanel/rooms/" component={RoomsContainer}/>
                     <Route path="/adminPanel/rooms/:roomID" component={InnerRoomContainer}/>
                     <Route path="/adminPanel/users/" component={UsersContainer}/>

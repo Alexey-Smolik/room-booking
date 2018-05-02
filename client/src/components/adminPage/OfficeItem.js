@@ -2,33 +2,33 @@ import React from 'react';
 import { Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import {
-    updateCompany,
-    deleteCompany,
+    updateOffice,
+    deleteOffice,
 } from '../../actions/index'
 
-class CompanyItem extends React.Component {
+class OfficeItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             btnText: 'Edit',
-            companyName: this.props.name,
-            companyAddress: this.props.address,
+            officeName: this.props.name,
+            officeAddress: this.props.address,
             isFieldEditing: false,
         };
     }
 
-    changeCompanyData = (e,id) => {
+    changeOfficeData = (e,id) => {
         this.setState({
             btnText: 'Cancel',
             isFieldEditing: true,
         });
-        const companyData = {
+        const officeData = {
             id: id,
-            name: this.state.companyName,
-            address: this.state.companyAddress,
+            name: this.state.officeName,
+            address: this.state.officeAddress,
         };
         if(this.state.btnText === 'Save') {
-            this.props.dispatch(updateCompany(companyData,id));
+            this.props.dispatch(updateOffice(officeData,id));
             this.setState({
                 btnText: 'Edit',
                 isFieldEditing: false,
@@ -42,17 +42,17 @@ class CompanyItem extends React.Component {
         e.preventDefault()
     };
 
-    onCompanyAddressChange (e) {
+    onOfficeAddressChange (e) {
         this.setState({
-            companyAddress: e.target.value,
+            officeAddress: e.target.value,
             btnText: 'Save'
 
         });
         e.preventDefault();
     };
-    onCompanyNameChange (e) {
+    onOfficeNameChange (e) {
         this.setState({
-            companyName: e.target.value,
+            officeName: e.target.value,
             btnText: 'Save'
         });
         e.preventDefault();
@@ -62,12 +62,12 @@ class CompanyItem extends React.Component {
         const {id} = this.props;
         const { isFieldEditing, btnText} = this.state;
         return (
-            <form onSubmit={(e)=> {this.changeCompanyData(e,id)}} style={{display:  'flex'}}>
-                <FormControl type="text" onChange={(e) => this.onCompanyNameChange(e)} value={this.state.companyName} disabled={!isFieldEditing} required/>
-                <FormControl type="text" onChange={(e) => this.onCompanyAddressChange(e)} value={this.state.companyAddress} disabled={!isFieldEditing} required/>
+            <form onSubmit={(e)=> {this.changeOfficeData(e,id)}} style={{display:  'flex'}}>
+                <FormControl type="text" onChange={(e) => this.onOfficeNameChange(e)} value={this.state.officeName} disabled={!isFieldEditing} required/>
+                <FormControl type="text" onChange={(e) => this.onOfficeAddressChange(e)} value={this.state.officeAddress} disabled={!isFieldEditing} required/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'}>{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
-                    this.props.dispatch(deleteCompany(this.props.id));
+                    this.props.dispatch(deleteOffice(this.props.id));
                     this.setState({
                         isFieldEditing: false,
                         btnText: 'Edit'})
@@ -84,4 +84,4 @@ function mapStateToProps ({user}) {
     }
 }
 
-export default connect(mapStateToProps)(CompanyItem);
+export default connect(mapStateToProps)(OfficeItem);
