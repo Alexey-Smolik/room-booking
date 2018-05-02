@@ -12,8 +12,7 @@ routes.get('/', (req, res) => {
             options.where.role = 3;
         } else return res.status(500).send({ message: 'You have no rights' });
         options.attributes = ['id', 'username'];
-    }
-
+    } else return res.status(500).send({ message: 'You have no rights' });
     users.findAll(options)
         .then(users => {
             res.send(users);
@@ -48,28 +47,32 @@ routes.get('/simple', (req, res) => {
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
     req.body.role = req.body.role || 3;
-    users.findOne({where: { username: req.body.username }})
-        .then(user => {
-            if(user){
-                return Promise.reject('User with that name is already exist');
-            }
-            else {
-                return bcrypt.genSalt(10);
-            }
-        })
-        .then(salt => {
-            return bcrypt.hash(req.body.password, salt);
-        })
-        .then(hash => {
-            req.body.password = hash;
-            return users.create(req.body);
-        })
-        .then(user => {
-            res.status(201).send(user);
-        })
-        .catch(err => {
-            res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
-        });
+    if(req.user.role === 1){
+        users.findOne({where: { username: req.body.username }})
+            .then(user => {
+                if(user){
+                    return Promise.reject('User with that name is already exist');
+                }
+                else {
+                    return bcrypt.genSalt(10);
+                }
+            })
+            .then(salt => {
+                return bcrypt.hash(req.body.password, salt);
+            })
+            .then(hash => {
+                req.body.password = hash;
+                return users.create(req.body);
+            })
+            .then(user => {
+                res.status(201).send(user);
+            })
+            .catch(err => {
+                res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
+            });
+    } else {
+        res.status(500).send({ message: 'You have no rights' });
+    }
 });
 
 // --- EDIT USER ---
