@@ -59,9 +59,6 @@ class SearchUser extends React.Component {
                 case 'cancel':
                     NotificationManager.success('My invitations mode is OFF', 'Events', 3000);
                     break;
-                case 'empty pm':
-                    NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Events', 3000);
-                    break;
             }
         };
     };
@@ -71,16 +68,9 @@ class SearchUser extends React.Component {
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
         return (
-            <div className="pm-search" style={{width: "500px"}}>
-                {options && <Select
-                    style={{width: "450px", float: "left"}}
-                    name="form-field-name"
-                    value={value}
-                    onChange={this.handleChange}
-                    options={options}
-                />}
-
-                 {/*Toggle btn for users*/}
+            <div>
+                {this.props.user.currentUser.role === 3 ?
+                 <div className="pm-search">
                 <p className="invitations">My invitations:</p>
                 <ToggleButton
                     value={ this.state.isClicked}
@@ -93,8 +83,8 @@ class SearchUser extends React.Component {
                         this.handleSelect(!value)
                     }}
                 />
+                 </div>: null}
             </div>
-
         );
     }
 }

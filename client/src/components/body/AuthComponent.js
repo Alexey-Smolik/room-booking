@@ -70,7 +70,6 @@ class AuthComponent extends Component {
   render() {
     return (
       <div className="reactAuth">
-        {/*<form method="post" action="/auth/local" id="authForm">*/}
         <form  id="authForm">
           <div className="container">
             <div className="row">
