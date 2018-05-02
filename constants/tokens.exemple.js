@@ -14,6 +14,11 @@ const tokens = {
     GoogleStrategy: {
         clientID: 'clientID',
         clientSecret: 'clientSecret'
+    },
+    MicrosoftStrategy: {
+        clientID: 'clientID',
+        clientSecret: 'clientSecret',
+        scope: 'scope',
     }
 };
 

@@ -60,7 +60,7 @@ routes.get('/', (req, res) => {
 routes.get('/:id', (req, res) => {
     rooms.findOne({ where: { id: req.params.id }, include: [{ model: events, include: [ { model: users, attributes: ['username', 'id'] }] }] })
         .then(room => {
-            if(room) res.status(200).send(room);
+            if(room) res.send(room);
             else res.status(500).send({ message: 'Wrong id' });
         })
         .catch(err => {
@@ -148,7 +148,7 @@ routes.put('/:id', (req, res) => {
             })
             .then(room => {
                 io.emit('edit room', room.dataValues);
-                res.status(200).send(room);
+                res.send(room);
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
@@ -163,7 +163,7 @@ routes.delete('/:id', (req, res) => {
             .then(room => {
                 if(room){
                     io.emit('delete room', req.params.id);
-                    res.status(200).send(req.params.id);
+                    res.send(req.params.id);
                 } else res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
@@ -238,7 +238,7 @@ routes.delete('/images/:id', (req, res) => {
     if(req.user.role === 1) {
         images.destroy({where: {id: req.params.id}})
             .then(image => {
-                image ? res.status(200).send(req.params.id) : res.status(500).send({message: 'Wrong id'});
+                image ? res.send(req.params.id) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});

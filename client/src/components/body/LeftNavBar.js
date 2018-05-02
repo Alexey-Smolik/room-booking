@@ -5,7 +5,6 @@ import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
 import Footer from '../Footer/Footer';
 
-
 import {
     getAllEvents,
     getRoomActiveIssues,
@@ -60,7 +59,6 @@ class LeftNavBar extends Component {
     };
 
     connect(){
-        console.log(this.props);
         let { currentUser } = this.props.user;
         { currentUser &&  socket.emit('connect user', {currentUser})}
     }

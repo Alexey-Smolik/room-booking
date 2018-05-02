@@ -9,7 +9,7 @@ const issues = require('./issues');
 const path = require('path');
 const authHelpers = require('../middleware/auth');
 
-routes.use('/auth', auth);
+routes.use('/auth', auth); // auth handler
 
 routes.use(express.static(path.join(__dirname, '../public')));
 routes.use(authHelpers); // middleware for user authentification

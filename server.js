@@ -10,10 +10,12 @@ const pgSession = require('connect-pg-simple')(session);
 const io = require('./sockets');
 const config = require('./config/main');
 
+// MIDDLEWARE FOR COOKIE AND BODY PARSER
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// MIDDLEWARE FOR SESSION STORAGE
 app.use(session({
     store: new pgSession({
         conString : `${config.db.driver}://${config.db.user}:${config.db.password}@${config.db.host}:${config.db.port}/${config.db.database}`
@@ -24,11 +26,17 @@ app.use(session({
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 }));
 
+// MIDDLEWARE FOR LOGGING REQUEST
 app.use(logger('dev'));
+
+// MIDDLEWARE FOR PASSPORT.JS
 app.use(passport.initialize());
 app.use(passport.session());
+
+// MIDDLEWARE FOR REQUEST
 app.use('/', require('./routes'));
 
+// SYNCHRONIZATION WITH DATABASE AND RUNNING SERVER
 models.sequelize.sync()
     .then(() => {
         const port = 8000;

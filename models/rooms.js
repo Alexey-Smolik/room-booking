@@ -1,3 +1,4 @@
+// MODEL ROOMS
 module.exports = function(sequelize, DataTypes) {
     let Rooms = sequelize.define('rooms', {
         id: {

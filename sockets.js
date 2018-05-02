@@ -1,6 +1,7 @@
 const io = require('socket.io')();
 const colors = require('colors');
 
+//  SOCKETS FOR DATA EXCHANGE
 io.on('connection', socket => {
     let user = '';
     socket.on('connect user', data => {

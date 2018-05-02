@@ -124,9 +124,9 @@ passport.use(new GoogleStrategy({
 
 // Microsoft strategy for authorization
 passport.use(new MicrosoftStrategy({
-        clientID: 'd0ebcad6-dcb2-4be3-af26-38875f47d51e',
-        clientSecret: 'bssUKO90+!xmcsUOIQ649?(',
-        scope: 'api://d0ebcad6-dcb2-4be3-af26-38875f47d51e/access_as_user',
+        clientID: tokens.MicrosoftStrategy.clientID,
+        clientSecret: tokens.MicrosoftStrategy.clientSecret,
+        scope: tokens.MicrosoftStrategy.scope,
         callbackURL: "http://localhost:3000/auth/microsoft/callback"
     },
     function(accessToken, refreshToken, profile, done) {
@@ -144,30 +144,30 @@ passport.use(new MicrosoftStrategy({
     }
 ));
 
+// PASSPORT SERIALIZE USER
 passport.serializeUser((user, done) => {
     done(null, user);
 });
 
+// PASSPORT DESERIALIZE USER
 passport.deserializeUser((user, done) => {
     done(null, user);
 });
 
-//routes.post('/local', passport.authenticate('local', { successRedirect: '/room', failureRedirect: '/' }));
-
-
+// Local strategy for authorization
 routes.post('/local', function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-        if (err) { return next(err) }
-        if (!user) {
-            return res.status(401).send('lol');
-        }
+        if (err) return next(err);
+        if (!user) return res.status(401).json({message: 'wrong user'});
+
         req.logIn(user, function(err) {
             if (err) { return next(err); }
-            return res.send('azaza');
+            return res.send(user);
         });
     })(req, res, next);
 });
 
+// ROUTES FOR PASSPORT AUTHENTICATION
 routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));
@@ -185,6 +185,7 @@ routes.get('/google/callback', passport.authenticate('google', { successRedirect
 routes.get('/microsoft', passport.authenticate('microsoft', { scope: ['https://graph.microsoft.com/user.read'] }));
 routes.get('/microsoft/callback', passport.authenticate('microsoft', { successRedirect: '/room', failureRedirect: '/' }));
 
+// ROUTE FOR LOGOUT
 routes.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
