@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import moment from 'moment';
 import {Link, NavLink} from 'react-router-dom';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
@@ -16,32 +15,30 @@ import "react-virtualized-select/styles.css";
 import Select from 'react-select';
 
 
-const borderRadiusStyle = { borderRadius:0 }
 class SearchUser extends React.Component {
     state = {
         selectedOption: '',
-        isClick: false
+        isClicked: false
     };
-
 
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
     };
 
-    cancelSearch = () => {
-        this.props.dispatch(changeMode());
-        this.props.dispatch(getRooms());
-        this.createNotification('cancel')();
-        this.setState({ selectedOption: '', isClick: false });
-    };
 
-    handleSelect = (e) => {
-        this.props.dispatch(changeMode("PM_SEARCH"));
-        this.props.dispatch(getRoomsByCurrentUser(this.props.user.currentUser.id));
-        this.createNotification('search')();
-        this.setState({
-            isClick: true
-        })
+    handleSelect = (isClicked) => {
+        if(isClicked) {
+            this.props.dispatch(changeMode("PM_SEARCH"));
+            this.props.dispatch(getRoomsByCurrentUser(this.props.user.currentUser.id));
+            this.createNotification('search')();
+        } else {
+            this.props.dispatch(changeMode());
+            this.props.dispatch(getRooms());
+            this.createNotification('cancel')();
+            this.setState({
+                selectedOption: ''
+            });
+        }
     };
 
     getOptions = () => {
@@ -85,19 +82,15 @@ class SearchUser extends React.Component {
                 />}
 
                 <p className="invitations">My invitations:</p>
-
-
                 <ToggleButton
-                    value={ this.state.value || false }
-                    thumbStyle={borderRadiusStyle}
-                    trackStyle={borderRadiusStyle}
+                    value={ this.state.isClicked}
                     onToggle={(value) => {
                         this.setState({
-                            value: !value,
-                        })
-                    }} />
-                <Link className="link_search_to_btn_mod" to={'/room/'}  onClick={this.handleSelect} style={{float: 'right'}}>{this.state.isClick ? 'ON' : 'OFF'}</Link>
-                <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
+                            isClicked: !value,
+                        });
+                        this.handleSelect(!value)
+                    }}
+                />
             </div>
 
         );
