@@ -68,7 +68,7 @@ class SearchUser extends React.Component {
         const value = selectedOption && selectedOption.value;
         let options = this.getOptions();
         return (
-            <div>
+            <div style={{ paddingTop: '5px' }}>
                 {this.props.user.currentUser.role === 3 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
