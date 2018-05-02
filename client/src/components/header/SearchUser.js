@@ -16,11 +16,13 @@ import "react-virtualized-select/styles.css";
 import Select from 'react-select';
 
 
+const borderRadiusStyle = { borderRadius:0 }
 class SearchUser extends React.Component {
     state = {
         selectedOption: '',
         isClick: false
     };
+
 
     handleChange = (selectedOption) => {
         this.setState({selectedOption});
@@ -83,11 +85,12 @@ class SearchUser extends React.Component {
                 />}
 
                 <p className="invitations">My invitations:</p>
+
+
                 <ToggleButton
                     value={ this.state.value || false }
-                    onClick={this.handleSelect}
-
-
+                    thumbStyle={borderRadiusStyle}
+                    trackStyle={borderRadiusStyle}
                     onToggle={(value) => {
                         this.setState({
                             value: !value,
