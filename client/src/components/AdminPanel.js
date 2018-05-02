@@ -49,7 +49,7 @@ componentDidMount() {
 
                     <Nav bsStyle="pills">
                         <LinkContainer to="/adminPanel/companies/">
-                            <NavItem eventKey={1} onClick={() => {this.props.dispatch(getCompanies())}}>Companies</NavItem>
+                            <NavItem eventKey={1} onClick={() => {this.props.dispatch(getCompanies())}}>Offices</NavItem>
                         </LinkContainer>
                         <NavDropdown eventKey={1} title="Select room" id="nav-dropdown">
                             <LinkContainer to={"/adminPanel/rooms/"} exact >
