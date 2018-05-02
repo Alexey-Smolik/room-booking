@@ -120,7 +120,7 @@ class RoomsContainer extends React.Component {
                                     <ControlLabel className="control-label" >Name</ControlLabel>
                                     <ControlLabel className="control-label" >Description</ControlLabel>
                                     <ControlLabel className="control-label" >Floor</ControlLabel>
-                                    <ControlLabel className="control-label" >Company</ControlLabel>
+                                    <ControlLabel className="control-label" >Offices</ControlLabel>
                                 </div>}
                                 <form onSubmit={(e) => {this.addRoom(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomNameChange(e)} value={this.state.roomName}  required />
