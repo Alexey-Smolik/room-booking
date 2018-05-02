@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import {getCompanies, getRooms, getRoomsByDate} from '../../actions';
+import {getOffices, getRooms, getRoomsByDate} from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import {Link} from 'react-router-dom';
 
@@ -64,7 +64,7 @@ class SearchEmptyRoom extends Component {
           if(start < end) {
               this.createNotification('search')();
               this.props.dispatch(getRoomsByDate(start, end));
-              this.props.dispatch(getCompanies());
+              this.props.dispatch(getOffices());
           } else this.createNotification('start end date')();
       } else {
           this.createNotification('empty date')()

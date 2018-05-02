@@ -29,7 +29,7 @@ class RoomItem extends React.Component {
             name: this.state.roomName,
             description: this.state.roomDescription,
             floor: this.state.roomFloor,
-            companyName: this.props.companyName,
+            officeName: this.props.officeName,
         };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(updateRoom(roomData,id));
@@ -75,7 +75,7 @@ class RoomItem extends React.Component {
                 <FormControl  type="text" value={this.state.roomName} onChange={(e) => this.onRoomNameChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing} required/>
-                <FormControl  type="text" value={this.props.companyName}  disabled />
+                <FormControl  type="text" value={this.props.officeName}  disabled />
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
                     this.props.dispatch(deleteRoom(id));
@@ -90,11 +90,11 @@ class RoomItem extends React.Component {
         );
     }
 }
-function mapStateToProps ({user, rooms, companies}) {
+function mapStateToProps ({user, rooms, offices}) {
     return {
         user,
         rooms,
-        companies,
+        offices,
     }
 }
 
