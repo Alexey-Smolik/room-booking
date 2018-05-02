@@ -155,7 +155,7 @@ class RoomsInfo extends React.Component {
                         </div>
                         <div className="room-issues-container">
 							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden"  title={this.state.isOpen ? 'Hide the issues' : 'Show the issues'} onClick={this.handleClick}> {this.state.isOpen ? 'Hide' : 'Show'} </button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
-                            {this.props.userRole !== 3 && <div className="room-issues-form">
+                            {(this.props.userRole === 1 || this.props.userRole === 2) && <div className="room-issues-form">
 								<p className="the_issue">Please, describe the issue:</p>
                                 <textarea className="room-issues-input" maxLength={150} onChange={ (e) => this.inputHandler(e, 1)}></textarea>
                                 <button className="room-issues-button" onClick={(e) => this.inputHandler(e)}>Add issue</button>
