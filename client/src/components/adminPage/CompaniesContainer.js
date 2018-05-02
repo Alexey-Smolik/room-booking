@@ -62,9 +62,9 @@ class CompaniesContainer extends React.Component {
             <Jumbotron>
                 { this.props.user.currentUser && this.props.user.currentUser.role === 1 ?
                         <div>
-                            <h3>All companies</h3>
+                            <h3>All offices</h3>
                             <div  className="add1" style={!this.props.companies.length ? {justifyContent: "flex-end"}: {}} >
-                                {!!this.props.companies.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search company" style = {{ width: "20%" }}/>}
+                                {!!this.props.companies.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search office" style = {{ width: "20%" }}/>}
                                     <Button
                                         type="button"
                                         bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

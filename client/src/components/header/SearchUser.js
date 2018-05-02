@@ -54,10 +54,10 @@ class SearchUser extends React.Component {
         return () => {
             switch (type) {
                 case 'search':
-                    NotificationManager.success('My invitations mod is ON', 'Events', 3000);
+                    NotificationManager.success('My invitations mode is ON', 'Events', 3000);
                     break;
                 case 'cancel':
-                    NotificationManager.success('My invitations mod is OFF', 'Events', 3000);
+                    NotificationManager.success('My invitations mode is OFF', 'Events', 3000);
                     break;
                 case 'empty pm':
                     NotificationManager.warning('Search cannot be empty!Please, fill the fields!', 'Events', 3000);
