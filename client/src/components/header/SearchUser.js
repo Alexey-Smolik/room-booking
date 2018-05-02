@@ -5,7 +5,9 @@ import moment from 'moment';
 import {Link, NavLink} from 'react-router-dom';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
-import ToggleSwitch from '../header/ToggleSwitch';
+
+
+
 
 
 import "react-select/dist/react-select.css";
@@ -81,6 +83,7 @@ class SearchUser extends React.Component {
                     onChange={this.handleChange}
                     options={options}
                 />}
+
                 <p className="invitations">My invitations:</p>
                 <Link className="link_search_to_btn_mod" to={'/room/'}  onClick={this.handleSelect} style={{float: 'right'}}>{this.state.isClick ? 'ON' : 'OFF'}</Link>
                 <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
