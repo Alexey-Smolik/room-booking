@@ -5,7 +5,7 @@ import moment from 'moment';
 import {Link, NavLink} from 'react-router-dom';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
-
+import ToggleButton from 'react-toggle-button';
 
 
 
@@ -83,6 +83,16 @@ class SearchUser extends React.Component {
                 />}
 
                 <p className="invitations">My invitations:</p>
+                <ToggleButton
+                    value={ this.state.value || false }
+                    onClick={this.handleSelect}
+
+
+                    onToggle={(value) => {
+                        this.setState({
+                            value: !value,
+                        })
+                    }} />
                 <Link className="link_search_to_btn_mod" to={'/room/'}  onClick={this.handleSelect} style={{float: 'right'}}>{this.state.isClick ? 'ON' : 'OFF'}</Link>
                 <Link className="link_search_to_btn" to={'/room/'} onClick={this.cancelSearch} style={{float: 'right'}}>Cancel</Link>
             </div>
