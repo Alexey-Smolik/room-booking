@@ -15,14 +15,9 @@ import {
     getRooms,
     getCurrentUser,
     getEvents,
-    getCompanies,
-    getEventsByInvitationUser, getAllIssues, getRoomImages, getAllUsers, getRoomIssues
+    getOffices,
+    getEventsByInvitationUser,
 } from "../../actions";
-import UsersContainer from "../adminPage/UsersContainer";
-import RoomsContainer from "../adminPage/RoomsContainer";
-import InnerRoomContainer from "../adminPage/InnerRoomContainer";
-import CompaniesContainer from "../adminPage/CompaniesContainer";
-import HelloAdmin from "../HelloAdmin";
 const socket = io('http://172.16.0.183:8000');
 
 
@@ -50,7 +45,7 @@ class LeftNavBar extends Component {
 
     async componentDidMount() {
         this.props.dispatch(getRooms());
-        this.props.dispatch(getCompanies());
+        this.props.dispatch(getOffices());
         await this.props.dispatch(getCurrentUser());
         socket.on('add room', this.socketAddRoom);
         socket.on('edit room', this.socketEditRoom);
@@ -125,20 +120,20 @@ class LeftNavBar extends Component {
     }
 
     renderMenu(){
-        if(this.props.companies) {
-            return this.props.companies.map( (company, key) => {
+        if(this.props.offices) {
+            return this.props.offices.map( (office, key) => {
                 return (
 
-                    // Companies List
+                    // Officess List
                     <li key={key}>
 
                         <input type="checkbox"  name={"sub-group-" + key} id={"sub-group-" + key} defaultChecked/>
-                        <label htmlFor={"sub-group-" + key}>{company.name}</label>
+                        <label htmlFor={"sub-group-" + key}>{office.name}</label>
 
                         {/*Rooms List*/}
                         <ul className="room-list">
                             {this.props.rooms.map( (room, roomKey) => {
-                                    return (room.companyId === company.id) ? (
+                                    return (room.officeId === office.id) ? (
                                             <li key={roomKey}>
 
                                                 <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
@@ -195,10 +190,10 @@ class LeftNavBar extends Component {
     }
 }
 
-const mapStateToProps = ({ rooms, user, companies, issues, mode}) => ({
+const mapStateToProps = ({ rooms, user, offices, issues, mode}) => ({
     rooms,
     user,
-    companies,
+    offices,
     issues,
     mode
 });

@@ -1,7 +1,7 @@
 const routes = require('express').Router();
 const events = require('../models').events;
 const rooms = require('../models').rooms;
-const companies = require('../models').companies;
+const offices = require('../models').offices;
 const users = require('../models').users;
 const invitations = require('../models').invitations;
 const io = require('../sockets');
@@ -20,7 +20,7 @@ routes.get('/', (req, res) => {
 });
 
 const getEvents = (userId) => {
-    if(userId) return (getInvitesId(userId)); else return events.findAll({ include: [ { model: rooms, include: companies }, { model: users, attributes: ['username'] } ] });
+    if(userId) return (getInvitesId(userId)); else return events.findAll({ include: [ { model: rooms, include: offices }, { model: users, attributes: ['username'] } ] });
 };
 
 const getInvitesId = userId => {
@@ -36,7 +36,7 @@ const getInvitesId = userId => {
 
 // --- GET EVENT BY Id---
 routes.get('/:id', (req, res) => {
-    events.findOne({ where: { id: req.params.id }, include: [ { model: rooms, include: companies } ] })
+    events.findOne({ where: { id: req.params.id }, include: [ { model: rooms, include: offices } ] })
         .then(events => {
             res.send(events);
         })
