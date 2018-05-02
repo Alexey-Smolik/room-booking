@@ -1,3 +1,4 @@
+// MODEL ISSUES
 module.exports = function(sequelize, DataTypes) {
     let Issues = sequelize.define('issues', {
         id: {

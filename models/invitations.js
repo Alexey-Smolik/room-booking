@@ -1,3 +1,4 @@
+// MODEL INVITATIONS
 module.exports = function(sequelize, DataTypes) {
     let Invitations = sequelize.define('invitations', {
         id: {

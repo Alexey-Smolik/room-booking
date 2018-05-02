@@ -1,3 +1,4 @@
+// MODEL IMAGES
 module.exports = function(sequelize, DataTypes) {
     let Images = sequelize.define('images', {
         id: {

@@ -35,8 +35,6 @@ class SearchUser extends React.Component {
 
     handleSelect = (e) => {
         this.props.dispatch(changeMode("PM_SEARCH"));
-        e.preventDefault();
-
         this.props.dispatch(getRoomsByCurrentUser(this.props.user.currentUser.id));
         this.createNotification('search')();
         this.setState({

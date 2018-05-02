@@ -130,7 +130,7 @@ routes.delete('/:id', (req, res) => {
             .then(event => {
                 if(event){
                     io.emit('delete event', req.params.id);
-                    res.status(200).send(req.params.id);
+                    res.send(req.params.id);
                 } else res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {

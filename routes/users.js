@@ -16,7 +16,7 @@ routes.get('/', (req, res) => {
 
     users.findAll(options)
         .then(users => {
-            res.status(200).send(users);
+            res.send(users);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
@@ -27,7 +27,7 @@ routes.get('/', (req, res) => {
 routes.get('/managers', (req, res) => {
     users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
         .then(users => {
-            res.status(200).send(users);
+            res.send(users);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
@@ -38,7 +38,7 @@ routes.get('/managers', (req, res) => {
 routes.get('/simple', (req, res) => {
     users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
         .then(users => {
-            res.status(200).send(users);
+            res.send(users);
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
@@ -85,7 +85,7 @@ routes.put('/:id', (req, res) => {
                 return Promise.reject('Wrong id');
             })
             .then(user => {
-                res.status(200).send(user);
+                res).send(user);
             })
             .catch(err => {
                 res.status(501).send(typeof err === 'string' ? { message: err } : { message: err.message });
@@ -115,7 +115,7 @@ routes.delete('/:id', (req, res) => {
     if(req.user.role === 1) {
         users.destroy({where: {id: req.params.id}})
             .then(user => {
-                user ? res.status(200).send(req.params.id.toString()) : res.status(500).send({message: 'Wrong id'});
+                user ? res.send(req.params.id.toString()) : res.status(500).send({message: 'Wrong id'});
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
