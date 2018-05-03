@@ -20,7 +20,7 @@ routes.get('/', (req, res) => {
 });
 
 const getEvents = (userId) => {
-    if(userId) return (getInvitesId(userId)); else return events.findAll({ include: [ { model: rooms, include: offices }, { model: users, attributes: ['username'] } ] });
+    if(userId) return (getInvitesId(userId)); else return events.findAll({ include: [ { model: rooms, include: offices }, { model: users, attributes: ['username'] }, { model: invitations, attributes: ['id'], include: [{ model: users, attributes: ['id', 'username']}] } ]});
 };
 
 const getInvitesId = userId => {

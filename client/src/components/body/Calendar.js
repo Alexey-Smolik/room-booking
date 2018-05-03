@@ -186,6 +186,8 @@ class Calendar extends React.Component {
             };
         }));
         }
+
+        console.log(this.state.event);
         return (
             <div className= {this.props.roomID ? "" : "calendar-cont"}>
                 <React.Fragment>
