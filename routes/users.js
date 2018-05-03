@@ -3,16 +3,18 @@ const users = require('../models').users;
 const bcrypt = require('bcrypt-as-promised');
 
 // ----- HANDLERS FOR USERS -----
-// --- GET ALL USERS ---
+// --- GET ALL USERS AND USERS BY ROLE ---
 routes.get('/', (req, res) => {
     let options = { where: {}, order: [['id', 'DESC']] };
+
     if(req.user.role === 1 && req.query.role) options.where.role = req.query.role;
     else if(req.user.role === 2 || req.user.role === 3) {
         if(!req.query.role || req.query.role === '3'){
             options.where.role = 3;
         } else return res.status(500).send({ message: 'You have no rights' });
         options.attributes = ['id', 'username'];
-    } else return res.status(500).send({ message: 'You have no rights' });
+    } else if(req.user.role === 4) return res.status(500).send({ message: 'You have no rights' })
+
     users.findAll(options)
         .then(users => {
             res.send(users);
