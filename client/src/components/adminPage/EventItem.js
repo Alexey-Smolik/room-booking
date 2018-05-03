@@ -77,7 +77,7 @@ class EventItem extends React.Component {
         return (
             <form onSubmit={(e)=> {this.changeEventData(e,id)}} style={{display:  'flex' }}>
                 <FormControl  type="text" value={this.state.eventName} onChange={(e) => this.onEventNameChange(e)} disabled={!isFieldEditing} required/>
-                <FormControl  type="text" value={this.state.eventDescription} onChange={(e) => this.onEventDescriptionChange(e)} disabled={!isFieldEditing} required/>
+                <FormControl  type="text" value={this.state.eventDescription} onChange={(e) => this.onEventDescriptionChange(e)} disabled={!isFieldEditing} />
                 <FormControl  type="text" value={dateFrom} disabled />
                 <FormControl  type="text" value={dateTo} disabled/>
                 <FormControl  type="text" value={username}  disabled />
