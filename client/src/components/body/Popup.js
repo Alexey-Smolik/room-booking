@@ -261,7 +261,7 @@ class Popup extends Component {
                         <ControlLabel style={{ marginLeft: '37%' }}>Description</ControlLabel>
                         <div style={{ fontSize: '16px', marginBottom: '20px', textAlign: 'center', wordBreak: 'break-word' }} >{this.state.description}</div>
 
-                        <ControlLabel style={{ marginLeft: '37%' }}>Invitations</ControlLabel>
+                        <ControlLabel style={{ marginLeft: '37%', marginRight: '70px' }}>Invitations</ControlLabel>
                         {this.state.invitations && this.state.invitations.map(invite => {
                             return <div style={{ display: 'inline-block', wordBreak: 'break-word', marginBottom: '5px', textAlign: 'center' }}>{invite.label};&nbsp;</div>
                         })}
