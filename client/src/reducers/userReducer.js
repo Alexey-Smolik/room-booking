@@ -29,7 +29,7 @@ export default function (state = {}, action) {
           return { allUsers: [...state.allUsers.filter(({ id }) => id !== action.payload.id), action.payload], ...state};
 
       case GET_CURRENT_USER_LOADED:
-        return { ...state, isLoaded: action.isLoaded };
+        return { ...state, isLoaded: action.isLoaded, hasError: false };
 
       case GET_CURRENT_USER_ERROR:
           return { ...state, hasError: action.hasError };

@@ -151,7 +151,7 @@ class RoomsInfo extends React.Component {
                     </div>
                     <div className="room-desc-cont">
 						<div className="room-description"><span className="selection">Description:</span> {this.props.selectedRoom.description}
-							<p className="company"><span className="selection">Office address:</span> {this.props.selectedRoom.office.address}</p>
+							<p className="Office"><span className="selection">Office address:</span> {this.props.selectedRoom.office.address}</p>
                         </div>
                         <div className="room-issues-container">
 							<div className="room-issues"><span className="selection">Issues:</span><button className="open_hidden"  title={this.state.isOpen ? 'Hide the issues' : 'Show the issues'} onClick={this.handleClick}> {this.state.isOpen ? 'Hide' : 'Show'} </button> { this.state.isOpen && this.issuesList(this.props.issues) } </div>
