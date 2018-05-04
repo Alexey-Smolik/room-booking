@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import ToggleButton from 'react-toggle-button';
-
+import {Link} from 'react-router-dom';
 
 
 
@@ -72,7 +72,7 @@ class SearchUser extends React.Component {
                 {this.props.user.currentUser.role === 3 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
-                <ToggleButton
+                <Link to={'/room/'}> <ToggleButton
                     value={ this.state.isClicked}
                     thumbStyle={borderRadiusStyle}
                     trackStyle={borderRadiusStyle}
@@ -82,7 +82,7 @@ class SearchUser extends React.Component {
                         });
                         this.handleSelect(!value)
                     }}
-                />
+                /> </Link>
                  </div>: null}
             </div>
         );

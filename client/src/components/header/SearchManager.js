@@ -51,7 +51,6 @@ class SearchEmptyRoom extends Component {
 
   submitHandler(e) {
       // e.preventDefault();
-      console.log(this.state.startDate);
       if(this.state.startDate) {
           let start = new Date(this.state.startDate._d);
           let end = this.state.endDate ? new Date(this.state.endDate._d) : start;

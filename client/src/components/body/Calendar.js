@@ -7,7 +7,9 @@ import {
     addEventToState,
     deleteEventFromState,
     editEventInState,
-    getAllEvents, simpleUsers
+    getAllEvents,
+    simpleUsers,
+    getEventsByInvitationUser,
 } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
@@ -187,7 +189,6 @@ class Calendar extends React.Component {
         }));
         }
 
-        console.log(this.state.event);
         return (
             <div className= {this.props.roomID ? "" : "calendar-cont"}>
                 <React.Fragment>
