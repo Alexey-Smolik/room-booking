@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {Jumbotron } from 'react-bootstrap';
 import ImageItem from './ImageItem'
 import Dropzone from 'react-dropzone'
 import {

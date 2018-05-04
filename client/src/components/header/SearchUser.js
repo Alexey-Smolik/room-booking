@@ -20,11 +20,6 @@ class SearchUser extends React.Component {
         isClicked: false
     };
 
-    handleChange = (selectedOption) => {
-        this.setState({selectedOption});
-    };
-
-
     handleSelect = (isClicked) => {
         if(isClicked) {
             this.props.dispatch(changeMode("PM_SEARCH"));

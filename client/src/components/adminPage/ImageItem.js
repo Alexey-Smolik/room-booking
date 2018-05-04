@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button,Col, Image } from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 
 import Lightbox from 'react-image-lightbox';
 import {
@@ -42,6 +42,7 @@ class ImageItem extends React.Component {
                     onMouseLeave={() => this.setState({isMouseEnter: false})}
                     style={{width:"200px", height: "200px"}}
                     src={this.props.url}
+                    alt="office pic"
                 />
                 {isLightboxOpen &&
                 <Lightbox

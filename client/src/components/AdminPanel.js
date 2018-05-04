@@ -28,14 +28,12 @@ import LoginForAdmin from './header/LoginForAdmin';
 import './adminPage/adminPanel.css';
 
 class AdminPanel extends React.Component {
-    constructor(props) {
-        super(props);
+
+    componentDidMount() {
+        this.props.dispatch(getCurrentUser());
+        this.props.dispatch(getRooms());
     }
 
-componentDidMount() {
-    this.props.dispatch(getCurrentUser());
-    this.props.dispatch(getRooms());
-}
     render() {
         let {user, issues, rooms} = this.props;
         return (

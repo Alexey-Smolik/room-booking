@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, ControlLabel , FormControl,Jumbotron } from 'react-bootstrap';
+import { Button, ControlLabel , FormControl } from 'react-bootstrap';
 import IssueItem from './IssueItem'
 import {
     createIssue,
