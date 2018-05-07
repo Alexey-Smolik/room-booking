@@ -1,6 +1,7 @@
 import React from 'react';
 import BigCalendar from 'react-big-calendar';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import 'moment/locale/en-gb';
 import {
     getEvents,
@@ -192,42 +193,47 @@ class Calendar extends React.Component {
 
         return (
             <div className= {this.props.roomID ? "" : "calendar-cont"}>
-                <React.Fragment>
-                    <BigCalendar
-                        selectable
-                        events={events}
-                        defaultView="week"
-                        min={moment('2018-02-23 08:00:00').toDate()}
-                        max={moment('2018-02-23 19:00:00').toDate()}
-                        scrollToTime={new Date(1970, 1, 1, 6)}
-                        defaultDate={new Date()}
-                        culture="en-GB"
-                        onSelectEvent={event => this.editEvent(event)}
-                        onSelectSlot={event => {
-                            ((this.props.roomID && this.props.roomID === 'all') || (!this.props.roomID && this.props.match.params.roomID === 'all'))  ?
-                                this.createNotification('all events')()
-                                : this.addEvent(event);
-                        }}
-                        eventPropGetter={(event) => {
-                            return {
-                                style: {
-                                    backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
-                                    color: 'black'
-                                }
-                            };
-                        }
-                        }
-                    />
-                </React.Fragment>
-                {this.state.showPopup &&  <Popup
-                    event={this.state.event}
-                    user={this.props.user}
-                    closePopup={this.closePopup}
-                    editMode={this.state.editMode}
-                    roomID={this.props.roomID  || this.props.match.params.roomID}
-                    dateFilter={this.dateFilter}/>}
+                {this.props.user && this.props.user.currentUser ?
+                    <React.Fragment>
+                        <BigCalendar
+                            selectable
+                            events={events}
+                            defaultView="week"
+                            min={moment('2018-02-23 08:00:00').toDate()}
+                            max={moment('2018-02-23 19:00:00').toDate()}
+                            scrollToTime={new Date(1970, 1, 1, 6)}
+                            defaultDate={new Date()}
+                            culture="en-GB"
+                            onSelectEvent={event => this.editEvent(event)}
+                            onSelectSlot={event => {
+                                ((this.props.roomID && this.props.roomID === 'all') || (!this.props.roomID && this.props.match.params.roomID === 'all')) ?
+                                    this.createNotification('all events')()
+                                    : this.addEvent(event);
+                            }}
+                            eventPropGetter={(event) => {
+                                return {
+                                    style: {
+                                        backgroundColor: this.state.colors[rooms.indexOf(event.roomId)],
+                                        color: 'black'
+                                    }
+                                };
+                            }
+                            }
+                        />
+                    </React.Fragment> :
+                    (this.props.user.isLoaded || this.props.user.hasError) && <h1>
+                        <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
+                        <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
+                    </h1>}
+                    {this.state.showPopup && <Popup
+                        event={this.state.event}
+                        user={this.props.user}
+                        closePopup={this.closePopup}
+                        editMode={this.state.editMode}
+                        roomID={this.props.roomID || this.props.match.params.roomID}
+                        dateFilter={this.dateFilter}/>}
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
-                <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
+                    <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
             </div>
         );
@@ -236,7 +242,7 @@ class Calendar extends React.Component {
 
 Calendar.defaultProps = {
     user: {
-        role: 3
+        role: 2
     }
 };
 

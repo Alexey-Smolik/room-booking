@@ -91,7 +91,7 @@ class UsersContainer extends React.Component {
                             <form onSubmit={(e) => {this.addUser(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                 <FormControl className="form-control"   type="text" onChange={(e) => this.onUsernameChange(e)} value={this.state.username}  required />
                                 <FormControl className="form-control" type="text" onChange={(e) => this.onUserPasswordChange(e)} value={this.state.userPassword} required/>
-                                <FormControl className="form-control" type="number" min="1" max="3" onChange={(e) => this.onUserRoleChange(e)} value={this.state.userRole} required/>
+                                <FormControl className="form-control" type="number" min="1" max="4" onChange={(e) => this.onUserRoleChange(e)} value={this.state.userRole} required/>
                                 <Button type="submit"  bsStyle="success" >Save</Button>
                             </form>
                             { filteredUsers && filteredUsers.map( (user) => {
