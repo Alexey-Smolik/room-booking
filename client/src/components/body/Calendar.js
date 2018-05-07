@@ -220,7 +220,7 @@ class Calendar extends React.Component {
                             }
                         />
                     </React.Fragment> :
-                     <h1>
+                    (this.props.user.isLoaded || this.props.user.hasError) && <h1>
                         <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
                         <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
                     </h1>}
