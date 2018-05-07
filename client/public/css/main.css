@@ -463,7 +463,8 @@ aside nav li {
 }
 
 aside nav a {
-    font: 14px 'Tahoma';
+    font: 16px 'Tahoma';
+    font-weight: bold;
     text-decoration: none;
     color: #616161;
     padding-left: 15px;
@@ -482,7 +483,6 @@ a:hover {
 .aside-menu a:focus {
     text-decoration: none;
     color: #b71c1c;
-    font-weight: bolder;
 }
 
 .aside-menu  input[type=checkbox] {
@@ -493,7 +493,7 @@ a:hover {
 .aside-menu label {
     position: relative;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     margin: 0;
     padding: 10px 10px 10px 38px;

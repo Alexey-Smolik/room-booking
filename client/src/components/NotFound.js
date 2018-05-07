@@ -22,7 +22,7 @@ class NotFound extends React.Component {
                             <h1 className="p_404">404<br/>Incorrect URL address</h1>
                         </div>
                         <div className="container_for_404">
-                            <Link className="link_404" to={'/room/'} >Home</Link>
+                            <Link className="link_404" to={'/room/all'} >Home</Link>
                         </div>
                     </div>
                     :

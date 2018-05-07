@@ -136,7 +136,7 @@ class LeftNavBar extends Component {
                                     return (room.officeId === office.id) ? (
                                             <li key={roomKey}>
 
-                                                <NavLink activeStyle={{ color:'#B71C1C' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                                <NavLink activeStyle={{ color:'#B71C1C', fontWeight: 'bold' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
                                                     {room.name}
                                                 </NavLink>
 

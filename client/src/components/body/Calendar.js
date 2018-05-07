@@ -235,7 +235,7 @@ class Calendar extends React.Component {
 
 Calendar.defaultProps = {
     user: {
-        role: 3
+        role: 2
     }
 };
 
