@@ -927,7 +927,7 @@ a:hover {
     justify-content: center;
 }
 
-.icons {
+/*.icons {
     display: flex;
     justify-content: space-between;
 }
@@ -943,14 +943,14 @@ a:hover {
 
 .icons a:hover {
     opacity: .8;
-}
+}*/
 
-.login_with {
+/*.login_with {
     margin-top: 15px;
     font-family: 'Tahoma', sans-serif;
     font-size: 16px;
     font-weight: bold;
-}
+}*/
 
 /* EVENT SELECTED */
 

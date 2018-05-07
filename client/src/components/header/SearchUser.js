@@ -67,7 +67,7 @@ class SearchUser extends React.Component {
                 {this.props.user.currentUser.role === 2 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
-                <Link to={'/room/'}> <ToggleButton
+                <Link to={'/room/all'}> <ToggleButton
                     value={ this.state.isClicked}
                     thumbStyle={borderRadiusStyle}
                     trackStyle={borderRadiusStyle}

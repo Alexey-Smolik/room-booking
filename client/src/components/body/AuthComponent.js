@@ -43,7 +43,7 @@ class AuthComponent extends Component {
             event.preventDefault();
 
             axios.post('/auth/local', { username, password } ).then( (req,res) => {
-              this.props.history.push("/room");
+              this.props.history.push("/room/all");
             }).catch( () =>  this.createNotification('incorrect auth')())
         };
     };
@@ -91,14 +91,6 @@ class AuthComponent extends Component {
                           <button className="login" type="submit" value="Sign in" onClick={this.handleSubmit}>Sign in</button>
 
                           <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
-                                <div className="login_with"><p>Login with: </p></div>
-                                <div className="icons">
-                                    <a href="/auth/vk" title="Login with VK"><img src={"/images/vk.svg"} alt="Login with vkontakte" /></a>
-                                    <a href="/auth/google" title="Login with Google"><img src={"/images/google-plus.svg"} alt="Login with google" /></a>
-                                    <a href="/auth/fb" title="Login with Facebook"><img src={"/images/facebook.svg"} alt="Login with facebook" /></a>
-                                    <a href="auth/twitter" title="Login with Twitter"><img src={"/images/twitter.svg"} alt="Login with twitter" /></a>
-                                    <a href="/auth/microsoft" title="Login with Microsoft"><img src={"/images/skype.svg"} alt="Login with microsoft" /></a>
-                                </div>
                       </div>
                     </div>
                   </div>
