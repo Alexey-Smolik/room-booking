@@ -64,7 +64,7 @@ class SearchUser extends React.Component {
         let options = this.getOptions();
         return (
             <div style={{ paddingTop: '5px' }}>
-                {this.props.user.currentUser.role === 3 ?
+                {this.props.user.currentUser.role === 2 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
                 <ToggleButton

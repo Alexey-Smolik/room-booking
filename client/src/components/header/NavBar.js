@@ -21,7 +21,7 @@ class NavBar extends React.Component {
                 {location.pathname.includes("/adminPanel") ?
                     <Link className="link_search_to_btn" to="/room" >Home</Link>
                     :
-                    (role < 3 )  ?
+                    (role < 2 )  ?
                         currentUser && <SearchManager user={currentUser}/>
                         :
                         currentUser && <SearchUser users={managers}/>
