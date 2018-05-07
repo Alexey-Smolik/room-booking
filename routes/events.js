@@ -5,6 +5,9 @@ const offices = require('../models').offices;
 const users = require('../models').users;
 const invitations = require('../models').invitations;
 const io = require('../sockets');
+const ical = require('ical-generator');
+const mkdirp = require('mkdirp');
+const nodemailer = require('nodemailer');
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL EVENTS ---
@@ -64,7 +67,53 @@ routes.post('/', (req, res) => {
                 return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username'] } }), invites[1]]);
             })
             .then(invites => {
+                const cal = ical({ domain: 'http://localhost:3000', name: invites[1].name });
+                const start = new Date(invites[1].date_from);
+                const end = new Date(invites[1].date_to);
+                start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+                end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+
+                cal.addEvent({
+                    start: start,
+                    end: end,
+                    summary: invites[1].name,
+                    uid: invites[1].id,
+                    description: invites[1].description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
+                    method: 'request'
+                });
+
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'smolikvtanke2@gmail.com',
+                        pass: 'aleks6885181'
+                    }
+                });
+
                 invites[1].invitations = invites[0].map(invite => {
+                    let mailOptions = {
+                        from: '"Alexey Smolik" <smolikvtanke2@gmail.com>',
+                        to: 'smolikvtanke@gmail.com',
+                        subject: `✔ You are invited to an event: ${invites[1].name}`,
+                        alternatives: [{
+                            contentType: "text/calendar",
+                            content: new Buffer(cal.toString())
+                        }]
+                    };
+
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                        return true;
+                    });
+
                     return {
                         user: { username: invite.dataValues.user.username, id: invite.dataValues.userId }
                     }
@@ -74,6 +123,7 @@ routes.post('/', (req, res) => {
                 res.send(invites[1]);
             })
             .catch(err => {
+                console.log(err);
                 res.status(501).send({message: err.message});
             });
     } else res.status(500).send({ message: 'You have no rights' });

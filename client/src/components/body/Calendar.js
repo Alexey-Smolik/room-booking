@@ -47,7 +47,8 @@ class Calendar extends React.Component {
             if(this.props.match.params.roomID !== 'all') {
                 if(Object.keys(this.props.mode).length === 0 && this.props.mode.constructor === Object)  this.props.dispatch(getEvents(this.props.match.params.roomID));
             } else {
-                this.props.dispatch(getAllEvents());
+                this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null));
+                //this.props.dispatch(getAllEvents());
             }
         }
     };

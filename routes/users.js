@@ -37,7 +37,7 @@ routes.get('/managers', (req, res) => {
 
 // --- GET ALL SIMPLE USERS ---
 routes.get('/simple', (req, res) => {
-    users.findAll({where: { role: 3 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
+    users.findAll({where: { role: 2 }, order: [['id', 'DESC']], attributes : ['id', 'username']})
         .then(users => {
             res.send(users);
         })
@@ -48,7 +48,7 @@ routes.get('/simple', (req, res) => {
 
 // --- ADD NEW USER ---
 routes.post('/', (req, res) => {
-    req.body.role = req.body.role || 3;
+    req.body.role = req.body.role || 2;
     if(req.user.role === 1){
         users.findOne({where: { username: req.body.username }})
             .then(user => {
