@@ -168,22 +168,22 @@ routes.post('/local', function(req, res, next) {
 });
 
 // ROUTES FOR PASSPORT AUTHENTICATION
-routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 routes.get('/vk', passport.authenticate('vkontakte'));
-routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 routes.get('/fb', passport.authenticate('facebook'));
-routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/facebook/callback', passport.authenticate('facebook', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 routes.get('/twitter', passport.authenticate('twitter'));
-routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/twitter/callback', passport.authenticate('twitter', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 routes.get('/google', passport.authenticate('google', { scope: ['profile'] }));
-routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/google/callback', passport.authenticate('google', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 routes.get('/microsoft', passport.authenticate('microsoft', { scope: ['https://graph.microsoft.com/user.read'] }));
-routes.get('/microsoft/callback', passport.authenticate('microsoft', { successRedirect: '/room', failureRedirect: '/' }));
+routes.get('/microsoft/callback', passport.authenticate('microsoft', { successRedirect: '/room/all', failureRedirect: '/' }));
 
 // ROUTE FOR LOGOUT
 routes.get('/logout', (req, res) => {

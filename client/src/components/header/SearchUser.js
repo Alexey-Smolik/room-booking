@@ -67,7 +67,7 @@ class SearchUser extends React.Component {
                 {this.props.user.currentUser.role === 3 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
-                <Link to={'/room/'}> <ToggleButton
+                 <ToggleButton
                     value={ this.state.isClicked}
                     thumbStyle={borderRadiusStyle}
                     trackStyle={borderRadiusStyle}
@@ -77,7 +77,7 @@ class SearchUser extends React.Component {
                         });
                         this.handleSelect(!value)
                     }}
-                /> </Link>
+                />
                  </div>: null}
             </div>
         );
