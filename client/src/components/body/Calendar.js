@@ -7,7 +7,9 @@ import {
     addEventToState,
     deleteEventFromState,
     editEventInState,
-    getAllEvents, simpleUsers
+    getAllEvents,
+    simpleUsers,
+    getEventsByInvitationUser,
 } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
@@ -42,7 +44,7 @@ class Calendar extends React.Component {
         });
         if(!this.props.roomID) {
             if(this.props.match.params.roomID !== 'all') {
-                this.props.dispatch(getEvents(this.props.match.params.roomID));
+                if(Object.keys(this.props.mode).length === 0 && this.props.mode.constructor === Object)  this.props.dispatch(getEvents(this.props.match.params.roomID));
             } else {
                 this.props.dispatch(getAllEvents());
             }
@@ -103,7 +105,7 @@ class Calendar extends React.Component {
                         ((event.start >= start)  && (event.end <= end)))  ||
                         ((event.start <= start)  && (event.end >= end))   ||
                         ((event.start > start)  && (event.end > end)  &&   (event.start < end)))) {
-                        return false;
+                    return false;
                 }
             } else if( (((event.start < start)  && (event.end < end)  &&  (event.end > start))  ||
                     ((event.start >= start)  && (event.end <= end)))  ||
@@ -131,7 +133,7 @@ class Calendar extends React.Component {
                     showPopup: !prevState.showPopup,
                     addingEvent: true,
                     event,
-              }))
+                }))
             } else {
                 (this.createNotification('date')());
             }
@@ -187,7 +189,6 @@ class Calendar extends React.Component {
         }));
         }
 
-        console.log(this.state.event);
         return (
             <div className= {this.props.roomID ? "" : "calendar-cont"}>
                 <React.Fragment>
@@ -239,11 +240,12 @@ Calendar.defaultProps = {
 };
 
 
-let mapStateToProps = ({ events, user, rooms }) => {
+let mapStateToProps = ({ events, user, rooms, mode }) => {
     return {
         rooms,
         user,
-        events
+        events,
+        mode
     };
 };
 
