@@ -31,7 +31,7 @@ const getInvitesId = userId => {
     return invitations.findAll({ where: { userId: userId } })
        .then(invites => {
            let invitesId = invites.map(invite => invite.dataValues.eventId);
-           return events.findAll({ where: { id: { $in: invitesId }} });
+           return events.findAll({ where: { id: { $in: invitesId }}, include: [{ model: invitations, attributes: ['userId'], include: [{ model: users, attributes: ['id', 'username']}]}] });
        })
        .catch(err => {
            return err.message;
@@ -65,41 +65,40 @@ routes.post('/', (req, res) => {
                 return Promise.all([invitations.bulkCreate(invitationUsers), event.dataValues]);
             })
             .then(invites => {
-                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username'] } }), invites[1]]);
+                return Promise.all([invitations.findAll({ where: { eventId: invites[1].id }, include: { model: users, attributes : ['username', 'email'] } }), invites[1]]);
             })
             .then(invites => {
-                const cal = ical({ domain: 'http://localhost:3000', name: invites[1].name });
-                const start = new Date(invites[1].date_from);
-                const end = new Date(invites[1].date_to);
-                start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
-                end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+                if(invites[0].length){
+                    const cal = ical({ domain: 'http://localhost:3000', name: invites[1].name });
+                    const start = new Date(invites[1].date_from);
+                    const end = new Date(invites[1].date_to);
+                    start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+                    end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
-                cal.addEvent({
-                    start: start,
-                    end: end,
-                    summary: invites[1].name,
-                    uid: invites[1].id,
-                    description: invites[1].description,
-                    organizer: {
-                        name: req.user.username,
-                        email: req.user.email
-                    },
-                    method: 'request'
-                });
+                    cal.addEvent({
+                        start: start,
+                        end: end,
+                        summary: invites[1].name,
+                        uid: invites[1].id,
+                        description: invites[1].description,
+                        organizer: {
+                            name: req.user.username,
+                            email: req.user.email
+                        },
+                        method: 'request'
+                    });
 
-                let transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        user: tokens.email.name,
-                        pass: tokens.email.password
-                    }
-                });
-
-                return Promise.all([invites[0].map(invite => {
+                    let transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: tokens.email.name,
+                            pass: tokens.email.password
+                        }
+                    });
                     let mailOptions = {
-                        from: `${req.user.username} <smolikvtanke2@gmail.com>`,
-                        to: 'smolikvtanke@gmail.com',
-                        subject: `✔ You are invited to an event: ${invites[1].name}`,
+                        from: `${req.user.username} <${req.user.email}>`,
+                        to: invites[0].map(invite => invite.dataValues.user.email).toString(),
+                        subject: `✔ You are invited to an event: ${invites[1].name} ✔`,
                         alternatives: [{
                             contentType: "text/calendar",
                             content: new Buffer(cal.toString())
@@ -114,7 +113,9 @@ routes.post('/', (req, res) => {
                         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
                         return true;
                     });
+                }
 
+                return Promise.all([invites[0].map(invite => {
                     return {
                         user: { username: invite.dataValues.user.username, id: invite.dataValues.userId }
                     }
@@ -131,6 +132,10 @@ routes.post('/', (req, res) => {
             });
     } else res.status(500).send({ message: 'You have no rights' });
 });
+
+const getEmails = (invites) => {
+    return invites.map(invite => invite.dataValues.user.email).toString();
+};
 
 // --- EDIT EVENT ---
 routes.put('/:id', (req, res) => {

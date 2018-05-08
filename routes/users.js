@@ -10,8 +10,8 @@ routes.get('/', (req, res) => {
     if(req.user.role === 1 && req.query.role) options.where.role = req.query.role;
     else if(req.user.role === 2) {
         options.attributes = ['id', 'username'];
-        options.where.id = {};
-        options.where.id.$ne = req.user.id;
+        options.where.id = { $ne: req.user.id };
+        options.where.role = 2;
     } else if(req.user.role === 3) return res.status(500).send({ message: 'You have no rights' });
 
     users.findAll(options)
@@ -51,12 +51,8 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1){
         users.findOne({where: { username: req.body.username }})
             .then(user => {
-                if(user){
-                    return Promise.reject('User with that name is already exist');
-                }
-                else {
-                    return bcrypt.genSalt(10);
-                }
+                if(user) return Promise.reject('User with that name is already exist');
+                else return bcrypt.genSalt(10);
             })
             .then(salt => {
                 return bcrypt.hash(req.body.password, salt);

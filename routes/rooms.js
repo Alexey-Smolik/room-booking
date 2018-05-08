@@ -111,7 +111,7 @@ routes.get('/:id/eventsByInviteUser/:userId', (req, res) => {
     invitations.findAll({ where: { userId: req.params.userId } })
         .then(invites => {
             let invitesId = invites.map(invite => invite.dataValues.eventId);
-            return events.findAll({ where: { id: { $in: invitesId }, roomId: req.params.id } });
+            return events.findAll({ where: { id: { $in: invitesId }, roomId: req.params.id }, include: [{ model: invitations, attributes: ['userId'], include: [{ model: users, attributes: ['id', 'username']}]}] });
         })
         .then(events => {
             res.send(events);
