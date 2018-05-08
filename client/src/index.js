@@ -10,8 +10,10 @@ import App from './components/App';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+
 const createStoreWithMiddleware = composeWithDevTools(applyMiddleware(reduxThunk))(createStore);
 const store = createStoreWithMiddleware(reducers);
+
 
 render(
   <Provider store={store}>
