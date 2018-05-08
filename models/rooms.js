@@ -10,10 +10,6 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
             allowNull: false
         },
-        floor: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
         description: {
           type: DataTypes.STRING,
           allowNull: true

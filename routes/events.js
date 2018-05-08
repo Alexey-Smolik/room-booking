@@ -8,6 +8,7 @@ const io = require('../sockets');
 const ical = require('ical-generator');
 const mkdirp = require('mkdirp');
 const nodemailer = require('nodemailer');
+const tokens = require('../constants/tokens');
 
 // ----- HANDLERS FOR ISSUES -----
 // --- GET ALL EVENTS ---
@@ -89,14 +90,14 @@ routes.post('/', (req, res) => {
                 let transporter = nodemailer.createTransport({
                     service: 'gmail',
                     auth: {
-                        user: 'smolikvtanke2@gmail.com',
-                        pass: 'aleks6885181'
+                        user: tokens.email.name,
+                        pass: tokens.email.password
                     }
                 });
 
-                invites[1].invitations = invites[0].map(invite => {
+                return Promise.all([invites[0].map(invite => {
                     let mailOptions = {
-                        from: '"Alexey Smolik" <smolikvtanke2@gmail.com>',
+                        from: `${req.user.username} <smolikvtanke2@gmail.com>`,
                         to: 'smolikvtanke@gmail.com',
                         subject: `✔ You are invited to an event: ${invites[1].name}`,
                         alternatives: [{
@@ -117,8 +118,10 @@ routes.post('/', (req, res) => {
                     return {
                         user: { username: invite.dataValues.user.username, id: invite.dataValues.userId }
                     }
-                });
-
+                }), invites[1]]);
+            })
+            .then(invites => {
+                invites[1].invitations = invites[0];
                 io.emit('add event', invites[1]);
                 res.send(invites[1]);
             })
