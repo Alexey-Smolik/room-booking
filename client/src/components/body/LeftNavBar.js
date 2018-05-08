@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import RoomsInfo, { changeState } from "./RoomsInfo";
 import io from 'socket.io-client';
 import Footer from '../Footer/Footer';
+import SearchUser from '../header/SearchUser';
+
 
 
 import {
@@ -162,6 +164,7 @@ class LeftNavBar extends Component {
 
     render() {
         this.infoCloseWatcher();
+        let {managers} = this.props.user || null;
 
         return (
             <aside>
@@ -170,6 +173,7 @@ class LeftNavBar extends Component {
                         <nav>
                             <ul className="aside-menu" >
                                 {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
+                                {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 2 && <SearchUser users={managers}/>}
                                 <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() =>  this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null))}>
                                     Show all events
                                 </NavLink>

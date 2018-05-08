@@ -172,7 +172,7 @@ h1 {
 .pm-search {
     display: flex;
     flex-grow: 1;
-    max-width: 300px;
+    border-bottom: 1px solid #e7e7e7;
 }
 
 .pm-search button {
@@ -221,6 +221,13 @@ h1 {
 .Select-control {
     border-radius: 0!important;
     height: 30px!important;
+}
+
+.search_by_date {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    color: #393939;
+    font-weight: bolder;
 }
 
 .form-control {
@@ -279,8 +286,7 @@ textarea:focus {
     color: #393939;
     font-weight: bolder;
     margin-bottom: 0;
-    padding-left: 5px;
-    margin-right: 10px;
+    padding: 13px 10px 13px 5px;
 }
 
 .Select.is-clearable.is-searchable.Select--single {
@@ -357,7 +363,7 @@ button {
 }
 
 .bodyWrapper .calendar-cont {
-    flex-basis: 78%;
+    /*flex-basis: 78%;*/
     padding-left: 2%;
     flex-grow: 1;
     margin-bottom: 10px;
@@ -1059,6 +1065,10 @@ textarea {
 .dates_filter {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 5%;
 }
 
 .dates_picker_cont {
@@ -1260,6 +1270,14 @@ aside .footer_on_auth {
     .rbc-month-view {
         display: block !important;
     }
+
+    .pm-search {
+        justify-content: center;
+    }
+
+    .hello {
+        margin-top: 10px;
+    }
 }
 
 @media all and (max-height: 170px){
@@ -1280,8 +1298,16 @@ aside .footer_on_auth {
 }
 
 @media all and (max-width: 602px){
+    .hello {
+        margin-top: 0;
+    }
+}
+
+@media all and (max-width: 668px) {
     .buttons_filter {
-        margin-top: 10px;
+        justify-content: flex-end;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 

@@ -124,6 +124,7 @@ class SearchEmptyRoom extends Component {
   render() {
     return (
       <div className="dates_filter">
+          <p className="search_by_date">Search by date</p>
           <div className='dates_picker_cont'>
             <div id="filter_date_from">
               <DatePicker
