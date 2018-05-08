@@ -111,14 +111,6 @@ class LeftNavBar extends Component {
         }
     }
 
-    getDataTable(id) {
-        let {mode} = this.props.mode;
-        mode === undefined ?
-            this.props.dispatch(getEvents(id))
-            :
-            this.props.dispatch(getEventsByInvitationUser(id, this.props.user.currentUser.id))
-    }
-
     renderMenu(){
         if(this.props.offices) {
             return this.props.offices.map( (office, key) => {
@@ -136,7 +128,7 @@ class LeftNavBar extends Component {
                                     return (room.officeId === office.id) ? (
                                             <li key={roomKey}>
 
-                                                <NavLink activeStyle={{ color:'#B71C1C', fontWeight: 'bold' }} to={'/room/'+ room.id} onClick={()=> this.getDataTable(room.id)}>
+                                                <NavLink activeStyle={{ color:'#B71C1C', fontWeight: 'bold' }} to={'/room/'+ room.id}>
                                                     {room.name}
                                                 </NavLink>
 
@@ -170,7 +162,7 @@ class LeftNavBar extends Component {
                         <nav>
                             <ul className="aside-menu" >
                                 {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
-                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'} onClick={() =>  this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null))}>
+                                <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'}>
                                     Show all events
                                 </NavLink>
                                 {this.renderMenu()}

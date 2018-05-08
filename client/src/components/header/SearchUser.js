@@ -1,22 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { changeMode, getRoomsByCurrentUser, addPMId, getRooms } from '../../actions';
+import { changeMode, getRoomsByCurrentUser, getRooms } from '../../actions';
 import {NotificationManager} from 'react-notifications';
 import ToggleButton from 'react-toggle-button';
-import {Link} from 'react-router-dom';
-
-
-
 import "react-select/dist/react-select.css";
 import "react-virtualized/styles.css";
 import "react-virtualized-select/styles.css";
-import Select from 'react-select';
 
-const borderRadiusStyle = { borderRadius: 0 }
+
+const borderRadiusStyle = { borderRadius: 0 };
 class SearchUser extends React.Component {
     state = {
-        selectedOption: '',
         isClicked: false
     };
 
@@ -35,16 +30,6 @@ class SearchUser extends React.Component {
         }
     };
 
-    getOptions = () => {
-        let options = this.props.users;
-        return options && options.map( (user) => {
-            return {
-                label: user.username,
-                value: user.id
-            }
-        })
-    };
-
     createNotification = (type) => {
         return () => {
             switch (type) {
@@ -59,25 +44,22 @@ class SearchUser extends React.Component {
     };
 
     render() {
-        const {selectedOption} = this.state;
-        const value = selectedOption && selectedOption.value;
-        let options = this.getOptions();
         return (
             <div style={{ paddingTop: '5px' }}>
                 {this.props.user.currentUser.role === 2 ?
                  <div className="pm-search">
                 <p className="invitations">My invitations:</p>
-                <Link to={'/room/all'}> <ToggleButton
-                    value={ this.state.isClicked}
-                    thumbStyle={borderRadiusStyle}
-                    trackStyle={borderRadiusStyle}
-                    onToggle={(value) => {
-                        this.setState({
-                            isClicked: !value,
-                        });
-                        this.handleSelect(!value)
-                    }}
-                /> </Link>
+                     <ToggleButton
+                         value={ this.state.isClicked}
+                         thumbStyle={borderRadiusStyle}
+                         trackStyle={borderRadiusStyle}
+                         onToggle={(value) => {
+                             this.setState({
+                                 isClicked: !value,
+                             });
+                             this.handleSelect(!value)
+                         }}
+                     />
                  </div>: null}
             </div>
         );
