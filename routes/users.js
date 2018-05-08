@@ -8,12 +8,11 @@ routes.get('/', (req, res) => {
     let options = { where: {}, order: [['id', 'DESC']] };
 
     if(req.user.role === 1 && req.query.role) options.where.role = req.query.role;
-    else if(req.user.role === 2 || req.user.role === 3) {
-        if(!req.query.role || req.query.role === '3'){
-            options.where.role = 3;
-        } else return res.status(500).send({ message: 'You have no rights' });
+    else if(req.user.role === 2) {
         options.attributes = ['id', 'username'];
-    } else if(req.user.role === 4) return res.status(500).send({ message: 'You have no rights' })
+        options.where.id = { $ne: req.user.id };
+        options.where.role = 2;
+    } else if(req.user.role === 3) return res.status(500).send({ message: 'You have no rights' });
 
     users.findAll(options)
         .then(users => {
@@ -52,12 +51,8 @@ routes.post('/', (req, res) => {
     if(req.user.role === 1){
         users.findOne({where: { username: req.body.username }})
             .then(user => {
-                if(user){
-                    return Promise.reject('User with that name is already exist');
-                }
-                else {
-                    return bcrypt.genSalt(10);
-                }
+                if(user) return Promise.reject('User with that name is already exist');
+                else return bcrypt.genSalt(10);
             })
             .then(salt => {
                 return bcrypt.hash(req.body.password, salt);
@@ -131,7 +126,7 @@ routes.delete('/:id', (req, res) => {
 // --- GET CURRENT USER ---
 routes.get('/current', (req, res) => {
     if(!Number.isInteger(req.user.id))
-        req.user = { username: 'Anonymous', role: 4 };
+        req.user = { username: 'Anonymous', role: 3 };
 
     req.user ? res.send(req.user) : res.send(401).send({ message: 'Unauthorized' });
 });

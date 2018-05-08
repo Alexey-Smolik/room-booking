@@ -63,7 +63,7 @@ export const getManagers = () => async (dispatch) => {
 
 
 export const simpleUsers = () => async (dispatch) => {
-    const res = await axios.get(`/api/users?role=3`);
+    const res = await axios.get(`/api/users?role=2`);
     dispatch({ type: ADD_SIMPLE_USERS, payload: res.data });
 };
 

@@ -45,12 +45,12 @@ class Calendar extends React.Component {
         });
         if(!this.props.roomID) {
             if(this.props.match.params.roomID !== 'all') {
-                if(Object.keys(this.props.mode).length === 0 && this.props.mode.constructor === Object)  this.props.dispatch(getEvents(this.props.match.params.roomID));
+                this.props.dispatch(getEvents(this.props.match.params.roomID));
             } else {
-                this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null));
-                //this.props.dispatch(getAllEvents());
+                this.props.dispatch(getAllEvents());
             }
         }
+
     };
     componentDidMount(){
         this.props.dispatch(simpleUsers());
@@ -63,9 +63,27 @@ class Calendar extends React.Component {
     componentWillUpdate(nextProps, nextState) {
         if(this.props.rooms.length) {
             if(this.props.roomID ? (this.props.roomID !== nextProps.roomID) : (this.props.match.params.roomID !== nextProps.match.params.roomID)) {
+                if(!this.props.roomID) {
+                    if (nextProps.match.params.roomID === 'all') {
+                        this.props.dispatch(getAllEvents(this.props.mode.mode ? this.props.user.currentUser.id : null))
+                    }
+                    if (nextProps.mode.mode) {
+                        this.props.dispatch(getEventsByInvitationUser(nextProps.match.params.roomID, this.props.user.currentUser.id))
+                    } else {
+                        this.props.dispatch(getEvents(nextProps.match.params.roomID))
+                    }
+                }
                 this.setState({
                     colors : nextState.colors
-                })
+                });
+            } else {
+                if(this.props.mode.mode !== nextProps.mode.mode) {
+                    if (nextProps.mode.mode) {
+                        this.props.match.params.roomID !== 'all' ? this.props.dispatch(getEventsByInvitationUser(this.props.match.params.roomID, this.props.user.currentUser.id)) : this.props.dispatch(getAllEvents(this.props.user.currentUser.id ))
+                    } else {
+                        this.props.match.params.roomID !== 'all' ? this.props.dispatch(getEvents(this.props.match.params.roomID)) :this.props.dispatch(getAllEvents())
+                    }
+                }
             }
         } else if (nextProps.rooms.length) {
             this.setState({
@@ -73,6 +91,8 @@ class Calendar extends React.Component {
             });
         }
     }
+
+
 
     socketAddEvent(event) {
         let roomID = this.props.roomID  || this.props.match.params.roomID;
