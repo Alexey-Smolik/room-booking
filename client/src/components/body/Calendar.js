@@ -213,16 +213,14 @@ class Calendar extends React.Component {
         }
 
         return (
-            <div style={{width: "90%"}}>
+            <div className="calendar-cont">
                 {!this.props.user.isLoaded ?
-                    <div style={{ position: "absolute",
-                        top:"50%",
-                        left: "50%"}}>
+                    <div style={{ position: "absolute", top:"45%", left: "50%"}}>
                     <PulseLoader
                         color={'#d32f2f'}
                         loading={true}
                     /></div>
-                    : <div className= {this.props.roomID ? "" : "calendar-cont"}>
+                    : <div>
                 {this.props.user && this.props.user.currentUser ?
                     <React.Fragment>
                         <BigCalendar

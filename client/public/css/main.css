@@ -125,6 +125,24 @@ h1 {
     animation-fill-mode: both;
 }
 
+.notFound_room {
+    width: 80%;
+    display: inline-block;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 20%;
+    margin-top: 250px;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 .btn {
     border-radius: 0!important;
 }
