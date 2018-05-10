@@ -6,7 +6,7 @@ class HelloWindow extends Component {
     render() {
         const {user} = this.props;
         return (
-            <h1>
+            <h1 className="notFound_room">
                 {user && user.currentUser ?
                     <p>Select a room</p>
                     : (user.isLoaded || user.hasError) && <div>

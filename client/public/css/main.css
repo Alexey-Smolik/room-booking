@@ -125,6 +125,24 @@ h1 {
     animation-fill-mode: both;
 }
 
+.notFound_room {
+    width: 80%;
+    display: inline-block;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 20%;
+    margin-top: 250px;
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+    -webkit-transform-origin: center bottom;
+    transform-origin: center bottom;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 .btn {
     border-radius: 0!important;
 }
@@ -228,6 +246,7 @@ h1 {
     font-size: 16px;
     color: #393939;
     font-weight: bolder;
+    margin-bottom: 5px !important;
 }
 
 .form-control {
@@ -979,6 +998,20 @@ a:hover {
     bottom: 0;
     margin: auto;
     background-color: rgba(0,0,0, 0.5);
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.overlay1 {
+    z-index: 12;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1308,6 +1341,10 @@ aside .footer_on_auth {
         justify-content: flex-end;
         margin-top: 20px;
         margin-bottom: 20px;
+    }
+
+    .search_by_date {
+        padding-left: 15%;
     }
 }
 

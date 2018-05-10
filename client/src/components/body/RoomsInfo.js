@@ -74,7 +74,7 @@ class RoomsInfo extends React.Component {
 		if(this.state.inputValue) {
 			return;
 		}
-		if(e.target.className === 'overlay') {
+		if(e.target.className === 'overlay1') {
 			this.props.handleMouseEvent('');
 		}
 	};
@@ -143,7 +143,7 @@ class RoomsInfo extends React.Component {
     }
 	render() {		
 		return (				
-			<div className="overlay">
+			<div className="overlay1">
                 <div className="room-info">
                     <div className="info-close" onClick={() => this.props.handleMouseEvent('')} ></div>
                     <div className="room-image">

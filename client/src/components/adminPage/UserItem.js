@@ -13,6 +13,7 @@ class UserItem extends React.Component {
             btnText: 'Edit',
             username: this.props.name,
             password: this.props.password,
+            email: this.props.email,
             role: this.props.role,
             isFieldEditing: false,
         };
@@ -24,10 +25,11 @@ class UserItem extends React.Component {
             isFieldEditing: true,
         });
         let userData  = {
-                id: id,
-                username: this.state.username,
-                password: this.state.password,
-                role: this.state.role
+            id: id,
+            username: this.state.username,
+            password: this.state.password,
+            email: this.state.email,
+            role: this.state.role
             };
         if(this.state.btnText === 'Save') {
             this.props.dispatch(editUserDB(id,userData));
@@ -57,6 +59,13 @@ class UserItem extends React.Component {
         });
         e.preventDefault();
     };
+    onUserEmailChange(e) {
+        this.setState({
+            email: e.target.value,
+            btnText: 'Save',
+        });
+        e.preventDefault();
+    }
     onUserRoleChange (e) {
         this.setState({
             role: e.target.value,
@@ -71,6 +80,7 @@ class UserItem extends React.Component {
         return (
             <form onSubmit={(e)=> {this.changeUserData(e,id)}} style={{display:  'flex'}}>
                 <FormControl  type="text" value={this.state.username} onChange={(e) => this.onUsernameChange(e)}  disabled={!isFieldEditing} required/>
+                <FormControl  type="email" value={this.state.email} onChange={(e) => this.onUserEmailChange(e)}   disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.state.password} onChange={(e) => this.onUserPasswordChange(e)}   disabled={!isFieldEditing || !password} required/>
                 <FormControl  type="number" value={this.state.role} min="1" max="3" onChange={(e) => this.onUserRoleChange(e)}   disabled={!isFieldEditing} required/>
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} >{btnText}</Button>
