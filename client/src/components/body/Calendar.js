@@ -18,8 +18,9 @@ import RoomsColorMatching from './RoomsColorMatching';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import randomColor from 'randomcolor';
 import io from 'socket.io-client';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { NotificationManager} from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
+import { PulseLoader } from 'react-spinners';
 const socket = io('http://172.16.0.183:8000');
 
 BigCalendar.momentLocalizer(moment);
@@ -212,7 +213,16 @@ class Calendar extends React.Component {
         }
 
         return (
-            <div className= {this.props.roomID ? "" : "calendar-cont"}>
+            <div style={{width: "90%"}}>
+                {!this.props.user.isLoaded ?
+                    <div style={{ position: "absolute",
+                        top:"50%",
+                        left: "50%"}}>
+                    <PulseLoader
+                        color={'#d32f2f'}
+                        loading={true}
+                    /></div>
+                    : <div className= {this.props.roomID ? "" : "calendar-cont"}>
                 {this.props.user && this.props.user.currentUser ?
                     <React.Fragment>
                         <BigCalendar
@@ -255,6 +265,7 @@ class Calendar extends React.Component {
                 {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
                     <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>
                 }
+            </div>}
             </div>
         );
     }
