@@ -35,7 +35,7 @@ export const getCurrentUser = () => async (dispatch) => {
     try {
         const res = await axios.get('/api/users/current');
         dispatch(getCurrentUserSuccess(res.data));
-        dispatch( getCurrentUserIsLoaded(true))
+       setTimeout(()=>{dispatch( getCurrentUserIsLoaded(true))}, 200);
     } catch (e) {
         dispatch(getCurrentUserHasError(true))
     }

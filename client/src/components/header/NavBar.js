@@ -14,21 +14,22 @@ class NavBar extends React.Component {
     }
 
     render() {
-        let {managers, currentUser} = this.props.user || null;
+        let {managers, currentUser, isLoaded} = this.props.user || null;
         let {role, location} = this.props;
         return (
-            <div className="reactHeader">
-                {role <= 2 ?
-                    <div>
-
-                {location.pathname.includes("/adminPanel") ?
-                    <Link className="link_search_to_btn" to="/room" >Home</Link>
+            <div>
+                {this.props.user.isLoaded ? <div className="reactHeader">
+                {role <= 2 ? <div>
+                    {location.pathname.includes("/adminPanel") ?
+                        <Link className="link_search_to_btn" to="/room" >Home</Link>
+                        :
+                        currentUser  && <SearchManager user={currentUser} /> }
+                        </div> : null}
+                        {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
+                        </div>
                     :
-                    currentUser  && <SearchManager user={currentUser} /> }
-
-                    </div> : null}
-                {currentUser && <LoginSection user={currentUser} logout={() => this.props.dispatch(deleteCurrentUser())}/>}
-            </div>
+                    null}
+             </div>
         );
     }
 }

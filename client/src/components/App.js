@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { NotificationContainer } from 'react-notifications';
 import NavBar from './header/NavBar';
@@ -9,31 +8,39 @@ import HelloWindow from './body/HelloWindow';
 import AuthComponent from './body/AuthComponent';
 import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
-import Header from './header/Header';
 import NotFound from './NotFound';
+import { connect } from "react-redux";
+import {getCurrentUser} from "../actions";
 
-
-const App = () => (
-    <div className="App">
-        <BrowserRouter>
-            <div>
-                <Route  path="/room" component={NavBar} />
-                <Route exact path="/" component={Header} />
-                <Route exact path="/" component={AuthComponent} />
-                <div className="bodyWrapper">
-                    <Route path="/room" component={LeftNavBar} />
-                    <Switch>
-                        <Route exact path="/room" component={HelloWindow} />
-                        <Route path="/room/:roomID" component={Calendar} />
-                        <Route exact path="/" component={Footer}  />
-                        <Route path="/adminPanel" component={AdminPanel} />
-                        <Route path="*" component={NotFound} />
-                    </Switch>
-                </div>
+class App extends React.Component {
+    componentDidMount() {
+        this.props.dispatch(getCurrentUser())
+    }
+    render() {
+        return (
+            <div className="App">
+                <BrowserRouter>
+                    <div>
+                        <Route path="/room" component={NavBar}/>
+                        <Route exact path="/" render={() => <AuthComponent user={this.props.user}/>}/>
+                        <div className="bodyWrapper">
+                            <Route path="/room" component={LeftNavBar}/>
+                            <Switch>
+                                <Route exact path="/room" component={HelloWindow}/>
+                                <Route path="/room/:roomID" component={Calendar}/>
+                                <Route exact path="/" component={Footer}/>
+                                <Route path="/adminPanel" component={AdminPanel}/>
+                                <Route path="*" component={NotFound}/>
+                            </Switch>
+                        </div>
+                    </div>
+                </BrowserRouter>
+                <NotificationContainer/>
             </div>
-        </BrowserRouter>
-        <NotificationContainer/>
-    </div>
-);
-
-export default connect()(App);
+        )
+    }
+}
+const mapStateToProps = ({user}) => ({
+    user
+});
+export default connect(mapStateToProps)(App);

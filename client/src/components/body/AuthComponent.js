@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { userAuthForm } from '../../actions/index';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {NotificationManager} from 'react-notifications';
 import axios from 'axios';
-import { Route, Redirect } from 'react-router'
-
+import { PulseLoader } from 'react-spinners';
 
 class AuthComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
-      res: '',
+        username: '',
+        password: '',
+        res: '',
         req: ''
     };
   }
-
+  componentWillReceiveProps(nextProps) {
+      if(this.props.user.currentUser !== nextProps.user.currentUser) {
+          (this.props.user.currentUser || nextProps.user.currentUser) &&  this.props.history.push("/room/all")
+    }
+  }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
@@ -45,7 +47,7 @@ class AuthComponent extends Component {
             axios.post('/auth/local', { username, password } ).then( (req,res) => {
               this.props.history.push("/room/all");
             }).catch( () =>  this.createNotification('incorrect auth')())
-        };
+        }
     };
 
     createNotification = (type) => {
@@ -70,41 +72,53 @@ class AuthComponent extends Component {
   render() {
     return (
       <div className="reactAuth">
-        <form  id="authForm">
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-12 col-sm-12 col-lg-6" >
-              <div className="panel panel-primary">
-                <div className="panel-heading">
-                  <h3 className="panel-title">Sign in</h3>
-                </div>
-                <div className="panel-body">
-                  <div className="row">
-                    <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                      <div className="cell">
-                        <div className="input-group">
-                          <input id="username" type="text" className="form-control" placeholder="username" name="username" value={this.state.username} onChange={this.handleChange} />
-                        </div>
-                        <div className="input-group">
-                          <input id="password" type="password" className="form-control" placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                        </div>
-                          <button className="login" type="submit" value="Sign in" onClick={this.handleSubmit}>Sign in</button>
+          {this.props.user.hasError && !this.props.user.isLoaded ?
+              <form id="authForm">
+                  <div className="container">
+                      <div className="row">
+                          <div className="col-xs-12 col-sm-12 col-lg-6">
+                              <div className="panel panel-primary">
+                                  <div className="panel-heading">
+                                      <h3 className="panel-title">Sign in</h3>
+                                  </div>
+                                  <div className="panel-body">
+                                      <div className="row">
+                                          <div className="col-xs-6 col-sm-6 col-md-6 login-box">
+                                              <div className="cell">
+                                                  <div className="input-group">
+                                                      <input id="username" type="text" className="form-control"
+                                                             placeholder="username" name="username"
+                                                             value={this.state.username} onChange={this.handleChange}/>
+                                                  </div>
+                                                  <div className="input-group">
+                                                      <input id="password" type="password" className="form-control"
+                                                             placeholder="password" name="password"
+                                                             value={this.state.password} onChange={this.handleChange}/>
+                                                  </div>
+                                                  <button className="login" type="submit" value="Sign in"
+                                                          onClick={this.handleSubmit}>Sign in
+                                                  </button>
 
-                          <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
+                                                  <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
                       </div>
-                    </div>
                   </div>
-                </div>
+              </form>
+              : <div style={{position: "absolute", top:"50%", left: "50%"}}>
+                  <PulseLoader
+                  color={'#d32f2f'}
+                  loading={true}
+                  />
               </div>
-            </div>
-            </div>
-          </div>
-        </form>
-
+          }
       </div>
     );
   }
 }
 
-
-export default connect()(AuthComponent);
+export default withRouter(AuthComponent);
