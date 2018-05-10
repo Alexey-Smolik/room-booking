@@ -146,6 +146,87 @@ routes.put('/:id', (req, res) => {
                 else res.status(500).send({message: 'Wrong id'});
             })
             .then(() => {
+                return invitations.findAll({where: {eventId: req.params.id}})
+            })
+            .then(invites => {
+                let oldInvites = invites.map(invite => invite.dataValues.userId);
+
+                return Promise.all([
+                    users.findAll({ where: { id: { $in: req.body.invitations.filter(invite => oldInvites.indexOf(invite) === -1) } } }),
+                    users.findAll({ where: { id: { $in: oldInvites.filter(invite => req.body.invitations.indexOf(invite) === -1) } } })
+                ]);
+            })
+            .then(invites => {
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: tokens.email.name,
+                        pass: tokens.email.password
+                    }
+                });
+
+                const cal = ical({ domain: 'http://localhost:3000', name: req.body.name });
+                const start = new Date(req.body.date_from);
+                const end = new Date(req.body.date_to);
+                start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+                end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+
+                cal.addEvent({
+                    start: start,
+                    end: end,
+                    summary: req.body.name,
+                    uid: req.body.id,
+                    description: req.body.description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
+                    method: 'request'
+                });
+
+                if(invites[0].length){
+                    let mailOptionsToAdd = {
+                            from: `${req.user.username} <${req.user.email}>`,
+                            to: invites[0].map(invite => invite.dataValues.email).toString(),
+                            subject: `✔ You are invited to an event: ${req.body.name} ✔`,
+                            text: `You are invited to an event: ${req.body.name}`,
+                            alternatives: [{
+                                contentType: "text/calendar",
+                                content: new Buffer(cal.toString())
+                            }]
+                        };
+
+                    transporter.sendMail(mailOptionsToAdd, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                        return true;
+                    });
+                }
+
+                if(invites[1].length){
+                    let mailOptionsToDelete = {
+                        from: `${req.user.username} <${req.user.email}>`,
+                        to: invites[1].map(invite => invite.dataValues.email).toString(),
+                        subject: `✔ You are deleted from event: ${req.body.name} ✔`,
+                        text: `You are deleted from event: ${req.body.name}`
+                    };
+
+                    transporter.sendMail(mailOptionsToDelete, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                        return true;
+                    });
+                }
+
+                return invites;
+            })
+            .then(() => {
                 return events.findOne({where: {id: req.params.id}})
             })
             .then(event => {
