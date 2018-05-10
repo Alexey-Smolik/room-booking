@@ -160,11 +160,11 @@ class LeftNavBar extends Component {
 
         return (
             <aside>
-                {!this.props.user.hasError ?
+                {!this.props.user.hasError && this.props.user.isLoaded ?
                     <aside>
                         <nav>
                             <ul className="aside-menu" >
-                                {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel'>Admin panel</Link>}
+                                {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 1 && <Link  className="all_events" style={{ borderBottom: '1px solid #e7e7e7' }} to='/adminPanel/offices'>Admin panel</Link>}
                                 {this.props.user && this.props.user.currentUser && this.props.user.currentUser.role === 2 && <SearchUser users={managers}/>}
                                 <NavLink activeStyle={{ color:'#B71C1C' }} className="all_events" to={'/room/all'}>
                                     Show all events
