@@ -4,7 +4,6 @@ import { NotificationContainer } from 'react-notifications';
 import NavBar from './header/NavBar';
 import LeftNavBar from './body/LeftNavBar';
 import Calendar from './body/Calendar';
-import HelloWindow from './body/HelloWindow';
 import AuthComponent from './body/AuthComponent';
 import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
@@ -23,7 +22,6 @@ class App extends React.Component {
                         <div className="bodyWrapper">
                             <Route path="/room" component={LeftNavBar}/>
                             <Switch>
-                                <Route exact path="/room" component={HelloWindow}/>
                                 <Route path="/room/:roomID" component={Calendar}/>
                                 <Route exact path="/" component={Footer}/>
                                 <Route path="/adminPanel" component={AdminPanel}/>

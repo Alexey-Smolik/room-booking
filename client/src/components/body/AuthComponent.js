@@ -25,32 +25,39 @@ class AuthComponent extends Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-    handleSubmit = (event) => {
-        const  { username, password } = this.state;
-
-
-        if(!username && !password) {
+  handleSubmit = (event) => {
+      const  { username, password } = this.state;
+      if(!username && !password) {
           event.preventDefault();
           this.createNotification('null fields')();
-        }
-        else if(!username) {
+      }
+      else if(!username) {
           event.preventDefault();
           this.createNotification('null username')();
-        }
-        else if(!password) {
+      }
+      else if(!password) {
           event.preventDefault();
           this.createNotification('null password')();
-        } else {
-            event.preventDefault();
+      } else {
+          event.preventDefault();
 
-            axios.post('/auth/local', { username, password } ).then( (req,res) => {
-                this.props.history.push("/room/all");
-                let token = req.data.token;
-                localStorage.setItem('token', token);
-                setAuthorizationToken(token);
+          axios.post('/auth/local', { username, password } ).then( (req,res) => {
+              this.props.history.push("/room/all");
+              let token = req.data.token;
+              localStorage.setItem('token', token);
+              setAuthorizationToken(token);
               this.props.dispatch(setCurrentUser(jwt.decode(token)));
-            }).catch( () =>  this.createNotification('incorrect auth')())
-        }
+          }).catch( () =>  this.createNotification('incorrect auth')())
+      }
+    };
+    handleAnonymusLogin = () => {
+        axios.get('/auth/anonymus').then( (req,res) => {
+            this.props.history.push("/room/all");
+            let token = req.data.token;
+            localStorage.setItem('token', token);
+            setAuthorizationToken(token);
+            this.props.dispatch(setCurrentUser(jwt.decode(token)));
+        }).catch( () =>  this.createNotification('incorrect auth')())
     };
 
     createNotification = (type) => {
@@ -76,7 +83,7 @@ class AuthComponent extends Component {
     return (
       <div className="reactAuth">
 
-              <form id="authForm">
+              <div id="authForm">
                   <div className="container">
                       <div className="row">
                           <div className="col-xs-12 col-sm-12 col-lg-6">
@@ -87,7 +94,7 @@ class AuthComponent extends Component {
                                   <div className="panel-body">
                                       <div className="row">
                                           <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                                              <div className="cell">
+                                              <form className="cell">
                                                   <div className="input-group">
                                                       <input id="username" type="text" className="form-control"
                                                              placeholder="username" name="username"
@@ -101,9 +108,8 @@ class AuthComponent extends Component {
                                                   <button className="login" type="submit" value="Sign in"
                                                           onClick={this.handleSubmit}>Sign in
                                                   </button>
-
-                                                  <a className="anon_link" href='/auth/anonymus'>Anonymus log in</a>
-                                              </div>
+                                              </form>
+                                              <button className="anon_link" onClick={this.handleAnonymusLogin}>Anonymus log in</button>
                                           </div>
                                       </div>
                                   </div>
@@ -111,7 +117,7 @@ class AuthComponent extends Component {
                           </div>
                       </div>
                   </div>
-              </form>
+              </div>
 
 
       </div>
