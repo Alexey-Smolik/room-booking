@@ -852,7 +852,7 @@ a:hover {
 
 .col-xs-12.col-sm-12.col-lg-6 {
     padding: 0 !important;
-    top: 15vh;
+    top: 25vh;
     min-width: 200px;
     z-index: 2;
 }
