@@ -83,7 +83,7 @@ class AuthComponent extends Component {
     return (
       <div className="reactAuth">
 
-              <form id="authForm">
+              <div id="authForm">
                   <div className="container">
                       <div className="row">
                           <div className="col-xs-12 col-sm-12 col-lg-6">
@@ -94,7 +94,7 @@ class AuthComponent extends Component {
                                   <div className="panel-body">
                                       <div className="row">
                                           <div className="col-xs-6 col-sm-6 col-md-6 login-box">
-                                              <div className="cell">
+                                              <form className="cell">
                                                   <div className="input-group">
                                                       <input id="username" type="text" className="form-control"
                                                              placeholder="username" name="username"
@@ -108,7 +108,8 @@ class AuthComponent extends Component {
                                                   <button className="login" type="submit" value="Sign in"
                                                           onClick={this.handleSubmit}>Sign in
                                                   </button>
-                                              </div>
+                                              </form>
+                                              <button className="anon_link" onClick={this.handleAnonymusLogin}>Anonymus log in</button>
                                           </div>
                                       </div>
                                   </div>
@@ -116,9 +117,9 @@ class AuthComponent extends Component {
                           </div>
                       </div>
                   </div>
-              </form>
+              </div>
 
-          <button className="anon_link" onClick={this.handleAnonymusLogin}>Anonymus log in</button>
+
       </div>
     );
   }
