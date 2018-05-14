@@ -113,7 +113,6 @@ h1 {
     font-family: 'Noto Sans', sans-serif;
     font-weight: bold;
     text-align: center;
-    padding-right: 5%;
     margin-top: 300px;
     -webkit-animation-name: bounce;
     animation-name: bounce;
@@ -1366,7 +1365,6 @@ aside .footer_on_auth {
     margin-top: 250px;
     font-size: 50px;
     padding-right: 0;
-    padding-left: 20%;
     color: #B71C1C;
 }
 

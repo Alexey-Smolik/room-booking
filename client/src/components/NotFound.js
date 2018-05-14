@@ -11,7 +11,7 @@ class NotFound extends React.Component {
             <div className="body_404">
                 {this.props.user.isAuthenticated ?
                     <div>
-                        <div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h1 className="p_404">404<br/>Incorrect URL address</h1>
                         </div>
                         <div className="container_for_404">
@@ -20,7 +20,7 @@ class NotFound extends React.Component {
                     </div>
                     :
                     <div>
-                        <div>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <h1 className="p_404">404<br/>Authorize please</h1>
                         </div>
                         <div className="container_for_404">

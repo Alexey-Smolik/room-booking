@@ -64,7 +64,7 @@ class OfficesContainer extends React.Component {
                         <div>
                             <h3>All offices</h3>
                             <div  className="add1" style={!this.props.offices.length ? {justifyContent: "flex-end"}: {}} >
-                                {!!this.props.offices.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search office" style = {{ width: "20%" }}/>}
+                                {!!this.props.offices.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search office" style = {{ width: "25%" }}/>}
                                     <Button
                                         type="button"
                                         bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
