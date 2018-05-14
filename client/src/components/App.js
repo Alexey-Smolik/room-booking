@@ -14,9 +14,10 @@ import {getCurrentUser} from "../actions";
 
 class App extends React.Component {
     componentDidMount() {
-        this.props.dispatch(getCurrentUser())
+        this.props.dispatch(getCurrentUser());
     }
     render() {
+        console.log('123', localStorage.length);
         return (
             <div className="App">
                 <BrowserRouter>

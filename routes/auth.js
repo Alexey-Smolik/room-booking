@@ -10,7 +10,10 @@ const AnonymIdStrategy = require('passport-anonym-uuid').Strategy;
 const BasicStrategy = require('passport-http').BasicStrategy;
 const users = require('../models').users;
 const tokens = require('../constants/tokens');
+const config = require('../config/main');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const localStorage = require('localStorage');
 
 // Local Strategy for authorization
 passport.use(new LocalStrategy(
@@ -22,6 +25,8 @@ passport.use(new LocalStrategy(
                 } else {
                     bcrypt.compare(password, user.password, (err, success) => {
                         if (success) {
+                            user.dataValues.token = jwt.sign({ id: user.id, username: user.username }, config.secret_key);
+
                             return done(null, user.dataValues);
                         } else {
                             return done(null, false, { message: 'Wrong password' });
@@ -168,7 +173,18 @@ routes.post('/local', function(req, res, next) {
 });
 
 // ROUTES FOR PASSPORT AUTHENTICATION
-routes.get('/anonymus', passport.authenticate('anonymId', { successRedirect: '/room/all', failureRedirect: '/' }));
+routes.get('/anonymus', function(req, res, next) {
+    passport.authenticate('anonymId', function(err, user) {
+        if (err) return next(err);
+        if (!user) return res.status(401).json({message: 'wrong user'});
+
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            user.token = jwt.sign({ id: user.uuid }, config.secret_key);
+            return res.send(user);
+        });
+    })(req, res, next);
+});
 
 routes.get('/vk', passport.authenticate('vkontakte'));
 routes.get('/vkontakte/callback', passport.authenticate('vkontakte', { successRedirect: '/room/all', failureRedirect: '/' }));
@@ -187,6 +203,9 @@ routes.get('/microsoft/callback', passport.authenticate('microsoft', { successRe
 
 // ROUTE FOR LOGOUT
 routes.get('/logout', (req, res) => {
+    console.log(localStorage.getItem('token'));
+    localStorage.clear();
+    console.log(localStorage.getItem('token'));
     req.logout();
     res.redirect('/');
 });

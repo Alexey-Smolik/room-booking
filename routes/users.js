@@ -1,6 +1,6 @@
 const routes = require('express').Router();
 const users = require('../models').users;
-const bcrypt = require('bcrypt-as-promised');
+const bcrypt = require('bcryptjs');
 
 // ----- HANDLERS FOR USERS -----
 // --- GET ALL USERS AND USERS BY ROLE ---
