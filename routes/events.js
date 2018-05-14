@@ -158,7 +158,7 @@ routes.put('/:id', (req, res) => {
             })
             .then(invites => {
                 const transporter = nodemailer.createTransport({
-                    service: 'gmail',
+                    service: 'SendGrid',
                     auth: {
                         user: tokens.email.name,
                         pass: tokens.email.password

@@ -5,6 +5,7 @@ const config = {
     env: process.env.NODE_ENV,
     port: process.env.PORT || 8080,
     imagesDestination: './public/images/',
+    secret_key: 'secret key',
     db: {
         driver: process.env.DATABASE_DRIVER,
         database: process.env.DATABASE_NAME,
