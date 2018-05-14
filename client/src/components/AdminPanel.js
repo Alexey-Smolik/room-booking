@@ -38,7 +38,7 @@ class AdminPanel extends React.Component {
         let {user, issues, rooms} = this.props;
         return (
         <div style={{ width: "100%"}}>
-            {!this.props.user.isAuthenticated && this.props.user.isLoaded &&  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            {(this.props.user.isLoaded && this.props.user.currentUser.role !== 1) &&  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <h1>
                     <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
                     <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
