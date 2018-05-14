@@ -107,7 +107,7 @@ class RoomsContainer extends React.Component {
                         <div>
                             <h3>All rooms</h3>
                             <div  className="add1" style={!this.props.rooms.length ? {justifyContent: "flex-end"}: {}}>
-                                {!!this.props.rooms.length &&  <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "20%"}}/>}
+                                {!!this.props.rooms.length &&  <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Search room" style = {{ width: "25%"}}/>}
                                 <Button
                                     type="button"
                                     bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

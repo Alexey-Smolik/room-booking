@@ -84,7 +84,7 @@ class UsersContainer extends React.Component {
                     <div>
                         <h3>All users</h3>
                         <div  className = "add1" >
-                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search" style = {{ width: "20%", marginRight: "10px" }}/>
+                            <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="User search" style = {{ width: "25%", marginRight: "10px" }}/>
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}

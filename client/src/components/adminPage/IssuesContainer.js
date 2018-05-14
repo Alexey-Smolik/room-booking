@@ -105,7 +105,7 @@ class IssuesContainer extends React.Component {
                     <div>
                         {!this.props.roomID && <h3>All issues</h3>}
                         <div  className = "add1" style={!this.props.issues.length ? {justifyContent: "flex-end"}: {}}>
-                            {!!this.props.issues.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "20%"}}/>}
+                            {!!this.props.issues.length && <FormControl onChange={(e) => this.onSearchChange(e)} value={this.state.searchValue}  type="search" placeholder="Issue search" style = {{ width: "25%"}}/>}
                             <Button
                                 type="button"
                                 bsStyle={this.state.addFieldIsVisible? 'warning': 'primary'}
