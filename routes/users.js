@@ -11,6 +11,7 @@ routes.get('/', (req, res) => {
     else if(req.user.role === 2) {
         options.attributes = ['id', 'username'];
         options.where.id = { $ne: req.user.id };
+        options.where.email = { $ne: null };
         options.where.role = 2;
     } else if(req.user.role === 3) return res.status(500).send({ message: 'You have no rights' });
 

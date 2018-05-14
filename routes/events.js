@@ -158,7 +158,7 @@ routes.put('/:id', (req, res) => {
             })
             .then(invites => {
                 const transporter = nodemailer.createTransport({
-                    service: 'SendGrid',
+                    service: 'gmail',
                     auth: {
                         user: tokens.email.name,
                         pass: tokens.email.password
@@ -166,12 +166,27 @@ routes.put('/:id', (req, res) => {
                 });
 
                 const cal = ical({ domain: 'http://localhost:3000', name: req.body.name });
+                const cal2 = ical({ domain: 'http://localhost:3000', name: req.body.name });
                 const start = new Date(req.body.date_from);
                 const end = new Date(req.body.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
                 end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
 
                 cal.addEvent({
+                    start: start,
+                    end: end,
+                    summary: req.body.name,
+                    uid: req.body.id,
+                    description: req.body.description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
+                    status: 'confirmed',
+                    method: 'cancel'
+                });
+
+                cal2.addEvent({
                     start: start,
                     end: end,
                     summary: req.body.name,
@@ -192,7 +207,7 @@ routes.put('/:id', (req, res) => {
                             text: `You are invited to an event: ${req.body.name}`,
                             alternatives: [{
                                 contentType: "text/calendar",
-                                content: new Buffer(cal.toString())
+                                content: new Buffer(cal2.toString())
                             }]
                         };
 
@@ -211,7 +226,11 @@ routes.put('/:id', (req, res) => {
                         from: `${req.user.username} <${req.user.email}>`,
                         to: invites[1].map(invite => invite.dataValues.email).toString(),
                         subject: `✔ You are deleted from event: ${req.body.name} ✔`,
-                        text: `You are deleted from event: ${req.body.name}`
+                        text: `You are deleted from event: ${req.body.name}`,
+                        alternatives: [{
+                            contentType: "text/calendar",
+                            content: new Buffer(cal.toString())
+                        }]
                     };
 
                     transporter.sendMail(mailOptionsToDelete, (error, info) => {
