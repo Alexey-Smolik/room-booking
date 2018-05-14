@@ -74,13 +74,6 @@ class LeftNavBar extends Component {
         this.props.dispatch(deleteEventFromState(server));
     }
 
-    //
-    // connect(server){
-    //   console.log("Connect", server);
-    //     let { currentUser } = this.props.user;
-    //     { currentUser &&  socket.emit('connect user', {currentUser})}
-    // }
-
     infoHandler(e, props) {
         if(this.state.mouseEvent) {
             let btn = this.state.activeButton;
@@ -160,7 +153,7 @@ class LeftNavBar extends Component {
 
         return (
             <aside>
-                {!this.props.user.hasError && this.props.user.isLoaded ?
+                {this.props.user.isAuthenticated && this.props.user.isLoaded ?
                     <aside>
                         <nav>
                             <ul className="aside-menu" >

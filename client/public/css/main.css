@@ -852,7 +852,7 @@ a:hover {
 
 .col-xs-12.col-sm-12.col-lg-6 {
     padding: 0 !important;
-    top: 15vh;
+    top: 25vh;
     min-width: 200px;
     z-index: 2;
 }
@@ -1097,11 +1097,12 @@ textarea {
 
 .dates_filter {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    flex-direction: column;
+    /*justify-content: space-between;
     margin: 0 auto;
     align-items: center;
-    padding: 0 5%;
+    padding: 0 5%;*/
 }
 
 .dates_picker_cont {

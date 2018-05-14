@@ -1,3 +1,4 @@
+import isEmpty from 'lodash.isempty'
 import {
     GET_CURRENT_USER_SUCCESS,
     GET_CURRENT_USER_ERROR,
@@ -8,7 +9,8 @@ import {
     DELETE_USER_DB,
     EDIT_USER_DB,
     GET_MANAGERS,
-    ADD_SIMPLE_USERS
+    ADD_SIMPLE_USERS,
+    SET_CURRENT_USER,
 } from '../actions/types';
 
 export default function (state = {}, action) {
@@ -37,8 +39,11 @@ export default function (state = {}, action) {
       case GET_CURRENT_USER_SUCCESS:
           return { ...state, currentUser: action.user };
 
+      case SET_CURRENT_USER: {
+          return { ...state, isAuthenticated: !isEmpty(action.payload)};
+      }
       case REMOVE_USER_FROM_STATE:
-        return null || false;
+          return { ...state, currentUser: null, isLoaded: false, hasError: false  };
 
       case GET_ALL_USERS:
         return { ...state, allUsers: action.payload };

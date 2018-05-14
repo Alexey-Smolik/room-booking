@@ -4,7 +4,6 @@ import { ControlLabel, FormControl } from 'react-bootstrap';
 import EventItem from './EventItem'
 import moment from 'moment';
 import {
-    getCurrentUser,
     getEvents,
 } from '../../actions/index';
 
@@ -14,7 +13,7 @@ class EventsContainer extends React.Component {
         this.state = {
             searchValue: '',
         };
-        this.props.dispatch(getCurrentUser());
+
     }
 
     onSearchChange (e) {
@@ -23,7 +22,7 @@ class EventsContainer extends React.Component {
         });
         e.preventDefault();
     };
-    componentWillMount () {
+    componentDidMount () {
         this.props.dispatch(getEvents(this.props.roomID));
 
     }
