@@ -20,7 +20,6 @@ import OfficesContainer from "./adminPage/OfficesContainer";
 import UsersContainer from "./adminPage/UsersContainer";
 import IssuesContainer from "./adminPage/IssuesContainer";
 import InnerRoomContainer from "./adminPage/InnerRoomContainer";
-import HelloAdmin from './HelloAdmin';
 import LoginForAdmin from './header/LoginForAdmin';
 
 
@@ -43,8 +42,6 @@ class AdminPanel extends React.Component {
 
             {user && user.currentUser && user.currentUser.role === 1 ?
                 <div >
-                    <Route exact path="/adminPanel" component={HelloAdmin} />
-
                     <Nav bsStyle="pills">
                         <LinkContainer to="/adminPanel/offices/">
                             <NavItem eventKey={1} onClick={() => {this.props.dispatch(getOffices())}}>Offices</NavItem>
