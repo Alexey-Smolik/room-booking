@@ -1332,7 +1332,7 @@ aside .footer_on_auth {
     }
 }
 
-@media all and (max-width: 560px){
+@media all and (max-width: 650px){
     .container {
         max-width: 250px;
     }
