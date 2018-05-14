@@ -10,7 +10,7 @@ import {
     editEventInState,
     getAllEvents,
     simpleUsers,
-    getEventsByInvitationUser,
+    getEventsByInvitationUser, getCurrentUser,
 } from '../../actions';
 import { connect } from 'react-redux';
 import Popup from './Popup';
@@ -54,6 +54,7 @@ class Calendar extends React.Component {
 
     };
     componentDidMount(){
+
         this.props.dispatch(simpleUsers());
         socket.on('add event', this.socketAddEvent);
         socket.on('edit event', this.socketEditEvent);
@@ -214,14 +215,12 @@ class Calendar extends React.Component {
 
         return (
             <div className="calendar-cont">
-                {!this.props.user.isLoaded ?
-                    <div style={{ position: "absolute", top:"45%", left: "50%"}}>
-                        <PulseLoader
-                            color={'#d32f2f'}
-                            loading={true}
-                        /></div>
-                    : <div>
-                        {this.props.user && this.props.user.currentUser ?
+                {!this.props.user.isAuthenticated && this.props.user.isLoaded &&  <h1>
+                    <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
+                    <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
+                </h1>}
+
+                        {this.props.user.isLoaded && this.props.user.isAuthenticated ?
                             <React.Fragment>
                                 <BigCalendar
                                     selectable
@@ -248,11 +247,13 @@ class Calendar extends React.Component {
                                     }
                                     }
                                 />
-                            </React.Fragment> :
-                            (this.props.user.isLoaded || this.props.user.hasError) && <h1>
-                                <p style={{ color: '#B71C1C', fontSize: '50px' }}>Sorry, no access<br/>Authorize please</p>
-                                <Link className="link_404_1" to={'/'}  style={{ fontWeight: 'normal' }}>Sign in</Link>
-                            </h1>}
+                            </React.Fragment> : <div style={{ position: "absolute", top:"45%", left: "50%"}}>
+                                <PulseLoader
+                                    color={'#d32f2f'}
+                                    loading={!this.props.user.isLoaded}/>
+                            </div>
+
+                        }
                             {this.state.showPopup && <Popup
                                 event={this.state.event}
                                 user={this.props.user}
@@ -260,9 +261,9 @@ class Calendar extends React.Component {
                                 editMode={this.state.editMode}
                                 roomID={this.props.roomID || this.props.match.params.roomID}
                                 dateFilter={this.dateFilter}/>}
-                                {(!this.props.roomID && this.props.match.params.roomID === 'all') &&
+                                {(!this.props.roomID && this.props.match.params.roomID === 'all' && this.props.user.isLoaded && this.props.user.isAuthenticated) &&
                                 <RoomsColorMatching colors={this.state.colors} rooms={this.props.rooms}/>}
-                        </div>}
+
             </div>
         );
     }

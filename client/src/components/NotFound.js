@@ -1,22 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-import {
-    getCurrentUser,
-} from "../actions";
+
 
 class NotFound extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-    componentDidMount() {
-        this.props.dispatch(getCurrentUser())
-    }
+
     render() {
         return (
 
             <div className="body_404">
-                {this.props.user && this.props.user.currentUser ?
+                {this.props.user.isAuthenticated ?
                     <div>
                         <div>
                             <h1 className="p_404">404<br/>Incorrect URL address</h1>
@@ -26,7 +19,7 @@ class NotFound extends React.Component {
                         </div>
                     </div>
                     :
-                    this.props.user.hasError && <div>
+                    <div>
                         <div>
                             <h1 className="p_404">404<br/>Authorize please</h1>
                         </div>

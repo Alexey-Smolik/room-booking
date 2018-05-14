@@ -10,19 +10,16 @@ import Footer from './Footer/Footer';
 import AdminPanel from './AdminPanel';
 import NotFound from './NotFound';
 import { connect } from "react-redux";
-import {getCurrentUser} from "../actions";
 
 class App extends React.Component {
-    componentDidMount() {
-        this.props.dispatch(getCurrentUser())
-    }
     render() {
+
         return (
             <div className="App">
                 <BrowserRouter>
                     <div>
                         <Route path="/room" component={NavBar}/>
-                        <Route exact path="/" render={() => <AuthComponent user={this.props.user}/>}/>
+                        <Route exact path="/" render={() => <AuthComponent isAuthenticated={this.props.user.isAuthenticated}/>}/>
                         <div className="bodyWrapper">
                             <Route path="/room" component={LeftNavBar}/>
                             <Switch>

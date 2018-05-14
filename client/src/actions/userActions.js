@@ -9,8 +9,18 @@ import {
     ADD_USER_DB,
     EDIT_USER_DB,
     GET_MANAGERS,
-    ADD_SIMPLE_USERS
+    ADD_SIMPLE_USERS,
+    SET_CURRENT_USER,
 } from "./types";
+import setAuthorizationToken from '../utils/setAuthorizationToken';
+
+export function setCurrentUser(user) {
+    return {
+        type: SET_CURRENT_USER,
+        payload: user
+    }
+
+}
 
 export  const getCurrentUserHasError = (bool) => {
     return {
@@ -35,20 +45,17 @@ export const getCurrentUser = () => async (dispatch) => {
     try {
         const res = await axios.get('/api/users/current');
         dispatch(getCurrentUserSuccess(res.data));
-       setTimeout(()=>{dispatch( getCurrentUserIsLoaded(true))}, 200);
+        dispatch( getCurrentUserIsLoaded(true))
     } catch (e) {
         dispatch(getCurrentUserHasError(true))
     }
 };
 
-export const userAuthForm = () => async (dispatch) => {
-    await axios.post('/auth/local');
-    dispatch(getCurrentUser());
-};
-
 export const deleteCurrentUser = () => async (dispatch) => {
-    const res = await axios.get('/auth/logout');
-    dispatch({ type: REMOVE_USER_FROM_STATE, payload: res.data });
+    dispatch({ type: REMOVE_USER_FROM_STATE});
+    localStorage.removeItem('token');
+    setAuthorizationToken(false);
+    dispatch(setCurrentUser({}));
 };
 
 export const getAllUsers = () => async (dispatch) => {

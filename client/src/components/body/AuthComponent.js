@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 import {NotificationManager} from 'react-notifications';
 import axios from 'axios';
-import { PulseLoader } from 'react-spinners';
+import { withRouter } from 'react-router-dom'
+import {setCurrentUser} from "../../actions";
+import setAuthorizationToken from "../../utils/setAuthorizationToken";
+import jwt from "jsonwebtoken";
 
 class AuthComponent extends Component {
   constructor(props) {
@@ -14,17 +17,13 @@ class AuthComponent extends Component {
         req: ''
     };
   }
-  componentWillReceiveProps(nextProps) {
-      if(this.props.user.currentUser !== nextProps.user.currentUser) {
-          (this.props.user.currentUser || nextProps.user.currentUser) &&  this.props.history.push("/room/all")
-    }
+  componentDidMount() {
+      this.props.isAuthenticated && this.props.history.push("/room/all");
   }
 
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
-
 
     handleSubmit = (event) => {
         const  { username, password } = this.state;
@@ -45,7 +44,11 @@ class AuthComponent extends Component {
             event.preventDefault();
 
             axios.post('/auth/local', { username, password } ).then( (req,res) => {
-              this.props.history.push("/room/all");
+                this.props.history.push("/room/all");
+                let token = req.data.token;
+                localStorage.setItem('token', token);
+                setAuthorizationToken(token);
+              this.props.dispatch(setCurrentUser(jwt.decode(token)));
             }).catch( () =>  this.createNotification('incorrect auth')())
         }
     };
@@ -72,7 +75,7 @@ class AuthComponent extends Component {
   render() {
     return (
       <div className="reactAuth">
-          {this.props.user.hasError && !this.props.user.isLoaded ?
+
               <form id="authForm">
                   <div className="container">
                       <div className="row">
@@ -109,16 +112,13 @@ class AuthComponent extends Component {
                       </div>
                   </div>
               </form>
-              : <div style={{position: "absolute", top:"50%", left: "50%"}}>
-                  <PulseLoader
-                  color={'#d32f2f'}
-                  loading={true}
-                  />
-              </div>
-          }
+
+
       </div>
     );
   }
 }
-
-export default withRouter(AuthComponent);
+const mapStateToProps = ({user}) => ({
+    user
+});
+export default withRouter(connect(mapStateToProps)(AuthComponent));
