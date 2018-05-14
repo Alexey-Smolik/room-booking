@@ -1332,16 +1332,6 @@ aside .footer_on_auth {
     }
 }
 
-@media all and (max-width: 650px){
-    .container {
-        max-width: 250px;
-    }
-
-    .col-xs-6.col-sm-6.col-md-6.login-box {
-        max-width: 100%;
-    }
-}
-
 @media all and (max-width: 602px){
     .hello {
         margin-top: 0;
