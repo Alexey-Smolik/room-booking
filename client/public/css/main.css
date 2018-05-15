@@ -1268,7 +1268,7 @@ aside .footer_on_auth {
     }
 
     .default{
-        background-size: cover;
+        background-size: auto;
     }
 
     aside {
@@ -1311,6 +1311,12 @@ aside .footer_on_auth {
 
     .hello {
         margin-top: 10px;
+    }
+}
+
+@media all and (max-height: 768px){
+    .default {
+        background-size: cover;
     }
 }
 
