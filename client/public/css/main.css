@@ -1314,11 +1314,10 @@ aside .footer_on_auth {
     }
 }
 
-@media all and (max-height: 768px){
+@media only screen and (max-width: 600px) {
     .default {
         background-size: cover;
-        background-attachment: scroll;
-        min-height: 100%;
+        height: 100%;
     }
 }
 
