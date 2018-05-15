@@ -82,7 +82,6 @@ class AuthComponent extends Component {
   render() {
     return (
       <div className="reactAuth">
-
               <div id="authForm">
                   <div className="container">
                       <div className="row">
@@ -118,8 +117,6 @@ class AuthComponent extends Component {
                       </div>
                   </div>
               </div>
-
-
       </div>
     );
   }
