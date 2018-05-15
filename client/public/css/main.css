@@ -1317,6 +1317,8 @@ aside .footer_on_auth {
 @media all and (max-height: 768px){
     .default {
         background-size: cover;
+        background-attachment: scroll;
+        min-height: 100%;
     }
 }
 
