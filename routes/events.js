@@ -95,6 +95,7 @@ routes.post('/', (req, res) => {
                             pass: tokens.email.password
                         }
                     });
+
                     let mailOptions = {
                         from: `${req.user.username} <${req.user.email}>`,
                         to: invites[0].map(invite => invite.dataValues.user.email).toString(),
@@ -153,7 +154,8 @@ routes.put('/:id', (req, res) => {
 
                 return Promise.all([
                     users.findAll({ where: { id: { $in: req.body.invitations.filter(invite => oldInvites.indexOf(invite) === -1) } } }),
-                    users.findAll({ where: { id: { $in: oldInvites.filter(invite => req.body.invitations.indexOf(invite) === -1) } } })
+                    users.findAll({ where: { id: { $in: oldInvites.filter(invite => req.body.invitations.indexOf(invite) === -1) } } }),
+                    users.findAll({ where: { id: { $in: req.body.invitations.filter(invite => oldInvites.indexOf(invite) !== -1) } } })
                 ]);
             })
             .then(invites => {
@@ -167,6 +169,7 @@ routes.put('/:id', (req, res) => {
 
                 const cal = ical({ domain: 'http://localhost:3000', name: req.body.name });
                 const cal2 = ical({ domain: 'http://localhost:3000', name: req.body.name });
+                const cal3 = ical({ domain: 'http://localhost:3000', name: req.body.name });
                 const start = new Date(req.body.date_from);
                 const end = new Date(req.body.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
@@ -182,8 +185,8 @@ routes.put('/:id', (req, res) => {
                         name: req.user.username,
                         email: req.user.email
                     },
-                    status: 'confirmed',
-                    method: 'cancel'
+                    method: 'cancel',
+                    sequence: 1
                 });
 
                 cal2.addEvent({
@@ -199,12 +202,25 @@ routes.put('/:id', (req, res) => {
                     method: 'request'
                 });
 
+                cal3.addEvent({
+                    start: start,
+                    end: end,
+                    summary: req.body.name,
+                    uid: req.body.id,
+                    description: req.body.description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
+                    method: 'request',
+                    sequence: 1
+                });
+
                 if(invites[0].length){
                     let mailOptionsToAdd = {
                             from: `${req.user.username} <${req.user.email}>`,
                             to: invites[0].map(invite => invite.dataValues.email).toString(),
                             subject: `✔ You are invited to an event: ${req.body.name} ✔`,
-                            text: `You are invited to an event: ${req.body.name}`,
                             alternatives: [{
                                 contentType: "text/calendar",
                                 content: new Buffer(cal2.toString())
@@ -226,7 +242,6 @@ routes.put('/:id', (req, res) => {
                         from: `${req.user.username} <${req.user.email}>`,
                         to: invites[1].map(invite => invite.dataValues.email).toString(),
                         subject: `✔ You are deleted from event: ${req.body.name} ✔`,
-                        text: `You are deleted from event: ${req.body.name}`,
                         alternatives: [{
                             contentType: "text/calendar",
                             content: new Buffer(cal.toString())
@@ -234,6 +249,27 @@ routes.put('/:id', (req, res) => {
                     };
 
                     transporter.sendMail(mailOptionsToDelete, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                        return true;
+                    });
+                }
+
+                if(invites[2].length){
+                    let mailOptionsToUpdate = {
+                        from: `${req.user.username} <${req.user.email}>`,
+                        to: invites[2].map(invite => invite.dataValues.email).toString(),
+                        subject: `✔ Event ${req.body.name} is updated ✔`,
+                        alternatives: [{
+                            contentType: "text/calendar",
+                            content: new Buffer(cal3.toString())
+                        }]
+                    };
+
+                    transporter.sendMail(mailOptionsToUpdate, (error, info) => {
                         if (error) {
                             return console.log(error);
                         }
@@ -314,15 +350,14 @@ routes.delete('/:id', (req, res) => {
                                 name: req.user.username,
                                 email: req.user.email
                             },
-                            status: 'confirmed',
-                            method: 'cancel'
+                            method: 'cancel',
+                            sequence: 1
                         });
 
                         let mailOptionsToDelete = {
                             from: `${req.user.username} <${req.user.email}>`,
                             to: emails.toString(),
                             subject: `✔ Event ${event.dataValues.name} deleted ✔`,
-                            text: `Event ${event.dataValues.name} deleted`,
                             alternatives: [{
                                 contentType: "text/calendar",
                                 content: new Buffer(cal.toString())
