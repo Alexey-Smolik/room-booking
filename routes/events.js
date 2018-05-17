@@ -95,6 +95,7 @@ routes.post('/', (req, res) => {
                             pass: tokens.email.password
                         }
                     });
+
                     let mailOptions = {
                         from: `${req.user.username} <${req.user.email}>`,
                         to: invites[0].map(invite => invite.dataValues.user.email).toString(),
@@ -153,12 +154,13 @@ routes.put('/:id', (req, res) => {
 
                 return Promise.all([
                     users.findAll({ where: { id: { $in: req.body.invitations.filter(invite => oldInvites.indexOf(invite) === -1) } } }),
-                    users.findAll({ where: { id: { $in: oldInvites.filter(invite => req.body.invitations.indexOf(invite) === -1) } } })
+                    users.findAll({ where: { id: { $in: oldInvites.filter(invite => req.body.invitations.indexOf(invite) === -1) } } }),
+                    users.findAll({ where: { id: { $in: req.body.invitations.filter(invite => oldInvites.indexOf(invite) !== -1) } } })
                 ]);
             })
             .then(invites => {
                 const transporter = nodemailer.createTransport({
-                    service: 'SendGrid',
+                    service: 'gmail',
                     auth: {
                         user: tokens.email.name,
                         pass: tokens.email.password
@@ -166,6 +168,8 @@ routes.put('/:id', (req, res) => {
                 });
 
                 const cal = ical({ domain: 'http://localhost:3000', name: req.body.name });
+                const cal2 = ical({ domain: 'http://localhost:3000', name: req.body.name });
+                const cal3 = ical({ domain: 'http://localhost:3000', name: req.body.name });
                 const start = new Date(req.body.date_from);
                 const end = new Date(req.body.date_to);
                 start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
@@ -181,7 +185,35 @@ routes.put('/:id', (req, res) => {
                         name: req.user.username,
                         email: req.user.email
                     },
+                    method: 'cancel',
+                    sequence: 1
+                });
+
+                cal2.addEvent({
+                    start: start,
+                    end: end,
+                    summary: req.body.name,
+                    uid: req.body.id,
+                    description: req.body.description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
                     method: 'request'
+                });
+
+                cal3.addEvent({
+                    start: start,
+                    end: end,
+                    summary: req.body.name,
+                    uid: req.body.id,
+                    description: req.body.description,
+                    organizer: {
+                        name: req.user.username,
+                        email: req.user.email
+                    },
+                    method: 'request',
+                    sequence: 1
                 });
 
                 if(invites[0].length){
@@ -189,10 +221,9 @@ routes.put('/:id', (req, res) => {
                             from: `${req.user.username} <${req.user.email}>`,
                             to: invites[0].map(invite => invite.dataValues.email).toString(),
                             subject: `✔ You are invited to an event: ${req.body.name} ✔`,
-                            text: `You are invited to an event: ${req.body.name}`,
                             alternatives: [{
                                 contentType: "text/calendar",
-                                content: new Buffer(cal.toString())
+                                content: new Buffer(cal2.toString())
                             }]
                         };
 
@@ -211,10 +242,34 @@ routes.put('/:id', (req, res) => {
                         from: `${req.user.username} <${req.user.email}>`,
                         to: invites[1].map(invite => invite.dataValues.email).toString(),
                         subject: `✔ You are deleted from event: ${req.body.name} ✔`,
-                        text: `You are deleted from event: ${req.body.name}`
+                        alternatives: [{
+                            contentType: "text/calendar",
+                            content: new Buffer(cal.toString())
+                        }]
                     };
 
                     transporter.sendMail(mailOptionsToDelete, (error, info) => {
+                        if (error) {
+                            return console.log(error);
+                        }
+                        console.log('Message sent: %s', info.messageId);
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                        return true;
+                    });
+                }
+
+                if(invites[2].length){
+                    let mailOptionsToUpdate = {
+                        from: `${req.user.username} <${req.user.email}>`,
+                        to: invites[2].map(invite => invite.dataValues.email).toString(),
+                        subject: `✔ Event ${req.body.name} is updated ✔`,
+                        alternatives: [{
+                            contentType: "text/calendar",
+                            content: new Buffer(cal3.toString())
+                        }]
+                    };
+
+                    transporter.sendMail(mailOptionsToUpdate, (error, info) => {
                         if (error) {
                             return console.log(error);
                         }
@@ -265,12 +320,67 @@ routes.put('/:id', (req, res) => {
 // --- DELETE EVENT ---
 routes.delete('/:id', (req, res) => {
     if(req.user.role === 1 || req.user.role === 2) {
-        events.destroy({where: {id: req.params.id}})
+        events.findOne({ where: { id: req.params.id }, include: { model: invitations, include: { model: users, attributes: ['email'] } } })
             .then(event => {
                 if(event){
-                    io.emit('delete event', req.params.id);
-                    res.send(req.params.id);
-                } else res.status(500).send({message: 'Wrong id'});
+                    let emails = event.dataValues.invitations.map(invite => invite.dataValues.user.dataValues.email);
+
+                    if(emails.length){
+                        const transporter = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: tokens.email.name,
+                                pass: tokens.email.password
+                            }
+                        });
+
+                        const cal = ical({ domain: 'http://localhost:3000', name: event.dataValues.name });
+                        const start = new Date(event.dataValues.date_from);
+                        const end = new Date(event.dataValues.date_to);
+                        start.setTime(start.getTime() + start.getTimezoneOffset() * 60 * 1000);
+                        end.setTime(end.getTime() + end.getTimezoneOffset() * 60 * 1000);
+
+                        cal.addEvent({
+                            start: start,
+                            end: end,
+                            summary: event.dataValues.name,
+                            uid: req.params.id,
+                            description: event.dataValues.description,
+                            organizer: {
+                                name: req.user.username,
+                                email: req.user.email
+                            },
+                            method: 'cancel',
+                            sequence: 1
+                        });
+
+                        let mailOptionsToDelete = {
+                            from: `${req.user.username} <${req.user.email}>`,
+                            to: emails.toString(),
+                            subject: `✔ Event ${event.dataValues.name} deleted ✔`,
+                            alternatives: [{
+                                contentType: "text/calendar",
+                                content: new Buffer(cal.toString())
+                            }]
+                        };
+
+                        transporter.sendMail(mailOptionsToDelete, (error, info) => {
+                            if (error) {
+                                return console.log(error);
+                            }
+                            console.log('Message sent: %s', info.messageId);
+                            console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                            return true;
+                        });
+                    }
+
+                    return events.destroy({where: {id: req.params.id}})
+                }
+                return res.status(500).send({message: 'Wrong id'});
+            })
+            .then(event => {
+                io.emit('delete event', req.params.id);
+                res.send(req.params.id);
             })
             .catch(err => {
                 res.status(500).send({message: err.message});
