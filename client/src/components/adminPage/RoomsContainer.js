@@ -13,7 +13,6 @@ class RoomsContainer extends React.Component {
         super(props);
         this.state = {
             roomName: '',
-            roomFloor: '',
             roomDescription: '',
             roomOfficeName: '',
             addFieldIsVisible: false,
@@ -34,7 +33,6 @@ class RoomsContainer extends React.Component {
         const roomData = {
             name: this.state.roomName,
             description: this.state.roomDescription,
-            floor: this.state.roomFloor,
             officeId: officeId,
             officeName: officeName
         };
@@ -47,7 +45,6 @@ class RoomsContainer extends React.Component {
             addFieldIsVisible : !this.state.addFieldIsVisible,
             searchValue: '',
             roomName: '',
-            roomFloor: '',
             roomDescription: '',
             roomOfficeName: '',
         })
@@ -64,13 +61,6 @@ class RoomsContainer extends React.Component {
         });
         e.preventDefault();
     };
-    onRoomFloorChange (e) {
-        this.setState({
-            roomFloor: e.target.value,
-        });
-        e.preventDefault();
-    };
-
     onSearchChange (e) {
         this.setState({
             searchValue: e.target.value,
@@ -90,14 +80,12 @@ class RoomsContainer extends React.Component {
                 return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.office.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.floor.toString().includes(this.state.searchValue)
+                    room.office.name.toLowerCase().includes(this.state.searchValue.toLowerCase())
             } else {
                 return room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.description.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
                     room.name.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.officeName.toLowerCase().includes(this.state.searchValue.toLowerCase()) ||
-                    room.floor.toString().includes(this.state.searchValue)
+                    room.officeName.toLowerCase().includes(this.state.searchValue.toLowerCase())
             }
         });
         return (
@@ -119,13 +107,11 @@ class RoomsContainer extends React.Component {
                                 {(!!this.props.rooms.length || this.state.addFieldIsVisible) &&<div style={{display:  'flex', justifyContent: 'space-around'}}>
                                     <ControlLabel className="control-label" >Name</ControlLabel>
                                     <ControlLabel className="control-label" >Description</ControlLabel>
-                                    <ControlLabel className="control-label" >Floor</ControlLabel>
                                     <ControlLabel className="control-label" >Office</ControlLabel>
                                 </div>}
                                 <form onSubmit={(e) => {this.addRoom(e)}}  style={!this.state.addFieldIsVisible ? {display: "none"} :{display:"flex"}}>
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomNameChange(e)} value={this.state.roomName}  required />
                                     <FormControl className="form-control"   type="text" onChange={(e) => this.onRoomDescriptionChange(e)} value={this.state.roomDescription}  required />
-                                    <FormControl className="form-control"   type="number" onChange={(e) => this.onRoomFloorChange(e)} value={this.state.roomFloor}  required />
                                     <FormControl componentClass="select"  onChange={(e) => this.onSelectChange(e)}  value={this.state.roomOfficeName} required>
                                         <option  defaultValue/>
                                         {this.props.offices.map((office) => {
@@ -139,7 +125,6 @@ class RoomsContainer extends React.Component {
                                         return <RoomItem
                                             name={room.name}
                                             description={room.description}
-                                            floor={room.floor}
                                             officeName={room.office.name}
                                             id={room.id}
                                             key={room.id}
@@ -148,7 +133,6 @@ class RoomsContainer extends React.Component {
                                         return <RoomItem
                                             name={room.name}
                                             description={room.description}
-                                            floor={room.floor}
                                             officeName={room.officeName}
                                             id={room.id}
                                             key={room.id}

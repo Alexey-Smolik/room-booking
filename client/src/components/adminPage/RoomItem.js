@@ -13,7 +13,6 @@ class RoomItem extends React.Component {
         this.state = {
             btnText: 'Edit',
             roomName: this.props.name,
-            roomFloor: this.props.floor,
             roomDescription: this.props.description,
             isFieldEditing: false,
         };
@@ -28,7 +27,6 @@ class RoomItem extends React.Component {
             id: id,
             name: this.state.roomName,
             description: this.state.roomDescription,
-            floor: this.state.roomFloor,
             officeName: this.props.officeName,
         };
         if(this.state.btnText === 'Save') {
@@ -59,13 +57,6 @@ class RoomItem extends React.Component {
         });
         e.preventDefault();
     };
-    onRoomFloorChange (e) {
-        this.setState({
-            roomFloor: e.target.value,
-            btnText: 'Save'
-        });
-        e.preventDefault();
-    };
 
     render() {
         const { id } = this.props;
@@ -74,7 +65,6 @@ class RoomItem extends React.Component {
             <form onSubmit={(e)=> {this.changeRoomData(e,id)}}  style={{display:  'flex'}}>
                 <FormControl  type="text" value={this.state.roomName} onChange={(e) => this.onRoomNameChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.state.roomDescription} onChange={(e) => this.onRoomDescriptionChange(e)} disabled={!isFieldEditing} required/>
-                <FormControl  type="number" value={this.state.roomFloor} onChange={(e) => this.onRoomFloorChange(e)} disabled={!isFieldEditing} required/>
                 <FormControl  type="text" value={this.props.officeName}  disabled />
                 <Button type="submit" bsStyle={isFieldEditing? 'success': 'primary'} >{btnText}</Button>
                 <Button type="button" bsStyle='danger' onClick={() => {
