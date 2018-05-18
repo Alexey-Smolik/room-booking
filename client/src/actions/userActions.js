@@ -45,7 +45,7 @@ export const getCurrentUser = () => async (dispatch) => {
     try {
         const res = await axios.get('/api/users/current');
         dispatch(getCurrentUserSuccess(res.data));
-        dispatch( getCurrentUserIsLoaded(true))
+        dispatch( getCurrentUserIsLoaded(true));
     } catch (e) {
         dispatch(getCurrentUserHasError(true))
     }
@@ -86,8 +86,8 @@ export const deleteUserDB = (userID) => async (dispatch) => {
 };
 
 export const editUserDB = (userID, user) => async (dispatch) => {
-    await axios.put(`/api/users/${userID}`, user);
-    dispatch({type: EDIT_USER_DB, payload: user})
+   const res =  await axios.put(`/api/users/${userID}`, user);
+    dispatch({type: EDIT_USER_DB, payload: res.data})
 };
 
 

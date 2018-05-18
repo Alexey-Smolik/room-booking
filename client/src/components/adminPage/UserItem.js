@@ -18,7 +18,13 @@ class UserItem extends React.Component {
             isFieldEditing: false,
         };
     }
-
+    componentWillReceiveProps(nextProps) {
+        if (this.props.password !== nextProps.password) {
+           this.setState({
+               password: nextProps.password
+           })
+        }
+    }
     changeUserData = (e,id) => {
         this.setState({
             btnText: 'Cancel',
@@ -97,10 +103,5 @@ class UserItem extends React.Component {
         );
     }
 }
-function mapStateToProps ({user}) {
-    return {
-        user
-    }
-}
 
-export default connect(mapStateToProps)(UserItem);
+export default connect()(UserItem);

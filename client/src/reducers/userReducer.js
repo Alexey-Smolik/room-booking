@@ -28,7 +28,12 @@ export default function (state = {}, action) {
           return { ...state, allUsers: state.allUsers.filter(({ id }) => id !== action.payload)};
 
       case EDIT_USER_DB:
-          return { allUsers: [...state.allUsers.filter(({ id }) => id !== action.payload.id), action.payload], ...state};
+          return {...state, allUsers: state.allUsers.map((user) => {
+              if(user.id !== action.payload.id) {
+                  return user
+              }
+              return action.payload
+          })};
 
       case GET_CURRENT_USER_LOADED:
         return { ...state, isLoaded: action.isLoaded, hasError: false };
